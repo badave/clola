@@ -25,7 +25,6 @@
     "bcrypt": "~0.7.5",
     "bases": "~0.1.0",
     "request": "~2.16.6",
-    "jwt-simple": "~0.1.0",
     "less-middleware": "~0.1.10",
     "request": "~2.16.6",
     "mixpanel": "~0.0.14",
