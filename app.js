@@ -6,7 +6,6 @@ var hbs = require('hbs');
 var less = require('less-middleware');
 var fs = require('fs');
 var request = require('request');
-// checkout f2820fd24257cd5d48e01f8b0186e234195e6f9f on github for express minifier
 
 var config = require('./config');
 var helper = require('./lib/helper');
