@@ -15,6 +15,10 @@ require("./initialize/handlebars");
 
 var app = express();
 
+
+var db = require('./lib/db');
+db.url = config.db_url;
+
 // process.on('uncaughtException', function(err) {
 //   console.error("Uncaught Exception: ", err);
 //   // process.exit(1);
@@ -153,7 +157,7 @@ app.configure(function (){
   app.set('port', process.env.PORT || 5050);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'handlebars');
-  app.set('view options', {layout: false});
+  // app.set('view options', {layout: false});
 
   app.use(express.favicon());
   app.use(express.logger('dev'));

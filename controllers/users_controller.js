@@ -12,6 +12,13 @@ var User = require("../models/user");
 var usersController = module.exports = {};
 
 
+usersController.index = function(req, res, next) {
+  var context = {
+    title: config.title
+  }
+  return helper.render(req, res, 200, 'users/index', context);
+}
+
 /**
  * This route is internal only
  * 3/9/13

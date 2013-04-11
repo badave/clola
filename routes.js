@@ -7,9 +7,11 @@ var db = require("./lib/db");
 var config = require('./config');
 var helper = require("./lib/helper");
 
-// Controllers
+// controllers
 var usersController = require('./controllers/users_controller');
+var customersController = require('./controllers/customers_controller');
 var homeController = require('./controllers/home_controller');
+var smsController = require('./controllers/sms_controller');
 
 // String.prototype.trim = function(){return this.replace(/^\s+|\s+$/g, '');};
 
@@ -25,6 +27,15 @@ module.exports = function(app) {
 
   // Root
   app.get("/", homeController.index);
+
+  app.get("/users", usersController.index)
+
+  app.get("/customers", customersController.index)
+  app.get("/v1/customers/:phone", customersController.findByNumber);
+  app.post("/v1/customers/:phone", customersController.create);
+  app.put("/v1/customers/:phone", customersController.update);
+
+  app.post("/sms", smsController.post)
 
   ///////////////////////////////
   // These are INTERNAL routes //
