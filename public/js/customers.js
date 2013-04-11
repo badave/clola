@@ -24,32 +24,32 @@ $(function() {
 		$.cookie("last_phone_lookup", phone);
 
 		updateButton("lookup", "Looking up...", "Found", "Lookup");
+		
+		if($("#" + phone).length === 0) {
+			customer = new Customer({
+				"phone": phone
+			})
 
-		customer = new Customer({
-			"phone": phone
-		})
+			customer.fetch({
+				success: function(data) {
+					$("#lookup").val("Found");
+					customer = data;
 
-		customer.fetch({
-			success: function(data) {
-				$("#lookup").val("Found");
-				customer = data;
+					if(!customer.id) {
+						customer.save();
+					}
 
-				if(!customer.id) {
-					customer.save();
-				}
-
-				if($("#" + data.get("phone")).length === 0) {
 					var cv = new CustomerView({model: customer});
 					cv.render();
-				} else {
-					$("body").animate({scrollTop: $("#" + data.get("phone")).offset().top });
+				}, 
+				error: function(data) {
+					console.log("Error with", data);
+					console.log("Please render an error");
 				}
-			}, 
-			error: function(data) {
-				console.log("Error with", data);
-				console.log("Please render an error");
-			}
-		});
+			});
+		} else {
+			$("body").animate({scrollTop: $("#" + phone).offset().top });
+		}
 	})
 
 	var Customer = Backbone.Model.extend({ 
