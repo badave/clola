@@ -1,3 +1,4 @@
+{{> modals/new-place }}
 <h1 class="ac">Customers</h1>
 <article class="customer-lookup">
 	<section>
@@ -90,70 +91,50 @@
 		      	<input type="submit" class="add-location btn btn-success" value="Add Location" />
 		      </div>
 			  </div>
-			</div>      
+			</div>
+			<div class="box-content box-header">
+			  <h5>Previous Locations</h5>
+			</div>
+			<div class="previous-locations">
+				<% data.previous_locations.forEach(function(location) { %>
+					{{> location-template }}
+				<% }) %>
+			</div>
 		</div>
 	</section>
 
 	<section class="mid-wide">
-			<div class="box box-light box-rounded span12">
-				<div class="box-content box-header">
-				  <h5>Previous Locations</h5>
-				</div>
-				<div class="previous-locations">
-					<% data.previous_locations.forEach(function(location) { %>
-						<div class="box-content">
-							<div class="row">
-								<%= location.location_name %>
-							</div>
-							<% if(location.street) { %>
-								<div class="row">
-									<%= location.street %>
-								</div>
-							<% } %>
-							<div class="row">
-								<%= location.city %> <%= location.state %> <%= location.zip %>
-							</div>
-							<% if(location.lat || location.long) { %>
-							<div class="row">
-								Lat: <%= location.lat %>, Long: <%= location.long %>
-							</div>
-							<% } %>
-							<% if(location.notes) { %>
-								<div class="row">
-									<%= location.notes %>
-								</div>
-							<% } %>
-						</div>
-					<% }) %>
+		<div class="box box-light box-rounded span12">
+			<div class="box-content box-header">
+			  <a class="btn fr" href="#myModal" data-toggle="modal">add place</a>
+			  <h5>Find a place</h5>
+			</div>
+			<div class="box-content">
+				<div class="row">
+					<div class="span4">
+						<select id="place-city" name="place-city" class="input-block-level">
+							<option value="" selected="selected">City</option>
+							<option value="New York City">New York City</option>
+							<option value="San Francisco">San Francisco</option>
+						</select>
+					</div>
+					<div class="span4">
+						<select id="place-area" name="place-area" class="input-block-level">
+							<option value="" selected="selected">Area</option>
+						</select>
+					</div>
+					<div class="span4">
+						<select id="place-category" name="place-category" class="input-block-level" placeholder="category">
+								<option value="" selected="selected">Category</option>
+						</select>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 </article>
 </script>
-
 <script type="text/template" id="location-template">
-<div class="box-content">
-	<div class="row">
-		<%= location.location_name %>
-	</div>
-	<% if(location.street) { %>
-		<div class="row">
-			<%= location.street %>
-		</div>
-	<% } %>
-	<div class="row">
-		<%= location.city %> <%= location.state %> <%= location.zip %>
-	</div>
-	<% if(location.lat || location.long) { %>
-	<div class="row">
-		Lat: <%= location.lat %>, Long: <%= location.long %>
-	</div>
-	<% } %>
-	<% if(location.notes) { %>
-		<div class="row">
-			<%= location.notes %>
-		</div>
-	<% } %>
-</div>
+{{> location-template }}
 </script>
+<script type="text/javascript" src="/js/customers.js"></script>

@@ -7,16 +7,42 @@ var accounting = require('accounting');
 
 var templatesDir = __dirname + '/../templates';
 
-var templates = fs.readdirSync(templatesDir);
+// var templates = fs.readdirSync(templatesDir);
 
-templates.forEach(function(filename) {
-  var matches = /^([^.]+).handlebars$/.exec(filename);
-  if (!matches) {
-    return;
-  }
-  var name = matches[1];
-  var template = fs.readFileSync(templatesDir + '/' + filename, 'utf8');
-  hbs.registerPartial(name, template)
+var walk = function(dir, done) {
+  var results = [];
+  fs.readdir(dir, function(err, list) {
+    if (err) return done(err);
+    var i = 0;
+    (function next() {
+      var file = list[i++];
+      if (!file) return done(null, results);
+      file = dir + '/' + file;
+      fs.stat(file, function(err, stat) {
+        if (stat && stat.isDirectory()) {
+          walk(file, function(err, res) {
+            results = results.concat(res);
+            next();
+          });
+        } else {
+          results.push(file);
+          next();
+        }
+      });
+    })();
+  });
+};
+
+walk(templatesDir, function(err, results) {
+    results.forEach(function(filename) {
+        var matches = /\/templates\/([^.]+).handlebars$/.exec(filename);
+        if (!matches) {
+          return;
+        }
+        var name = matches[1];
+        var template = fs.readFileSync(filename, 'utf8');
+        hbs.registerPartial(name, template)
+    })
 });
 
 hbs.registerHelper('equal', function(lvalue, rvalue, options) {
