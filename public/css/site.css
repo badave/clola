@@ -104,3 +104,4 @@ select,textarea,input[type="text"],input[type="password"],input[type="datetime"]
 .pt{padding:10px 0;}
 .mid-wide{width:49%;float:left;display:inline-block;margin-left:8px;}
 article{padding:10px;}
+.modal.fade{top:-50%;}

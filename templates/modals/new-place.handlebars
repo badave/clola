@@ -1,4 +1,4 @@
-<div id="myModal" class="modal hide fade">
+<div id="places-modal" class="modal hide fade">
   <div class="modal-header">
     <a href="#close" class="btn btn-small fr big-font" data-dismiss="modal" aria-hidden="true">&times;</a>
     <h3>Add a place</h3>
@@ -12,15 +12,29 @@
         </select>
       </div>
       <div class="span4">
-        <input id="area" type="text" class="input-block-level" placeholder="Area" />
+        <input id="place-area" type="text" class="input-block-level" placeholder="Area" />
       </div>
       <div class="span4">
-        <input id="category" type="text" class="input-block-level" placeholder="Category" />
+        <input id="place-category" type="text" class="input-block-level" placeholder="Category" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="span6">
+        <input id="place-name" type="text" class="input-block-level" placeholder="Name" />
+      </div>
+
+      <div class="span6">
+        <input id="place-description" type="text" class="input-block-level" placeholder="Description" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <input id="place-address" type="text" class="input-block-level" placeholder="Address" />
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn">Close</a>
-    <a href="#" class="btn btn-primary">Save changes</a>
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    <a href="#" id="add_location_btn" class="btn btn-primary">Add</a>
   </div>
 </div>

@@ -1,15 +1,17 @@
 <div class="box-content">
 	<div class="row">
-		<%= location.location_name %>
+		<%= location.name %>
 	</div>
 	<% if(location.street) { %>
 		<div class="row">
 			<%= location.street %>
 		</div>
+		<div class="row">
+			<%= location.city %> <%= location.state %> <%= location.zip %>
+		</div>
+	<% } else if(location.address) { %>
+		<%= location.address %>
 	<% } %>
-	<div class="row">
-		<%= location.city %> <%= location.state %> <%= location.zip %>
-	</div>
 	<% if(location.lat || location.long) { %>
 	<div class="row">
 		Lat: <%= location.lat %>, Long: <%= location.long %>

@@ -49,92 +49,74 @@
 			<div class="box-content box-header">
 			  <h5>Current Location</h5>
 			</div>
-			<div class="location-form box-content">
-				<% /* Name */ %> 
-				<div class="row">
-				  <div class="span12">
-				    <input class="location_name input-block-level" name="location_name" type="text" placeholder="Location Name" value="" />
+			<form id="location-form">
+				<div class="location-form box-content">
+					<% /* Name */ %> 
+					<div class="row">
+					  <div class="span12">
+					    <input class="name input-block-level" name="name" type="text" placeholder="Location Name" value="" />
+					  </div>
+					</div>
+				  <% /* Address */ %>
+				  <div class="row">
+				    <div class="span12">
+				      <input class="street input-block-level" name="street" type="text" placeholder="Street Address" value="" />
+				    </div>
+				  </div>
+				  <div class="row">
+				    <div class="span4">
+				      <input class="city input-block-level" name="city" type="text" placeholder="City" value="" />
+				    </div>
+				    <div class="span4">
+				      <input class="state input-block-level" name="state" type="text" placeholder="State" value="" />
+				    </div>
+				    <div class="span4">
+				      <input class="zip input-block-level" name="zip" type="tel" placeholder="ZIP" value="" />
+				    </div>
+				  </div>
+				  <div class="row">
+				  	<div class="span6">
+				  		<input class="long input-block-level" name="long" type="text" placeholder="Longitude" value="" />
+				  	</div>
+				  	<div class="span6">
+				  		<input class="lat input-block-level" name="lat" type="text" placeholder="Latitude" value="" />
+				  	</div>
+				  </div>
+				  <div class="row">
+				  	<div class="span12">
+				  		<input class="notes input-block-level" name="notes" type="text" placeholder="Location Notes" value="" />
+				  	</div>
+				  </div>
+				  <div class="row">
+			    	<div class="span12">
+			      	<input type="submit" class="add-location btn btn-success" value="Add Location" />
+			      </div>
 				  </div>
 				</div>
-			  <% /* Address */ %>
-			  <div class="row">
-			    <div class="span12">
-			      <input class="street input-block-level" name="street" type="text" placeholder="Street Address" value="" />
-			    </div>
-			  </div>
-			  <div class="row">
-			    <div class="span4">
-			      <input class="city input-block-level" name="city" type="text" placeholder="City" value="" />
-			    </div>
-			    <div class="span4">
-			      <input class="state input-block-level" name="state" type="text" placeholder="State" value="" />
-			    </div>
-			    <div class="span4">
-			      <input class="zip input-block-level" name="zip" type="tel" placeholder="ZIP" value="" />
-			    </div>
-			  </div>
-			  <div class="row">
-			  	<div class="span6">
-			  		<input class="long input-block-level" name="long" type="text" placeholder="Longitude" value="" />
-			  	</div>
-			  	<div class="span6">
-			  		<input class="lat input-block-level" name="lat" type="text" placeholder="Latitude" value="" />
-			  	</div>
-			  </div>
-			  <div class="row">
-			  	<div class="span12">
-			  		<input class="notes input-block-level" name="notes" type="text" placeholder="Location Notes" value="" />
-			  	</div>
-			  </div>
-			  <div class="row">
-		    	<div class="span12">
-		      	<input type="submit" class="add-location btn btn-success" value="Add Location" />
-		      </div>
-			  </div>
-			</div>
+			</form>
 			<div class="box-content box-header">
 			  <h5>Previous Locations</h5>
 			</div>
 			<div class="previous-locations">
+			<% if(data.previous_locations) { %>
 				<% data.previous_locations.forEach(function(location) { %>
 					{{> location-template }}
 				<% }) %>
+			<% } %>
 			</div>
 		</div>
 	</section>
 
-	<section class="mid-wide">
-		<div class="box box-light box-rounded span12">
-			<div class="box-content box-header">
-			  <a class="btn fr" href="#myModal" data-toggle="modal">add place</a>
-			  <h5>Find a place</h5>
-			</div>
-			<div class="box-content">
-				<div class="row">
-					<div class="span4">
-						<select id="place-city" name="place-city" class="input-block-level">
-							<option value="" selected="selected">City</option>
-							<option value="New York City">New York City</option>
-							<option value="San Francisco">San Francisco</option>
-						</select>
-					</div>
-					<div class="span4">
-						<select id="place-area" name="place-area" class="input-block-level">
-							<option value="" selected="selected">Area</option>
-						</select>
-					</div>
-					<div class="span4">
-						<select id="place-category" name="place-category" class="input-block-level" placeholder="category">
-								<option value="" selected="selected">Category</option>
-						</select>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	{{> places/find-place }}
+	<div class="clear"> </div>
 </article>
 </script>
 <script type="text/template" id="location-template">
 {{> location-template }}
 </script>
+
+<script type="text/template" id="place-template">
+{{> places/place }}
+</script>
+
 <script type="text/javascript" src="/js/customers.js"></script>

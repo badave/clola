@@ -38,6 +38,11 @@ module.exports = function(app) {
 
   app.get("/places", placesController.index);
 
+  app.get("/v1/places", placesController.find);
+
+  app.post("/v1/places", placesController.create);
+
+
   app.post("/sms", smsController.post)
 
   ///////////////////////////////
