@@ -10,6 +10,7 @@ var config = require("../config");
 var smsController = module.exports = {};
 
 smsController.post = function(req, res, next) {
+	console.log(req.body);
   var context = {
     title: config.title
   }
