@@ -12,6 +12,10 @@ var url = require('url');
 var evt = require("../models/evt");
 
 var socketController = module.exports = function(server){
+	if(socketController.caller != socketController.getInstance) {
+		throw new Error("Do not instantiate this singleton class");
+	}
+
 	var self = this;
 	this.io = require('socket.io').listen(server);
 	// assuming io is the Socket.IO server object
@@ -27,11 +31,23 @@ var socketController = module.exports = function(server){
 };
 
 evt.on("new_message", function(msg) {
-	socketController.io.sockets.emit("sms", msg);
+	socketController.getInstance().io.sockets.emit("sms", msg);
 })
 
 socketController.sockets = function() {
 	return this.io.sockets;
+}
+
+
+socketController.instance = null;
+socketController.getInstance = function(server) {
+	if(this.instance === null) {
+		if(!server) {
+			throw new Error("Server is null, but is needed -- create with a server");
+		}
+		this.instance = new socketController(server);
+	}
+	return this.instance;
 }
 
 
