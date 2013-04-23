@@ -43,6 +43,7 @@ smsController.post = function(req, res, next) {
   }
 
   var msg = req.body;
+  console.log(msg);
 
   evt.emit("new_message", msg);
 
