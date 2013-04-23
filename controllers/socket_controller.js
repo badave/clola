@@ -21,7 +21,7 @@ var socketController = module.exports = function(server){
 	});
 
 	this.io.on("connection", function(socket) {
-		console.log(socket);
+		// console.log(socket);
 		socket.emit("weee", {'data': "hello"});
 	})
 };
