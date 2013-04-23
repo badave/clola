@@ -21,6 +21,11 @@ smsController.index = function(req, res) {
 	return helper.render(req, res, 200, 'sms/index', context);
 }
 
+smsController.test = function(req, res) {
+  evt.emit("new_message", {"data": "test"});
+  return helper.respondJson(req, res, 200);
+}
+
 smsController.find = function(req, res) {
 	genericModel.find("messages", genericModel.jsonResponder(req, res))
 }
@@ -48,7 +53,6 @@ smsController.post = function(req, res, next) {
   }
 
   var msg = req.body;
-  console.log(msg);
 
   evt.emit("new_message", msg);
 

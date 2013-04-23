@@ -26,6 +26,7 @@ var socketController = module.exports = function(server){
 	})
 
 	evt.on("new_message", function(msg) {
+		console.log(msg);
 		io.sockets.emit("sms", msg);
 	})
 

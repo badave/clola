@@ -310,7 +310,7 @@ $(function() {
 	var messages = new Messages();
 	messages.fetch();
 
-	var socket = io.connect('http://localhost:5050');
+	var socket = io.connect('http://clola.herokuapp.com');
 	socket.on("weee", function(data) {
 		console.log(data);
 	})
