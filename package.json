@@ -28,7 +28,8 @@
     "less-middleware": "~0.1.10",
     "request": "~2.16.6",
     "mixpanel": "~0.0.14",
-    "accounting": "~0.3.2"
+    "accounting": "~0.3.2",
+    "socket.io": "*"
   },
   "licenses": [
     {

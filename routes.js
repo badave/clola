@@ -13,6 +13,7 @@ var customersController = require('./controllers/customers_controller');
 var homeController = require('./controllers/home_controller');
 var smsController = require('./controllers/sms_controller');
 var placesController = require('./controllers/places_controller');
+var socketIOController = require("./controllers/socketIO_controller");
 
 // String.prototype.trim = function(){return this.replace(/^\s+|\s+$/g, '');};
 
@@ -44,6 +45,8 @@ module.exports = function(app) {
 
 
   app.post("/sms", smsController.post)
+  app.get("/sms", smsController.index)
+
 
   ///////////////////////////////
   // These are INTERNAL routes //

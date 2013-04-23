@@ -7,7 +7,18 @@ var db = require("../lib/db");
 var helper = require('../lib/helper');
 var config = require("../config");
 
+var url = require('url');
+
+var evt = require("../models/evt");
+
 var smsController = module.exports = {};
+
+smsController.index = function(req, res) {
+	var context = {
+	  title: config.title
+	}
+	return helper.render(req, res, 200, 'sms/index', context);
+}
 
 /**
  * Example request
@@ -27,12 +38,15 @@ var smsController = module.exports = {};
 2013-04-22T08:29:27.208328+00:00 app[web.1]:   From: '+17752879549'
  */
 smsController.post = function(req, res, next) {
-	console.log(req.body);
   var context = {
     title: config.title
   }
 
-  db.insert("smses", req.body, function(err, object) {
-  	res.send("");
+  var msg = req.body;
+
+  evt.emit("new_message", msg);
+
+  db.insert("messages", msg, function(err, object) {
+  	helper.respondJson(req, res, 200)
   })
 }
