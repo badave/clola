@@ -12,107 +12,10 @@
 <div class="clear"></div>
 
 <script type="text/template" id="customer">
-<article id="<%= data._id %>" class="customer">
-	<section id="<%= data.phone %>" class="mid-wide">
-		<div class="box box-light box-rounded span12">
-			<div class="box-content box-header">
-			  <h5><%= data.phone %></h5>
-			</div>
-			<div class="box-content">
-				<div class="row">
-					<input name="name" class="name input-block-level" type="text" placeholder="Name" value="<%= data.name %>" />
-				</div>
-
-				<div class="row">
-					<div class="span12">
-						<input name="email" class="email input-block-level" type="text" placeholder="Email" value="<%= data.email %>" />
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="span6">
-						<input name="gender" class="gender input-block-level" type="text" placeholder="Likely Gender" value="<%= data.gender %>" />
-					</div>
-
-					<div class="span6">
-						<input name="age" class="age input-block-level" type="text" placeholder="Likely Age" value="<%= data.age %>" />
-					</div>
-				</div>
-
-			  <div class="row">
-		    	<div class="span12">
-		      	<input type="submit" class="update btn btn-success" value="Update" />
-		      </div>
-			  </div>
-			</div>
-
-			<div class="box-content box-header">
-			  <h5>Current Location</h5>
-			</div>
-			<form id="location-form">
-				<div class="location-form box-content">
-					<% /* Name */ %> 
-					<div class="row">
-					  <div class="span12">
-					    <input class="name input-block-level" name="name" type="text" placeholder="Location Name" value="" />
-					  </div>
-					</div>
-				  <% /* Address */ %>
-				  <div class="row">
-				    <div class="span12">
-				      <input class="street input-block-level" name="street" type="text" placeholder="Street Address" value="" />
-				    </div>
-				  </div>
-				  <div class="row">
-				    <div class="span4">
-				      <input class="city input-block-level" name="city" type="text" placeholder="City" value="" />
-				    </div>
-				    <div class="span4">
-				      <input class="state input-block-level" name="state" type="text" placeholder="State" value="" />
-				    </div>
-				    <div class="span4">
-				      <input class="zip input-block-level" name="zip" type="tel" placeholder="ZIP" value="" />
-				    </div>
-				  </div>
-				  <div class="row">
-				  	<div class="span6">
-				  		<input class="long input-block-level" name="long" type="text" placeholder="Longitude" value="" />
-				  	</div>
-				  	<div class="span6">
-				  		<input class="lat input-block-level" name="lat" type="text" placeholder="Latitude" value="" />
-				  	</div>
-				  </div>
-				  <div class="row">
-				  	<div class="span12">
-				  		<input class="notes input-block-level" name="notes" type="text" placeholder="Location Notes" value="" />
-				  	</div>
-				  </div>
-				  <div class="row">
-			    	<div class="span12">
-			      	<input type="submit" class="add-location btn btn-success" value="Add Location" />
-			      </div>
-				  </div>
-				</div>
-			</form>
-			<div class="box-content box-header">
-			  <h5>Previous Locations</h5>
-			</div>
-			<div class="previous-locations">
-			<% if(data.previous_locations) { %>
-				<% data.previous_locations.forEach(function(location) { %>
-					{{> location-template }}
-				<% }) %>
-			<% } %>
-			</div>
-		</div>
-	</section>
-
-	{{> places/find-place }}
-	<div class="clear"> </div>
-</article>
+{{> customer }}
 </script>
 <script type="text/template" id="location-template">
-{{> location-template }}
+{{> location }}
 </script>
 
 <script type="text/template" id="place-template">

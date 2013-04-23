@@ -12,12 +12,17 @@ var url = require('url');
 var evt = require("../models/evt");
 
 var smsController = module.exports = {};
+var genericModel = require("../lib/generic_model");
 
 smsController.index = function(req, res) {
 	var context = {
 	  title: config.title
 	}
 	return helper.render(req, res, 200, 'sms/index', context);
+}
+
+smsController.find = function(req, res) {
+	genericModel.find("messages", genericModel.jsonResponder(req, res))
 }
 
 /**

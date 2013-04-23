@@ -17,7 +17,7 @@ $(function() {
 		}, 3000)
 	}
 
-	$("#lookup").submit(function(e) {
+	$(document).on("submit", "#lookup", function(e) {
 		e.preventDefault();
 		e.stopPropagation();
 
@@ -291,75 +291,31 @@ $(function() {
 
 	})
 
-
+	// initialize places
 	var all_places = new Places();
 	all_places.fetch();
 
+	var Message = Backbone.Model.extend({
+		idAttribute: "_id",
+		urlRoot: "/v1/messages"
+	})
 
-	// Google maps
-	// var geocoder;
-	// var map;
-	// var latlng = [];
+	var Messages = Backbone.Collection.extend({
+		model: Message,
+		url: function() {
+			return "/v1/messages";
+		}
+	})
 
-	// function codeAddress(customer_name, location, callback) {
-	// 	console.log(location);
-	//   geocoder.geocode( { 'address': location }, function(results, status) {
-	//     if (status == google.maps.GeocoderStatus.OK) {
-	//       map.setCenter(results[0].geometry.location);
-	//       var coords = new google.maps.LatLng(results[0].geometry.location.jb, results[0].geometry.location.kb);
-	//       latlng.push(coords);
+	var messages = new Messages();
+	messages.fetch();
 
-
-	//       var contentString = '<div id="infoWindow">' +
-	//           '<h4 id="firstHeading" class="firstHeading">' + customer_name + '</h4>'+
-	//           '<div id="bodyContent">' +
-	//             '<div>' + location.street + '</div>' + 
-	//             '<div>' + location.city + ', ' + location.state + ' ' + location.zip + '</div>' +
-	//           '</div>' +
-	//         '</div>';
-
-	//       var infowindow = new google.maps.InfoWindow({
-	//         content: contentString,
-	//         maxWidth: 325
-	//       });
-
-	//       var marker = new google.maps.Marker({
-	//           map: map,
-	//           title: customer.name,
-	//           animation: google.maps.Animation.DROP,
-	//           position: results[0].geometry.location,
-	//       });
-
-
-	//       google.maps.event.addListener(marker, 'click', function() {
-	//         infowindow.open(map, marker);
-	//       });
-
-	//       var latlngbounds = new google.maps.LatLngBounds();
-
-	//       for ( var i = 0; i < latlng.length; i++ ) {
-	//         latlngbounds.extend( latlng[ i ] );
-	//       }
-	//       map.fitBounds( latlngbounds );
-
-	//       callback(results[0].geometry.location);
-	//     } else {
-	//       console.log("Geocode was not successful for the following reason: " + status);
-	//     }
-	//   });
-	// }
-
-	// function initializeMap(_id) {
-	//   geocoder = new google.maps.Geocoder();
-	//   var mapOptions = {
-	//     center: new google.maps.LatLng(37.77493, -122.419416),
-	//     zoom: 5,
-	//     mapTypeId: google.maps.MapTypeId.ROADMAP,
-	//     disableDefaultUI: false
-	//   };
-	//   map = new google.maps.Map(document.getElementById(_id + "map"), mapOptions);
-
-	//   google.maps.event.trigger(map, "resize");
-	// }
-// google.maps.event.addDomListener(window, 'load', initialize);
+	var socket = io.connect('http://localhost:5050');
+	socket.on("weee", function(data) {
+		console.log(data);
+	})
+	socket.on("sms", function(data) {
+		debugger
+		console.log(data);
+	})
 })
