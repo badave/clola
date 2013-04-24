@@ -22,7 +22,7 @@ smsController.index = function(req, res) {
 }
 
 smsController.test = function(req, res) {
-  evt.emit("new_message", {"data": "test"});
+  evt.emit("message", {"phone": "17752879549", "message": "sup sicko"});
   return helper.respondJson(req, res, 200);
 }
 
@@ -53,18 +53,17 @@ smsController.post = function(req, res, next) {
   }
 
   var msg = req.body;
-
+  msg.phone = phone;
   var phone = msg.From.replace(/\D/g, '').toString()
-
   var message = {
     "text": msg.Body,
-    "rawData": msg
+    "created": new Date().getTime()
   }
-
-  //  db.findAndModify("surveys", query, {}, { "$set": { "q": survey.q }, "$push": { responses: survey } }, {"upsert": true}
   
-  db.findAndModify("messages", {"phone": phone}, {}, { "$set": { "phone": phone }, "$push": { "messages": message} }, { "upsert": true }, function(err, object) {
-    evt.emit("message", object);
-  	helper.respondJson(req, res, 200)
+  db.findAndModify("messages", {"phone": phone}, {}, { "$set": { "phone": phone, "status": "new" }, "$push": { "messages": message} }, { "upsert": true }, function(err, object) {
+    evt.emit("message", { "phone": phone, "message": message });
+    db.insert("raw_messages", msg, function(err, obj) {
+      helper.respondJson(req, res, 200);
+    })
   })
 }
