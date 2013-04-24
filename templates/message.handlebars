@@ -1,2 +1,4 @@
-<div id="<%= data._id %>" class="message">
+<div class="message">
+	<div class="msg-text"><%= message.text %></div>
+	<div class="msg-date"><%= new Date(message.created).toTimeString() %></div>
 </div>

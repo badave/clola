@@ -42,9 +42,9 @@ module.exports = function(app) {
   app.post("/v1/places", placesController.create);
 
 
+  app.get("/sms/test", smsController.test);
   app.post("/sms", smsController.post);
   app.get("/sms", smsController.index);
-  app.get("/sms/test", smsController.test);
   app.get("/v1/messages", smsController.find);
 
 

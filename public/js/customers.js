@@ -1,13 +1,11 @@
 $(function() {
-	var socket = io.connect('http://' + window.location.host);
+	// var socket = io.connect("http://localhost:5050");
+	var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
 
-	socket.on("hello", function(data) {
+	socket.on("msg", function(data) {
+
 		console.log(data);
-
-	})
-
-	socket.on("sms", function(data) {
-		console.log(data);
+		messages.add(data);
 	})
 
 	if($.cookie('last_phone_lookup')) {
@@ -306,36 +304,48 @@ $(function() {
 	var all_places = new Places();
 	all_places.fetch();
 
-	var Message = Backbone.Model.extend({
-		idAttribute: "_id",
-		urlRoot: "/v1/messages"
-	})
+	if($("#message").length > 0) {
+		var Message = Backbone.Model.extend({
+			idAttribute: "_id",
+			urlRoot: "/v1/messages"
+		})
 
-	var Messages = Backbone.Collection.extend({
-		model: Message,
-		url: function() {
-			return "/v1/messages";
-		}
-	})
-
-	var MessageView = Backbone.View.extend({
-		template: $("#message").html(),
-		render: function() {
-
-		}
-	})
-
-
-	if(window.location.href.indexOf("/sms") >= 0) {
-		var messages = new Messages();
-		messages.fetch({
-			success: function(data) {
-				
-			}, 
-			error: function(data) {
-				console.log("Error with", data);
-				console.log("Please render an error");
+		var Messages = Backbone.Collection.extend({
+			model: Message,
+			url: function() {
+				return "/v1/messages";
 			}
-		});
+		})
+
+		var MessageView = Backbone.View.extend({
+			messages_template: _.template($("#messages").html()),
+			message_template: _.template($("#message").html()),
+			render: function() {
+				var phone = this.model.get("phone");
+				if($("#" + phone).length > 0) {
+					var messages = this.model.get("messages");
+					var self = this;
+					_.each(messages, function(message) {
+						$("#" + phone).find(".messages").append(self.message_template({ "message": message }));
+					})
+				} else {
+
+					var template = this.messages_template;
+					var html = template({ "data": this.model.toJSON() });
+
+					$(".messages").append(html);
+				}
+			}
+		})
+
+
+		var messages = new Messages();
+
+		messages.fetch();
+
+		messages.on("add", function(message) {
+			var mv = new MessageView({model: message});
+			mv.render();
+		})
 	}
 })

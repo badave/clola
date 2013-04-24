@@ -4,14 +4,32 @@
 	<h1 class="ac">Messages</h1>
 </article>
 
-<article class="messages"> </article>
+<article>
+	<section class="messages">
+	</section>
+</article>
 <div class="clear"></div>
 
 
 <script type="text/template" id="messages">
-	<div id="<%= data.phone %>" class="message-group">
+<div class="row">
+	<div class="span4">
+		<div id="<%= data.phone %>" class="message-group box box-light">
+				<div class="box-content box-header">
+				  <h5><%= data.phone %></h5>
+				</div>
+				<div class="box-content">
+					<div class="row messages">
+						<% _.each(data.messages, function(message) { %>
+							{{> message }}
+						<% }) %>
+					</div>
+				</div>
+		</div>
 	</div>
+</div>
 </script>
+
 <script type="text/template" id="message">
 {{> message }}
 </script>

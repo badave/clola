@@ -22,12 +22,12 @@ var socketController = module.exports = function(server){
 
 	io.on("connection", function(socket) {
 		// console.log(socket);
-		socket.emit("hello", {'data': "hello"});
+		// socket.emit("hello", {'data': "hello"});
 	})
 
 	evt.on("message", function(msg) {
 		console.log(msg);
-		io.sockets.emit("sms", msg);
+		io.sockets.emit("msg", msg);
 	})
 
 };
