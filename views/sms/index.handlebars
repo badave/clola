@@ -1,10 +1,17 @@
 {{> modals/new-place }}
-<h1 class="ac">Messages</h1>
+
+<article>
+	<h1 class="ac">Messages</h1>
 </article>
 
 <article class="messages"> </article>
 <div class="clear"></div>
 
+
+<script type="text/template" id="messages">
+	<div id="<%= data.phone %>" class="message-group">
+	</div>
+</script>
 <script type="text/template" id="message">
 {{> message }}
 </script>

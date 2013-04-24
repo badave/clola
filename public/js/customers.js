@@ -1,4 +1,15 @@
 $(function() {
+	var socket = io.connect('http://' + window.location.host);
+
+	socket.on("hello", function(data) {
+		console.log(data);
+
+	})
+
+	socket.on("sms", function(data) {
+		console.log(data);
+	})
+
 	if($.cookie('last_phone_lookup')) {
 		$("#phone").val($.cookie('last_phone_lookup'));
 	}
@@ -307,15 +318,24 @@ $(function() {
 		}
 	})
 
-	var messages = new Messages();
-	messages.fetch();
+	var MessageView = Backbone.View.extend({
+		template: $("#message").html(),
+		render: function() {
 
-	var socket = io.connect('http://clola.herokuapp.com');
-	socket.on("weee", function(data) {
-		console.log(data);
+		}
 	})
-	socket.on("sms", function(data) {
-		debugger
-		console.log(data);
-	})
+
+
+	if(window.location.href.indexOf("/sms") >= 0) {
+		var messages = new Messages();
+		messages.fetch({
+			success: function(data) {
+				
+			}, 
+			error: function(data) {
+				console.log("Error with", data);
+				console.log("Please render an error");
+			}
+		});
+	}
 })

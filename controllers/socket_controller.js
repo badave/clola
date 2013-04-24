@@ -17,15 +17,15 @@ var socketController = module.exports = function(server){
 	// assuming io is the Socket.IO server object
 	io.configure(function () { 
 	  io.set("transports", ["xhr-polling"]); 
-	  io.set("polling duration", 10); 
+	  io.set("polling duration", 30); 
 	});
 
 	io.on("connection", function(socket) {
 		// console.log(socket);
-		socket.emit("weee", {'data': "hello"});
+		socket.emit("hello", {'data': "hello"});
 	})
 
-	evt.on("new_message", function(msg) {
+	evt.on("message", function(msg) {
 		console.log(msg);
 		io.sockets.emit("sms", msg);
 	})

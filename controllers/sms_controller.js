@@ -54,9 +54,17 @@ smsController.post = function(req, res, next) {
 
   var msg = req.body;
 
-  evt.emit("new_message", msg);
+  var phone = msg.From.replace(/\D/g, '').toString()
 
-  db.insert("messages", msg, function(err, object) {
+  var message = {
+    "text": msg.Body,
+    "rawData": msg
+  }
+
+  //  db.findAndModify("surveys", query, {}, { "$set": { "q": survey.q }, "$push": { responses: survey } }, {"upsert": true}
+  
+  db.findAndModify("messages", {"phone": message.phone}, {}, { "$set": { "phone": phone }, "$push": { "msgs": message} }, { "upsert": true }, function(err, object) {
+    evt.emit("message", object);
   	helper.respondJson(req, res, 200)
   })
 }
