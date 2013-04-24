@@ -63,7 +63,7 @@ smsController.post = function(req, res, next) {
 
   //  db.findAndModify("surveys", query, {}, { "$set": { "q": survey.q }, "$push": { responses: survey } }, {"upsert": true}
   
-  db.findAndModify("messages", {"phone": message.phone}, {}, { "$set": { "phone": phone }, "$push": { "msgs": message} }, { "upsert": true }, function(err, object) {
+  db.findAndModify("messages", {"phone": phone}, {}, { "$set": { "phone": phone }, "$push": { "messages": message} }, { "upsert": true }, function(err, object) {
     evt.emit("message", object);
   	helper.respondJson(req, res, 200)
   })
