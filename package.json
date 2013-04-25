@@ -29,7 +29,8 @@
     "request": "~2.16.6",
     "mixpanel": "~0.0.14",
     "accounting": "~0.3.2",
-    "socket.io": "*"
+    "socket.io": "*",
+    "twilio": "*"
   },
   "licenses": [
     {
