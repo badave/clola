@@ -7,6 +7,8 @@ var db = require("../lib/db");
 var helper = require('../lib/helper');
 var config = require("../config");
 
+var smsController = require("../controllers/sms_controller");
+
 var url = require('url');
 
 var evt = require("../models/evt");
@@ -27,12 +29,13 @@ var socketController = module.exports = function(server){
 
 		socket.on("replying", function(data) {
 			// echo to others
-			io.sockets.emit("replying", data);
+			socket.broadcast.emit("replying", data);
 		})
 
 		socket.on("reply", function(data) {
 			console.log(data);
 			data.message.created = new Date().getTime();
+			smsController.send(data);
 			db.findAndModify("messages", {"phone": data.phone}, {}, { "$set": { "status": "replied" }, "$push": { "messages": data.message} }, { "upsert": true }, function(err, object) {
 				evt.emit("message", {"phone": data.phone, "messages": [data.message] });
 			})

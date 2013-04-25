@@ -1,7 +1,8 @@
 var ObjectID = require('mongodb').ObjectID,
   bcrypt = require('bcrypt'),
   crypto = require('crypto'),
-  hbs = require("hbs");
+  hbs = require("hbs"),
+  request = require("request");
 
 var db = require("../lib/db");
 var helper = require('../lib/helper');
@@ -28,6 +29,31 @@ smsController.test = function(req, res) {
 
 smsController.find = function(req, res) {
 	genericModel.find("messages", genericModel.jsonResponder(req, res))
+}
+
+smsController.send = function(data) {
+  var requestOptions = {
+    method: 'POST',
+    json: true,
+    uri: "https://api.twilio.com/2010-04-01/Accounts/" + config.twilio + "/SMS/Messages.json",
+    auth: {
+      "user": config.twilio
+    },
+    body: {
+      "From": "+19414445652",
+      "To": data.phone,
+      "Body": data.message.text
+    }
+  };
+
+  request(requestOptions, function(error, response, body) {
+    console.log("anything?", body);
+    if (error) {
+      console.warn("Request Error:", error.toString());
+    } else if (response.statusCode >= 400) {
+      console.warn("Request Error with code:", response.statusCode, "and message:", helper.extractError(body));
+    }
+  })
 }
 
 /**

@@ -1,4 +1,5 @@
 $(function() {
+	var replier = false;
 	// var socket = io.connect("http://localhost:5050");
 	var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
 
@@ -330,7 +331,7 @@ $(function() {
 				"click .show-reply": "showReply"
 			},
 			replying: function(e) {
-				var reply = $(e.target).closest(".message-group").find(".reply");
+				var reply = $(e.target).closest(".message-group").addClass("replying").find(".reply");
 				socket.emit("replying", { "phone": $(e.target).attr("data-phone"), "reply": $(reply).val() })
 			},
 			sendReply: function(e) {
