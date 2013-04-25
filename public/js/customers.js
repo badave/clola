@@ -3,9 +3,12 @@ $(function() {
 	var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
 
 	socket.on("msg", function(data) {
-
-		console.log(data);
 		messages.add(data);
+	})
+
+	socket.on("replying", function(data) {
+		$("#" + data.phone + ".message-group").addClass("replying");
+		$("#" + data.phone + " .reply").val(data.reply);
 	})
 
 	if($.cookie('last_phone_lookup')) {
@@ -318,23 +321,49 @@ $(function() {
 		})
 
 		var MessageView = Backbone.View.extend({
+			el: ".messages",
 			messages_template: _.template($("#messages").html()),
 			message_template: _.template($("#message").html()),
+			events: {
+				"keyup .reply": "replying",
+				"click .send-reply": "sendReply",
+				"click .show-reply": "showReply"
+			},
+			replying: function(e) {
+				var reply = $(e.target).closest(".message-group").find(".reply");
+				socket.emit("replying", { "phone": $(e.target).attr("data-phone"), "reply": $(reply).val() })
+			},
+			sendReply: function(e) {
+				var message_group = $(e.target).closest(".message-group");
+				var reply = $(message_group).find(".reply");
+				if($(reply).val() !== "") {
+					$(message_group).removeClass("replying");
+					socket.emit("reply", { "phone": $(reply).attr('data-phone'), "message": {
+						"text": $(reply).val(), "reply": true, "created": new Date().getTime()
+					}})
+				}
+			},
+			showReply: function(e) {
+				$(e.target).closest(".message-group").find(".reply-group").show();
+				$(e.target).hide();
+			},
 			render: function() {
 				var phone = this.model.get("phone");
-				if($("#" + phone).length > 0) {
-					var messages = this.model.get("messages");
-					var self = this;
-					_.each(messages, function(message) {
-						$("#" + phone).find(".messages").append(self.message_template({ "message": message }));
-					})
-				} else {
+				var template = this.messages_template;
+				var html = template({ "data": this.model.toJSON() });
+				$(".messages").append(html);
+			},
+			add: function(msg) {
+				var messages = this.model.get("messages");
+				// updates the current model -- though I'm not sure this is needed
+				messages.push(msg.get("messages"));
+				this.model.set("messages", messages);
 
-					var template = this.messages_template;
-					var html = template({ "data": this.model.toJSON() });
-
-					$(".messages").append(html);
-				}
+				var self = this;
+				var phone = this.model.get("phone");
+				_.each(msg.get("messages"), function(message) {
+					$("#" + phone).find(".messages").append(self.message_template({ "message": message }));
+				})
 			}
 		})
 
@@ -344,8 +373,13 @@ $(function() {
 		messages.fetch();
 
 		messages.on("add", function(message) {
-			var mv = new MessageView({model: message});
-			mv.render();
+			this.mv = this.mv || {};
+			if(this.mv[message.phone]) {
+				this.mv[message.phone].add(message);
+			} else {
+				this.mv[message.phone] = new MessageView({model: message});
+				this.mv[message.phone].render();
+			}
 		})
 	}
 })

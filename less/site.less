@@ -1,7 +1,4 @@
 
-@cdn-assets: "https://d51u56kncglox.cloudfront.net/assets";
-
-
 @import "fonts";
 @import "layout";
 
@@ -112,7 +109,6 @@ body {
 
 header {
 	padding:10px 40px;
-	background-color:#dcdcdc;
 }
 
 .logo {
@@ -335,6 +331,14 @@ article {
 
 .message-group {
 	width:100%;
+	&.replying {
+		.box-header {
+			color: #008800;
+		}
+		.reply-group {
+			background-color: #008800;
+		}
+	}
 }
 .message  {
 	.msg-text {
@@ -345,5 +349,9 @@ article {
 		color:#aaa;
 		opacity:0.9;
 	}
+}
+
+.show-reply {
+	font-size:0.90em;
 }
 

@@ -113,6 +113,16 @@ var unloadMessages = function(req, res, next) {
   next();
 }
 
+
+//CORS middleware
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+  next();
+}
+
 // Load config into handlebars
 app.use(function(req, res, next) {
   res.locals.config = config;
@@ -165,7 +175,7 @@ app.configure(function (){
   app.use(express.methodOverride());
   app.use(express.cookieParser('kombucha synergy'));
   app.use(express.cookieSession('kombucha synergy'));
-  
+  app.use(allowCrossDomain);
   // app.use(loadUserCookie);
   // app.use(loadUserSession);
   // app.use(unloadMessages);

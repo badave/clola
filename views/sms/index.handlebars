@@ -1,15 +1,14 @@
 {{> modals/new-place }}
 
-<article>
+<header>
 	<h1 class="ac">Messages</h1>
-</article>
+</header>
 
 <article>
 	<section class="messages">
 	</section>
 </article>
 <div class="clear"></div>
-
 
 <script type="text/template" id="messages">
 <div class="row">
@@ -23,6 +22,17 @@
 						<% _.each(data.messages, function(message) { %>
 							{{> message }}
 						<% }) %>
+					</div>
+					<a href="javascript:void(0)" class="show-reply">reply</a>
+				</div>
+				<div class="box-content reply-group" style="display:none;">
+					<div class="row" >
+						<div class="span9">
+							<input class="reply input-block-level" type="text" data-phone="<%= data.phone %>" placeholder="reply" />
+						</div>
+						<div class="span3">
+							<input class="send-reply btn" value="send" type="button" style="margin:0" />
+						</div>
 					</div>
 				</div>
 		</div>

@@ -23,10 +23,23 @@ var socketController = module.exports = function(server){
 	io.on("connection", function(socket) {
 		// console.log(socket);
 		// socket.emit("hello", {'data': "hello"});
+		// 
+
+		socket.on("replying", function(data) {
+			// echo to others
+			io.sockets.emit("replying", data);
+		})
+
+		socket.on("reply", function(data) {
+			console.log(data);
+			data.message.created = new Date().getTime();
+			db.findAndModify("messages", {"phone": data.phone}, {}, { "$set": { "status": "replied" }, "$push": { "messages": data.message} }, { "upsert": true }, function(err, object) {
+				evt.emit("message", {"phone": data.phone, "messages": [data.message] });
+			})
+		})
 	})
 
 	evt.on("message", function(msg) {
-		console.log(msg);
 		io.sockets.emit("msg", msg);
 	})
 
