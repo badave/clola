@@ -94,6 +94,8 @@ smsController.post = function(req, res, next) {
     "text": msg.Body,
     "created": new Date().getTime()
   }
+
+  console.log("received sms: ", message);
   
   db.findAndModify("messages", {"phone": phone}, {}, { "$set": { "phone": phone, "status": "new" }, "$push": { "messages": message} }, { "upsert": true }, function(err, object) {
     evt.emit("message", { "phone": phone, "messages": [message] });

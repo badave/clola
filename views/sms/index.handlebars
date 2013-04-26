@@ -5,20 +5,20 @@
 </header>
 
 <article>
-	<section class="messages">
+	<section class="messages-container">
 	</section>
 </article>
 <div class="clear"></div>
 
 <script type="text/template" id="messages">
 <div class="row">
-	<div class="span4">
+	<div class="msg-container span4">
 		<div id="<%= data.phone %>" class="message-group box box-light">
 				<div class="box-content box-header">
-				  <h5><%= data.phone %></h5>
+				  <h5><%= data.phone %> <span class="fr status"><%= data.status %></span></h5>
 				</div>
 				<div class="box-content">
-					<div class="row messages">
+					<div class="row msgs">
 						<% _.each(data.messages, function(message) { %>
 							{{> message }}
 						<% }) %>

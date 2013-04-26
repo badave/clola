@@ -1,5 +1,4 @@
 $(function() {
-	var replier = false;
 	// var socket = io.connect("http://localhost:5050");
 	var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
 
@@ -322,7 +321,6 @@ $(function() {
 		})
 
 		var MessageView = Backbone.View.extend({
-			el: ".messages",
 			messages_template: _.template($("#messages").html()),
 			message_template: _.template($("#message").html()),
 			events: {
@@ -331,28 +329,31 @@ $(function() {
 				"click .show-reply": "showReply"
 			},
 			replying: function(e) {
-				var reply = $(e.target).closest(".message-group").addClass("replying").find(".reply");
+				var reply = this.$el.find(".message-group").addClass("replying").find(".reply");
 				socket.emit("replying", { "phone": $(e.target).attr("data-phone"), "reply": $(reply).val() })
 			},
 			sendReply: function(e) {
-				var message_group = $(e.target).closest(".message-group");
-				var reply = $(message_group).find(".reply");
+				var reply = this.$el.find(".reply");
 				if($(reply).val() !== "") {
-					$(message_group).removeClass("replying");
+					this.$el.find(".message-group").removeClass("replying");
 					socket.emit("reply", { "phone": $(reply).attr('data-phone'), "message": {
 						"text": $(reply).val(), "reply": true, "created": new Date().getTime()
 					}})
 				}
 			},
 			showReply: function(e) {
-				$(e.target).closest(".message-group").find(".reply-group").show();
+				this.$el.find(".reply-group").show();
 				$(e.target).hide();
 			},
 			render: function() {
 				var phone = this.model.get("phone");
 				var template = this.messages_template;
 				var html = template({ "data": this.model.toJSON() });
-				$(".messages").append(html);
+				$(".messages-container").append(html);
+				this.el = "#" + phone;
+				this.$el = $("#" + phone);
+				this.delegateEvents();
+				this.updateOffsets();
 			},
 			add: function(msg) {
 				var messages = this.model.get("messages");
@@ -363,8 +364,21 @@ $(function() {
 				var self = this;
 				var phone = this.model.get("phone");
 				_.each(msg.get("messages"), function(message) {
-					$("#" + phone).find(".messages").append(self.message_template({ "message": message }));
+					self.$el.find(".msgs").append(self.message_template({ "message": message }));
 				})
+
+				var status = this.model.get("status");
+				this.$el.find(".status").text(data.status);
+				this.updateOffsets();
+			},
+			updateOffsets: function() {
+				var status = this.model.get("status");
+				if(status === "new") {
+					this.$el.closest(".msg-container").removeClass("offset6").addClass("offset3");
+				}
+				if(status === "replied") {
+					this.$el.closest(".msg-container").removeClass("offset3").addClass("offset6");
+				}
 			}
 		})
 
@@ -375,11 +389,12 @@ $(function() {
 
 		messages.on("add", function(message) {
 			this.mv = this.mv || {};
-			if(this.mv[message.phone]) {
-				this.mv[message.phone].add(message);
+			var phone = message.get("phone");
+			if(this.mv[phone]) {
+				this.mv[phone].add(message);
 			} else {
-				this.mv[message.phone] = new MessageView({model: message});
-				this.mv[message.phone].render();
+				this.mv[phone] = new MessageView({model: message});
+				this.mv[phone].render();
 			}
 		})
 	}
