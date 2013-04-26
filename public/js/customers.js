@@ -1,6 +1,6 @@
 $(function() {
-	// var socket = io.connect("http://localhost:5050");
-	var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
+	var socket = io.connect("http://localhost:5050");
+	// var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
 
 	socket.on("msg", function(data) {
 		messages.add(data);
@@ -326,7 +326,11 @@ $(function() {
 			events: {
 				"keyup .reply": "replying",
 				"click .send-reply": "sendReply",
-				"click .show-reply": "showReply"
+				"click .show-reply": "showReply",
+				"click .hide-msgs": "hide"
+			},
+			hide: function(e) {
+				socket.emit("hide", {"phone": this.model.get("phone") });
 			},
 			replying: function(e) {
 				var reply = this.$el.find(".message-group").addClass("replying").find(".reply");
@@ -373,10 +377,13 @@ $(function() {
 			},
 			updateOffsets: function(status) {
 				if(status === "new") {
-					this.$el.closest(".msg-container").removeClass("offset6").addClass("offset2");
+					this.$el.closest(".msg-container").removeClass("offset6").addClass("offset2").show();
 				}
 				if(status === "replied") {
-					this.$el.closest(".msg-container").removeClass("offset2").addClass("offset6");
+					this.$el.closest(".msg-container").removeClass("offset2").addClass("offset6").show();
+				}
+				if(status === "hidden") {
+					this.$el.closest(".msg-container").hide();
 				}
 			}
 		})

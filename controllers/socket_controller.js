@@ -41,6 +41,12 @@ var socketController = module.exports = function(server){
 				evt.emit("message", {"phone": data.phone, "status": "replied", "messages": [data.message] });
 			})
 		})
+
+		socket.on("hide", function(data) {
+			db.findAndModify("messages", {"phone": data.phone}, {}, { "$set": { "status": "hidden" } }, {}, function(err, object) {
+				evt.emit("message", {"phone": data.phone, "status": "hidden"});
+			});
+		})
 	})
 
 	evt.on("message", function(msg) {
