@@ -353,13 +353,14 @@ $(function() {
 				this.el = "#" + phone;
 				this.$el = $("#" + phone);
 				this.delegateEvents();
-				this.updateOffsets();
+				this.updateOffsets(this.model.get("status"));
 			},
 			add: function(msg) {
 				var messages = this.model.get("messages");
 				// updates the current model -- though I'm not sure this is needed
 				messages.push(msg.get("messages"));
 				this.model.set("messages", messages);
+				this.model.set('status', msg.get(status));
 
 				var self = this;
 				var phone = this.model.get("phone");
@@ -367,13 +368,10 @@ $(function() {
 					self.$el.find(".msgs").append(self.message_template({ "message": message }));
 				})
 
-				var status = this.model.get("status");
-				this.$el.find(".status").text(msg.status);
-				this.model.set('status', msg.status);
-				this.updateOffsets();
+				this.$el.find(".status").text(msg.get("status"));
+				this.updateOffsets(msg.get("status"));
 			},
-			updateOffsets: function() {
-				var status = this.model.get("status");
+			updateOffsets: function(status) {
 				if(status === "new") {
 					this.$el.closest(".msg-container").removeClass("offset6").addClass("offset2");
 				}
