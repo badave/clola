@@ -98,7 +98,7 @@ smsController.post = function(req, res, next) {
   console.log("received sms: ", message);
   
   db.findAndModify("messages", {"phone": phone}, {}, { "$set": { "phone": phone, "status": "new" }, "$push": { "messages": message} }, { "upsert": true }, function(err, object) {
-    evt.emit("message", { "phone": phone, "messages": [message] });
+    evt.emit("message", { "phone": phone, "status": "new", "messages": [message] });
     db.insert("raw_messages", msg, function(err, obj) {
       helper.respondJson(req, res, 200);
     })
