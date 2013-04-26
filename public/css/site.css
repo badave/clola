@@ -109,4 +109,5 @@ article{padding:10px;}
 .message-group.replying .reply-group{background-color:#008800;}
 .message .msg-text{font-size:1.2em;}
 .message .msg-date{font-size:0.90em;color:#aaa;opacity:0.9;}
+.message.msg-reply{color:#008800;}
 .show-reply{font-size:0.90em;}

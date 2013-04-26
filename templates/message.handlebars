@@ -1,4 +1,4 @@
-<div class="message">
-	<div class="msg-text"><%= message.text %></div>
-	<div class="msg-date"><%= new Date(message.created).toLocaleString() %></div>
+<div class="message <% if(message.reply) { %>msg-reply<% } %>">
+	<div class="msg-text"><% if(message.reply) { %> &gt; <% } %><%= message.text %></div>
+	<div class="msg-date"><% if(message.reply) { %>&nbsp;&nbsp;&nbsp;&nbsp;<% } %><%= new Date(message.created).toLocaleString() %></div>
 </div>
