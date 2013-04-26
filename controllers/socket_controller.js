@@ -38,7 +38,7 @@ var socketController = module.exports = function(server){
 			data.message.created = new Date().getTime();
 			smsController.send(data);
 			db.findAndModify("messages", {"phone": data.phone}, {}, { "$set": { "status": "replied" }, "$push": { "messages": data.message} }, { "upsert": true }, function(err, object) {
-				evt.emit("message", {"phone": data.phone, "messages": [data.message] });
+				evt.emit("message", {"phone": data.phone, "status": "replied", "messages": [data.message] });
 			})
 		})
 	})
