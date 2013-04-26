@@ -368,7 +368,7 @@ $(function() {
 				})
 
 				var status = this.model.get("status");
-				this.$el.find(".status").text(data.status);
+				this.$el.find(".status").text(msg.status);
 				this.updateOffsets();
 			},
 			updateOffsets: function() {
