@@ -369,15 +369,16 @@ $(function() {
 
 				var status = this.model.get("status");
 				this.$el.find(".status").text(msg.status);
+				this.model.set('status', msg.status);
 				this.updateOffsets();
 			},
 			updateOffsets: function() {
 				var status = this.model.get("status");
 				if(status === "new") {
-					this.$el.closest(".msg-container").removeClass("offset6").addClass("offset3");
+					this.$el.closest(".msg-container").removeClass("offset6").addClass("offset2");
 				}
 				if(status === "replied") {
-					this.$el.closest(".msg-container").removeClass("offset3").addClass("offset6");
+					this.$el.closest(".msg-container").removeClass("offset2").addClass("offset6");
 				}
 			}
 		})
