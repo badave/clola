@@ -1,6 +1,6 @@
 $(function() {
-	var socket = io.connect("http://localhost:5050");
-	// var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
+	// var socket = io.connect("http://localhost:5050");
+	var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
 
 	socket.on("msg", function(data) {
 		messages.add(data);
