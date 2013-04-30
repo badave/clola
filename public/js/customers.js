@@ -119,6 +119,8 @@ $(function() {
 				"collection": all_places,
 				"customer": this.model
 			});
+
+			this.placesView.renderFinder();
 		},
 		saveInfo: function(e) {
 			e.stopPropagation();
@@ -198,6 +200,11 @@ $(function() {
 		model: Place,
 		url: function() {
 			return "/v1/places";
+		},
+		cities: function() {
+			return _.uniq(_.map(this.models, function(place) {
+				return place.get("city");
+			}));
 		}
 	})
 
@@ -208,14 +215,22 @@ $(function() {
 				self.findAreas(e);
 			})
 		},
-		el: ".find-place",
 		events: {
-			"change .find-place-city": "findAreas",
-			"change .find-place-area": "findCategories",
-			"change .find-place-category": "find",
+			'change [name="city"]': "findAreas",
+			'change [name="area"]': "findCategories",
+			'change [name="category"]': "find",
 			"click .send-btn": "addLocation"
 		},
+		find_template: _.template($("#find-place-template").html()),
 		template: _.template($("#place-template").html()),
+		find_area_template: _.template('<% _.each(areas, function(area, idx) { %> \
+						<input id="find-area-<%= idx %>" name="area" type="checkbox" value="<%= area %>" class="toggle"></input> \
+								<label for="find-area-<%= idx %>" class="btn btn-large"><%= area %></label> \
+						<% }) %>'),
+		find_category_template: _.template('<% _.each(categories, function(category, idx) { %> \
+						<input id="find-category-<%= idx %>" name="category" type="checkbox" value="<%= category %>" class="toggle"></input> \
+								<label for="find-category-<%= idx %>" class="btn btn-large"><%= category %></label> \
+						<% }) %>'),
 
 		addLocation: function(e) {
 			var place = this.collection.findWhere({ _id: $(e.target).attr('data-id')});
@@ -230,21 +245,27 @@ $(function() {
 			$("#" + this.options.customer.id + " .previous-locations").prepend(tmpl({ "location": location }));
 		},
 
+		renderFinder: function() {
+			var cities = this.collection.cities();
+
+			var tmpl = this.find_template({"cities": cities})			
+			$(".find-places").html(tmpl);
+
+			this.$el = $(".find-places .find-place");
+			this.delegateEvents();
+		},
+
 		findAreas: function(e) {
-			var city = this.$el.find(".find-place-city").val();
-			var places = _.filter(this.collection.models, function(place) { return place.get("city") === city });
+			var cities = _.map(this.$el.find(".places-cities input:checked"), function(selected) { return $(selected).val(); });
+			var places = _.filter(this.collection.models, function(place) { return _.contains(cities, place.get("city")); });
 			var areas = _.map(places, function(place) { return place.get("area"); })
 
 			unique_areas = _.uniq(areas);
 
-			var options = ['<option value="" selected="selected">Area</option>'];
 			// var area is really a place in the area
-			_.each(unique_areas, function(area) {
-				var tmpl = _.template('<option value="<%= area %>"><%= area %></option>');
-				options.push(tmpl({area: area }))
-			})
+			var tmpl = this.find_area_template({"areas": unique_areas});
 
-			this.$el.find(".find-place-area").html(options.join(""));
+			this.$el.find(".places-areas").html(tmpl);
 
 			// show all categories of these places too
 			// retreives just the area
@@ -253,43 +274,63 @@ $(function() {
 			categories = _.map(categories, function(place) { return place.get("category"); })
 			var unique_categories = _.uniq(categories)
 
-		  var options = ['<option value="" selected="selected">Category</option>'];
-			_.each(unique_categories, function(category) {
-				var tmpl = _.template('<option value="<%= category %>"><%= category %></option>');
-				options.push(tmpl({"category": category }))
-			})
-			
-			this.$el.find(".find-place-category").html(options.join(""));
+			var tmpl = this.find_category_template({"categories": unique_categories});
+
+			this.$el.find(".places-categories").html(tmpl);
 
 			this.renderPlaces(places);
+			this.delegateEvents();
 		},
 
 		findCategories: function(e) {
-			var city = this.$el.find(".find-place-city").val();
-			var area = this.$el.find(".find-place-area").val();
-			var places = _.filter(this.collection.models, function(place) { return place.get("city") === city && area === place.get("area"); });
+			var cities = _.map(this.$el.find(".places-cities input:checked"), function(selected) { return $(selected).val(); });
+			var places = _.filter(this.collection.models, function(place) { return _.contains(cities, place.get("city")); });
+			
+			var areas = _.map(this.$el.find(".places-areas input:checked"), function(selected) { return $(selected).val(); });
+
+			if(areas.length > 0) {
+				places = _.filter(this.collection.models, function(place) { return _.contains(cities, place.get("city")) && _.contains(areas, place.get("area")); });
+			}
 			
 			var cat_array = _.map(places, function(place) { return place.get("category"); })
 			var unique_categories = _.uniq(cat_array)
+		  
+		  var tmpl = this.find_category_template({"categories": unique_categories});
 
-		  var options = ['<option value="" selected="selected">Category</option>'];
-			_.each(unique_categories, function(category) {
-				var tmpl = _.template('<option value="<%= category %>"><%= category %></option>');
-				options.push(tmpl({"category": category }))
-			})
-			
-			this.$el.find(".find-place-category").html(options.join(""));
-			this.renderPlaces(places);;
+		  this.$el.find(".places-categories").html(tmpl);
+
+		  this.renderPlaces(places);
+			this.delegateEvents();
 		},
 
 		find: function(e) {
-			var city = this.$el.find(".find-place-city").val();
-			var area = this.$el.find(".find-place-area").val();
-			var category = this.$el.find(".find-place-category").val();
-			var places = _.filter(this.collection.models, function(place) { return place.get("city") === city && area === place.get("area") && category === place.get("category"); });
-			
+			var cities = _.map(this.$el.find(".places-cities input:checked"), function(selected) { return $(selected).val(); });
+			var areas = _.map(this.$el.find(".places-areas input:checked"), function(selected) { return $(selected).val(); });
+			var categories = _.map(this.$el.find(".places-categories input:checked"), function(selected) { return $(selected).val(); });
 
+			var places = _.filter(this.collection.models, function(place) { 
+				if(!cities || !_.contains(cities, place.get("city"))) {
+					return false;
+				}
+				var contains = false;
+				if(areas.length > 0 && _.contains(areas, place.get("area"))) {
+					contains = true;
+				}
+
+				// Return contains at this point if there are no categories
+				if(categories.length === 0) {
+					return contains;
+				}	
+
+				if(areas.length > 0) {
+					return _.contains(areas, place.get("area")) && _.contains(categories, place.get("category")); 
+				}
+
+				return _.contains(categories, place.get("category"));
+			});
+			
 			this.renderPlaces(places);
+			this.delegateEvents();
 		},
 
 		renderPlaces: function(places) {

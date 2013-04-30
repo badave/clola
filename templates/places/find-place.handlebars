@@ -6,22 +6,25 @@
 		</div>
 		<div class="box-content">
 			<div class="row">
-				<div class="span4">
-					<select name="place-city" class="find-place-city input-block-level">
-						<option value="" selected="selected">City</option>
-						<option value="New York City">New York City</option>
-						<option value="San Francisco">San Francisco</option>
-					</select>
+				<div class="span12">
+					<div class="places-cities">
+						<% _.each(cities, function(city, idx) { %>
+							<input id="find-city-<%= idx %>" name="city" type="checkbox" value="<%= city %>" class="toggle"></input>
+							<label for="find-city-<%= idx %>" class="btn btn-large"><%= city %></label>
+						<% }) %>
+					</div>
 				</div>
-				<div class="span4">
-					<select name="place-area" class="find-place-area input-block-level">
-						<option value="" selected="selected">Area</option>
-					</select>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div class="places-areas">
+					</div>
 				</div>
-				<div class="span4">
-					<select name="place-category" class="find-place-category input-block-level" placeholder="category">
-							<option value="" selected="selected">Category</option>
-					</select>
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div class="places-categories">
+					</div>
 				</div>
 			</div>
 		</div>
