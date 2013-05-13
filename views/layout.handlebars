@@ -14,5 +14,30 @@
 </head>
 <body>
 	{{{body}}}
+
+
+ {{! Templates }}
+	<script type="text/template" id="location-template">
+	{{> location }}
+	</script>
+
+	<script type="text/template" id="find-place-template">
+	{{> places/find-place }}
+	</script>
+
+	<script type="text/template" id="place-template">
+	{{> places/place }}
+	</script>
+
+
+	<script type="text/template" id="message">
+	{{> message }}
+	</script>
+
+	<script type="text/template" id="customer">
+	{{> customer }}
+	</script>
+
+	<script type="text/javascript" src="/js/customers.js"></script>
 </body>
 </html>
