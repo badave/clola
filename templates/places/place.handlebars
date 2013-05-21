@@ -2,7 +2,9 @@
 	<div class="box-content">
 		<div class="row">
 			<div class="span9"><%= place.name %></div>
-			<div class="span3"><a class="btn send-btn" data-id="<%= place._id %>">Send</a></div>
+			<% if(customer) { %>
+				<div class="span3"><a class="btn send-btn" data-id="<%= place._id %>">Send</a></div>
+			<% } %>
 		</div>
 		<div class="row"><%= place.description %></div>
 		<div class="row"><%= place.address %></div>

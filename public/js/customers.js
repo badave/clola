@@ -1,34 +1,16 @@
 $(function() {
-	// var socket = io.connect("http://localhost:5050");
-	var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
+	// TODO Split up into multiple files, refactor out some of the hacky stuff
+	// 			Use routes
 
-	socket.on("msg", function(data) {
-		messages.add(data);
-	})
 
-	socket.on("replying", function(data) {
-		$("#" + data.phone + ".message-group").addClass("replying");
-		$("#" + data.phone + " .reply").val(data.reply);
-	})
+	/*
+		Customer lookup (/customer)
+	 */
 
-	if($.cookie('last_phone_lookup')) {
-		$("#phone").val($.cookie('last_phone_lookup'));
-	}
 
-	// $("#places-modal").modal();
-
-	var updateButton = function(id, now, later, done) {
-		$("#" + id).val(now);
-
-		setTimeout(function() {
-			$("#" + id).val(later);
-		}, 1000);
-
-		setTimeout(function() {
-			$("#" + id).val(done);
-		}, 3000)
-	}
-
+	 if($.cookie('last_phone_lookup')) {
+	 	$("#phone").val($.cookie('last_phone_lookup'));
+	 }
 	$(document).on("submit", "#lookup", function(e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -37,7 +19,7 @@ $(function() {
 		var phone = $("#phone").val().replace(/\D/g, '');
 		$.cookie("last_phone_lookup", phone);
 
-		updateButton("lookup", "Looking up...", "Found", "Lookup");
+		$("#lookup-btn").val("Looking up...").attr("disabled", "disabled");
 		
 		if($("#" + phone).length === 0) {
 			customer = new Customer({
@@ -46,7 +28,12 @@ $(function() {
 
 			customer.fetch({
 				success: function(data) {
-					$("#lookup").val("Found");
+					$("#lookup-btn").val("Found").removeAttr("disabled");
+
+					setTimeout(function() {
+						$("#lookup-btn").val("Go");
+					}, 3000)
+
 					customer = data;
 
 					if(!customer.id) {
@@ -57,6 +44,7 @@ $(function() {
 					customer.cv.render();
 				}, 
 				error: function(data) {
+					$("#lookup-btn").val("Retry").removeAttr("disabled");
 					console.log("Error with", data);
 					console.log("Please render an error");
 				}
@@ -66,7 +54,12 @@ $(function() {
 		}
 	})
 
-	var Customer = Backbone.Model.extend({ 
+
+
+	/*
+			Customer Model for Backbone
+	 */
+	Customer = Backbone.Model.extend({ 
 		idAttribute: "_id",
 		url: function() {
 			return this.urlRoot + "/" + this.get("phone");
@@ -103,7 +96,13 @@ $(function() {
 		}
 	})
 
-	var CustomerView = Backbone.View.extend({
+
+
+
+	/*
+			CustomerView for Backbone
+	 */
+	CustomerView = Backbone.View.extend({
 		el: '.customers',
 		events: {
 			"click .update": "saveInfo",
@@ -170,11 +169,17 @@ $(function() {
 	});
 
 
+	/*
+		Adding location does this
+	 */
+
+
 	$(document).on("click", "#add_location_btn", function(e) {
 		var place = new Place({
 			"city": $("#place-city").val(),
 			"area": $("#place-area").val(),
 			"category": $("#place-category").val(),
+			"subcategory": $("#place-subcategory").val(),
 			"name": $("#place-name").val(),
 			"description": $("#place-description").val(),
 			"address": $("#place-address").val()
@@ -191,13 +196,36 @@ $(function() {
 		$("#places-modal").modal('hide');
 	})
 
-	var Place = Backbone.Model.extend({
+	/*
+		Place Model
+	 */
+
+	Place = Backbone.Model.extend({
 		idAttribute: "_id",
 		urlRoot: "/v1/places"
 	})
 
-	var Places = Backbone.Collection.extend({
+	/*
+		Places Collection
+	 */
+
+	Places = Backbone.Collection.extend({
 		model: Place,
+		getPlaces: function(cities) {
+			return _.filter(this.models, function(place) { return _.contains(cities, place.get("city")); });
+		},
+
+		getAreas: function(places) {
+			return _.map(places, function(place) { return place.get("area"); })
+		},
+
+		getCategories: function(places) {
+			return _.map(places, function(place) { return place.get("category"); });
+		},
+
+		getSubcategories: function(places) {
+			return _.map(places, function(place) { return place.get("subcategory"); });
+		},
 		url: function() {
 			return "/v1/places";
 		},
@@ -208,7 +236,11 @@ $(function() {
 		}
 	})
 
-	var PlacesView = Backbone.View.extend({
+	/*
+		Places View
+	 */
+
+	PlacesView = Backbone.View.extend({
 		initialize: function() {
 			var self = this;
 			this.collection.on("add", function(e) {
@@ -218,7 +250,8 @@ $(function() {
 		events: {
 			'change [name="city"]': "findAreas",
 			'change [name="area"]': "findCategories",
-			'change [name="category"]': "find",
+			'change [name="category"]': "findSubcategories",
+			'change [name="subcategory"]': "find",
 			"click .send-btn": "addLocation"
 		},
 		find_template: _.template($("#find-place-template").html()),
@@ -231,18 +264,139 @@ $(function() {
 						<input id="find-category-<%= idx %>" name="category" type="checkbox" value="<%= category %>" class="toggle"></input> \
 								<label for="find-category-<%= idx %>" class="btn btn-large"><%= category %></label> \
 						<% }) %>'),
+		find_subcategory_template: _.template('<% _.each(subcategories, function(subcategory, idx) { %> \
+						<input id="find-subcategory-<%= idx %>" name="subcategory" type="checkbox" value="<%= subcategory %>" class="toggle"></input> \
+								<label for="find-subcategory-<%= idx %>" class="btn btn-large"><%= subcategory %></label> \
+						<% }) %>'),
 
 		addLocation: function(e) {
-			var place = this.collection.findWhere({ _id: $(e.target).attr('data-id')});
+			if(this.options.customer) {
+				var place = this.collection.findWhere({ _id: $(e.target).attr('data-id')});
 
-			var location = {
-				name: place.get("name"),
-				address: place.get('address'),
-				notes: place.get('description')
-			};
-			this.options.customer.addLocation(location);
-			var tmpl = _.template($("#location-template").html());
-			$("#" + this.options.customer.id + " .previous-locations").prepend(tmpl({ "location": location }));
+				var location = {
+					name: place.get("name"),
+					address: place.get('address'),
+					notes: place.get('description')
+				};
+				this.options.customer.addLocation(location);
+				var tmpl = _.template($("#location-template").html());
+				$("#" + this.options.customer.id + " .previous-locations").prepend(tmpl({ "location": location }));
+			}
+		},
+
+		getSelectedAreas: function() {
+			return _.map(this.$el.find(".places-areas input:checked"), function(selected) { return $(selected).val(); });
+		},
+
+		getSelectedCities: function() {
+			return _.map(this.$el.find(".places-cities input:checked"), function(selected) { return $(selected).val(); });
+		},
+
+		getSelectedCategories: function() {
+			return _.map(this.$el.find(".places-categories input:checked"), function(selected) { return $(selected).val(); });
+		},
+
+		getSelectedSubcategories: function() {
+			return _.map(this.$el.find(".places-subcategories input:checked"), function(selected) { return $(selected).val(); });
+		},
+
+		findAreas: function(e) {
+			var cities = this.getSelectedCities();
+			var places = this.collection.getPlaces(cities);
+			var areas = this.collection.getAreas(places);
+
+			unique_areas = _.uniq(areas);
+
+			// var area is really a place in the area
+			var tmpl = this.find_area_template({"areas": unique_areas});
+
+			this.$el.find(".places-areas").html(tmpl);
+
+			this.$el.find(".places-categories").html("");
+			this.$el.find(".places-subcategories").html("");
+
+			$(".places").html("");
+			// this.renderPlaces(places);
+			this.delegateEvents();
+		},
+
+		findCategories: function(e) {
+			var cities = this.getSelectedCities();
+			var areas = this.getSelectedAreas();
+			var places = _.filter(this.collection.getPlaces(cities), function(place) {
+				return _.contains(areas, place.get("area"));
+			})
+
+			if(areas.length > 0) {
+				var cat_array = this.collection.getCategories(places);
+				var unique_categories = _.uniq(cat_array);
+			  
+			  var tmpl = this.find_category_template({"categories": unique_categories});
+
+			  this.$el.find(".places-categories").html(tmpl);
+
+			  this.$el.find(".places-subcategories").html("");
+			  $(".places").html("");
+
+				this.delegateEvents();
+			} else {
+				this.$el.find(".places-categories").html("");
+				this.$el.find(".places-subcategories").html("");
+			}
+		},
+
+		findSubcategories: function(e) {
+			var cities = this.getSelectedCities();
+			var areas = this.getSelectedAreas();
+			var categories = this.getSelectedCategories();
+
+			var places = _.filter(this.collection.getPlaces(cities), function(place) {
+				return _.contains(areas, place.get("area"))
+					&& _.contains(categories, place.get("category"));
+			})
+
+			if(categories.length > 0) {
+				var subcategories = this.collection.getSubcategories(places);
+				var unique_subcategories = _.uniq(subcategories);
+				var tmpl = this.find_subcategory_template({"subcategories": unique_subcategories});
+
+				this.$el.find(".places-subcategories").html(tmpl);
+				this.delegateEvents();
+			} else {
+				this.$el.find(".places-subcategories").html("");
+			}
+
+		},
+
+		find: function(e) {
+			var cities = this.getSelectedCities();
+			var areas = this.getSelectedAreas();
+			var categories = this.getSelectedCategories();
+			var subcategories = this.getSelectedSubcategories();
+
+			if(subcategories.length > 0) {
+				var places = _.filter(this.collection.getPlaces(cities), function(place) {
+					return _.contains(areas, place.get('area')) && _.contains(categories, place.get("category"))
+						&& _.contains(subcategories, place.get("subcategory"));
+				})
+
+				if(places.length > 0) {
+					this.renderPlaces(places);
+				}
+			}
+		},
+
+		renderPlaces: function(places) {
+			var self = this;
+			var html = "";
+			var customer;
+			if(this.options.customer) {
+				customer = this.options.customer.toJSON();
+			}
+			_.each(places, function(place) {
+				html += self.template({"place": place.toJSON(), "customer": customer });
+			})
+			$(".places").html(html);
 		},
 
 		renderFinder: function() {
@@ -255,113 +409,49 @@ $(function() {
 			this.delegateEvents();
 		},
 
-		findAreas: function(e) {
-			var cities = _.map(this.$el.find(".places-cities input:checked"), function(selected) { return $(selected).val(); });
-			var places = _.filter(this.collection.models, function(place) { return _.contains(cities, place.get("city")); });
-			var areas = _.map(places, function(place) { return place.get("area"); })
-
-			unique_areas = _.uniq(areas);
-
-			// var area is really a place in the area
-			var tmpl = this.find_area_template({"areas": unique_areas});
-
-			this.$el.find(".places-areas").html(tmpl);
-
-			// show all categories of these places too
-			// retreives just the area
-			
-			var categories = _.filter(places, function(place) { return _.contains(unique_areas, place.get("area")); })
-			categories = _.map(categories, function(place) { return place.get("category"); })
-			var unique_categories = _.uniq(categories)
-
-			var tmpl = this.find_category_template({"categories": unique_categories});
-
-			this.$el.find(".places-categories").html(tmpl);
-
-			this.renderPlaces(places);
-			this.delegateEvents();
-		},
-
-		findCategories: function(e) {
-			var cities = _.map(this.$el.find(".places-cities input:checked"), function(selected) { return $(selected).val(); });
-			var places = _.filter(this.collection.models, function(place) { return _.contains(cities, place.get("city")); });
-			
-			var areas = _.map(this.$el.find(".places-areas input:checked"), function(selected) { return $(selected).val(); });
-
-			if(areas.length > 0) {
-				places = _.filter(this.collection.models, function(place) { return _.contains(cities, place.get("city")) && _.contains(areas, place.get("area")); });
-			}
-			
-			var cat_array = _.map(places, function(place) { return place.get("category"); })
-			var unique_categories = _.uniq(cat_array)
-		  
-		  var tmpl = this.find_category_template({"categories": unique_categories});
-
-		  this.$el.find(".places-categories").html(tmpl);
-
-		  this.renderPlaces(places);
-			this.delegateEvents();
-		},
-
-		find: function(e) {
-			var cities = _.map(this.$el.find(".places-cities input:checked"), function(selected) { return $(selected).val(); });
-			var areas = _.map(this.$el.find(".places-areas input:checked"), function(selected) { return $(selected).val(); });
-			var categories = _.map(this.$el.find(".places-categories input:checked"), function(selected) { return $(selected).val(); });
-
-			var places = _.filter(this.collection.models, function(place) { 
-				if(!cities || !_.contains(cities, place.get("city"))) {
-					return false;
-				}
-				var contains = false;
-				if(areas.length > 0 && _.contains(areas, place.get("area"))) {
-					contains = true;
-				}
-
-				// Return contains at this point if there are no categories
-				if(categories.length === 0) {
-					return contains;
-				}	
-
-				if(areas.length > 0) {
-					return _.contains(areas, place.get("area")) && _.contains(categories, place.get("category")); 
-				}
-
-				return _.contains(categories, place.get("category"));
-			});
-			
-			this.renderPlaces(places);
-			this.delegateEvents();
-		},
-
-		renderPlaces: function(places) {
-			var self = this;
-			var html = "";
-			_.each(places, function(place) {
-				html += self.template({"place": place.toJSON() });
-			})
-			$(".places").html(html);
-		}
-
 	})
 
 	// initialize places
-	var all_places = new Places();
-	all_places.fetch();
+	all_places = new Places();
+	all_places.fetch({
+		success: function(places) {
+			if(typeof afterPlacesLoaded === "function") {
+				afterPlacesLoaded(places);
+			}
+		}
+	});
 
-	if($("#message").length > 0) {
-		var Message = Backbone.Model.extend({
+
+
+	/*
+		SMS Messages
+	 */
+	// messages page
+	if($(".messages-container").length > 0) {
+		var socket = io.connect('http://clola.herokuapp.com:80/'); // + window.location.host);
+
+		socket.on("msg", function(data) {
+			messages.add(data);
+		})
+
+		socket.on("replying", function(data) {
+			$("#" + data.phone + ".message-group").addClass("replying");
+			$("#" + data.phone + " .reply").val(data.reply);
+		})
+
+		Message = Backbone.Model.extend({
 			idAttribute: "_id",
 			urlRoot: "/v1/messages"
 		})
 
-		var Messages = Backbone.Collection.extend({
+		Messages = Backbone.Collection.extend({
 			model: Message,
 			url: function() {
 				return "/v1/messages";
 			}
 		})
 
-		var MessageView = Backbone.View.extend({
+		MessageView = Backbone.View.extend({
 			messages_template: _.template($("#messages").html()),
 			message_template: _.template($("#message").html()),
 			events: {
@@ -418,10 +508,10 @@ $(function() {
 			},
 			updateOffsets: function(status) {
 				if(status === "new") {
-					this.$el.closest(".msg-container").removeClass("offset6").addClass("offset2").show();
+					this.$el.closest(".msg-container").removeClass("offset6").show();
 				}
 				if(status === "replied") {
-					this.$el.closest(".msg-container").removeClass("offset2").addClass("offset6").show();
+					this.$el.closest(".msg-container").addClass("offset6").show();
 				}
 				if(status === "hidden") {
 					this.$el.closest(".msg-container").hide();
