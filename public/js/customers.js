@@ -175,15 +175,23 @@ $(function() {
 
 
 	$(document).on("click", "#add_location_btn", function(e) {
-		var place = new Place({
+		var placeObj = {
 			"city": $("#place-city").val(),
 			"area": $("#place-area").val(),
 			"category": $("#place-category").val(),
 			"subcategory": $("#place-subcategory").val(),
 			"name": $("#place-name").val(),
 			"description": $("#place-description").val(),
-			"address": $("#place-address").val()
-		})
+			"address": $("#place-address").val(),
+			"contact": $("#place-contact").val(),
+			"hours": $("#place-hours").val()
+		};
+
+		for(var key in placeObj) {
+			placeObj[key] = placeObj[key].trim();
+		}
+
+		var place = new Place(placeObj);
 
 		place.save();
 		all_places.add(place);
@@ -342,6 +350,7 @@ $(function() {
 			} else {
 				this.$el.find(".places-categories").html("");
 				this.$el.find(".places-subcategories").html("");
+				$(".places").html("");
 			}
 		},
 
@@ -364,6 +373,7 @@ $(function() {
 				this.delegateEvents();
 			} else {
 				this.$el.find(".places-subcategories").html("");
+				$(".places").html("");
 			}
 
 		},
@@ -383,6 +393,8 @@ $(function() {
 				if(places.length > 0) {
 					this.renderPlaces(places);
 				}
+			} else {
+				$(".places").html("");
 			}
 		},
 
