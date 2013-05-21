@@ -8,7 +8,7 @@
 		</div>
 		<div class="row"><%= place.description %></div>
 		<div class="row"><%= place.address %></div>
-		<div class="row"><div class="span4">Contact Info: <%= place.contact %></div><div class="span4">Hours: <%= place.hours %></div></div>
+		<div class="row"><% if(place.contact) { %><div class="span4">Contact Info: <%= place.contact %></div><% } %><% if(place.hours) { %><div class="span4">Hours: <%= place.hours %></div><% } %></div>
 		<div class="row">
 			<!-- <div class="span3"><a class="btn">Edit</a></div> -->
 		</div>
