@@ -10,6 +10,7 @@ var request = require('request');
 var config = require('./config');
 var helper = require('./lib/helper');
 
+var hbsTemplates = require('connect-handlebars');
 
 require("./initialize/handlebars");
 
@@ -137,16 +138,16 @@ app.configure('development', function(){
 });
 
 app.configure('staging', function() {
-  app.use(redirectFromNaked);
-  app.use(redirectToSecure);
-  app.use(redirectSubdomains);
+  // app.use(redirectFromNaked);
+  // app.use(redirectToSecure);
+  // app.use(redirectSubdomains);
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
 })
 
 app.configure('production', function(){
-  app.use(redirectFromNaked);
-  app.use(redirectToSecure);
-  app.use(redirectSubdomains);
+  // app.use(redirectFromNaked);
+  // app.use(redirectToSecure);
+  // app.use(redirectSubdomains);
   app.use(express.errorHandler()); 
 });
 
@@ -161,6 +162,11 @@ app.configure(function (){
       compress: true,
       force: config.test
   }));
+
+  app.use("/js/templates.js", hbsTemplates(__dirname + "/public/js/app/templates", {
+    exts: ['hbs','handlebars']
+  }));
+
   app.use(express.static(path.join(__dirname, 'public')));
 
   app.engine('handlebars', require('hbs').__express);

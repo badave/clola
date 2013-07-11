@@ -9,3 +9,12 @@ homeController.index = function(req, res, next) {
 	}
 	return helper.render(req, res, 200, 'home/index', context);
 }
+
+homeController.awesomeSauce = function(req, res) {
+	var context = {
+		title: config.title,
+		layout: "backbone"
+	}
+
+	return helper.render(req, res, 200, "home/index", context);
+}

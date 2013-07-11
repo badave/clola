@@ -1,0 +1,92 @@
+@import "site";
+
+::-webkit-scrollbar              { display:none; }
+::-webkit-scrollbar-button       { display:none; }
+::-webkit-scrollbar-track        { display:none; }
+::-webkit-scrollbar-track-piece  { display:none; }
+::-webkit-scrollbar-thumb        { display:none; }
+::-webkit-scrollbar-corner       { display:none; }
+
+ul {
+	min-height: 100%;
+	border:1px solid #e1e1e1;
+	.gradient (#fff, #f4f4f4);
+
+	&.list-view {
+		list-style-type: none;
+		margin:0;
+		padding:0;
+
+		li {
+			display: block;
+			margin: 0;
+			position: relative;
+			overflow: visible;
+			text-align: left;
+			border-width: 0;
+			border-top-width: 1px;
+			cursor:pointer;
+
+			border: 1px solid #ccc;
+			background: #eee ;
+			font-weight: bold;
+			color: #222 ;
+			text-shadow: 0 1px 0 #fff;
+			
+			padding: .7em 15px;
+
+			.gradient;
+
+			i {
+				font-size: 1.2em;
+				margin-top: 2px;
+			}
+
+			&:hover {
+				.gradient(#f1f1f1, #e1e1e1);
+			}
+
+			&.selected {
+				.gradient(#e1e1ff, #eeeeff);
+				border-color: #ccccff;
+			}
+		}
+	}
+}
+
+
+section#places {
+	.places-view {
+		position:absolute;
+		top:60px;
+		left:0;
+		right:50%;
+		bottom:40%;
+	}
+}
+
+.places-list {
+	position:absolute;
+	left:0;
+	top:0;
+	bottom:0;
+	width:35%;
+
+	overflow:scroll;
+	-webkit-overflow-scrolling: touch;
+
+	&.areas {
+		left: 20%;
+		z-index:1;
+	}
+
+	&.categories {
+		left:45%;
+		z-index:2;
+	}
+
+	&.subcategories {
+		left:70%;
+		z-index:3;
+	}
+}

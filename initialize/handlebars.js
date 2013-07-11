@@ -4,8 +4,9 @@ var _ = require('underscore');
 var S = require('string');
 var moment = require('moment');
 var accounting = require('accounting');
+var path = require('path');
 
-var templatesDir = __dirname + '/../templates';
+var templatesDir = __dirname + '/../views/partials';
 
 // var templates = fs.readdirSync(templatesDir);
 
@@ -43,6 +44,23 @@ walk(templatesDir, function(err, results) {
         var template = fs.readFileSync(filename, 'utf8');
         hbs.registerPartial(name, template)
     })
+});
+
+var backboneDir = __dirname + "/../public/js/app";
+var backboneFiles = [];
+
+// This creates a list of javascript files in the public/js/app directory
+walk(backboneDir, function(err, results) {
+  results.forEach(function(filename) {
+    var matches = /.js$/.exec(filename);
+    if (!matches) {
+      return;
+    }
+    var name = matches[1];
+    var rel = path.relative(path.dirname(__dirname), filename).replace("public", '');
+    // These are all javascript paths inside of the backbone directory
+    backboneFiles.push(rel);
+  });
 });
 
 hbs.registerHelper('equal', function(lvalue, rvalue, options) {
@@ -231,6 +249,40 @@ hbs.registerHelper('formatStatus', function(value, options) {
   }
   return status;
 });
+
+
+// These build the assets manifest
+hbs.registerHelper("js", function(value, options) {
+  var script = '';
+  // if(config.localhost && value !== 'application' && value !== "app") {
+  if(value !== "app") {
+    script = '<script src="/js/' + value + '.js" type="text/javascript"></script>';
+  }
+  
+  if(value === "app") {
+    // Load local app files
+    backboneFiles.forEach(function(file) {
+      script += '<script src="' + file + '" type="text/javascript"></script>';
+    });
+  }
+    // Always load from cdn
+    // script = '<script src="' + config.cdn_assets_url + "/" + config.manifest[value + ".js"] + '" type="text/javascript"></script>';
+  // }
+
+  return new hbs.SafeString(script);
+});
+
+hbs.registerHelper("css", function(value, options) {
+  var script;
+  // if(config.localhost && value !== 'application') {
+    script = '<link href="/css/' + value + '.css" type="text/css" rel="stylesheet">';
+  // } else {
+  //   script = '<link href="' + config.cdn_assets_url + "/" + config.manifest[value + ".css"] + '" type="text/css" rel="stylesheet">';
+  // }
+
+  return new hbs.SafeString(script);
+});
+
 
 // Returns full country name
 var getCountry = function(code) {

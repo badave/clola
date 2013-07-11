@@ -1,0 +1,38 @@
+
+
+// Border Radius
+.rounded-corners (@radius: 4px) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-ms-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+}
+
+/* Why should this be necessary */
+.rounded-corners {
+	.rounded-corners;
+}
+
+.gradient (@color1: #f1f4f6, @color2: #e9edf0) {
+	background-image: -webkit-linear-gradient(@color1, @color2);
+	background-image: -moz-linear-gradient(@color1, @color2);
+	background-image: -ms-linear-gradient(@color1, @color2);
+	background-image: -o-linear-gradient(@color1, @color2);
+	background-image: linear-gradient(@color1, @color2);
+}
+
+.box-shadow (@size: 1px, @color: #f8f9fa) {
+	-moz-box-shadow: 0 @size 0 @color;
+	-webkit-box-shadow: 0 @size 0 #f8f9fa;
+	box-shadow: 0 @size 0 @color;
+}
+
+.gradient (@from: #fff, @to: #f1f1f1) {
+	background-image: -webkit-gradient(linear, left top, left bottom, from( @from ), to( @to));
+	background-image: -webkit-linear-gradient( @from, @to );
+	background-image: -moz-linear-gradient( @from, @to );
+	background-image: -ms-linear-gradient( @from, @to );
+	background-image: -o-linear-gradient( @from, @to );
+	background-image: linear-gradient( @from, @to );
+}

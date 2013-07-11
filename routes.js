@@ -27,6 +27,7 @@ module.exports = function(app) {
 
   // Root
   app.get("/", homeController.index);
+  app.get("/app", homeController.awesomeSauce);
 
   app.get("/users", usersController.index)
 
