@@ -126,7 +126,7 @@ section#places .pane-overlay{position:absolute;top:0;left:0;right:0;bottom:0;z-i
 .filter-list.subcategories{left:70%;z-index:4;}
 .places-header{padding-left:5px;}
 .places-list ul{position:absolute;left:0;top:0;bottom:0;width:45%;overflow:scroll;-webkit-overflow-scrolling:touch;}
-.selected-place{position:absolute;left:45%;top:0;bottom:0;width:57%;padding:10px;border-top:1px solid #eee;}.selected-place .small{font-size:0.8em;color:#687075;text-transform:uppercase;font-weight:bold;display:block;}
+.selected-place{position:absolute;left:45%;top:0;bottom:0;width:57%;padding:10px;border-top:1px solid #eee;overflow:scroll;-webkit-overflow-scrolling:touch;}.selected-place .small{font-size:0.8em;color:#687075;text-transform:uppercase;font-weight:bold;display:block;}
 .selected-place .breadcrumbs{margin-bottom:5px;}
 .selected-place .breadcrumb{padding:4px 7px;}
 .selected-place .page-header{margin:4px 0 8px;border-bottom:1px solid #eeeeee;}

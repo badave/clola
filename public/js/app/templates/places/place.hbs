@@ -6,13 +6,29 @@
 	<address>{{model.address}}</address>
 {{/if}}
 
+{{#if model.price}}
+	<p>{{model.price}}</p>
+{{/if}}
+
 {{#if model.description}}
 	<p>{{model.description}}</p>
 {{/if}}
 
+{{#if model.memo}}
+	<p>Memo: {{model.memo}}</p>
+{{/if}}
+
+{{#if model.site}}
+	<p><a href="{{model.site}}">{{model.site}}</a></p>
+{{/if}}
+
+{{#if model.cash_only}}
+	<p>This place is cash only</p>
+{{/if}}
+
 {{#if model.hours}}
 	{{#if model.hours.open}}
-		<p>{{model.hours.open}}-{{model.hours.closed}}</p>
+		<p>{{model.hours.open}}-{{model.hours.close}}</p>
 	{{/if}}
 {{/if}}
 
