@@ -1,6 +1,6 @@
 CitiesRowView = ListRowView.extend({
 	onSelect: function() {
-		App.PlacesController.trigger("city:selected", this.text);
+		App.vent.trigger("city:selected", this.elem);
 	}
 });
 

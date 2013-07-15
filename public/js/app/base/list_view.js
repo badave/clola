@@ -7,9 +7,11 @@ ListView = Backbone.Marionette.Layout.extend({
 
 		this.list = [];
 
-		_.each(this.array, function(item) {
+		this.$el.html("");
+
+		_.each(this.array, function(elem) {
 			var listElem = new that.rowView({
-				text: item
+				elem: elem
 			});
 			that.$el.append(listElem.render().$el);
 			that.list.push(listElem);

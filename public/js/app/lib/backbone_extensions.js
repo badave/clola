@@ -104,3 +104,34 @@ Backbone.Marionette.ItemView.prototype.template = Backbone.Marionette.CompositeV
   var template = Handlebars.templates[this.template_path];
   return template(this.context(modelJson));
 };
+
+Backbone.Collection.prototype.search = function (term, options) {
+  term = new RegExp($.trim( term ), "i");
+
+  options = options || {};
+  // included and excluded attributes
+  var includes = options.includes || [];
+  var excludes = options.excludes || [];
+
+  var array = [];
+
+  if( term ) {
+    this.each( function( model ){
+      var attributes = model.attributes;
+
+      for(var key in attributes) {
+        if((!includes.length || _.contains(includes, key)) &&
+          (!excludes.length || !_.contains(excludes, key))) {
+          var attribute = attributes[key];
+          if(term.test(attribute)) {
+            console.log(attribute);
+            array.push(model);
+            break;
+          }
+        }
+      }
+    });
+  }
+
+  return array;
+};

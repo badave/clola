@@ -1,6 +1,6 @@
 AreasRowView = ListRowView.extend({
 	onSelect: function() {
-		App.PlacesController.trigger("area:selected", this.text);
+		App.vent.trigger("area:selected", this.elem);
 	}
 });
 

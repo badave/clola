@@ -1,7 +1,7 @@
 ListRowView = Backbone.Marionette.ItemView.extend({
 	tagName: "li",
 	render: function() {
-		this.$el.html(this.text).append('<i class="icon-chevron-sign-right fr"></i>');
+		this.$el.html(this.elem).append('<i class="icon-chevron-sign-right fr"></i>');
 		return this;
 	},
 	events: {

@@ -25,3 +25,7 @@ placesController.find = function(req, res, next) {
 placesController.create = function(req, res) {
 	genericModel.create("places", req.body, genericModel.jsonResponder(req, res));
 }
+
+placesController.update = function(req, res) {
+	genericModel.update("places", { "_id": ObjectID(req.params.id) }, req.body, genericModel.jsonResponder(req, res));
+}

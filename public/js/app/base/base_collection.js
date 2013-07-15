@@ -5,5 +5,8 @@ var BaseCollection = Backbone.Collection.extend({
   },
   url:function () {
     return this.urlRoot();
+  },
+	pluckUnique: function(str) {
+  	return _.uniq(this.pluck(str));
   }
 });

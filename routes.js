@@ -29,7 +29,7 @@ module.exports = function(app) {
   app.get("/", homeController.index);
   app.get("/app", homeController.awesomeSauce);
 
-  app.get("/users", usersController.index)
+  app.get("/users", usersController.index);
 
   app.get("/customers", customersController.index)
   app.get("/v1/customers/:phone", customersController.findByNumber);
@@ -37,10 +37,9 @@ module.exports = function(app) {
   app.put("/v1/customers/:phone", customersController.update);
 
   app.get("/places", placesController.index);
-
   app.get("/v1/places", placesController.find);
-
   app.post("/v1/places", placesController.create);
+  app.put("/v1/places/:id", placesController.update);
 
 
   app.get("/sms/test", smsController.test);

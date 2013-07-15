@@ -1,6 +1,6 @@
 SubcategoriesRowView = ListRowView.extend({
 	onSelect: function() {
-		App.PlacesController.trigger("subcategory:selected", this.text);
+		App.vent.trigger("subcategory:selected", this.elem);
 	}
 });
 

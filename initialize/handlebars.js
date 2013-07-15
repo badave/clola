@@ -6,6 +6,8 @@ var moment = require('moment');
 var accounting = require('accounting');
 var path = require('path');
 
+var config = require('../config');
+
 var templatesDir = __dirname + '/../views/partials';
 
 // var templates = fs.readdirSync(templatesDir);
@@ -260,10 +262,14 @@ hbs.registerHelper("js", function(value, options) {
   }
   
   if(value === "app") {
+    if(config.localhost) {
     // Load local app files
-    backboneFiles.forEach(function(file) {
-      script += '<script src="' + file + '" type="text/javascript"></script>';
-    });
+      backboneFiles.forEach(function(file) {
+        script += '<script src="' + file + '" type="text/javascript"></script>';
+      });
+    } else {
+      script = '<script src="/assets/app.js" type="text/javascript"></script>';
+    }
   }
     // Always load from cdn
     // script = '<script src="' + config.cdn_assets_url + "/" + config.manifest[value + ".js"] + '" type="text/javascript"></script>';

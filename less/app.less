@@ -1,3 +1,4 @@
+@import "tags";
 @import "site";
 
 ::-webkit-scrollbar              { display:none; }
@@ -6,6 +7,14 @@
 ::-webkit-scrollbar-track-piece  { display:none; }
 ::-webkit-scrollbar-thumb        { display:none; }
 ::-webkit-scrollbar-corner       { display:none; }
+
+body {
+	overflow:hidden;
+}
+
+address {
+	margin-bottom:10px;
+}
 
 ul {
 	min-height: 100%;
@@ -54,39 +63,191 @@ ul {
 	}
 }
 
+@places-top: 100px;
 
 section#places {
-	.places-view {
+	#places-search {
+		margin-left:10px;
+	}
+
+	.pane {
 		position:absolute;
-		top:60px;
+		top: @places-top;
 		left:0;
 		right:50%;
-		bottom:40%;
+		bottom:0px;
+
+		.transition;
+
+		&.shrink {
+			bottom:50%;
+		}
+
+		&.shrinkFull {
+			bottom:100%;
+		}
+	}
+
+	.subpane {
+		position:absolute;
+		top:100%;
+		left:0;
+		right:50%;
+		bottom:0px;
+
+		.transition;
+
+		&.expand {
+			top:50%;
+		}
+
+		&.full {
+			top:@places-top;
+		}
+	}
+
+	.sidepane.left {
+		position:absolute;
+		top:0;
+		left:0;
+		right:100%;
+		bottom:0;
+		z-index:0;
+
+		overflow:scroll;
+		-webkit-overflow-scrolling: touch;
+
+		.transition;
+
+		background-color:#fff;
+		border-right:1px solid #ccc;
+
+		.box-shadow;
+
+		&.expand {
+			right:70%;
+			z-index:6;
+		}
+	}
+
+	.pane-overlay {
+		position:absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom:0;
+		z-index:5;
 	}
 }
 
-.places-list {
+.filter-list {
 	position:absolute;
 	left:0;
 	top:0;
 	bottom:0;
-	width:35%;
+	width: 35%;
 
 	overflow:scroll;
 	-webkit-overflow-scrolling: touch;
 
-	&.areas {
-		left: 20%;
+	&.cities {
 		z-index:1;
 	}
 
-	&.categories {
-		left:45%;
+	&.areas {
+		left: 20%;
 		z-index:2;
 	}
 
-	&.subcategories {
-		left:70%;
+	&.categories {
+		left: 45%;
 		z-index:3;
+	}
+
+	&.subcategories {
+		left: 70%;
+		z-index:4;
+	}
+}
+
+.places-header {
+	padding-left:5px;
+}
+
+@place-width: 57%;
+@places-list-width: 45%;
+.places-list ul {
+	position:absolute;
+	left:0;
+	top:0;
+	bottom:0;
+	width: @places-list-width;
+
+	overflow:scroll;
+	-webkit-overflow-scrolling: touch;
+}
+
+.selected-place {
+	position: absolute;
+	left: @places-list-width;
+	top: 0;
+	bottom: 0;
+	width: @place-width;
+
+	padding:10px;
+
+	border-top:1px solid #eee;
+	
+	.small {
+		font-size: 0.8em;
+		color: #687075;
+		text-transform: uppercase;
+		font-weight: bold;
+		display: block;
+	}
+
+	.breadcrumbs {
+		margin-bottom: 5px;
+	}
+
+	.breadcrumb {
+		padding: 4px 7px;
+	}
+
+	.page-header {
+		margin:4px 0 8px;
+		border-bottom: 1px solid #eeeeee;
+	}
+}
+
+.sidepane-header {
+	padding: 25px;
+	text-transform: uppercase;
+	font-weight: 600;
+	font-size: 1.1em;
+}
+
+.place-form {
+	table {
+		margin:20px;
+		margin-top: 0px;
+		padding-top: 0px;
+
+		td {
+			padding-top:12px;
+			font-weight: 600;
+			color: #666;
+		}
+
+		td:first-child {
+			text-align: right;
+			text-transform:uppercase;
+			padding-right: 8px;
+		}
+
+	}
+
+	input[type="radio"], input[type="checkbox"] {
+		margin:0;
 	}
 }

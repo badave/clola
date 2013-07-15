@@ -1,10 +1,5 @@
 var hbs = require("hbs");
 
-var loaders = { 
-  "c.js": "cart.js", 
-  "o.js": "celery.js"
-};
-
 module.exports = function(grunt) {
   "use strict";
 
@@ -71,10 +66,6 @@ module.exports = function(grunt) {
       css: {
         src: ['public/css/lib/bootstrap.css', 'public/css/lib/**/*.css', 'public/css/src/**/*.css'],
         dest: 'build/concat/css/application.bundle.css'
-      },
-      appjs: {
-        src: ['public/js/app/**/*.js'],
-        dest: 'build/concat/js/app.bundle.js'
       }
     },
 
@@ -88,10 +79,6 @@ module.exports = function(grunt) {
       js: {
         src: 'build/concat/js/application.bundle.js',
         dest: 'build/min/application.js'
-      },
-      appjs: {
-        src: "build/concat/js/app.bundle.js",
-        dest: "build/min/app.js"
       },
       public_js: {
         files: [{
@@ -112,7 +99,7 @@ module.exports = function(grunt) {
       public_css: {
         files: [{
           expand: true,
-          src: "*.less",
+          src: "*.less", 
           dest: "build/min",
           cwd: "less",
           ext: '.css'
@@ -135,45 +122,22 @@ module.exports = function(grunt) {
     md5: {
       all: {
         files: [{
-          expand: true, 
-          src: '*',
+          expand: true,
+          src: "*",
           dest: "assets/",
           cwd: "build/min"
         }],
         options: {
-          after: function(fileChanges, options){
-            var updateJavascriptLoaders = function(oldName, newName) {
-              if(loaders[oldName]) {
-                var file = grunt.file.read("./views/partials/javascript-loader.handlebars");
-                var template = hbs.compile(file);
-
-                var javascript = template({
-                  "oldName": oldName,
-                  "newName": newName
-                });
-
-                grunt.file.write("./js/" + loaders[oldName], javascript, function(err) {
-                  if(err) {
-                    grunt.log.writeln(err);
-                  } else {
-                    grunt.log.writeln("Created manifest.json");
-                  }
-                });
-                grunt.log.writeln("Updated " + loaders[oldName] + " with hashed file name");
-              }
-            };
-
+          after: function(fileChanges, options) {
             if(fileChanges) {
-              var hsh = {};
+              var hsh = {}
               fileChanges.forEach(function(change) {
                 var split = change.oldPath.split("/");
                 var spl = change.newPath.split("/");
                 var oldName = split[split.length-1];
                 var newName = spl[spl.length-1];
                 hsh[oldName] = newName;
-                updateJavascriptLoaders(oldName, newName);
-              });
-
+              })
               var json = JSON.stringify(hsh);
               // grunt.log(json);
 
@@ -183,7 +147,7 @@ module.exports = function(grunt) {
                 } else {
                   grunt.log.writeln("Created manifest.json");
                 }
-              });
+              })
 
             } else {
               grunt.log.writeln("No file changes");
@@ -208,6 +172,6 @@ module.exports = function(grunt) {
 
   // Tasks
   grunt.registerTask("lint", ["jshint:public_js"]);
-  grunt.registerTask("all", ['concat:*', 'uglify:*', 'less:*', 'cssmin:*', "md5:*"]);
+  grunt.registerTask("all", ['concat:js', 'concat:css', 'uglify:js', 'uglify:public_js', 'less:public_css', 'cssmin:css', "md5:all"])
   grunt.registerTask("default", "all");
 };

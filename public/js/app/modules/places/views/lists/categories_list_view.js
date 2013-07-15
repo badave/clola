@@ -1,6 +1,6 @@
 CategoriesRowView = ListRowView.extend({
 	onSelect: function() {
-		App.PlacesController.trigger("category:selected", this.text);
+		App.vent.trigger("category:selected", this.elem);
 	}
 });
 

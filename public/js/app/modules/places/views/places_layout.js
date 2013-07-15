@@ -7,29 +7,77 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 		"areas": ".areas",
 		"categories": ".categories",
 		"subcategories": ".subcategories",
-		"places": ".places",
-		"place": ".place"
+		"places_list": ".places-list",
+		"place": ".selected-place",
+		"sidepane": ".sidepane.left"
 	},
+
 	events: {
-		"render": "onRender"
+		"keyup #places-search": "searchPlaces",
+		"click #add-place": "newPlace",
+		"click .pane-overlay": "hideSidepane"
 	},
+
 	onRender: function() {
 		this.renderCities();
 		this.bindEvents();
 	},
+
 	bindEvents: function() {
 		var that = this;
-		_.bindAll(this, "selectArea", "selectCategory", "selectSubcategory");
-		App.PlacesController.listenTo(App.PlacesController, "city:selected", that.selectArea);
-		App.PlacesController.listenTo(App.PlacesController, "area:selected", that.selectCategory);
-		App.PlacesController.listenTo(App.PlacesController, "category:selected", that.selectSubcategory);
+		_.bindAll(this, "selectArea", 
+			"selectCategory", 
+			"selectSubcategory", 
+			"showPlaces", 
+			"selectPlace",
+			"editPlace",
+			"hideSidepane",
+			"updateViews");
+
+		App.vent.on("city:selected", this.selectArea);
+		App.vent.on("area:selected", this.selectCategory);
+		App.vent.on("category:selected", this.selectSubcategory);
+		App.vent.on("subcategory:selected", this.showPlaces);
+		App.vent.on("place:selected", this.selectPlace);
+		App.vent.on("place:edit", this.editPlace);
+		App.vent.on("hide:sidepane-left", this.hideSidepane);
+
+		this.collection.on("change", this.updateViews);
+		this.collection.on("add", this.updateViews);
 
 	},
+
+	updateViews: function() {
+		if(this.citiesListView) {
+			this.citiesListView.onRender();
+		}
+
+		if(this.areasListView) {
+			this.areasListView.onRender();
+		}
+
+		if(this.categoriesListView) {
+			this.categoriesListView.onRender();
+		}
+
+		if(this.subcategoriesListView) {
+			this.categoriesListView.onRender();
+		}
+
+		if(this.placesListView) {
+			this.placesListView.onRender();
+		}
+
+		if(this.placeView) {
+			this.placeView.render();
+		}
+	},
+
 	renderCities: function() {
-		var cities = this.collection.cities();
+		var cities = this.collection.pluckUnique("city");
 
 		this.citiesListView = new CitiesListView({
-			array: this.collection.cities()
+			array: cities
 		});
 
 		// this.cities is the region
@@ -40,6 +88,7 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 			this.selectArea(cities[0]);
 			this.citiesListView.list[0].select();
 		}
+
 	},
 
 	selectArea: function(city) {
@@ -58,6 +107,8 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 		}
 
 		this.renderAreasList();
+
+		this.hideSubpane();
 	},
 
 	renderAreasList: function() {
@@ -68,6 +119,7 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 		});
 
 		this.areas.show(this.areasListView);
+
 	},
 
 	selectCategory: function(area) {
@@ -81,6 +133,8 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 		}
 
 		this.renderCategoriesList();
+
+		this.hideSubpane();
 	},
 
 	renderCategoriesList: function() {
@@ -95,7 +149,12 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 
 	selectSubcategory: function(category) {
 		this.params.category = category;
+
+		delete this.params.subcategory;
+
 		this.renderSubcategoriesList();
+
+		this.hideSubpane();
 	},
 
 	renderSubcategoriesList: function() {
@@ -108,6 +167,127 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 		this.subcategories.show(this.subcategoriesListView);
 	},
 
+	showPlaces: function(subcategory) {
+		this.params.subcategory = subcategory;
+
+		var places = this.collection.where(this.params);
+
+		this.placesListView = new PlacesListView({
+			array: places
+		});
+
+		this.places_list.show(this.placesListView);
+
+		this.showSubpane();
+
+		if(places.length === 1) {
+			this.selectPlace(places[0]);
+
+			this.placesListView.list[0].select();
+		}
+	},
+
+	selectPlace: function(place) {
+		this.placeView = new PlaceView({
+			model: place
+		});
+
+		console.log(place.attributes);
+
+		this.place.show(this.placeView);
+	},
+
+	searchPlaces: function() {
+		var search = this.$el.find("#places-search").val();
+
+		if(search && search.length > 2) {
+			var places = this.collection.search(search, {
+				"excludes": ["category", "subcategory", "area", "city"]
+			});
+
+			this.placesListView = new PlacesListView({
+				array: places
+			});
+
+			this.places_list.show(this.placesListView);
+
+			this.fullSubpane();
+
+			if(places.length === 1) {
+				this.selectPlace(places[0]);
+				
+				this.placesListView.list[0].select();
+			}
+		} else {
+			// else if we aren't displaying something...
+			if(!this.params.subcategory) {
+				this.hideSubpane();
+			} else {
+				this.showPlaces(this.params.subcategory);
+
+				this.hideSubpane();
+				this.showSubpane();
+			}
+		}
+	},
+
+	newPlace: function() {
+		var place = new Place();
+		this.editPlace(place);
+	},
+
+	editPlace: function(place) {
+		var cities = this.collection.pluckUnique("city");
+		var areas = this.collection.pluckUnique("area");
+		var categories = this.collection.pluckUnique("category");
+		var subcategories = this.collection.pluckUnique("subcategory");
+
+		this.placeEditView = new PlaceEditView({
+			model: place,
+			cities: cities,
+			areas: areas,
+			categories: categories,
+			subcategories: subcategories
+		});
+
+		this.sidepane.show(this.placeEditView);
+		this.showSidepane();
+	},
+
+	showSubpane: function() {
+		this.$el.find(".pane").addClass("shrink");
+		this.$el.find(".subpane").addClass("expand");
+	},
+
+	fullSubpane: function() {
+		this.$el.find(".pane").addClass("shrinkFull");
+		this.$el.find(".subpane").addClass("full");
+	},
+
+	hideSubpane: function() {
+		this.$el.find(".pane").removeClass("shrink");
+		this.$el.find(".subpane").removeClass("expand");
+
+
+		this.$el.find(".pane").removeClass("shrinkFull");
+		this.$el.find(".subpane").removeClass("full");
+	},
+
+	showSidepane: function() {
+		this.$el.find(".sidepane").addClass("expand");
+		this.$el.find(".pane-overlay").show();
+		var that = this;
+		setTimeout(function() { that.$el.find(".sidepane form").fadeIn(); }, 300)
+	},
+
+	hideSidepane: function() {
+		var that = this;
+		this.$el.find(".sidepane form").fadeOut();
+		this.$el.find(".pane-overlay").hide();
+		setTimeout(function() { 
+			that.$el.find(".sidepane").removeClass("expand"); 
+		}, 300);
+	},
 
 	uniques: function(key) {
 		return _.sortBy(_.uniq(_.map(this.collection.where(this.params), function(el) {

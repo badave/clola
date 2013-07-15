@@ -1,0 +1,96 @@
+{{! 
+
+ Searchable Keywords
+ -(we can input specific keywords to describe each vendor) example: "modern" "grab and go" "breakfast all day"
+ -"Text it" button added this fwds the (name, address, phone number, default) ability to include hours and a pre made memo about vendor
+ Example: "try the Brooklyn blackout cupcake it's amazing"
+}}
+<div class="sidepane-header">
+	<a class="hide-sidepane"><i class="icon-chevron-left"></i> Cancel</a>
+	<a class="save-place fr">Save <i class="icon-chevron-right"></i></a>
+</div>
+<table>
+	<tbody>
+		<tr>
+			<td>Name</td>
+			<td><input type="text" name="name" value="{{model.name}}" placeholder="Name of place" /></td>
+		</tr>
+
+		<tr>
+			<td>Address</td>
+			<td><input type="text" name="address" value="{{model.address}}" placeholder="Address" /></td>
+		</tr>
+
+
+		<tr>
+			<td>Phone</td>
+			<td><input type="text" name="contact" value="{{model.contact}}" placeholder="Contact Number" /></td>
+		</tr>
+
+		<tr>
+			<td>Description</td>
+			<td><textarea name="description" placeholder="Description">{{model.description}}</textarea></td>
+		</tr>
+
+		<tr>
+			<td>Hours</td>
+			<td>
+				<input name="hours[open]" type="number" min="0" max="23" placeholder="open" value="{{model.hours.open}}" style="width:37%" /> to
+				<input name="hours[close]" type="number" min="0" max="23" placeholder="closes" value="{{model.hours.close}}" style="width:37%" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>Site</td>
+			<td>
+				<input name="site" type="url" value="{{model.site}}" placeholder="http://" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>Memo</td>
+			<td>
+				<textarea name="memo" placeholder="Memo" maxlength="140">{{model.memo}}</textarea>
+			</td>
+		</tr>
+
+		<tr>
+			<td>Tags</td>
+			<td>
+				<input type="text" name="tags" placeholder="Tags (seperate by commas)" />
+			</td>
+		</tr>
+
+		<tr>
+			<td>Price</td>
+			<td><input type="text" name="price" placeholder="$$$" /></td>
+		</tr>
+
+
+		<tr>
+			<td></td>
+			<td><input type="checkbox" name="cash_only" id="cash-only" selected="{{model.cash_only}}" /> <label for="cash-only" style="display:inline-block;" >Cash Only</label></td>
+		</tr>
+
+		<tr>
+			<td>City</td>
+			<td><input type="text" name="city" autocomplete="off" placeholder="City" value="{{model.city}}" />
+		</tr>
+
+		<tr>
+			<td>Area</td>
+			<td><input type="text" name="area" autocomplete="off" placeholder="Area" value="{{model.area}}" />
+		</tr>
+
+		<tr>
+			<td>Interest</td>
+			<td><input type="text" name="category" autocomplete="off" placeholder="Interest" value="{{model.category}}" />
+		</tr>
+
+		<tr>
+			<td>Category</td>
+			<td><input type="text" name="subcategory" autocomplete="off" placeholder="Category" value="{{model.subcategory}}" />
+		</tr>
+
+	</tbody>
+</table>

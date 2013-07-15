@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h4>{{model.name}}<br /><small>{{model.contact}}</small></h4>
+</div>
+
+{{#if model.address}}
+	<address>{{model.address}}</address>
+{{/if}}
+
+{{#if model.description}}
+	<p>{{model.description}}</p>
+{{/if}}
+
+{{#if model.hours}}
+	{{#if model.hours.open}}
+		<p>{{model.hours.open}}-{{model.hours.closed}}</p>
+	{{/if}}
+{{/if}}
+
+<div class="breadcrumbs small">
+	<span class="breadcrumb">{{model.city}}</span> <i class="icon-chevron-right"></i> 
+	<span class="breadcrumb">{{model.area}}</span>  <i class="icon-chevron-right"></i>
+	<span class="breadcrumb">{{model.category}}</span> <i class="icon-chevron-right"></i>
+	<span class="breadcrumb">{{model.subcategory}}</span>
+</div>
+
+{{#if model.tags}}
+<div class="breadcrumbs small">
+	{{#each model.tags}}
+	<span class="breadcrumb">{{this}}</span>
+	{{/each}}
+</div>
+{{/if}}
+
+<p><button class="edit btn btn-mini" type="button">edit</button></p>
