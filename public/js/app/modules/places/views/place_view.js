@@ -6,7 +6,6 @@ PlaceView = Backbone.Marionette.ItemView.extend({
 		"tap .edit": "onEdit"
 	},
 	context: function(modelJson){
-
 		modelJson.tags = modelJson.tags ? modelJson.tags.split(","): [];
 		return {
 			model: modelJson

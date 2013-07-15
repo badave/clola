@@ -41,6 +41,9 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 		App.vent.on("place:selected", this.selectPlace);
 		App.vent.on("place:edit", this.editPlace);
 		App.vent.on("hide:sidepane-left", this.hideSidepane);
+		App.vent.on("place:created", function(place) {
+			that.collection.add(place);
+		})
 
 		this.collection.on("change", this.updateViews);
 		this.collection.on("add", this.updateViews);

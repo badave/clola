@@ -4,7 +4,8 @@ PlaceEditView = Backbone.Marionette.ItemView.extend({
 	className: "place-form hide",
 	events: {
 		"click .hide-sidepane": "hidePane",
-		"click .save-place": "save"
+		"click .save-place": "save",
+		"submit": "save"
 	},
 	hidePane: function() {
 		App.vent.trigger("hide:sidepane-left");
@@ -18,15 +19,23 @@ PlaceEditView = Backbone.Marionette.ItemView.extend({
 	},
 	save: function() {
 		var data = Backbone.Syphon.serialize(this);
-		
+
 		if(data["hidden-tags"]) {
 			data.tags = data["hidden-tags"];
 			delete data["hidden-tags"];
 		}
 
 		this.model.set(data);
+
+		var isNew = this.model.isNew();
+		var that = this;
+
 		this.model.save({}, {
 			success: function() {
+				if(isNew) {
+					App.vent.trigger("place:created", that.model);
+				}
+
 				App.vent.trigger("hide:sidepane-left");
 			},
 			error: function() {

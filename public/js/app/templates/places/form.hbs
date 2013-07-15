@@ -13,14 +13,33 @@
 	<tbody>
 		<tr>
 			<td>Name</td>
-			<td><input type="text" name="name" value="{{model.name}}" placeholder="Name of place" /></td>
+			<td><input type="text" name="name" value="{{model.name}}" placeholder="Name of place" required/></td>
+		</tr>
+
+		<tr>
+			<td>City</td>
+			<td><input type="text" name="city" autocomplete="off" placeholder="City" value="{{#if model.city}}{{model.city}}{{else}}New York City{{/if}}" required/>
+		</tr>
+
+		<tr>
+			<td>Area</td>
+			<td><input type="text" name="area" autocomplete="off" placeholder="Area" value="{{model.area}}" required/>
+		</tr>
+
+		<tr>
+			<td>Interest</td>
+			<td><input type="text" name="category" autocomplete="off" placeholder="Interest" value="{{model.category}}" required/>
+		</tr>
+
+		<tr>
+			<td>Category</td>
+			<td><input type="text" name="subcategory" autocomplete="off" placeholder="Category" value="{{model.subcategory}}" required/>
 		</tr>
 
 		<tr>
 			<td>Address</td>
 			<td><input type="text" name="address" value="{{model.address}}" placeholder="Address" /></td>
 		</tr>
-
 
 		<tr>
 			<td>Phone</td>
@@ -35,7 +54,7 @@
 		<tr>
 			<td>Hours</td>
 			<td>
-				<input name="hours[open]" type="number" min="0" max="23" placeholder="open" value="{{model.hours.open}}" style="width:37%" /> to
+				<input name="hours[open]" type="number" min="0" max="23" placeholder="opens" value="{{model.hours.open}}" style="width:37%" /> to
 				<input name="hours[close]" type="number" min="0" max="23" placeholder="closes" value="{{model.hours.close}}" style="width:37%" />
 			</td>
 		</tr>
@@ -70,26 +89,6 @@
 		<tr>
 			<td></td>
 			<td><input type="checkbox" name="cash_only" id="cash-only" selected="{{model.cash_only}}" /> <label for="cash-only" style="display:inline-block;" >Cash Only</label></td>
-		</tr>
-
-		<tr>
-			<td>City</td>
-			<td><input type="text" name="city" autocomplete="off" placeholder="City" value="{{model.city}}" />
-		</tr>
-
-		<tr>
-			<td>Area</td>
-			<td><input type="text" name="area" autocomplete="off" placeholder="Area" value="{{model.area}}" />
-		</tr>
-
-		<tr>
-			<td>Interest</td>
-			<td><input type="text" name="category" autocomplete="off" placeholder="Interest" value="{{model.category}}" />
-		</tr>
-
-		<tr>
-			<td>Category</td>
-			<td><input type="text" name="subcategory" autocomplete="off" placeholder="Category" value="{{model.subcategory}}" />
 		</tr>
 
 	</tbody>

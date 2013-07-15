@@ -5,6 +5,9 @@ BaseModel = Backbone.Model.extend({
 		return "/v1/" + this.resource;
 	},
 	url: function() {
+		if(this.isNew()) {
+			return this.urlRoot();
+		}
 		return this.urlRoot() + "/" + this.get("_id");
 	}
 });
