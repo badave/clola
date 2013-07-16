@@ -1,5 +1,8 @@
+@import "vars";
 @import "tags";
-@import "site";
+@import "mixins";
+@import "fixins";
+
 
 ::-webkit-scrollbar              { display:none; }
 ::-webkit-scrollbar-button       { display:none; }
@@ -8,8 +11,17 @@
 ::-webkit-scrollbar-thumb        { display:none; }
 ::-webkit-scrollbar-corner       { display:none; }
 
+header {
+	padding: 10px;
+}
+
 body {
 	overflow:hidden;
+	font-family: @font-family;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 4px 0;
 }
 
 address {
@@ -68,6 +80,7 @@ ul {
 section#places {
 	#places-search {
 		margin-left:10px;
+		margin-bottom: 0;
 	}
 
 	.pane {
@@ -167,6 +180,10 @@ section#places {
 	&.subcategories {
 		left: 70%;
 		z-index:4;
+
+		.icon-chevron-sign-right {
+			.transform(rotate(90deg));
+		}
 	}
 }
 
@@ -197,7 +214,7 @@ section#places {
 	padding:10px;
 
 	border-top:1px solid #eee;
-	
+
 	overflow:scroll;
 	-webkit-overflow-scrolling: touch;
 
@@ -221,6 +238,7 @@ section#places {
 	.page-header {
 		margin:4px 0 8px;
 		border-bottom: 1px solid #eeeeee;
+		padding-bottom: 4px;
 	}
 }
 

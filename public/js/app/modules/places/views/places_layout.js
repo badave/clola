@@ -183,7 +183,7 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 
 		this.showSubpane();
 
-		if(places.length === 1) {
+		if(places.length) {
 			this.selectPlace(places[0]);
 
 			this.placesListView.list[0].select();
@@ -216,7 +216,7 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 
 			this.fullSubpane();
 
-			if(places.length === 1) {
+			if(places.length) {
 				this.selectPlace(places[0]);
 				
 				this.placesListView.list[0].select();

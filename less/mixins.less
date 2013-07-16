@@ -53,7 +53,8 @@
 
 .box-shadow (@size: 1px, @color: #f8f9fa) {
 	-moz-box-shadow: 0 @size 0 @color;
-	-webkit-box-shadow: 0 @size 0 #f8f9fa;
+	-webkit-box-shadow: 0 @size 0 @color;
+	-ms-box-shadow:0 @size 0 @color;
 	box-shadow: 0 @size 0 @color;
 }
 
@@ -71,4 +72,12 @@
 	-moz-transition: @transition; /* Firefox 4 */
 	-webkit-transition: @transition; /* Safari and Chrome */
 	-o-transition: @transition; /* Opera */
+	-ms-transition: @transition;
+}
+
+.transform (@transform) {
+	transform: @transform;
+	-moz-transform: @transform;
+	-webkit-transform: @transform;
+	-ms-transform: @transform;
 }
