@@ -41,6 +41,7 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 		App.vent.on("place:selected", this.selectPlace);
 		App.vent.on("place:edit", this.editPlace);
 		App.vent.on("hide:sidepane-left", this.hideSidepane);
+
 		App.vent.on("place:created", function(place) {
 			that.collection.add(place);
 		})
@@ -51,6 +52,7 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 	},
 
 	updateViews: function() {
+		// Refactor to use list view instead of this by passing collection to each view
 		if(this.citiesListView) {
 			this.citiesListView.onRender();
 		}

@@ -23,9 +23,15 @@ var AppRouter = Backbone.Router.extend({
         }
       });
 
-      loadMessages(function() {
+      // loadMessages(function() {
+        if(!that.messagesLayout) {
+          that.messagesLayout = new MessagesLayout({
+            collection: App.messages
+          });
 
-      });
+          App.layout.messages.show(that.messagesLayout);
+        }
+      // });
     };
 
     function loadPlaces(callback) {
@@ -40,6 +46,11 @@ var AppRouter = Backbone.Router.extend({
           callback();
         }
       });
+    }
+
+    function loadMessages(callback) {
+
+      callback();
     }
 
     return Backbone.Router.apply(that, arguments);
