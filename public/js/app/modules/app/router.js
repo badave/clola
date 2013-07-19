@@ -21,7 +21,11 @@ var AppRouter = Backbone.Router.extend({
 
           App.layout.places.show(that.placesLayout);
         }
-      })
+      });
+
+      loadMessages(function() {
+
+      });
     };
 
     function loadPlaces(callback) {
