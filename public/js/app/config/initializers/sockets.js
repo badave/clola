@@ -10,6 +10,6 @@ App.addInitializer(function(options) {
 	}
 
 	socket.on("msg", function(data) {
-		messages.add(data);
+		App.messages.add(data);
 	});
 });
