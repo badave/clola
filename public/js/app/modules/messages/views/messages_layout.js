@@ -1,9 +1,11 @@
 MessagesLayout = Backbone.Marionette.Layout.extend({
 	template_path: "messages/layout",
+	
 	regions: {
 		"messages": "#messages-list",
 		"message_views": "#message-views"
 	},
+	
 	onRender: function() {
 		this.renderMessages();
 
@@ -13,6 +15,7 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
 
 		App.vent.on("message:selected", this.selectMessages);
 	},
+	
 	renderMessages: function() {
 		var messages = this.collection.newMessages();
 
