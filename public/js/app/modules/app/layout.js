@@ -1,7 +1,8 @@
 AppLayout = Backbone.Marionette.Layout.extend({
 	regions: {
 		places: "#places",
-		messages: "#messages"
+		messages: "#messages",
+		customers: "#customers"
 	},
 	template_path: "app/layout"
 });

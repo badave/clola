@@ -1,4 +1,5 @@
 Customer = BaseModel.extend({ 
+	resource: "customers",
 	url: function() {
 		if(this.get("phone")) {
 			return this.urlRoot() + "/" + this.get("phone");
@@ -16,5 +17,3 @@ Customer = BaseModel.extend({
 		});
 	}
 });
-
-

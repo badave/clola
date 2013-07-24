@@ -38,5 +38,6 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
 		});
 
 		this.message_views.show(this.messageView);
+		
 	}
 });

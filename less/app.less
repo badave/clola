@@ -90,6 +90,7 @@ section#messages {
 		right:0;
 		bottom:0;
 		top: 0;
+		z-index:3;
 	}
 
 	.message-view {
@@ -143,6 +144,49 @@ section#messages {
 			color:#888;
 			font-size:0.92em;
 			padding-top: 4px;
+		}
+	}
+}
+
+section#customers {
+	.customers {
+	 	position: absolute;
+		left: 55%;
+		right: 0;
+		bottom: 0;
+		top: 100px;	
+
+
+		.customer-view {
+			position:absolute;
+			top:50%;
+			right:25%;
+			bottom:0;
+			left:0;
+			
+			.scroll;
+		}
+	}
+
+	.sidepane.left {
+		position:absolute;
+		top:0;
+		left:0;
+		right:100%;
+		bottom:0;
+		z-index:0;
+
+		.scroll;
+		.transition;
+
+		background-color:#fff;
+		border-right:1px solid #ccc;
+
+		.box-shadow;
+
+		&.expand {
+			right:70%;
+			z-index:6;
 		}
 	}
 }

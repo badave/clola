@@ -23,15 +23,15 @@ var AppRouter = Backbone.Router.extend({
         }
       });
 
-      // loadMessages(function() {
-        if(!that.messagesLayout) {
-          that.messagesLayout = new MessagesLayout({
-            collection: App.messages
-          });
+      if(!that.messagesLayout) {
+        that.messagesLayout = new MessagesLayout({
+          collection: App.messages
+        });
 
-          App.layout.messages.show(that.messagesLayout);
-        }
-      // });
+        App.layout.messages.show(that.messagesLayout);
+      }
+
+      App.vent.on("message:selected", showCustomer);
     };
 
     function loadPlaces(callback) {
@@ -48,10 +48,30 @@ var AppRouter = Backbone.Router.extend({
       });
     }
 
-    function loadMessages(callback) {
+    function showCustomer(phone) {
+      var customer = new Customer({
+        "phone": phone
+      });
 
-      callback();
+      customer.fetch({
+        prefill: true,
+        prefillSuccess: function() {
+          renderCustomer(customer);
+        },
+        success: function() {
+          renderCustomer(customer);
+        }
+      });
     }
+
+    function renderCustomer(customer) {
+      that.customerLayout = new CustomerLayout({
+        model: customer
+      });
+
+      App.layout.customers.show(that.customerLayout);
+    }
+
 
     return Backbone.Router.apply(that, arguments);
   }
