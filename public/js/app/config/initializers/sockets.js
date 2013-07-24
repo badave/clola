@@ -3,13 +3,13 @@ App.addInitializer(function(options) {
 
 	App.messages.fetch();
 
-	var socket = io.connect('http://clola.herokuapp.com:80/');  
+	App.socket = io.connect('http://clola.herokuapp.com:80/');  
 
 	if(options.localhost) {
-		io.connect('http://clola.herokuapp.com:80/'); 
+		io.connect('http://localhost:5050/'); 
 	}
 
-	socket.on("msg", function(data) {
+	App.socket.on("msg", function(data) {
 		App.messages.add(data);
 	});
 });
