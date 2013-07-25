@@ -214,22 +214,13 @@ section#places {
 			top:@places-top;
 		}
 	}
-
-	.pane-overlay {
-		position:absolute;
-		top:0;
-		left:0;
-		right:0;
-		bottom:0;
-		z-index:5;
-	}
 }
 
 .sidepane {
 	position:absolute;
 	top:0;
 	bottom:0;
-	z-index:0;
+	z-index:6;
 
 	.scroll;
 	.transition;
@@ -263,6 +254,14 @@ section#places {
 		text-transform: uppercase;
 		font-weight: 600;
 		font-size: 1.1em;
+
+		a {
+			cursor: pointer;
+
+			&:hover {
+				text-decoration:none;
+			}
+		}
 	}
 
 	form {
@@ -290,6 +289,15 @@ section#places {
 			margin:0;
 		}
 	}
+}
+
+.pane-overlay {
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	z-index:5;
 }
 
 

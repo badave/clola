@@ -1,15 +1,18 @@
 CustomerEditView = Backbone.Marionette.ItemView.extend({
 	template_path: "customers/templates/form",
 	tagName: "form",
-	className: "customer-form hide",events: {
+	className: "customer-form hide",
+	events: {
 		"click .hide-sidepane": "hidePane",
-		"click .save-place": "save",
+		"click .save": "save",
 		"submit": "save"
 	},
 	hidePane: function() {
-		App.vent.trigger("hide:sidepane-left");
+		App.vent.trigger("hide:sidepane-right");
 	},
-	save: function() {
+	save: function(e) {
+		e.preventDefault();
+
 		var data = Backbone.Syphon.serialize(this);
 
 		this.model.set(data);
@@ -17,12 +20,16 @@ CustomerEditView = Backbone.Marionette.ItemView.extend({
 		var isNew = this.model.isNew();
 		var that = this;
 
+		var bh = $(".save").buttonHelper("Saving");
+		bh.loading();
+
 		this.model.save({}, {
 			success: function() {
-				App.vent.trigger("hide:sidepane-left");
+				bh.success();
+				that.hidePane();
 			},
 			error: function() {
-				alert("Failed to Save");
+				$(".save").buttonHelper.failed();
 			}
 		});
 	}
