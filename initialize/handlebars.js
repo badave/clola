@@ -48,7 +48,7 @@ walk(templatesDir, function(err, results) {
     })
 });
 
-var backboneDir = __dirname + "/../public/js/app";
+var backboneDir = __dirname + "/../backbone";
 var backboneFiles = [];
 
 // This creates a list of javascript files in the public/js/app directory
@@ -59,7 +59,7 @@ walk(backboneDir, function(err, results) {
       return;
     }
     var name = matches[1];
-    var rel = path.relative(path.dirname(__dirname), filename).replace("public", '');
+    var rel = "/" + path.relative(path.dirname(__dirname), filename).replace("public", '').replace("backbone/", "js/app/");
     // These are all javascript paths inside of the backbone directory
     backboneFiles.push(rel);
   });

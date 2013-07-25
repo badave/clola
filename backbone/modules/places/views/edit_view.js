@@ -1,5 +1,5 @@
 PlaceEditView = Backbone.Marionette.ItemView.extend({
-	template_path: "places/form",
+	template_path: "places/templates/form",
 	tagName: "form",
 	className: "place-form hide",
 	events: {

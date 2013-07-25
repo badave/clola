@@ -4,5 +4,5 @@ AppLayout = Backbone.Marionette.Layout.extend({
 		messages: "#messages",
 		customers: "#customers"
 	},
-	template_path: "app/layout"
+	template_path: "app/templates/layout"
 });

@@ -1,5 +1,5 @@
 CustomerLayout = Backbone.Marionette.Layout.extend({
-	template_path: "customers/layout",
+	template_path: "customers/templates/layout",
 	className: "customers-layout",
 	regions: {
 		"customers": ".customers",

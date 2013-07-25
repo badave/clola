@@ -163,11 +163,17 @@ app.configure(function (){
       force: config.test
   }));
 
-  app.use("/js/templates.js", hbsTemplates(__dirname + "/public/js/app/templates", {
+  app.use("/js/templates.js", hbsTemplates(__dirname + "/backbone/modules", {
     exts: ['hbs','handlebars']
   }));
 
+  app.configure('development', function() {
+    app.use("/js/app", express.static(path.join(__dirname, 'backbone')));
+  });
+
   app.use(express.static(path.join(__dirname, 'public')));
+
+  app.use(express.static(path.join(__dirname, 'js')));
 
   app.engine('handlebars', require('hbs').__express);
   app.set('port', process.env.PORT || 5050);
