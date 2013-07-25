@@ -43,14 +43,18 @@ section#messages .message{position:relative;top:45px;z-index:1;clear:both;paddin
 section#messages .message .reply{text-align:right;background-color:#cfe1f3;}
 section#messages .message .time{float:left;margin-left:40px;color:#888;font-size:0.92em;padding-top:4px;}
 section#customers .customers{position:absolute;left:55%;right:0;bottom:0;top:100px;}section#customers .customers .customer-view{position:absolute;top:50%;right:25%;bottom:0;left:0;overflow:scroll;-webkit-overflow-scrolling:touch;}
-section#customers .sidepane.left{position:absolute;top:0;left:0;right:100%;bottom:0;z-index:0;overflow:scroll;-webkit-overflow-scrolling:touch;transition:all 0.5s;-moz-transition:all 0.5s;-webkit-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;background-color:#fff;border-right:1px solid #ccc;-moz-box-shadow:0 1px 0 #f8f9fa;-webkit-box-shadow:0 1px 0 #f8f9fa;-ms-box-shadow:0 1px 0 #f8f9fa;box-shadow:0 1px 0 #f8f9fa;}section#customers .sidepane.left.expand{right:70%;z-index:6;}
 section#places #places-search{margin-left:10px;margin-bottom:0;}
 section#places .pane{position:absolute;top:100px;left:0;right:50%;bottom:0px;transition:all 0.5s;-moz-transition:all 0.5s;-webkit-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;}section#places .pane.shrink{bottom:50%;}
 section#places .pane.shrinkFull{bottom:100%;}
 section#places .subpane{position:absolute;top:100%;left:0;right:50%;bottom:0px;transition:all 0.5s;-moz-transition:all 0.5s;-webkit-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;}section#places .subpane.expand{top:50%;}
 section#places .subpane.full{top:100px;}
-section#places .sidepane.left{position:absolute;top:0;left:0;right:100%;bottom:0;z-index:0;overflow:scroll;-webkit-overflow-scrolling:touch;transition:all 0.5s;-moz-transition:all 0.5s;-webkit-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;background-color:#fff;border-right:1px solid #ccc;-moz-box-shadow:0 1px 0 #f8f9fa;-webkit-box-shadow:0 1px 0 #f8f9fa;-ms-box-shadow:0 1px 0 #f8f9fa;box-shadow:0 1px 0 #f8f9fa;}section#places .sidepane.left.expand{right:70%;z-index:6;}
 section#places .pane-overlay{position:absolute;top:0;left:0;right:0;bottom:0;z-index:5;}
+.sidepane{position:absolute;top:0;bottom:0;z-index:0;overflow:scroll;-webkit-overflow-scrolling:touch;transition:all 0.5s;-moz-transition:all 0.5s;-webkit-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;background-color:#fff;-moz-box-shadow:0 1px 0 #f8f9fa;-webkit-box-shadow:0 1px 0 #f8f9fa;-ms-box-shadow:0 1px 0 #f8f9fa;box-shadow:0 1px 0 #f8f9fa;}.sidepane.left{left:0;right:100%;border-right:1px solid #ccc;}.sidepane.left.expand{right:70%;z-index:6;}
+.sidepane.right{left:100%;right:0;border-left:1px solid #ccc;}.sidepane.right.expand{left:70%;z-index:6;}
+.sidepane .header{padding:25px;text-transform:uppercase;font-weight:600;font-size:1.1em;}
+.sidepane form table{margin:20px;margin-top:0px;padding-top:0px;}.sidepane form table td{padding-top:12px;font-weight:600;color:#666;}
+.sidepane form table td:first-child{text-align:right;text-transform:uppercase;padding-right:8px;}
+.sidepane form input[type="radio"],.sidepane form input[type="checkbox"]{margin:0;}
 .filter-list{position:absolute;left:0;top:0;bottom:0;width:34%;overflow:scroll;-webkit-overflow-scrolling:touch;}.filter-list.cities{z-index:1;}
 .filter-list.areas{left:25%;z-index:2;}
 .filter-list.categories{left:50%;z-index:3;}
@@ -61,7 +65,3 @@ section#places .pane-overlay{position:absolute;top:0;left:0;right:0;bottom:0;z-i
 .selected-place .breadcrumbs{margin-bottom:5px;}
 .selected-place .breadcrumb{padding:4px 7px;}
 .selected-place .page-header{margin:4px 0 8px;border-bottom:1px solid #eeeeee;padding-bottom:4px;}
-.sidepane-header{padding:25px;text-transform:uppercase;font-weight:600;font-size:1.1em;}
-.place-form table{margin:20px;margin-top:0px;padding-top:0px;}.place-form table td{padding-top:12px;font-weight:600;color:#666;}
-.place-form table td:first-child{text-align:right;text-transform:uppercase;padding-right:8px;}
-.place-form input[type="radio"],.place-form input[type="checkbox"]{margin:0;}

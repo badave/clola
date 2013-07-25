@@ -6,8 +6,11 @@ CustomerLayout = Backbone.Marionette.Layout.extend({
 		"sidepane": ".sidepane.right"
 	},
 	onRender: function() {
-
 		this.customers.show(new CustomerView({
+			model: this.model
+		}));
+
+		this.sidepane.show(new CustomerEditView({
 			model: this.model
 		}));
 
@@ -21,11 +24,6 @@ CustomerLayout = Backbone.Marionette.Layout.extend({
 		});
 	},
 	editCustomer: function(customer) {
-		var editView = new CustomerEditView({
-			model: customer
-		});
-
-		this.sidepane.show(editView);
 		this.showSidepane();
 	},
 	showSidepane: function() {

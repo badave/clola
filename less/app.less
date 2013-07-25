@@ -171,28 +171,6 @@ section#customers {
 			.scroll;
 		}
 	}
-
-	.sidepane.left {
-		position:absolute;
-		top:0;
-		left:0;
-		right:100%;
-		bottom:0;
-		z-index:0;
-
-		.scroll;
-		.transition;
-
-		background-color:#fff;
-		border-right:1px solid #ccc;
-
-		.box-shadow;
-
-		&.expand {
-			right:70%;
-			z-index:6;
-		}
-	}
 }
 
 section#places {
@@ -237,28 +215,6 @@ section#places {
 		}
 	}
 
-	.sidepane.left {
-		position:absolute;
-		top:0;
-		left:0;
-		right:100%;
-		bottom:0;
-		z-index:0;
-
-		.scroll;
-		.transition;
-
-		background-color:#fff;
-		border-right:1px solid #ccc;
-
-		.box-shadow;
-
-		&.expand {
-			right:70%;
-			z-index:6;
-		}
-	}
-
 	.pane-overlay {
 		position:absolute;
 		top:0;
@@ -268,6 +224,75 @@ section#places {
 		z-index:5;
 	}
 }
+
+.sidepane {
+	position:absolute;
+	top:0;
+	bottom:0;
+	z-index:0;
+
+	.scroll;
+	.transition;
+	background-color:#fff;
+	.box-shadow;
+
+	&.left {
+		left: 0;
+		right:100%;
+		border-right:1px solid #ccc;
+
+		&.expand {
+			right:70%;
+			z-index:6;
+		}
+	}
+
+	&.right {
+		left:100%;
+		right:0;
+		border-left:1px solid #ccc;
+
+		&.expand {
+			left:70%;
+			z-index:6;
+		}
+	}
+
+	.header {
+		padding: 25px;
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 1.1em;
+	}
+
+	form {
+		table {
+			margin:20px;
+			margin-top: 0px;
+			padding-top: 0px;
+
+			td {
+				padding-top:12px;
+				font-weight: 600;
+				color: #666;
+			}
+
+			td:first-child {
+				text-align: right;
+				text-transform:uppercase;
+				padding-right: 8px;
+				padding-top: 4px;
+			}
+
+		}
+
+		input[type="radio"], input[type="checkbox"] {
+			margin:0;
+		}
+	}
+}
+
+
 
 .filter-list {
 	position:absolute;
@@ -351,37 +376,5 @@ section#places {
 		margin:4px 0 8px;
 		border-bottom: 1px solid #eeeeee;
 		padding-bottom: 4px;
-	}
-}
-
-.sidepane-header {
-	padding: 25px;
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 1.1em;
-}
-
-.place-form {
-	table {
-		margin:20px;
-		margin-top: 0px;
-		padding-top: 0px;
-
-		td {
-			padding-top:12px;
-			font-weight: 600;
-			color: #666;
-		}
-
-		td:first-child {
-			text-align: right;
-			text-transform:uppercase;
-			padding-right: 8px;
-		}
-
-	}
-
-	input[type="radio"], input[type="checkbox"] {
-		margin:0;
 	}
 }
