@@ -1,5 +1,17 @@
 <div class="page-header">
-  <h4>{{#if model.name}}{{model.name}}<br />{{/if}}<small>{{model.phone}}</small></h4>
+  <h4>{{#if model.name}}{{model.name}}<br />{{/if}}<small>{{model.phone}}{{#if model.email}} - {{model.email}}{{/if}}</small></h4>
 </div>
+{{#if model.description}}
+<div>
+	{{model.description}}
+</div>
+{{/if}}
+
+{{#if model.location}}
+<div>
+	Last Known Location: {{model.location}}
+</div>
+{{/if}}
+
 
 <p><button class="edit btn btn-mini" type="button">edit</button></p>

@@ -6,7 +6,21 @@
 	<tbody>
 		<tr>
 			<td>Name</td>
-			<td><input type="text" name="name" value="{{model.name}}" placeholder="Name of customer" required/></td>
+			<td><input type="text" name="name" value="{{model.name}}" placeholder="Name of customer" /></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="text" name="email" value="{{model.email}}" placeholder="Email Address" /></td>
+		</tr>
+
+		<tr>
+			<td>Description</td>
+			<td><textarea name="description" placeholder="Description">{{model.description}}</textarea></td>
+		</tr>
+
+		<tr>
+			<td>Location</td>
+			<td><textarea name="location" placeholder="Current Location">{{model.location}}</textarea></td>
 		</tr>
 	</tbody>
 </table>

@@ -282,7 +282,7 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 		this.$el.find(".sidepane").addClass("expand");
 		this.$el.find(".pane-overlay").show();
 		var that = this;
-		setTimeout(function() { that.$el.find(".sidepane form").fadeIn(); }, 300)
+		setTimeout(function() { that.$el.find(".sidepane form").fadeIn(); }, 200);
 	},
 
 	hideSidepane: function() {
@@ -291,7 +291,7 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 		this.$el.find(".pane-overlay").hide();
 		setTimeout(function() { 
 			that.$el.find(".sidepane").removeClass("expand"); 
-		}, 300);
+		}, 200);
 	},
 
 	uniques: function(key) {
