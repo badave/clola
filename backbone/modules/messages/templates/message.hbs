@@ -1,7 +1,7 @@
 <div class="message-header">{{model.phone}}</div>
 {{#each model.messages}}
 	<div class="message clearfix">
-		<div class="text {{#if this.reply}}reply{{/if}}">{{this.text}}</div>
+		<div class="text {{#if this.reply}}reply arrow_box_right {{else}} arrow_box_left {{/if}}">{{this.text}}</div>
 		<div class="time">{{timeAgo this.created}}</div>
 	</div>
 {{/each}}
