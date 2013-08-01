@@ -139,8 +139,40 @@ section#messages {
 		
 		.reply {	
 			text-align:right;
-			background-color: @light-blue;	
+			background-color: @light-blue;
 		}
+		
+		.arrow_box_right, .arrow_box_left {
+      position: relative;
+    }
+    
+    .arrow_box_right:after {
+      left: 100%;
+    }
+    
+    .arrow_box_right:after, .arrow_box_left:after {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-width: 7px;
+      top: 70%;
+      margin-top: -10px;
+    }
+    
+    .arrow_box_right:after {
+      border-left-color: @light-blue;
+    }
+    
+    .arrow_box_left:after {
+      right: 100%;
+    }
+    
+    .arrow_box_left:after {
+      border-right-color: @light-yellow;
+    }
 
 		.time {
 			float:left;
