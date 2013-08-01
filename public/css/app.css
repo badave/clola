@@ -37,9 +37,15 @@ ul{min-height:100%;border:1px solid #e1e1e1;background-image:-webkit-gradient(li
 ul.list-view li:hover{background-image:-webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#e1e1e1));background-image:-webkit-linear-gradient(#f1f1f1, #e1e1e1);background-image:-moz-linear-gradient(#f1f1f1, #e1e1e1);background-image:-ms-linear-gradient(#f1f1f1, #e1e1e1);background-image:-o-linear-gradient(#f1f1f1, #e1e1e1);background-image:linear-gradient(#f1f1f1, #e1e1e1);}
 ul.list-view li.selected{background-image:-webkit-gradient(linear, left top, left bottom, from(#e1e1ff), to(#eeeeff));background-image:-webkit-linear-gradient(#e1e1ff, #eeeeff);background-image:-moz-linear-gradient(#e1e1ff, #eeeeff);background-image:-ms-linear-gradient(#e1e1ff, #eeeeff);background-image:-o-linear-gradient(#e1e1ff, #eeeeff);background-image:linear-gradient(#e1e1ff, #eeeeff);border-color:#ccccff;}
 section#messages{position:absolute;left:55%;right:0;bottom:0;top:100px;}section#messages .messages-list{position:absolute;left:75%;right:0;bottom:0;top:0;z-index:3;}
-section#messages .message-view{position:absolute;left:0;right:25%;top:0;bottom:50%;border:1px solid #ccc;overflow:scroll;-webkit-overflow-scrolling:touch;}
-section#messages .message-header{padding:10px;border:1px solid #ccc;background-color:#6d84b4;border:1px solid rgba(0, 39, 121, 0.76);color:#fff;position:fixed;top:100px;left:55%;right:11.25%;z-index:2;font-weight:600;}
-section#messages .message{position:relative;top:45px;z-index:1;clear:both;padding-right:20px;padding-left:10px;padding-bottom:10px;}section#messages .message .text{padding:10px;float:left;width:300px;font-size:1.05em;border-radius:4px;background-color:#fff3cc;}
+section#messages .message-container{height:100%;width:100%;}
+section#messages .message-view{position:absolute;left:0;right:25%;top:0;bottom:50%;border:1px solid #ccc;}
+section#messages .message-header{padding:10px;border:1px solid #ccc;background-color:#6d84b4;border:1px solid rgba(0, 39, 121, 0.76);color:#fff;position:relative;}
+section#messages .messages-outer-container{position:absolute;top:44px;left:0;right:0;bottom:40px;overflow:scroll;-webkit-overflow-scrolling:touch;}
+section#messages .messages-inner-container{height:100%;width:100%;overflow:scroll;-webkit-overflow-scrolling:touch;}
+section#messages .reply-box{position:absolute;bottom:0;left:0;right:0;height:40px;z-index:100;border-top:1px solid #ccc;}section#messages .reply-box input,section#messages .reply-box button{margin-top:4px;margin-bottom:0;}
+section#messages .reply-box input{width:75%;margin-left:10px;}
+section#messages .message{position:relative;z-index:1;clear:both;padding-right:20px;padding-left:10px;padding-bottom:10px;}section#messages .message .text{padding:10px;float:left;width:75%;font-size:1.05em;border-radius:4px;background-color:#fff3cc;}
+section#messages .message .time{float:left;margin-left:10px;color:#888;font-size:0.92em;padding-top:4px;width:15%;margin-top:10px;}
 section#messages .message .reply{text-align:right;background-color:#cfe1f3;}
 section#messages .message .arrow_box_right,section#messages .message .arrow_box_left{position:relative;}
 section#messages .message .arrow_box_right:after{left:100%;}
@@ -47,7 +53,6 @@ section#messages .message .arrow_box_right:after,section#messages .message .arro
 section#messages .message .arrow_box_right:after{border-left-color:#cfe1f3;}
 section#messages .message .arrow_box_left:after{right:100%;}
 section#messages .message .arrow_box_left:after{border-right-color:#fff3cc;}
-section#messages .message .time{float:left;margin-left:40px;color:#888;font-size:0.92em;padding-top:4px;}
 section#customers .customers{position:absolute;left:55%;right:0;bottom:0;top:100px;}section#customers .customers .customer-view{position:absolute;top:50%;right:25%;bottom:0;left:0;overflow:scroll;-webkit-overflow-scrolling:touch;}
 section#places #places-search{margin-left:10px;margin-bottom:0;}
 section#places .pane{position:absolute;top:100px;left:0;right:50%;bottom:0px;transition:all 0.5s;-moz-transition:all 0.5s;-webkit-transition:all 0.5s;-o-transition:all 0.5s;-ms-transition:all 0.5s;}section#places .pane.shrink{bottom:50%;}

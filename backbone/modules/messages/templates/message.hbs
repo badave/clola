@@ -1,13 +1,21 @@
-<div class="message-header">{{model.phone}}</div>
-{{#each model.messages}}
-	<div class="message clearfix">
-		<div class="text {{#if this.reply}}reply arrow_box_right {{else}} arrow_box_left {{/if}}">{{this.text}}</div>
-		<div class="time">{{timeAgo this.created}}</div>
+<div class="message-container">
+	<div class="message-header">{{model.phone}}</div>
+	
+	<div class="messages-outer-container">
+		<div class="messages-inner-container">
+			{{#each model.messages}}
+				<div class="message clearfix">
+					<div class="text {{#if this.reply}}reply arrow_box_right {{else}} arrow_box_left {{/if}}">{{this.text}}</div>
+					<div class="time">{{timeAgo this.created}}</div>
+				</div>
+			{{/each}}
+		</div>
 	</div>
-{{/each}}
-<div class="reply_box">
-  <form>
-    <input type="text" name="reply_box">
-    <input type="submit" class="btn">
-  </form>  
+
+	<div class="reply-box">
+	  <form>
+	    <input id="reply-box" type="text" name="reply" placeholder="reply" />
+	    <button type="submit" class="btn btn-success">reply</button>
+	  </form>  
+	</div>
 </div>
