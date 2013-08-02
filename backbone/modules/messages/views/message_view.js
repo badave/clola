@@ -19,6 +19,8 @@ MessageView = Backbone.Marionette.ItemView.extend({
 			"reply": true, 
 			"created": new Date().getTime()
 		}});
+		
+		App.vent.trigger("message:replied", this.model);
 
 		$(e.target).find("input").val("");
 	},
