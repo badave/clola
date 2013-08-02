@@ -9,6 +9,7 @@ MessageView = Backbone.Marionette.ItemView.extend({
 		setTimeout(function() {
 			that.el.scrollTop = that.el.scrollHeight;
 		}, 10);
+		this.bindEvents();
 	},
 	sendReply: function(e) {
 		e.preventDefault();
@@ -20,5 +21,11 @@ MessageView = Backbone.Marionette.ItemView.extend({
 		}});
 
 		$(e.target).find("input").val("");
+	},
+	bindEvents: function() {
+		var that = this;
+		App.vent.on("change:message", function(model) {
+			that.render();
+		})
 	}
 });

@@ -10,6 +10,15 @@ App.addInitializer(function(options) {
 	}
 
 	App.socket.on("msg", function(data) {
-		App.messages.add(data);
+		var model = App.messages.findByPhone(data.phone);
+		var messages = model.get("messages");
+		messages.push(data.messages[0]);
+		model.set({
+			"messages": messages,
+			"status": data.status
+		});
+
+		App.vent.trigger("change:message", model);
+		// App.messages.add(data);
 	});
 });

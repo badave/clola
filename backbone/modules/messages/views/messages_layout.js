@@ -16,7 +16,7 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
 	},
 	
 	renderMessages: function() {
-		var messages = this.collection.newMessages();
+		var messages = this.collection.models;
 
 		var list = _.map(messages, function(message) {
 			return message.get("phone");
