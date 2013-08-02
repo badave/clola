@@ -7,11 +7,27 @@
 </div>
 {{/if}}
 
-{{#if model.location}}
+{{#if model.previous_locations}}
 <div>
-	Last Known Location: {{model.location}}
+	<h5>Reported Locations</h5>
+	{{#each model.previous_locations}}
+		<div>
+	 		{{timeAgo this.updated}}: {{this.description}}
+	 	</div>
+	{{/each}}
+</div>
+{{/if}}
+
+{{#if model.previous_places}}
+<div>
+	<h5>Sent to Places</h5>
+	{{#each model.previous_places}}
+		<div>
+	 		{{timeAgo this.updated}}: <a href="javascript:;">{{this.name}}</a>
+	 	</div>
+	{{/each}}
 </div>
 {{/if}}
 
 
-<p><button class="edit btn btn-mini" type="button">edit</button></p>
+<p><button class="edit btn btn-small" type="button">edit</button></p>

@@ -42,7 +42,7 @@ section#messages .message-view{position:absolute;left:0;right:25%;top:0;bottom:5
 section#messages .message-header{padding:10px;border:1px solid #ccc;background-color:#6d84b4;border:1px solid rgba(0, 39, 121, 0.76);color:#fff;position:relative;}
 section#messages .messages-outer-container{position:absolute;top:44px;left:0;right:0;bottom:40px;overflow:scroll;-webkit-overflow-scrolling:touch;}
 section#messages .messages-inner-container{height:100%;width:100%;overflow:scroll;-webkit-overflow-scrolling:touch;}
-section#messages .reply-box{position:absolute;bottom:0;left:0;right:0;height:40px;z-index:100;border-top:1px solid #ccc;}section#messages .reply-box input,section#messages .reply-box button{margin-top:4px;margin-bottom:0;}
+section#messages .reply-box{position:absolute;bottom:0;left:0;right:0;height:40px;z-index:5;border-top:1px solid #ccc;}section#messages .reply-box input,section#messages .reply-box button{margin-top:4px;margin-bottom:0;}
 section#messages .reply-box input{width:75%;margin-left:10px;}
 section#messages .message{position:relative;z-index:1;clear:both;padding-right:20px;padding-left:10px;padding-bottom:10px;}section#messages .message .text{padding:10px;float:left;width:75%;font-size:1.05em;border-radius:4px;background-color:#fff3cc;}
 section#messages .message .time{float:left;margin-left:10px;color:#888;font-size:0.92em;padding-top:4px;width:15%;margin-top:10px;}
@@ -75,4 +75,4 @@ section#places .subpane.full{top:100px;}
 .selected-place{position:absolute;left:45%;top:0;bottom:0;width:57%;padding:10px;border-top:1px solid #eee;overflow:scroll;-webkit-overflow-scrolling:touch;}.selected-place .small{font-size:0.8em;color:#687075;text-transform:uppercase;font-weight:bold;display:block;}
 .selected-place .breadcrumbs{margin-bottom:5px;}
 .selected-place .breadcrumb{padding:4px 7px;}
-.selected-place .page-header{margin:4px 0 8px;border-bottom:1px solid #eeeeee;padding-bottom:4px;}
+.page-header{margin:4px 0 8px;border-bottom:1px solid #eeeeee;padding-bottom:4px;}

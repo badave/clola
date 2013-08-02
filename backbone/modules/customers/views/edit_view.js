@@ -15,6 +15,10 @@ CustomerEditView = Backbone.Marionette.ItemView.extend({
 
 		var data = Backbone.Syphon.serialize(this);
 
+		if(data.location) {
+			this.model.addLocation(data.location);
+		}
+
 		this.model.set(data);
 
 		var isNew = this.model.isNew();

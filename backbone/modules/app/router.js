@@ -16,7 +16,7 @@ var AppRouter = Backbone.Router.extend({
       loadPlaces(function() {
         if(!that.placesLayout) {
           that.placesLayout = new PlacesLayout({
-            collection: that.places
+            collection: App.places
           });
 
           App.layout.places.show(that.placesLayout);
@@ -35,9 +35,7 @@ var AppRouter = Backbone.Router.extend({
     };
 
     function loadPlaces(callback) {
-      that.places = new PlacesCollection();
-
-      that.places.fetch({
+      App.places.fetch({
         prefill: true,
         prefillSuccess: function() {
           callback();

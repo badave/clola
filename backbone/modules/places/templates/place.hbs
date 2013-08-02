@@ -14,6 +14,12 @@
 	<p>{{model.description}}</p>
 {{/if}}
 
+
+{{#if model.text_message}}
+	<p>Text message: {{model.text_message}}</p>
+{{/if}}
+
+
 {{#if model.memo}}
 	<p>Memo: {{model.memo}}</p>
 {{/if}}
@@ -47,4 +53,7 @@
 </div>
 {{/if}}
 
-<p><button class="edit btn btn-mini" type="button">edit</button></p>
+<p><button class="edit btn btn-small" type="button">edit</button>
+	<button class="send-to btn btn-small btn-green">Send to Selected Customer <i class="icon-share-alt"></i></button>
+	<button class="text-to btn btn-small btn-green">Text Message <i class="icon-comment"></i></button>
+</p>
