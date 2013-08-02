@@ -25,7 +25,8 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
 		// sync customer's with list
 
 		this.messageListView = new MessagesListView({
-			array: list
+			array: list,
+			collection: this.collection
 		});
 
 		this.messages.show(this.messageListView);

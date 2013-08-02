@@ -11,7 +11,9 @@ ListView = Backbone.Marionette.Layout.extend({
 
 		_.each(this.array, function(elem) {
 			var listElem = new that.rowView({
-				elem: elem
+				elem: elem,
+				collection: that.collection,
+				model: that.model
 			});
 			that.$el.append(listElem.render().$el);
 			that.list.push(listElem);
