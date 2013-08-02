@@ -37,6 +37,7 @@ ul{min-height:100%;border:1px solid #e1e1e1;background-image:-webkit-gradient(li
 ul.list-view li:hover{background-image:-webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#e1e1e1));background-image:-webkit-linear-gradient(#f1f1f1, #e1e1e1);background-image:-moz-linear-gradient(#f1f1f1, #e1e1e1);background-image:-ms-linear-gradient(#f1f1f1, #e1e1e1);background-image:-o-linear-gradient(#f1f1f1, #e1e1e1);background-image:linear-gradient(#f1f1f1, #e1e1e1);}
 ul.list-view li.selected{background-image:-webkit-gradient(linear, left top, left bottom, from(#e1e1ff), to(#eeeeff));background-image:-webkit-linear-gradient(#e1e1ff, #eeeeff);background-image:-moz-linear-gradient(#e1e1ff, #eeeeff);background-image:-ms-linear-gradient(#e1e1ff, #eeeeff);background-image:-o-linear-gradient(#e1e1ff, #eeeeff);background-image:linear-gradient(#e1e1ff, #eeeeff);border-color:#ccccff;}
 section#messages{position:absolute;left:55%;right:0;bottom:0;top:100px;}section#messages .messages-list{position:absolute;left:75%;right:0;bottom:0;top:0;z-index:3;}
+section#messages .icon-circle{color:#78c16b;}
 section#messages .message-container{height:100%;width:100%;}
 section#messages .message-view{position:absolute;left:0;right:25%;top:0;bottom:50%;border:1px solid #ccc;}
 section#messages .message-header{padding:10px;border:1px solid #ccc;background-color:#6d84b4;border:1px solid rgba(0, 39, 121, 0.76);color:#fff;position:relative;}
