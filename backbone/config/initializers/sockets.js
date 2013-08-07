@@ -15,6 +15,13 @@ App.addInitializer(function(options) {
 		});
 
 		App.vent.trigger("change:message", model);
-		// App.messages.add(data);
 	});
+	
+	App.socket.on("replying", function(data) {
+	  var model = App.messages.findByPhone(data.phone);
+	  model.set({
+	    "replying": data.message.replying
+	  });
+	  App.vent.trigger("replyingToMessage", model);
+  })
 });

@@ -47,7 +47,7 @@ section#messages .icon-circle{color:#78c16b;}
 section#messages .message-container{height:100%;width:100%;}
 section#messages .message-view{position:absolute;left:0;right:25%;top:0;bottom:50%;border:1px solid #ccc;}
 section#messages .message-header{padding:10px;border:1px solid #ccc;background-color:#6d84b4;border:1px solid rgba(0, 39, 121, 0.76);color:#fff;position:relative;}
-section#messages .messages-outer-container{position:absolute;top:44px;left:0;right:0;bottom:40px;overflow:scroll;-webkit-overflow-scrolling:touch;}
+section#messages .messages-outer-container{position:absolute;top:44px;left:0;right:0;bottom:40px;overflow:scroll;-webkit-overflow-scrolling:touch;}section#messages .messages-outer-container .is-replying{margin-left:10px;}
 section#messages .messages-inner-container{height:100%;width:100%;overflow:scroll;-webkit-overflow-scrolling:touch;}
 section#messages .reply-box{position:absolute;bottom:0;left:0;right:0;height:40px;z-index:5;border-top:1px solid #ccc;}section#messages .reply-box input,section#messages .reply-box button{margin-top:4px;margin-bottom:0;}
 section#messages .reply-box input{width:75%;margin-left:10px;}
