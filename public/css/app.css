@@ -23,6 +23,12 @@ input[type="text"].tm-input{margin-bottom:5px;}
 .fr{float:right;display:inline-block;}
 .subtitle{font-size:0.90em;font-weight:300;}
 .clear{clear:both;}
+::-moz-scrollbar{display:none;}
+::-moz-scrollbar-button{display:none;}
+::-moz-scrollbar-track{display:none;}
+::-moz-scrollbar-track-piece{display:none;}
+::-moz-scrollbar-thumb{display:none;}
+::-moz-scrollbar-corner{display:none;}
 ::-webkit-scrollbar{display:none;}
 ::-webkit-scrollbar-button{display:none;}
 ::-webkit-scrollbar-track{display:none;}

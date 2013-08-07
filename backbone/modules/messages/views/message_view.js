@@ -7,7 +7,7 @@ MessageView = Backbone.Marionette.ItemView.extend({
 	onRender: function() {
 		var that = this;
 		setTimeout(function() {
-			that.el.scrollTop = that.el.scrollHeight;
+			that.$el.find(".messages-inner-container")[0].scrollTop = that.$el.find(".messages-inner-container")[0].scrollHeight;
 		}, 10);
 		this.bindEvents();
 	},

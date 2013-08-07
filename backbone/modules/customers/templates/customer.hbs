@@ -1,6 +1,13 @@
 <div class="page-header">
   <h4>{{#if model.name}}{{model.name}}<br />{{/if}}<small>{{model.phone}}{{#if model.email}} - {{model.email}}{{/if}}</small></h4>
 </div>
+
+<div>
+	<div>Gender: {{#if model.gender}}{{model.gender}}{{else}}Unknown{{/if}} -
+	Birthday: {{#if model.birthday}}{{model.birthday}}{{else}}Unknown{{/if}}
+	</div>
+</div>
+
 {{#if model.description}}
 <div>
 	{{model.description}}
@@ -23,7 +30,7 @@
 	<h5>Sent to Places</h5>
 	{{#each model.previous_places}}
 		<div>
-	 		{{timeAgo this.updated}}: <a href="javascript:;">{{this.name}}</a>
+	 		{{timeAgo this.updated}}: <a class="sent-places" data-id="{{this._id}}" href="javascript:;">{{this.name}}</a>
 	 	</div>
 	{{/each}}
 </div>

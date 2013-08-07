@@ -14,7 +14,9 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 
 	events: {
 		"keyup #places-search": "searchPlaces",
+		"change #places-search": "searchPlaces",
 		"click #add-place": "newPlace",
+		"click #clear-search": "clearSearch",
 		"click .pane-overlay": "hideSidepane"
 	},
 
@@ -197,8 +199,6 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 			model: place
 		});
 
-		console.log(place.attributes);
-
 		this.place.show(this.placeView);
 	},
 
@@ -234,6 +234,11 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 				this.showSubpane();
 			}
 		}
+	},
+
+	clearSearch: function() {
+		this.$el.find("#places-search").val("");
+		this.$el.find("#places-search").trigger("change");
 	},
 
 	newPlace: function() {
