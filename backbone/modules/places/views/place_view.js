@@ -4,7 +4,8 @@ PlaceView = Backbone.Marionette.ItemView.extend({
 	events: {
 		"click .edit": "onEdit",
 		"tap .edit": "onEdit",
-		"click .text-to": "onTextTo"
+		"click .text-to": "onTextTo",
+		"click .send-to": "onSendTo"
 	},
 	context: function(modelJson){
 		modelJson.tags = modelJson.tags ? modelJson.tags.split(","): [];
@@ -19,5 +20,8 @@ PlaceView = Backbone.Marionette.ItemView.extend({
 		if(!!$("#reply-box")) {
 			$("#reply-box").val(this.model.get("text_message"));
 		}
+	},
+	onSendTo: function() {
+		App.vent.trigger("customer:places:add", this.model);
 	}
 });
