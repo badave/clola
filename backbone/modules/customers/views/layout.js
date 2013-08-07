@@ -9,6 +9,8 @@ CustomerLayout = Backbone.Marionette.Layout.extend({
 		"click .pane-overlay": "hideSidepane"
 	},
 	onRender: function() {
+		App.current_customer = this.model;
+		
 		this.customers.show(new CustomerView({
 			model: this.model
 		}));

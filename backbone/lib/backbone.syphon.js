@@ -208,7 +208,11 @@ Backbone.Syphon = (function(Backbone, $, _){
       if (_.isArray(obj[key])){
         obj[key].push(value);
       } else {
-        obj[key] = value;
+        if(typeof(value) === "string") {
+          obj[key] = $.trim(value);
+        } else {
+          obj[key] = value;
+        }
       }
     }
 

@@ -22,6 +22,13 @@ PlaceView = Backbone.Marionette.ItemView.extend({
 		}
 	},
 	onSendTo: function() {
-		App.vent.trigger("customer:places:add", this.model);
+		if(App.current_customer) {
+			App.current_customer.addPlace(this.model);
+			App.current_customer.save();
+
+			if(!!$("#reply-box")) {
+				$("#reply-box").val(this.model.get("name") + " - " + this.model.get("address"));
+			}
+		}
 	}
 });
