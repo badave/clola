@@ -20,7 +20,8 @@ App.addInitializer(function(options) {
 	App.socket.on("replying", function(data) {
 	  var model = App.messages.findByPhone(data.phone);
 	  model.set({
-	    "replying": data.message.replying
+	    "replying": data.message.replying,
+	    "replying_text": data.message.text,
 	  });
 	  App.vent.trigger("replyingToMessage", model);
   })

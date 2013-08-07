@@ -11,11 +11,14 @@ MessageView = Backbone.Marionette.ItemView.extend({
 	onRender: function() {
 		var that = this;
 		setTimeout(function() {
-			that.$el.find(".messages-inner-container")[0].scrollTop = that.$el.find(".messages-inner-container")[0].scrollHeight;
+			that.scrollToBottom();
 		}, 10);
 		this.bindEvents();
 	},
 	
+	scrollToBottom: function() {
+	  this.$el.find(".messages-inner-container")[0].scrollTop = this.$el.find(".messages-inner-container")[0].scrollHeight;
+	},
 	doneReplying: function(e) {
 	  e.preventDefault();
 	  
@@ -58,10 +61,14 @@ MessageView = Backbone.Marionette.ItemView.extend({
 		
 		App.vent.on("replyingToMessage", function(model) {
       if(model.get("replying")) {
-        that.$el.find(".is-replying").html("Being replied to...");  
+        that.$el.find(".is-replying").html("Being replied to...");
+      } else if(model.get("replying_text")) {
+        that.$el.find(".is-replying").html("Text has been entered...");
       } else {
         that.$el.find(".is-replying").html("");
       }
+      
+      that.scrollToBottom();
     })
 	}
 });
