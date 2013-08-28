@@ -9,15 +9,12 @@ var config = require("../config");
 
 var customersController = module.exports = {};
 
-customersController.index = function(req, res, next) {
-  var context = {
-    title: config.title
-  }
-  return helper.render(req, res, 200, 'customers/index', context);
-}
-
 // API calls can be split to another server later if need be
 customersController.findByNumber = function(req, res, next) {
+	if(!req.user) {
+	  return res.redirect("/go");
+	}
+	
 	var phone = req.params.phone.replace(/\D/g, '').toString();
 
 	db.findOne("customers", {"phone": phone}, function(err, customer) {
@@ -35,6 +32,10 @@ customersController.findByNumber = function(req, res, next) {
 }
 
 customersController.create = function(req, res, next) {
+	if(!req.user) {
+	  return res.redirect("/go");
+	}
+	
 	var customer = req.body;
 
 	if(!customer.phone) {
@@ -62,6 +63,10 @@ customersController.create = function(req, res, next) {
 }
 
 customersController.update = function(req, res, next) {
+	if(!req.user) {
+	  return res.redirect("/go");
+	}
+	
 	var customer = req.body;
 
 	if(!customer.phone) {

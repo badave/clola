@@ -16,23 +16,28 @@ var evt = require("../models/evt");
 var smsController = module.exports = {};
 var genericModel = require("../lib/generic_model");
 
-smsController.index = function(req, res) {
-	var context = {
-	  title: config.title
-	}
-	return helper.render(req, res, 200, 'sms/index', context);
-}
-
 smsController.test = function(req, res) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+  
   evt.emit("message", {"phone": "17752879549", "messages": [{"text": "sup sicko", "created": new Date().getTime()  }] });
   return helper.respondJson(req, res, 200);
 }
 
 smsController.find = function(req, res) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+
 	genericModel.find("messages", genericModel.jsonResponder(req, res))
 }
 
 smsController.send = function(data) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+  
   var client = new twilio.RestClient(config.twilio_sid, config.twilio_auth_token);
 
   // Pass in parameters to the REST API using an object literal notation. The

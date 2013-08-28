@@ -12,11 +12,15 @@ var User = require("../models/user");
 var usersController = module.exports = {};
 
 
-usersController.index = function(req, res, next) {
-  var context = {
-    title: config.title
+var setUserCookie = function(res, user, rememberMe) {
+  var cookieOptions = {};
+  if (rememberMe === true) {
+    cookieOptions['maxAge'] = 1209600000;
   }
-  return helper.render(req, res, 200, 'users/index', context);
+  cookieOptions['secure'] = !config.test;
+  cookieOptions['httpOnly'] = true;
+  cookieOptions['signed'] = true;
+  res.cookie("access_token", user.access_token, cookieOptions);
 }
 
 /**
@@ -166,17 +170,22 @@ usersController.create = function(req, res, next) {
     return helper.respondJsonError(req, res, 400);
   }
 
-  if (!req.is('json')) {
-    return helper.respondJsonError(req, res, 400, "Content-Type must be set to application/json");
-  }
+  // if (!req.is('json')) {
+  //   return helper.respondJsonError(req, res, 400, "Content-Type must be set to application/json");
+  // }
 
   // Trim and lowercase
   var email = helper.sanitizeEmail(userData.email);
 
   // First check for an existing user with this email
   User.exists({email: email}, function(err, userExists) {
-    if (err) {
-      return helper.respondJsonError(req, res, 500, err.toString());
+    if (err || userExists) {
+      if(req.is("json")) {
+        return helper.respondJsonError(req, res, 500, err.toString());
+      } else {
+        req.session.error = "A user by that name already exists";
+        return res.redirect("/go");
+      }
     }
 
     if (userExists) {
@@ -187,13 +196,23 @@ usersController.create = function(req, res, next) {
 
     // Create the user
     User.insert(newUser, function(err, user) {
-      if (err) {
-        return helper.respondJsonError(req, res, 500, err.toString());
+      if(req.is('json')) {
+        if (err) {
+          return helper.respondJsonError(req, res, 500, err.toString());
+        }
+        setUserCookie(res, user, true);
+        return helper.respondJson(req, res, 201, {"user": user});
+      } else {
+        if(err) {
+          return res.redirect("/go");
+        } else {
+          setUserCookie(res, user, true);
+          res.redirect("/app");
+        }
       }
-      return helper.respondJson(req, res, 201, {"user": user});
     });
   });
-}
+};
 
 /**
  * Attempts to authenticate (login) a user by verifying email/password
@@ -212,22 +231,37 @@ usersController.authenticate = function(req, res, next) {
   email = helper.sanitizeEmail(email);
 
   User.findOneByEmail(email, function(err, user) {
-    if (err) {
-      return helper.respondJsonError(req, res, 500, err.toString());
-    }
+    if (err || !user) {
+      if(!user) {
+        req.session.error = "User doesn't exist";
+      }
 
-    if (!user) {
-      return helper.respondJsonError(req, res, 404, "User not found with email: " + email);
+      if(req.is("json")) {
+        return helper.respondJsonError(req, res, 500, err.toString());
+      } else {
+        return res.redirect("/go");
+      }
     }
 
     // Validate password
     if (User.verifyPassword(user.hash, password, user.salt, user.created)) {
-      return helper.respondJson(req, res, 200, {"user": user});
+      setUserCookie(res, user, true);
+      if(req.is('json')) {
+        return helper.respondJson(req, res, 200, {"user": user});
+      } else {
+        res.redirect("/app");
+      }
     } else {
-      return helper.respondJsonError(req, res, 403, "Invalid password for user with email: " + user.email);
+      if(req.is('json')) {
+        return helper.respondJsonError(req, res, 403, "Invalid password for user with email: " + user.email);
+      } else { 
+        res.redirect("/go");
+      }
     }
+
+
   });
-}
+};
 
 
 /**

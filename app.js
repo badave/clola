@@ -60,34 +60,15 @@ var redirectToSecure = function(req, res, next) {
 };
 
 var loadUserCookie = function(req, res, next) {
-  var access_token = req.signedCookies.c_token;
+  var access_token = req.signedCookies.access_token;
 
   if (access_token) {
-    var requestOptions = {
-      method: 'GET',
-      json: true,
-      uri: config.api_url + "/v1/users/me",
-      qs: {
-        "access_token": access_token
-      }
-    };
-
-    request(requestOptions, function(error, response, body) {
-      if (error) {
-        console.warn("Auth Error:", error.toString());
-        return next();
-      } else if (response.statusCode >= 400) {
-        console.warn("Auth Error:", response.statusCode);
+    db.findOne("users", {"access_token": access_token}, function(err, user) {
+      if (err || !user) {
         return next();
       }
 
-      var user = body.user;
       req.user = user;
-      res.locals.user = user;
-      req.session.user = user;
-
-      console.log("User Authenticated:", user.email);
-      
       return next();
     });
   } else {
@@ -188,8 +169,8 @@ app.configure(function (){
   app.use(express.cookieParser('kombucha synergy'));
   app.use(express.cookieSession('kombucha synergy'));
   app.use(allowCrossDomain);
-  // app.use(loadUserCookie);
-  // app.use(loadUserSession);
+  app.use(loadUserCookie);
+  app.use(loadUserSession);
   // app.use(unloadMessages);
   app.use(app.router);
 });

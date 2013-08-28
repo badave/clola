@@ -1,0 +1,71 @@
+  <!-- Move to Layout -->
+  <header>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <ul class="nav navbar-nav navbar-right sign-up-buttons">
+        <li><a data-toggle="modal" href="#login">Login</a></li>
+        <li><a data-toggle="modal" href="#register">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Welcome To Clola</h1>
+      <p>Users should simply text message our number at 941-444-LOLA (941-444-5652)</p>
+      <p>Vendors can <a data-toggle="modal" href="#register">register</a> or <a data-toggle="modal" href="#login">login</a>.
+    </div>
+  </div>
+
+
+  {{! Move to Layout }}
+  <!-- Modal -->
+  <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register" aria-hidden="true">
+    <form id="register" action="/register" method="POST"> 
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title ac">Sign Up</h4>
+          </div>
+          <div class="modal-body"> 
+            {{#each register_inputs}}
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">{{this}}</span>
+                <input type="{{#compare "password" "is_in" @key}}password{{else}}text{{/compare}}" name="{{@key}}" class="form-control input-lg" placeholder="{{this}}">
+              </div>
+            {{/each}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </form>
+  </div><!-- /.modal -->
+
+  <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+    <form id="login" action="/login" method="POST">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title ac">Login</h4>
+          </div>
+          <div class="modal-body">
+            {{#each login_inputs}}
+              <div class="input-group input-group-lg">
+                <span class="input-group-addon">{{this}}</span>
+                <input type="{{#compare "password" "is_in" @key}}password{{else}}text{{/compare}}" name="{{@key}}" class="form-control input-lg" placeholder="{{this}}">
+              </div>
+            {{/each}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </form>
+  </div><!-- /.modal -->

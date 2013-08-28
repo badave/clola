@@ -23,20 +23,21 @@ module.exports = function(app) {
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     res.send(200);
-  })
+  });
 
   // Root
   app.get("/", homeController.index);
   app.get("/app", homeController.awesomeSauce);
+  app.get("/go", homeController.go);
 
-  app.get("/users", usersController.index);
+  // app.get("/users", usersController.index);
+  app.post("/register", usersController.create);
+  app.post("/login", usersController.authenticate);
 
-  app.get("/customers", customersController.index)
   app.get("/v1/customers/:phone", customersController.findByNumber);
   app.post("/v1/customers/:phone", customersController.create);
   app.put("/v1/customers/:phone", customersController.update);
 
-  app.get("/places", placesController.index);
   app.get("/v1/places", placesController.find);
   app.post("/v1/places", placesController.create);
   app.put("/v1/places/:id", placesController.update);
@@ -44,7 +45,6 @@ module.exports = function(app) {
 
   app.get("/sms/test", smsController.test);
   app.post("/sms", smsController.post);
-  app.get("/sms", smsController.index);
   app.get("/v1/messages", smsController.find);
 
 

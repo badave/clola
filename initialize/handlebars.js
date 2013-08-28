@@ -100,13 +100,13 @@ hbs.registerHelper('compare', function(lvalue, operator, rvalue, options) {
   var operators, result;
       
     if (arguments.length < 3) {
-        throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
+      throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
     }
     
     if (options === undefined) {
-        options = rvalue;
-        rvalue = operator;
-        operator = "===";
+      options = rvalue;
+      rvalue = operator;
+      operator = "===";
     }
     
     operators = {
@@ -118,7 +118,8 @@ hbs.registerHelper('compare', function(lvalue, operator, rvalue, options) {
         '>': function (l, r) { return l > r; },
         '<=': function (l, r) { return l <= r; },
         '>=': function (l, r) { return l >= r; },
-        'typeof': function (l, r) { return typeof l == r; }
+        'typeof': function (l, r) { return typeof l == r; },
+        'is_in': function(l, r) { return r.indexOf(l) >= 0; }
     };
     
     if (!operators[operator]) {

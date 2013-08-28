@@ -14,7 +14,6 @@ var config = require("../config");
 var helper = require('../lib/helper');
 
 
-
 var User = module.exports = {};
 
 /**
@@ -76,9 +75,7 @@ User.find = function(query, options, callback) {
 }
 
 User.insert = function(newUser, callback) {
-  db.insert("users", newUser, function(err, user) {
-    return callback(err, user);
-  });
+  db.insert("users", newUser, callback);
 }
 
 User.updateById = function(user_id, updateObject, callback) {
