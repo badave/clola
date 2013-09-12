@@ -34,10 +34,6 @@ smsController.find = function(req, res) {
 }
 
 smsController.send = function(data) {
-  if(!req.user) {
-    return res.redirect("/go");
-  }
-  
   var client = new twilio.RestClient(config.twilio_sid, config.twilio_auth_token);
 
   // Pass in parameters to the REST API using an object literal notation. The

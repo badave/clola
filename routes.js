@@ -29,6 +29,7 @@ module.exports = function(app) {
   app.get("/", homeController.index);
   app.get("/app", homeController.awesomeSauce);
   app.get("/go", homeController.go);
+  app.get("/yes", homeController.yes);
 
   // app.get("/users", usersController.index);
   app.post("/register", usersController.create);

@@ -5,12 +5,18 @@ var AppRouter = Backbone.Router.extend({
     // ------------------------------------------ Config
 
     that.routes = {
-      "app":"index"
+      "app":"index",
+      "yes": "vendor"
     };
 
     // ------------------------------------------ Actions
 
     that.index = function (params) {
+      var appLayout = new AppLayout();
+      
+      App.layout = appLayout;
+
+      $("body").append(App.layout.render().$el);
       // load everything
 
       loadPlaces(function() {
@@ -70,7 +76,15 @@ var AppRouter = Backbone.Router.extend({
       App.layout.customers.show(that.customerLayout);
     }
 
+    that.vendor = function(params) {
+      var vendorLayout = new VendorLayout();
+
+      App.layout = vendorLayout;
+
+      $("body").append(App.layout.render().$el);
+    };
 
     return Backbone.Router.apply(that, arguments);
   }
+
 });

@@ -30,6 +30,14 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 4px 0;
 }
 
+.ml15 {
+	margin-right:15px;
+}
+
+.mr15 {
+	margin-right:15px;
+}
+
 address {
 	margin-bottom:10px;
 }
@@ -82,6 +90,8 @@ ul {
 }
 
 @places-top: 100px;
+@messages-list-left: 74%;
+@messages-list-right: 26%;
 
 section#messages {
 	position:absolute;
@@ -92,7 +102,7 @@ section#messages {
 
 	.messages-list {
 		position:absolute;
-		left:75%;
+		left:@messages-list-left;
 		right:0;
 		bottom:0;
 		top: 0;
@@ -111,7 +121,7 @@ section#messages {
 	.message-view {
 		position: absolute;
 		left: 0;
-		right: 25%;
+		right: @messages-list-right;
 		top: 0;
 		bottom: 50%;
 		border:1px solid #ccc;
@@ -160,7 +170,7 @@ section#messages {
 		}
 
 		input {
-			width:75%;
+			width:70%;
 			margin-left:10px;
 		}
 	}
@@ -475,4 +485,28 @@ section#places {
 
 .tt-is-under-cursor {
 	background-color: #eee;
+}
+
+.vendor {
+	width:80%;
+	margin:0 auto;
+
+	.vendor-body {
+		[class*="span"]:first-child {
+			margin-left:0; 
+		}
+
+		[class*="span"] {
+			margin-left:15px; 
+		}
+
+		form#info {
+			margin-left: 14px;
+
+			.row {
+				margin-left:0;
+			}
+		}
+
+	}
 }

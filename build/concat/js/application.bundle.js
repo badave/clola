@@ -24,71 +24,82 @@ $(document).ready(function() {
     return symbol;
   };
 
-  Handlebars.registerHelper('formatState', function(value) {
-    switch(value) {
-      case"AL": return "Alabama";
-      case"AK": return "Alaska";
-      case"AZ": return "Arizona";
-      case"AR": return "Arkansas";
-      case"CA": return "California";
-      case"CO": return "Colorado";
-      case"CT": return "Connecticut";
-      case"DE": return "Delaware";
-      case"DC": return "District of Columbia";
-      case"FL": return "Florida";
-      case"GA": return "Georgia";
-      case"HI": return "Hawaii";
-      case"ID": return "Idaho";
-      case"IL": return "Illinois";
-      case"IN": return "Indiana";
-      case"IA": return "Iowa";
-      case"KS": return "Kansas";
-      case"KY": return "Kentucky";
-      case"LA": return "Louisiana";
-      case"ME": return "Maine";
-      case"MD": return "Maryland";         
-      case"MA": return "Massachusetts";
-      case"MI": return "Michigan";
-      case"MN": return "Minnesota";
-      case"MS": return "Mississippi";
-      case"MO": return "Missouri";
-      case"MT": return "Montana";
-      case"NE": return "Nebraska";
-      case"NV": return "Nevada";
-      case"NH": return "New Hampshire";
-      case"NJ": return "New Jersey";
-      case"NM": return "New Mexico";
-      case"NY": return "New York";
-      case"NC": return "North Carolina";
-      case"ND": return "North Dakota";
-      case"OH": return "Ohio";
-      case"OK": return "Oklahoma";
-      case"OR": return "Oregon";
-      case"PA": return "Pennsylvania";
-      case"RI": return "Rhode Island";
-      case"SC": return "South Carolina";
-      case"SD": return "South Dakota";
-      case"TN": return "Tennessee";
-      case"TX": return "Texas";
-      case"UT": return "Utah";
-      case"VT": return "Vermont";
-      case"VA": return "Virginia";
-      case"WA": return "Washington";
-      case"WV": return "West Virginia";
-      case"WI": return "Wisconsin";
-      case"WY": return "Wyoming";
-      case"AS": return "American Samoa";
-      case"GU": return "Guam";
-      case"MP": return "Northern Mariana Islands";
-      case"PR": return "Puerto Rico";
-      case"VI": return "Virgin Islands";
-      case"FM": return  "Federated States of Micronesia";
-      case"MH": return "Marshall Islands";
-      case"PW": return "Palau";
-      case"AA": return "Armed Forces Americas";
-      case"AE": return "Armed Forces Europe";
-      case"AP": return "Armed Forces Pacific";
+  window.States = {
+    "AL": "Alabama",
+    "AK": "Alaska",
+    "AZ": "Arizona",
+    "AR": "Arkansas",
+    "CA": "California",
+    "CO": "Colorado",
+    "CT": "Connecticut",
+    "DE": "Delaware",
+    "DC": "District of Columbia",
+    "FL": "Florida",
+    "GA": "Georgia",
+    "HI": "Hawaii",
+    "ID": "Idaho",
+    "IL": "Illinois",
+    "IN": "Indiana",
+    "IA": "Iowa",
+    "KS": "Kansas",
+    "KY": "Kentucky",
+    "LA": "Louisiana",
+    "ME": "Maine",
+    "MD": "Maryland",
+    "MA": "Massachusetts",
+    "MI": "Michigan",
+    "MN": "Minnesota",
+    "MS": "Mississippi",
+    "MO": "Missouri",
+    "MT": "Montana",
+    "NE": "Nebraska",
+    "NV": "Nevada",
+    "NH": "New Hampshire",
+    "NJ": "New Jersey",
+    "NM": "New Mexico",
+    "NY": "New York",
+    "NC": "North Carolina",
+    "ND": "North Dakota",
+    "OH": "Ohio",
+    "OK": "Oklahoma",
+    "OR": "Oregon",
+    "PA": "Pennsylvania",
+    "RI": "Rhode Island",
+    "SC": "South Carolina",
+    "SD": "South Dakota",
+    "TN": "Tennessee",
+    "TX": "Texas",
+    "UT": "Utah",
+    "VT": "Vermont",
+    "VA": "Virginia",
+    "WA": "Washington",
+    "WV": "West Virginia",
+    "WI": "Wisconsin",
+    "WY": "Wyoming",
+    "AS": "American Samoa",
+    "GU": "Guam",
+    "MP": "Northern Mariana Islands",
+    "PR": "Puerto Rico",
+    "VI": "Virgin Islands",
+    "FM":  "Federated States of Micronesia",
+    "MH": "Marshall Islands",
+    "PW": "Palau",
+    "AA": "Armed Forces Americas",
+    "AE": "Armed Forces Europe",
+    "AP": "Armed Forces Pacific",
+  };
+
+  Handlebars.registerHelper('formatState', function(value) { 
+    return States[value];
+  });
+
+  Handlebars.registerHelper('stateOptions', function() {
+    var options = "";
+
+    for(var abbr in States) {
+      options += '<option value="' + abbr + '">' + States[abbr] + '</option>';
     }
+    return options;
   });
 
   Handlebars.registerHelper('formatWebhookEvent', function(value) {
@@ -115,28 +126,41 @@ $(document).ready(function() {
     return moment(ms).format('MM/DD/YYYY h:mm:ss a');
   });
 
-  Handlebars.registerHelper('timeAgo', function(remaining, options) {
-    var str = "";
-    if(remaining > 0) {
-      var days_until = Math.floor((remaining) / (24 * 3600));
-      var hours_until = Math.floor((remaining) / (3600));
-      var minutes_until = Math.floor((remaining) / (60));
-      var seconds_until = Math.floor((remaining));
-      if(days_until > 0) {
-        var s = days_until > 1 ? " days": " day";
-        str = days_until + s + " to go";
-      } else if(hours_until > 0) {
-        var s = hours_until > 1 ? " hours": " hour";
-        str = hours_until + s + " to go";
-      } else if(minutes_until > 0) {
-        var s = minutes_until > 1 ? " minutes": " minute";
-        str = minutes_until + s + " to go";
-      } else if(seconds_until > 0) {
-        var s = seconds_until > 1 ? " seconds": " second";
-        str = seconds_until + s + " to go";
-      }
+  Handlebars.registerHelper('timeAgo', function(time, options) {
+    var date = new Date(time);
+
+    var seconds = Math.floor((new Date() - date) / 1000);
+    var interval = Math.floor(seconds / 31536000);
+    if(interval > 1) {
+      return interval + " years ago";
     }
-    return str;
+
+    interval = Math.floor(seconds / 2592000)
+    if(interval > 1) {
+      return interval + " months ago";
+    } 
+
+    interval = Math.floor(seconds / 86400)
+    if(interval > 1) {
+      return interval + " days ago";
+    }
+
+    interval = Math.floor(seconds / 3600)
+    if(interval > 1) {
+      return interval + " hours ago";
+    }
+
+    interval = Math.floor(seconds / 60)
+    if(interval > 1) {
+      return interval + " minutes ago";
+    }
+
+    if(Math.floor(seconds)) {
+      return Math.floor(seconds) + ' seconds ago';
+    }
+
+    return new Date() - date + " ms ago";
+
   });
 
   // Formats currency ($X.XX)

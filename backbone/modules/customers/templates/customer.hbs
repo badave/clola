@@ -1,5 +1,24 @@
 <div class="page-header">
-  <h4>{{#if model.name}}{{model.name}}<br />{{/if}}<small>{{model.phone}}{{#if model.email}} - {{model.email}}{{/if}}</small></h4>
+	{{#if facebook_image}}<img class="fl mr15" src="{{facebook_image}}" title="{{facebook_user}}" />{{/if}}
+	<span class="fl">
+	  <h4>
+	  	{{#if model.name}}{{#if yelp}}<a href="{{yelp}}" target="_blank">{{/if}}{{model.name}}{{#if yelp}}</a>{{/if}}<br />{{/if}}<small>{{model.phone}}{{#if model.email}} - {{model.email}}{{/if}}</small></h4>
+	</span>
+	<div class="clear"></div>
+	<div>	  	
+		{{#if facebook}}
+			<a href="{{facebook}}" target="_blank"><i class="icon-facebook-sign"></i></a>	  
+	  {{/if}}
+
+  	{{#if twitter}}
+  		<a href="{{twitter}}" target="_blank"><i class="icon-twitter-sign"></i></a>	  
+    {{/if}}
+
+  	{{#if linkedin}}
+  		<a href="{{linkedin}}" target="_blank"><i class="icon-linkedin-sign"></i></a>	  
+    {{/if}}
+
+	</div>
 </div>
 
 <div>
