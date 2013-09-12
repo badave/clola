@@ -143,32 +143,52 @@ Backbone.Marionette.Layout.prototype.render = function() {
 // Clola
 // 
 Backbone.Collection.prototype.search = function (term, options) {
-	term = new RegExp($.trim( term ), "i");
+	var that = this;
+	term = term || "";
+
+	var terms = term.split(" ");
 
 	options = options || {};
 	// included and excluded attributes
-	var includes = options.includes || [];
-	var excludes = options.excludes || [];
+	var includes = _.invert(options.includes) || {};
+	var excludes = _.invert(options.excludes) || {};
 
 	var array = [];
 
-	if( term ) {
-	 this.each( function( model ){
-		 var attributes = model.attributes;
-
-		 for(var key in attributes) {
-				if((!includes.length || _.contains(includes, key)) &&
-				 (!excludes.length || !_.contains(excludes, key))) {
-				 var attribute = attributes[key];
-				 if(term.test(attribute)) {
-					 console.log(attribute);
-					 array.push(model);
-					 break;
-				 }
-				}
-			}
-	 });
+	if(!terms.length) {
+		return array;
 	}
+	
+	that.each( function( model ){
+		var attributes = model.attributes;
+		
+		var values = [];
+
+		for(var key in attributes) {
+			if((_.isEmpty(includes) || includes[key]) && (
+			   _.isEmpty(excludes) || !excludes[key])) {
+				values.push(attributes[key]);
+			}
+		}
+
+		values = values.join(" ");
+
+		var has_terms = true;
+
+		_.each(terms, function(term) {
+			var reg = new RegExp($.trim( term ), "i");
+
+			if(!reg.test(values)) {
+				has_terms = false;
+				return;
+			}
+		});
+
+		if(has_terms) {
+			array.push(model);
+		}
+
+	});
 
 	return array;
 };

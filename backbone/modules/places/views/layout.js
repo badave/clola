@@ -203,27 +203,36 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 	},
 
 	searchPlaces: function() {
-		var search = this.$el.find("#places-search").val();
+		var that = this;
+		var search = this.search = this.$el.find("#places-search").val();
 
 		if(search && search.length > 2) {
-			var places = this.collection.search(search, {
-				"excludes": ["category", "subcategory", "area", "city"]
-			});
+			if(that.previous_search !== that.search) {
+				// set param to new search
+				this.previous_search = search;
+				setTimeout(function() {
+					if(that.previous_search === that.search) {
+						var places = that.collection.search(search, {
+							"excludes": []
+						});
 
-			this.placesListView = new PlacesListView({
-				array: places
-			});
+						that.placesListView = new PlacesListView({
+							array: places
+						});
 
-			this.places_list.show(this.placesListView);
+						that.places_list.show(that.placesListView);
 
-			this.fullSubpane();
+						that.fullSubpane();
 
-			if(places.length) {
-				this.selectPlace(places[0]);
-				
-				this.placesListView.list[0].select();
-			}
-		} else {
+						if(places.length) {
+							that.selectPlace(places[0]);
+							
+							that.placesListView.list[0].select();
+						}
+					}
+				}, 500);
+		}
+	} else {
 			// else if we aren't displaying something...
 			if(!this.params.subcategory) {
 				this.hideSubpane();
