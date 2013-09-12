@@ -212,9 +212,12 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 				this.previous_search = search;
 				setTimeout(function() {
 					if(that.previous_search === that.search) {
-						var places = that.collection.search(search, {
-							"excludes": []
+
+						_.each(that.params, function(param) {
+							search += " " + param;
 						});
+
+						var places = that.collection.search(search);
 
 						that.placesListView = new PlacesListView({
 							array: places
@@ -230,7 +233,7 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 							that.placesListView.list[0].select();
 						}
 					}
-				}, 500);
+				}, 100);
 		}
 	} else {
 			// else if we aren't displaying something...

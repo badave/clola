@@ -188,6 +188,10 @@ Backbone.Collection.prototype.search = function (term, options) {
 			array.push(model);
 		}
 
+		if(array.length > 50) {
+			return;
+		}
+
 	});
 
 	return array;
