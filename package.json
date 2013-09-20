@@ -31,7 +31,8 @@
     "accounting": "~0.3.2",
     "connect-handlebars": "*",
     "socket.io": "*",
-    "twilio": "*"
+    "twilio": "*",
+    "amqp": "*"
   },
   "licenses": [
     {

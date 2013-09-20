@@ -13,6 +13,8 @@ var url = require('url');
 
 var evt = require("../models/evt");
 
+var rabbit = require("../controllers/rabbit_controller");
+
 var smsController = module.exports = {};
 var genericModel = require("../lib/generic_model");
 
@@ -86,22 +88,25 @@ smsController.send = function(data) {
 smsController.post = function(req, res, next) {
   var context = {
     title: config.title
-  }
+  };
 
   var msg = req.body;
   msg.phone = phone;
-  var phone = msg.From.replace(/\D/g, '').toString()
+  var phone = msg.From.replace(/\D/g, '').toString();
   var message = {
     "text": msg.Body,
     "created": new Date().getTime()
-  }
+  };
 
   console.log("received sms: ", message);
   
   db.findAndModify("messages", {"phone": phone}, {}, { "$set": { "phone": phone, "status": "new" }, "$push": { "messages": message} }, { "upsert": true }, function(err, object) {
     evt.emit("message", { "phone": phone, "status": "new", "messages": [message] });
+    
+    rabbit.smsExchange.publish('', 'sms_received');
+    
     db.insert("raw_messages", msg, function(err, obj) {
       helper.respondJson(req, res, 200);
-    })
-  })
-}
+    });
+  });
+};

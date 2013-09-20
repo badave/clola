@@ -13,6 +13,7 @@ var url = require('url');
 
 var evt = require("../models/evt");
 
+
 var socketController = module.exports = function(server){
 	var self = this;
 	io = require('socket.io').listen(server);
@@ -25,14 +26,10 @@ var socketController = module.exports = function(server){
 	});
 
 	io.on("connection", function(socket) {
-		// console.log(socket);
-		// socket.emit("hello", {'data': "hello"});
-		// 
-
 		socket.on("replying", function(data) {
 			// echo to others
 			socket.broadcast.emit("replying", data);
-		})
+		});
 
 		socket.on("reply", function(data) {
 			console.log(data);
@@ -40,29 +37,19 @@ var socketController = module.exports = function(server){
 			smsController.send(data);
 			db.findAndModify("messages", {"phone": data.phone}, {}, { "$set": { "status": "replied" }, "$push": { "messages": data.message} }, { "upsert": true }, function(err, object) {
 				evt.emit("message", {"phone": data.phone, "status": "replied", "messages": [data.message] });
-			})
-		})
+			});
+		});
 
 		socket.on("hide", function(data) {
 			db.findAndModify("messages", {"phone": data.phone}, {}, { "$set": { "status": "hidden" } }, {}, function(err, object) {
 				evt.emit("message", {"phone": data.phone, "status": "hidden"});
 			});
-		})
-	})
+		});
+	});
 
 	evt.on("message", function(msg) {
 		io.sockets.emit("msg", msg);
-	})
+	});
 
 };
 
-
-// var io = require('socket.io').listen(80);
-
-
-// io.sockets.on('connection', function (socket) {
-//   socket.emit('news', { hello: 'world' });
-//   socket.on('my other event', function (data) {
-//     console.log(data);
-//   });
-// });

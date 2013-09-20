@@ -16,7 +16,6 @@ require("./initialize/handlebars");
 
 var app = express();
 
-
 var db = require('./lib/db');
 db.url = config.db_url;
 
