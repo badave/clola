@@ -13,7 +13,6 @@ var url = require('url');
 
 var evt = require("../models/evt");
 
-
 var socketController = module.exports = function(server){
 	var self = this;
 	io = require('socket.io').listen(server);
