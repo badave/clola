@@ -32,7 +32,8 @@
     "connect-handlebars": "*",
     "socket.io": "*",
     "twilio": "*",
-    "amqp": "*"
+    "amqp": "*",
+    "eyes": "*"
   },
   "licenses": [
     {
@@ -55,7 +56,8 @@
     "grunt-contrib-less": "~0.5.1",
     "grunt-contrib-handlebars": "~0.5.8",
     "optimist": "*",
-    "cheerio": "*"
+    "cheerio": "*",
+    "eyes": "*"
   },
   "repository": {
     "type": "git",

@@ -19,11 +19,12 @@ var smsController = module.exports = {};
 var genericModel = require("../lib/generic_model");
 
 smsController.test = function(req, res) {
-  if(!req.user) {
-    return res.redirect("/go");
-  }
+  // if(!req.user) {
+    // return res.redirect("/go");
+  // }
   
-  evt.emit("message", {"phone": "17752879549", "messages": [{"text": "sup sicko", "created": new Date().getTime()  }] });
+  // evt.emit("message", {"phone": "17752879549", "messages": [{"text": "sup sicko", "created": new Date().getTime()  }] });
+  rabbit.smsExchange.publish('sms_received', {"phone": "17752879549", "messages": [{"text": "sup sicko", "created": new Date().getTime()  }] });
   return helper.respondJson(req, res, 200);
 }
 
@@ -101,9 +102,9 @@ smsController.post = function(req, res, next) {
   console.log("received sms: ", message);
   
   db.findAndModify("messages", {"phone": phone}, {}, { "$set": { "phone": phone, "status": "new" }, "$push": { "messages": message} }, { "upsert": true }, function(err, object) {
-    evt.emit("message", { "phone": phone, "status": "new", "messages": [message] });
+    // evt.emit("message", { "phone": phone, "status": "new", "messages": [message] });
     
-    rabbit.smsExchange.publish('', 'sms_received');
+    rabbit.smsExchange.publish('sms_received', { "phone": phone, "status": "new", "messages": [message] });
     
     db.insert("raw_messages", msg, function(err, obj) {
       helper.respondJson(req, res, 200);
