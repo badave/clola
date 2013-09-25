@@ -5,7 +5,7 @@ App.addInitializer(function(options) {
 	
 	App.socket.on('connect', function() {
      // Connected, let's sign-up for to receive messages for this room
-     socket.emit('room', "arpan");
+     App.socket.emit('room', "arpan");
   });
    
   App.socket.on('socket_message', function(data) {
