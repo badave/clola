@@ -1,5 +1,16 @@
 App.addInitializer(function(options) {
-	App.socket = io.connect('http://clola.herokuapp.com:80/');  
+	// App.socket = io.connect('http://clola.herokuapp.com:80/');
+	
+	App.socket = io.connect('http://localhost:5050/');
+	
+	App.socket.on('connect', function() {
+     // Connected, let's sign-up for to receive messages for this room
+     socket.emit('room', "arpan");
+  });
+   
+  App.socket.on('socket_message', function(data) {
+     console.log('Incoming message:', data);
+  }); 
 
 	if(options.localhost) {
 		io.connect('http://localhost:5050/'); 

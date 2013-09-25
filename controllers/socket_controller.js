@@ -26,6 +26,11 @@ var socketController = module.exports = function(server){
 	});
 
 	io.on("connection", function(socket) {
+	  // once a client has connected, we expect to get a ping from them saying what room they want to join
+    socket.on('room', function(room) {
+      socket.join(room);
+    });
+	  
 		socket.on("replying", function(data) {
 			// echo to others
 			socket.broadcast.emit("replying", data);
@@ -46,9 +51,14 @@ var socketController = module.exports = function(server){
 			});
 		});
 	});
-
+	
 	evt.on("message", function(msg) {
-		io.sockets.emit("msg", msg);
+		// now, it's easy to send a message to just the clients in a given room
+    var room = "arpan";
+    io.sockets.in(room).emit('socket_message', 'what is going on, party people?');
+     
+    // this message will NOT go to the client defined above
+    // io.sockets.in('foobar').emit('message', 'anyone in this room yet?');
 	});
 
 };
