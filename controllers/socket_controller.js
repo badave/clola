@@ -56,8 +56,8 @@ var socketController = module.exports = function(server){
 	
 	evt.on("message", function(msg) {
 		// now, it's easy to send a message to just the clients in a given room
-    var room = "arpan";
-    io.sockets.in(room).emit('socket_message', 'what is going on, party people?');
+    var room = "1";
+    io.sockets.in(room).emit('socketRoomMessage', msg);
      
     // this message will NOT go to the client defined above
     // io.sockets.in(roomModel.getRoomByPhoneNumber(msg.phone)).emit('message', 'anyone in this room yet?');
