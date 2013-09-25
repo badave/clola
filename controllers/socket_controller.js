@@ -12,6 +12,7 @@ var smsController = require("../controllers/sms_controller");
 var url = require('url');
 
 var evt = require("../models/evt");
+var roomModel = require("../models/room");
 
 var socketController = module.exports = function(server){
 	var self = this;
@@ -59,7 +60,7 @@ var socketController = module.exports = function(server){
     io.sockets.in(room).emit('socket_message', 'what is going on, party people?');
      
     // this message will NOT go to the client defined above
-    // io.sockets.in('foobar').emit('message', 'anyone in this room yet?');
+    // io.sockets.in(roomModel.getRoomByPhoneNumber(msg.phone)).emit('message', 'anyone in this room yet?');
 	});
 
 };
