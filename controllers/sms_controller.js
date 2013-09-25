@@ -26,15 +26,15 @@ smsController.test = function(req, res) {
   // evt.emit("message", {"phone": "14153146174", "messages": [{"text": "sup sicko", "created": new Date().getTime()  }] });
   rabbit.smsExchange.publish('sms_received', {"phone": "14153146174", "messages": [{"text": "hola", "created": new Date().getTime()  }] });
   return helper.respondJson(req, res, 200);
-}
+};
 
 smsController.find = function(req, res) {
   if(!req.user) {
     return res.redirect("/go");
   }
 
-	genericModel.find("messages", genericModel.jsonResponder(req, res))
-}
+	genericModel.find("messages", genericModel.jsonResponder(req, res));
+};
 
 smsController.send = function(data) {
   var client = new twilio.RestClient(config.twilio_sid, config.twilio_auth_token);
@@ -67,7 +67,7 @@ smsController.send = function(data) {
           console.log('Oops! There was an error.');
       }
   });
-}
+};
 
 /**
  * Example request
