@@ -146,6 +146,8 @@ Backbone.Collection.prototype.search = function (term, options) {
 	var that = this;
 	term = term || "";
 
+	term = term.replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ");
+
 	var terms = term.split(" ");
 
 	options = options || {};
@@ -171,7 +173,7 @@ Backbone.Collection.prototype.search = function (term, options) {
 			}
 		}
 
-		values = values.join(" ");
+		values = values.join(" ").replace(/[\.,-\/#!$%\^&\*;:{}=\-_`~()]/g,"").replace(/\s{2,}/g," ");
 
 		var has_terms = true;
 

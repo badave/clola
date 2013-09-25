@@ -93,13 +93,14 @@ $(document).ready(function() {
     return States[value];
   });
 
-  Handlebars.registerHelper('stateOptions', function() {
-    var options = "";
+  Handlebars.registerHelper('stateOptions', function(options) {
+    var opts = "";
 
+    console.log(States);
     for(var abbr in States) {
-      options += '<option value="' + abbr + '">' + States[abbr] + '</option>';
+      opts += '<option value="' + abbr + '">' + States[abbr] + '</option>';
     }
-    return options;
+    return opts;
   });
 
   Handlebars.registerHelper('formatWebhookEvent', function(value) {

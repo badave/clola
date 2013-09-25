@@ -1,0 +1,231 @@
+@import "vars";
+@import "mixins";
+
+/**
+ * Buttons
+ */
+a.btn,
+button.btn,
+button[type=submit],
+button[type=reset] {
+  .rounded-corners;
+
+  display: inline-block;
+
+  // override all bootstrap styles
+  font-family: @font-family;
+  font-size: @font-size-small;
+  font-weight: @font-weight-bold;
+  line-height: 16px;
+  min-height: 30px;
+  color: #fff;
+  text-align: center;
+  text-shadow: none;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+
+  background: #777;
+  border: 0 none;
+
+  padding: 7px 12px;
+  // margin: 0;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transition: .1s ease-in background-color, .1s ease-in border-color;
+  -moz-transition: .1s ease-in background-color, .1s ease-in border-color;
+  transition: .1s ease-in background-color, .1s ease-in border-color;
+
+  &:hover {
+    color: #fff;
+    background: #999;
+    text-decoration: none;
+  }
+
+  &:active {
+    color: #fff;
+    background: #999;
+    text-decoration: none;
+  }
+
+  &.active {
+    color: #444; 
+    background: #ddd;
+    text-decoration: none;
+  }
+
+  // Types
+  &.btn-outline {
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 9px 12px; // v-pad is subtracted by border
+    letter-spacing: .1em;
+    line-height: 16px;
+
+    color: @text-color-subtle;
+
+    &:hover {
+      color: #333;
+      border: 1px solid #333;
+      background: transparent;
+    }
+
+    &:active {
+      color: @text-color-subtle;
+      border: 1px solid #999;
+      background: transparent;
+    }
+
+    &.btn-outline-inverse {
+      color: #eee;
+      border: 1px solid #eee;
+      &:hover {
+        color: #fff;
+        border: 1px solid #fff;
+      }
+      &:active {
+        color: #eee;
+        border: 1px solid #eee;
+      }
+    }
+
+    &.btn-outline-thick {
+      border-width: 2px;
+    }
+
+    &.btn-outline-small {
+      padding: 4px 12px; // v-pad is subtracted by border
+      letter-spacing: .1em;
+    }
+  }
+  // border: 1px solid #333;
+  &.btn-border {
+    border: 1px solid #999;
+  }
+
+  &.btn-white {
+    background: #fff;
+    color: #666;
+    border:1px solid #ccc;
+
+    &:hover {
+      background: #eee;
+    }
+
+    &:active {
+      background: #ddd;
+    }
+  }
+
+  &.btn-black {
+    background: #333;
+    color: #fff;
+    border-color: #000;
+
+    &:hover {
+      background: #666;
+    }
+
+    &:active {
+      background: #333;
+    }
+  }
+
+  &.btn-green {
+    background: @green-dark;
+    color: #fff;
+    border-color: #333;
+
+    &:hover {
+      background: @green-light;
+    }
+
+    &:active {
+      background: @green-dark;
+    }
+  }
+
+  &.btn-blue {
+    background: @blue-dark;
+    color: #fff;
+    border-color: #333;
+
+    &:hover {
+      background: @blue-light;
+    }
+
+    &:active {
+      background: @blue-dark;
+    }
+  }
+
+  &.btn-red {
+    background: @red-dark;
+    color: #fff;
+    border-color: #333;
+
+    &:hover {
+      background: @red-light;
+    }
+    
+    &:active {
+      background: @red-dark;
+    }
+  }
+
+  &.btn-tall {
+    padding: 10px 12px;
+  }
+
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
+
+  &.btn-wide {
+    width: 280px;
+  }
+
+  &[disabled],&[disabled]:hover,&[disabled]:active {
+    background: #aaa;
+    cursor: default;
+    color: #eee;
+    border-color: #777;
+  }
+
+  &.btn-invisible {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+.btn-group {
+  a.btn,
+  button.btn,
+  button[type=submit],
+  button[type=reset] {
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  }
+}
+
+// Mobile Phone
+@media (max-width: 479px) {
+  a.btn,
+  button.btn,
+  button[type=submit],
+  button[type=reset] {
+    &.btn-wide {
+      width: 100%;
+    }
+  }
+}

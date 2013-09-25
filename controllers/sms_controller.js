@@ -24,7 +24,7 @@ smsController.test = function(req, res) {
   // }
   
   // evt.emit("message", {"phone": "14153146174", "messages": [{"text": "sup sicko", "created": new Date().getTime()  }] });
-  rabbit.smsExchange.publish('sms_received', {"phone": "14153146174", "messages": [{"text": "sup sicko", "created": new Date().getTime()  }] });
+  rabbit.smsExchange.publish('sms_received', {"phone": "14153146174", "messages": [{"text": "hola", "created": new Date().getTime()  }] });
   return helper.respondJson(req, res, 200);
 }
 

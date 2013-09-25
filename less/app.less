@@ -1,7 +1,11 @@
+
+
 @import "vars";
-@import "tags";
 @import "mixins";
+@import "fonts";
+@import "tags";
 @import "fixins";
+@import "buttons";
 
 ::-moz-scrollbar              { display:none; }
 ::-moz-scrollbar-button       { display:none; }
@@ -17,6 +21,7 @@
 ::-webkit-scrollbar-thumb        { display:none; }
 ::-webkit-scrollbar-corner       { display:none; }
 
+
 header {
 	padding: 10px;
 }
@@ -24,6 +29,7 @@ header {
 body {
 	overflow:hidden;
 	font-family: @font-family;
+	font-size:@font-size;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,8 +50,7 @@ address {
 
 ul {
 	min-height: 100%;
-	border:1px solid #e1e1e1;
-	.gradient (#fff, #f4f4f4);
+	background-color:@background-gray;
 
 	&.list-view {
 		list-style-type: none;
@@ -58,32 +63,25 @@ ul {
 			position: relative;
 			overflow: visible;
 			text-align: left;
-			border-width: 0;
-			border-top-width: 1px;
 			cursor:pointer;
-
-			border: 1px solid #ccc;
-			background: #eee ;
+			border-top:1px solid #eee;
 			font-weight: bold;
 			color: #222 ;
 			text-shadow: 0 1px 0 #fff;
 			
-			padding: .7em 15px;
+			padding:10px 15px;
 
-			.gradient;
+			border-left:4px solid #eee;
+			border-right:1px solid #eee;
 
 			i {
 				font-size: 1.2em;
 				margin-top: 2px;
 			}
 
-			&:hover {
-				.gradient(#f1f1f1, #e1e1e1);
-			}
-
 			&.selected {
-				.gradient(#e1e1ff, #eeeeff);
-				border-color: #ccccff;
+				border-left:4px solid @green-dark;
+				background-color:#fff;
 			}
 		}
 	}
@@ -129,11 +127,10 @@ section#messages {
 
 	.message-header {
 		padding: 10px;
-		border: 1px solid #ccc;
-		background-color: #6d84b4;
-		border: 1px solid rgba(0, 39, 121, .76);
-		color:#fff;
-		position:relative;
+		color: #666;
+		position: relative;
+		font-weight: 800;
+		border-bottom:1px solid #eee;
 	}
 
 	.messages-outer-container {
@@ -153,6 +150,10 @@ section#messages {
 		height:100%;
 		width:100%;
 		.scroll;
+	}
+
+	.btn {
+		.gradient(0, 0);
 	}
 
 	.reply-box {
@@ -186,10 +187,11 @@ section#messages {
 		.text {
 			padding: 10px;
 			float:left;
-			width:75%;
+			width:70%;
 			font-size:1.05em;
 			border-radius: 4px;
-			background-color: @light-yellow;	
+			color:#222;
+			background-color: #ddd;	
 		}
 
 		.time {
@@ -198,13 +200,18 @@ section#messages {
 			color:#888;
 			font-size:0.92em;
 			padding-top: 4px;
-			width:15%;
+			width:18%;
 			margin-top: 10px;
 		}
 		
 		.reply {	
 			text-align:right;
-			background-color: @light-blue;
+			color:#222;
+			background-color: #00afff;
+		}
+
+		.arrow_box_left {
+			float:right;
 		}
 		
 		.arrow_box_right, .arrow_box_left {
@@ -228,7 +235,7 @@ section#messages {
     }
     
     .arrow_box_right:after {
-      border-left-color: @light-blue;
+      border-left-color: #00afff;
     }
     
     .arrow_box_left:after {
@@ -236,7 +243,7 @@ section#messages {
     }
     
     .arrow_box_left:after {
-      border-right-color: @light-yellow;
+      border-right-color: #ddd;
     }
 	}
 }
