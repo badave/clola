@@ -11,8 +11,11 @@ App.addInitializer(function(options) {
      // TODO: arpan change the room number to be dynamic based on the event coming from the UI click to join room action
      App.socket.emit('room', "1");
   });
-   
-
+  
+  App.socket.on('createRoom', function(data) {
+    App.socket.emit('room', data.room);
+  });
+  
 	App.socket.on("socketRoomMessage", function(data) {
 		var phoneModel = App.messages.findByPhone(data.phone);
 		var messages = phoneModel.get("messages");
