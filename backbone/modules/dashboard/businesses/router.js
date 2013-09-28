@@ -9,34 +9,24 @@ var BusinessRouter = Backbone.Router.extend({
     };
 
     that.initialize = function() {
-      that.vendors = new VendorCollection();
+      that.businesses = new BusinessesCollection();
     };
 
-    that.vendor = function(params) {
-      dashLayout();
+    that.businesses = function(params) {
+      var dash = new DashLayout();
 
-      that.vendors.load();
+      that.businesses.load();
 
       waitFor(function() {
-        return that.vendors.loaded;
+        return that.businesses.loaded;
       }, function() {
-        var view = new VendorsCompositeView({
-          collection: that.vendors
+        var view = new BusinessesCompositeView({
+          collection: that.businesses
         });
 
         App.layout.body.show(view);
       });
     };
-
-    that.customers = function(params) {
-      dashLayout();
-
-      waitFor(function() {
-        return that.vendors.loaded;
-      }, function() {
-
-      });
-    }
 
     return Backbone.Router.apply(that, arguments);
   }

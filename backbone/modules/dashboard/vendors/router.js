@@ -14,16 +14,10 @@ var VendorRouter = Backbone.Router.extend({
       that.vendors.load();
     };
 
-    var dashLayout = function() {
-      if(!that.dashLayout) {
-        that.dashLayout = new DashLayout();
-        App.layout = that.dashLayout;
-        $("body").html(App.layout.render().$el);
-      }
-    };
 
     that.vendor = function(params) {
-      dashLayout();
+      var dash = new DashLayout();
+      dash.render();
 
       waitFor(function() {
         return that.vendors.loaded;
@@ -32,19 +26,19 @@ var VendorRouter = Backbone.Router.extend({
           collection: that.vendors
         });
 
-        App.layout.body.show(view);
+        dash.body.show(view);
       });
     };
 
     that.customers = function(params) {
-      dashLayout();
+      new DashLayout();
 
       waitFor(function() {
         return that.vendors.loaded;
       }, function() {
 
       });
-    }
+    };
 
     return Backbone.Router.apply(that, arguments);
   }

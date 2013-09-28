@@ -42,7 +42,9 @@ Backbone.Syphon = (function(Backbone, $, _){
 
       // Get the value for the input
       var inputReader = config.inputReaders.get(type);
-      var value = inputReader($el).trim();
+      if(inputReader($el) && inputReader($el).trim) {
+        var value = inputReader($el).trim();
+      }
 
       if (_.isEmpty(value)) {
         value = null;
