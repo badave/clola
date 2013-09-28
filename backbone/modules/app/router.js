@@ -6,7 +6,8 @@ var AppRouter = Backbone.Router.extend({
 
     that.routes = {
       "app":"index",
-      "yes": "vendor"
+      "dashboard": "vendor",
+      "dashboard/customers": "customers"
     };
 
     // ------------------------------------------ Actions

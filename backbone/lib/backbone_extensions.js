@@ -83,6 +83,8 @@ Backbone.Marionette.Layout.prototype.itemViewOptions = function() {
 
 // Empty
 Backbone.Marionette.ItemView.prototype.onCreate = Backbone.Marionette.ItemView.prototype.onCreateCancel = Backbone.Marionette.ItemView.prototype.onSave = Backbone.Marionette.ItemView.prototype.onCancel = function() {};
+Backbone.Marionette.CompositeView.prototype.onCreate = Backbone.Marionette.CompositeView.prototype.onCreateCancel = Backbone.Marionette.CompositeView.prototype.onSave = Backbone.Marionette.CompositeView.prototype.onCancel = function() {};
+
 
 /*
 	Loop through specified regionViews and show them
@@ -197,6 +199,16 @@ Backbone.Collection.prototype.search = function (term, options) {
 	});
 
 	return array;
+};
+
+Backbone.Marionette.ItemView.prototype.events = {
+  "click .a": "handleAClick"
+};
+
+Backbone.Marionette.ItemView.prototype.handleAClick = function(e) {
+  e.preventDefault();
+  
+  Backbone.history.navigate($(e.target).attr("href"), { trigger: true});
 };
 
 // ---------------------------------------------- Observers

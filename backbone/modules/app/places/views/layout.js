@@ -1,5 +1,5 @@
 PlacesLayout = Backbone.Marionette.Layout.extend({
-	template_path: "places/templates/layout",
+	template_path: "app/places/templates/layout",
 	className: "places-view",
 	params: {},
 	regions: {

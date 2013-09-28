@@ -1,5 +1,5 @@
 /*!
-  backbone.fetch-cache v1.0.0
+  backbone.fetch-cache v1.1.1
   by Andy Appleton - https://github.com/mrappleton/backbone-fetch-cache.git
  */
 
@@ -8,14 +8,14 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module and set browser global
-    define(['underscore', 'backbone'], function (_, Backbone) {
-      return (root.Backbone = factory(_, Backbone));
+    define(['underscore', 'backbone', 'jquery'], function (_, Backbone, $) {
+      return (root.Backbone = factory(_, Backbone, $));
     });
   } else {
     // Browser globals
-    root.Backbone = factory(root._, root.Backbone);
+    root.Backbone = factory(root._, root.Backbone, root.jQuery);
   }
-}(this, function (_, Backbone) {
+}(this, function (_, Backbone, $) {
 
   // Setup
   var superMethods = {
@@ -23,7 +23,20 @@
     modelSync: Backbone.Model.prototype.sync,
     collectionFetch: Backbone.Collection.prototype.fetch
   },
-  supportLocalStorage = typeof window.localStorage !== 'undefined';
+  supportLocalStorage = (function() {
+    var supported = typeof window.localStorage !== 'undefined';
+    if (supported) {
+      try {
+        // impossible to write on some platforms when private browsing is on and
+        // throws an exception = local storage not supported.
+        localStorage.setItem("test_support", "test_support");
+        localStorage.removeItem("test_support");
+      } catch (e) {
+        supported = false;
+      }
+    }
+    return supported;
+  })();
 
   Backbone.fetchCache = (Backbone.fetchCache || {});
   Backbone.fetchCache._cache = (Backbone.fetchCache._cache || {});
@@ -136,6 +149,23 @@
         deferred = new $.Deferred(),
         self = this;
 
+    function setData() {
+      self.set(self.parse(attributes), opts);
+      if (_.isFunction(opts.prefillSuccess)) { opts.prefillSuccess(self, attributes, opts); }
+
+      // Trigger sync events
+      self.trigger('cachesync', self, attributes, opts);
+      self.trigger('sync', self, attributes, opts);
+
+      // Notify progress if we're still waiting for an AJAX call to happen...
+      if (opts.prefill) { deferred.notify(self); }
+      // ...finish and return if we're not
+      else {
+        if (_.isFunction(opts.success)) { opts.success(self, attributes, opts); }
+        deferred.resolve(self);
+      }
+    }
+
     if (data) {
       expired = data.expires;
       expired = expired && data.expires < (new Date()).getTime();
@@ -143,24 +173,14 @@
     }
 
     if (!expired && (opts.cache || opts.prefill) && attributes) {
-      // Ensure that cache resolution is asynchronous
-      nextTick(function() {
+      // Ensure that cache resolution adhers to async option, defaults to true.
+      if (opts.async == null) { opts.async = true; }
 
-        self.set(self.parse(attributes), opts);
-        if (_.isFunction(opts.prefillSuccess)) { opts.prefillSuccess(self, attributes, opts); }
-
-        // Trigger sync events
-        self.trigger('cachesync', self, attributes, opts);
-        self.trigger('sync', self, attributes, opts);
-
-        // Notify progress if we're still waiting for an AJAX call to happen...
-        if (opts.prefill) { deferred.notify(self); }
-        // ...finish and return if we're not
-        else {
-          if (_.isFunction(opts.success)) { opts.success(self); }
-          deferred.resolve(self);
-        }
-      });
+      if (opts.async) {
+        nextTick(setData);
+      } else {
+        setData();
+      }
 
       if (!opts.prefill) {
         return deferred.promise();
@@ -215,6 +235,23 @@
         deferred = new $.Deferred(),
         self = this;
 
+    function setData() {
+      self[opts.reset ? 'reset' : 'set'](self.parse(attributes), opts);
+      if (_.isFunction(opts.prefillSuccess)) { opts.prefillSuccess(self); }
+
+      // Trigger sync events
+      self.trigger('cachesync', self, attributes, opts);
+      self.trigger('sync', self, attributes, opts);
+
+      // Notify progress if we're still waiting for an AJAX call to happen...
+      if (opts.prefill) { deferred.notify(self); }
+      // ...finish and return if we're not
+      else {
+        if (_.isFunction(opts.success)) { opts.success(self, attributes, opts); }
+        deferred.resolve(self);
+      }
+    }
+
     if (data) {
       expired = data.expires;
       expired = expired && data.expires < (new Date()).getTime();
@@ -222,24 +259,14 @@
     }
 
     if (!expired && (opts.cache || opts.prefill) && attributes) {
-      // Ensure that cache resolution is asynchronous
-      nextTick(function() {
+      // Ensure that cache resolution adhers to async option, defaults to true.
+      if (opts.async == null) { opts.async = true; }
 
-        self[opts.reset ? 'reset' : 'set'](self.parse(attributes), opts);
-        if (_.isFunction(opts.prefillSuccess)) { opts.prefillSuccess(self); }
-
-        // Trigger sync events
-        self.trigger('cachesync', self, attributes, opts);
-        self.trigger('sync', self, attributes, opts);
-
-        // Notify progress if we're still waiting for an AJAX call to happen...
-        if (opts.prefill) { deferred.notify(self); }
-        // ...finish and return if we're not
-        else {
-          if (_.isFunction(opts.success)) { opts.success(self); }
-          deferred.resolve(self);
-        }
-      });
+      if (opts.async) {
+        nextTick(setData);
+      } else {
+        setData();
+      }
 
       if (!opts.prefill) {
         return deferred.promise();

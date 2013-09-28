@@ -1,5 +1,5 @@
 PlaceView = Backbone.Marionette.ItemView.extend({
-	template_path: "places/templates/place",
+	template_path: "app/places/templates/place",
 	className: "small",
 	events: {
 		"click .edit": "onEdit",

@@ -13,7 +13,7 @@ homeController.index = function(req, res, next) {
 
 homeController.awesomeSauce = function(req, res) {
   if(!req.user || !req.user.admin) {
-    return res.redirect("/yes");
+    return res.redirect("/dashboard");
   }
 
 	var context = {
@@ -42,7 +42,7 @@ homeController.go = function(req, res) {
   return helper.render(req, res, 200, "home/go", context);
 };
 
-homeController.yes = function(req, res) {
+homeController.dashboard = function(req, res) {
   if(!req.user) {
     res.redirect("/go");
     return;

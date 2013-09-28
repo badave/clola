@@ -1,4 +1,4 @@
-FormView = Backbone.Marionette.ItemView.extend({
+VendorFormView = Backbone.Marionette.ItemView.extend({
   template_path: "vendors/templates/form",
   className: "vendor-body",
   events: {
