@@ -1,5 +1,5 @@
 VendorSidebarView = Backbone.Marionette.ItemView.extend({
-  template_path: "vendors/sidebar/templates/sidebar",
+  template_path: "dashboard/layout/sidebar/templates/sidebar",
   constructor: function () {
     var that = this;
 

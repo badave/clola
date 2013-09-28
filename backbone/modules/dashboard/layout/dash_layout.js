@@ -11,7 +11,7 @@ DashLayout = Backbone.Marionette.Layout.extend({
     };
   },
   onRender: function() {
-    $("body").html(this.render().$el);
+    $("body").html(this.$el);
     App.layout = this;
   }
 });

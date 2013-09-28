@@ -54,6 +54,13 @@ Backbone.Marionette.ItemView.prototype.template = Backbone.Marionette.CompositeV
 	if(!this.template_path) { throw new Error("Add a template path to your view.  If you're getting this error and you have a template_path, your initializer needs _.bindAll(this, 'template'); in it, or override template"); }
 	var template = Handlebars.templates[this.template_path];
 
+	if(!template) {
+		console.trace();
+		console.log("Undefined template");
+		console.log(this.template_path);
+		return;
+	}
+
 	if(typeof(this.context) === "function") {
 		return template(this.context(modelJson));
 	} else if(typeof(this.context) === "object") {
