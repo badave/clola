@@ -66,6 +66,7 @@ h1,h2,h3,h4,h5,h6{margin:4px 0;}
 .mr15{margin-right:15px;}
 address{margin-bottom:10px;}
 ul{min-height:100%;background-color:#fafafb;}ul.list-view{list-style-type:none;margin:0;padding:0;}ul.list-view li{display:block;margin:0;position:relative;overflow:visible;text-align:left;cursor:pointer;border-top:1px solid #eee;font-weight:bold;color:#222 ;text-shadow:0 1px 0 #fff;padding:10px 15px;border-left:4px solid #eee;border-right:1px solid #eee;}ul.list-view li i{font-size:1.2em;margin-top:2px;}
+ul.list-view li:last-child{border-bottom:1px solid #eee;}
 ul.list-view li.selected{border-left:4px solid #3aa63b;background-color:#fff;}
 section#messages{position:absolute;left:55%;right:0;bottom:0;top:100px;}section#messages .messages-list{position:absolute;left:74%;right:0;bottom:0;top:0;z-index:3;}
 section#messages .icon-circle{color:#78c16b;}
@@ -79,7 +80,7 @@ section#messages .reply-box{position:absolute;bottom:0;left:0;right:0;height:40p
 section#messages .reply-box input{width:70%;margin-left:10px;}
 section#messages .message{position:relative;z-index:1;clear:both;padding-right:20px;padding-left:10px;padding-bottom:10px;}section#messages .message .text{padding:10px;float:left;width:70%;font-size:1.05em;border-radius:4px;color:#222;background-color:#ddd;}
 section#messages .message .time{float:left;margin-left:10px;color:#888;font-size:0.92em;padding-top:4px;width:18%;margin-top:10px;}
-section#messages .message .reply{text-align:right;color:#222;background-color:#78c16b;}
+section#messages .message .reply{text-align:right;color:#fff;background-color:#78c16b;}
 section#messages .message .arrow_box_left{float:right;}
 section#messages .message .arrow_box_right,section#messages .message .arrow_box_left{position:relative;}
 section#messages .message .arrow_box_right:after{left:100%;}
