@@ -1,5 +1,5 @@
 MessageView = Backbone.Marionette.ItemView.extend({
-	template_path: "messages/templates/message",
+	template_path: "app/messages/templates/message",
 	className: "message-view",
 	
 	events: {

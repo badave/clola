@@ -1,5 +1,5 @@
 CustomerEditView = Backbone.Marionette.ItemView.extend({
-	template_path: "customers/templates/form",
+	template_path: "app/customers/templates/form",
 	tagName: "form",
 	className: "customer-form hide",
 	events: {

@@ -1,5 +1,5 @@
 MessagesLayout = Backbone.Marionette.Layout.extend({
-	template_path: "messages/templates/layout",
+	template_path: "app/messages/templates/layout",
 	regions: {
 		"messages": "#messages-list",
 		"message_views": "#message-views"

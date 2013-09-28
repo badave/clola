@@ -1,5 +1,5 @@
 CustomerView = Backbone.Marionette.ItemView.extend({
-	template_path: "customers/templates/customer",
+	template_path: "app/customers/templates/customer",
 	className: "customer-view",
 	events: {
 		"click .edit": "onEdit",

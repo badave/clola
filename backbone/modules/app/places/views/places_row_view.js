@@ -1,6 +1,6 @@
 PlacesRowView = ListRowView.extend({
 	template: function() {
-		return Handlebars.templates["places/templates/list-row"];
+		return Handlebars.templates["app/places/templates/list-row"];
 	},
 	render: function() {
 		this.isClosed = false;

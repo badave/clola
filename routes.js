@@ -13,6 +13,7 @@ var customersController = require('./controllers/customers_controller');
 var homeController = require('./controllers/home_controller');
 var smsController = require('./controllers/sms_controller');
 var placesController = require('./controllers/places_controller');
+var vendorsController = require('./controllers/vendors_controller');
 // String.prototype.trim = function(){return this.replace(/^\s+|\s+$/g, '');};
 
 // Routes
@@ -29,7 +30,7 @@ module.exports = function(app) {
   app.get("/", homeController.index);
   app.get("/app", homeController.awesomeSauce);
   app.get("/go", homeController.go);
-  app.get("/yes", homeController.yes);
+  app.get("/dashboard*", homeController.dashboard);
 
   // app.get("/users", usersController.index);
   app.post("/register", usersController.create);
@@ -42,6 +43,11 @@ module.exports = function(app) {
   app.get("/v1/places", placesController.find);
   app.post("/v1/places", placesController.create);
   app.put("/v1/places/:id", placesController.update);
+
+
+  app.get("/v1/vendors", vendorsController.find);
+  app.post("/v1/vendors", vendorsController.create);
+  app.put("/v1/vendors/:id", vendorsController.update);
 
 
   app.get("/sms/test", smsController.test);

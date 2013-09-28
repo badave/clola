@@ -1,3 +1,5 @@
+// THIS HAS BEEN MODIFIED.  Do not upgrade willy-nilly.  Must keep in name, email, price
+
 // Backbone.Syphon, v0.4.1
 // Copyright (c)2012 Derick Bailey, Muted Solutions, LLC.
 // Distributed under MIT license
@@ -31,7 +33,8 @@ Backbone.Syphon = (function(Backbone, $, _){
     // Process all of the elements
     _.each(elements, function(el){
       var $el = $(el);
-      var type = getElementType($el); 
+      var type = getElementType($el);
+      var data_type = getElementDataType($el);
 
       // Get the key for the input
       var keyExtractor = config.keyExtractors.get(type);
@@ -39,7 +42,30 @@ Backbone.Syphon = (function(Backbone, $, _){
 
       // Get the value for the input
       var inputReader = config.inputReaders.get(type);
-      var value = inputReader($el);
+      var value = inputReader($el).trim();
+
+      if (_.isEmpty(value)) {
+        value = null;
+      } else {
+        // Convert to number
+        if (type === 'number') {
+          value = parseFloat(value);
+        }
+
+        // Make all email address lowercase
+        if (type === 'email') {
+          value = value.toLowerCase();
+        }
+
+        // Convert prices into cents
+        if (data_type === 'price') { 
+          value = parseInt(Math.round((accounting.unformat(value) * 100)).toFixed(0), 10);
+        }
+
+        if(data_type === 'csv') {
+          value = value.split(", ").join(',');
+        }
+      }
 
       // Get the key assignment validator and make sure
       // it's valid before assigning the value to the key
@@ -53,7 +79,7 @@ Backbone.Syphon = (function(Backbone, $, _){
     // Done; send back the results.
     return data;
   };
-  
+
   // Use the given JSON object to populate
   // all of the form inputs, in this view.
   // Alternately, pass a form element directly
@@ -71,7 +97,7 @@ Backbone.Syphon = (function(Backbone, $, _){
     // Process all of the elements
     _.each(elements, function(el){
       var $el = $(el);
-      var type = getElementType($el); 
+      var type = getElementType($el);
 
       // Get the key for the input
       var keyExtractor = config.keyExtractors.get(type);
@@ -100,7 +126,7 @@ Backbone.Syphon = (function(Backbone, $, _){
       var type = getElementType(el);
       var extractor = config.keyExtractors.get(type);
       var identifier = extractor($(el));
-     
+
       var foundInIgnored = _.include(config.ignoredTypes, type);
       var foundInInclude = _.include(config.include, identifier);
       var foundInExclude = _.include(config.exclude, identifier);
@@ -139,14 +165,39 @@ Backbone.Syphon = (function(Backbone, $, _){
         type = "text";
       }
     }
-    
+
     // Always return the type as lowercase
     // so it can be matched to lowercase
     // type registrations.
     return type.toLowerCase();
   };
-  
-  // If a form element is given, just return it. 
+
+  // Determine what type of element this is. It
+  // will either return the `data-type` attribute of
+  // an `<input>` element, or the `tagName` of
+  // the element when the element is not an `<input>`.
+  var getElementDataType = function(el){
+    var typeAttr;
+    var $el = $(el);
+    var tagName = $el[0].tagName;
+    var type = tagName;
+
+    if (tagName.toLowerCase() === "input"){
+      typeAttr = $el.attr("data-type");
+      if (typeAttr){
+        type = typeAttr;
+      } else {
+        type = "text";
+      }
+    }
+
+    // Always return the type as lowercase
+    // so it can be matched to lowercase
+    // type registrations.
+    return type.toLowerCase();
+  };
+
+  // If a form element is given, just return it.
   // Otherwise, get the form element from the view.
   var getForm = function(viewOrForm){
     if (_.isUndefined(viewOrForm.$el) && viewOrForm.tagName.toLowerCase() === 'form'){
@@ -160,7 +211,7 @@ Backbone.Syphon = (function(Backbone, $, _){
   // default values.
   var buildConfig = function(options){
     var config = _.clone(options) || {};
-    
+
     config.ignoredTypes = _.clone(Syphon.ignoredTypes);
     config.inputReaders = config.inputReaders || Syphon.InputReaders;
     config.inputWriters = config.inputWriters || Syphon.InputWriters;
@@ -168,17 +219,17 @@ Backbone.Syphon = (function(Backbone, $, _){
     config.keySplitter = config.keySplitter || Syphon.KeySplitter;
     config.keyJoiner = config.keyJoiner || Syphon.KeyJoiner;
     config.keyAssignmentValidators = config.keyAssignmentValidators || Syphon.KeyAssignmentValidators;
-    
+
     return config;
   };
 
-  // Assigns `value` to a parsed JSON key. 
+  // Assigns `value` to a parsed JSON key.
   //
   // The first parameter is the object which will be
   // modified to store the key/value pair.
   //
-  // The second parameter accepts an array of keys as a 
-  // string with an option array containing a 
+  // The second parameter accepts an array of keys as a
+  // string with an option array containing a
   // single string as the last option.
   //
   // The third parameter is the value to be assigned.
@@ -186,12 +237,12 @@ Backbone.Syphon = (function(Backbone, $, _){
   // Examples:
   //
   // `["foo", "bar", "baz"] => {foo: {bar: {baz: "value"}}}`
-  // 
+  //
   // `["foo", "bar", ["baz"]] => {foo: {bar: {baz: ["value"]}}}`
-  // 
+  //
   // When the final value is an array with a string, the key
   // becomes an array, and values are pushed in to the array,
-  // allowing multiple fields with the same name to be 
+  // allowing multiple fields with the same name to be
   // assigned to the array.
   var assignKeyValue = function(obj, keychain, value) {
     if (!keychain){ return obj; }
@@ -208,11 +259,7 @@ Backbone.Syphon = (function(Backbone, $, _){
       if (_.isArray(obj[key])){
         obj[key].push(value);
       } else {
-        if(typeof(value) === "string") {
-          obj[key] = $.trim(value);
-        } else {
-          obj[key] = value;
-        }
+        obj[key] = value;
       }
     }
 
@@ -220,7 +267,7 @@ Backbone.Syphon = (function(Backbone, $, _){
     if (keychain.length > 0){
       assignKeyValue(obj[key], keychain, value);
     }
-    
+
     return obj;
   };
 
@@ -244,7 +291,7 @@ Backbone.Syphon = (function(Backbone, $, _){
   // }
   // ```
   //
-  // With a KeyJoiner that uses [ ] square brackets, 
+  // With a KeyJoiner that uses [ ] square brackets,
   // should produce this output:
   //
   // ```js
@@ -425,7 +472,7 @@ Backbone.Syphon.KeyAssignmentValidators.registerDefault(function(){ return true;
 
 // But only the "checked" radio button for a given
 // radio button group is valid
-Backbone.Syphon.KeyAssignmentValidators.register("radio", function($el, key, value){ 
+Backbone.Syphon.KeyAssignmentValidators.register("radio", function($el, key, value){
   return $el.prop("checked");
 });
 
@@ -443,7 +490,7 @@ Backbone.Syphon.KeySplitter = function(key){
   var matches = key.match(/[^\[\]]+/g);
 
   if (key.indexOf("[]") === key.length - 2){
-    lastKey = matches.pop();
+    var lastKey = matches.pop();
     matches.push([lastKey]);
   }
 
@@ -458,12 +505,12 @@ Backbone.Syphon.KeySplitter = function(key){
 // de-normalized key name, when deserializing a data structure back
 // in to a form.
 //
-// Example: 
+// Example:
 //
 // With this data strucutre `{foo: { bar: {baz: "value", quux: "another"} } }`,
 // the key joiner will be called with these parameters, and assuming the
 // join happens with "[ ]" square brackets, the specified output:
-// 
+//
 // `KeyJoiner("foo", "bar")` //=> "foo[bar]"
 // `KeyJoiner("foo[bar]", "baz")` //=> "foo[bar][baz]"
 // `KeyJoiner("foo[bar]", "quux")` //=> "foo[bar][quux]"
