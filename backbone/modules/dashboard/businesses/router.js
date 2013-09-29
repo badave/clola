@@ -5,28 +5,53 @@ var BusinessRouter = Backbone.Router.extend({
     // ------------------------------------------ Config
 
     that.routes = {
-      "dashboard/businesses": "businesses"
+      "dashboard/businesses": "businesses",
+      "dashboard/businesses/new": "create",
+      "dashboard/businesses/:id": "edit"
     };
 
     that.initialize = function() {
-      that.businesses = new BusinessesCollection();
+      that.business = new Business();
     };
 
     that.businesses = function(params) {
       var dash = new DashLayout();
+      dash.render();
 
-      that.businesses.load();
+      that.business.fetch({
+        success: function() {
+          var view = new BusinessesCompositeView({
+            collection: that.businesses
+          });
 
-      waitFor(function() {
-        return that.businesses.loaded;
-      }, function() {
-        var view = new BusinessesCompositeView({
-          collection: that.businesses
-        });
-
-        App.layout.body.show(view);
+          dash.body.show(view);
+        }
       });
     };
+
+    that.create = function() {
+      var dash = new DashLayout();
+      dash.render();
+
+      var business = new Business();
+
+      var view = new BusinessForm({model: business});
+
+      dash.body.show(view);
+    };
+
+    that.edit = function(params) {
+      var dash = new DashLayout();
+      dash.render();
+      debugger
+      var business = new Business();
+
+      var view = new BusinessForm({model: business});
+
+      dash.body.show(view);
+
+
+    }
 
     return Backbone.Router.apply(that, arguments);
   }

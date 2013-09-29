@@ -33,6 +33,7 @@ body {
 	overflow:hidden;
 	font-family: @font-family;
 	font-size:@font-size;
+  color:#333;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -49,6 +50,15 @@ h1, h2, h3, h4, h5, h6 {
 
 address {
 	margin-bottom:10px;
+}
+
+.bigger {
+  font-size:1.25em;
+}
+
+
+.spacer {
+  height:30px;
 }
 
 ul {
@@ -69,7 +79,7 @@ ul {
 			cursor:pointer;
 			border-top:1px solid #eee;
 			font-weight: bold;
-			color: #222 ;
+			color: @text-color;
 			text-shadow: 0 1px 0 #fff;
 			
 			padding:10px 15px;
@@ -197,7 +207,7 @@ section#messages {
 			width:70%;
 			font-size:1.05em;
 			border-radius: 4px;
-			color:#222;
+			color:@text-color;
 			background-color: #ddd;	
 		}
 
@@ -438,6 +448,10 @@ section#places {
 	}
 }
 
+#places {
+  margin-top: 20px;
+}
+
 .places-header {
 	padding-left:5px;
 }
@@ -513,8 +527,9 @@ section#places {
   width: auto;
 
   border-left: 1px solid #a0a6b3;
-  overflow: hidden;
-  background: white;
+
+  overflow: scroll;
+  background: @background-gray;
   z-index: 9;
   // .box-shadow(0 0 5px rgba(51,51,51,0.4));
   .transition(right 200ms ease-out);
@@ -670,27 +685,82 @@ nav#sidebar, nav.sidebar {
   z-index:1000;
   background-color:@background-gray;
 
+  img {
+    width:@sidebar-width;
+  }
+
   &:hover {
     text-decoration:none;
     color:#444;
   }
 }
 
-.Aligner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 20em;
+
+.box {
+  background-color:white;
+  .rounded-corners(4px);
+  border:1px solid #eee;
+
+  width:75%;
+
+  margin:30px auto;
+
+  .box-header {
+    padding:15px 10px;
+    border-bottom:1px solid #eee;
+    text-align:center;
+  }
+
+  .box-body {
+    padding:50px 10px;
+    border-bottom:1px solid #eee;
+  }
+
+  .box-footer {
+    padding:15px 10px;
+  }
+
+  .row {
+    margin:0;
+  }
+
+  label {
+    font-weight:500;
+  }
+ }
+
+
+.dl-horizontal {
+  @dl-width: 35%;
+  dd {
+    display:inline-block;
+    float:left;
+    margin-top: 8px;
+    width: @dl-width;
+    text-align:right;
+    margin-left:0;
+  }
+
+  dt {
+    margin-left: 2%;
+    display:inline-block;
+    float: left;
+    width: 50%;
+    clear: none;
+
+    input {
+     padding:8px 16px;
+     width:100%;
+     border:0;
+     border-bottom:1px solid #ccc;
+     display:block;
+    }
+  }
 }
 
-.Aligner-item {
-  max-width: 50%;
-}
 
-.Aligner-item--top {
-  align-self: flex-start;
-}
-
-.Aligner-item--bottom {
-  align-self: flex-end;
+input[type="text"], textarea, input[type="url"], input[type="email"] {
+ padding:4px 8px;
+ border:1px solid #ccc;
+ .rounded-corners;
 }

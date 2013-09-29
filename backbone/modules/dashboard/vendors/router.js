@@ -31,12 +31,17 @@ var VendorRouter = Backbone.Router.extend({
     };
 
     that.customers = function(params) {
-      new DashLayout();
+      var dash = new DashLayout();
+      dash.render();
 
       waitFor(function() {
         return that.vendors.loaded;
       }, function() {
+        // var view = new VendorsCompositeView({
+        //   collection: that.vendors
+        // });
 
+        // dash.body.show(view);
       });
     };
 
