@@ -1,11 +1,15 @@
+var _ = require('underscore');
+
 function Room(name, id, owner) {
-  this.name = name;
-  this.id = id;
-  this.owner = owner;
+  this.name = name; // email of the customer rep
+  this.id = id; // uuid
+  this.owner = owner; // customer rep logged in
   this.people = [];
   this.peopleLimit = 4;
   this.status = "available";
   this.private = false;
+  
+  this.phoneNumbers = _.range(200, 999);
 };
 
 Array.prototype.each_slice = function (size, callback){
@@ -31,10 +35,9 @@ Room.prototype.removePerson = function(person) {
   this.people.remove(personIndex);
 };
 
-Room.prototype.getRoomByPhoneNumber = function(phoneNumber) {
-  arr = _.range(200, 999);
+Room.getRoomByPhoneNumber = function(phoneNumber) {
   a = [];
-  arr.each_slice(40, function(slice) {
+  this.phoneNumbers.each_slice(40, function(slice) {
     a.push(slice);
   });
   
@@ -45,12 +48,17 @@ Room.prototype.getRoomByPhoneNumber = function(phoneNumber) {
   for(var i=0; i<a.length; i++) {
     var index = a[i].indexOf(areaCode);
     if (index > -1){
-        roomId = [i, index];
+      roomId = [i, index];
     }
   }
   
-  roomId = roomId.toString();
-  return "1";
+  // roomId = roomId.toString();
+  return roomId;
+  // return "1";
+};
+
+Room.getRoomNameByPhoneNumber = function(phoneNumber) {
+  this.getRoomByPhoneNumber(phoneNumber).name;
 };
 
 Room.prototype.getPerson = function(personID) {
