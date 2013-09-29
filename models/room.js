@@ -1,5 +1,7 @@
 var _ = require('underscore');
 
+phoneNumbers = _.range(200, 999);
+
 function Room(name, id, owner) {
   this.name = name; // email of the customer rep
   this.id = id; // uuid
@@ -8,8 +10,6 @@ function Room(name, id, owner) {
   this.peopleLimit = 4;
   this.status = "available";
   this.private = false;
-  
-  this.phoneNumbers = _.range(200, 999);
 };
 
 Array.prototype.each_slice = function (size, callback){
@@ -35,14 +35,15 @@ Room.prototype.removePerson = function(person) {
   this.people.remove(personIndex);
 };
 
-Room.getRoomByPhoneNumber = function(phoneNumber) {
+Room.getRoomByPhoneNumber = function(phoneNumber, activeRooms) {
   a = [];
-  this.phoneNumbers.each_slice(40, function(slice) {
+  activeRoomsSize = (_.size(activeRooms) || 1);
+  
+  phoneNumbers.each_slice((phoneNumbers.length+1)/activeRoomsSize, function(slice) {
     a.push(slice);
   });
   
-  var areaCode = parseInt(phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, "$1"));
-  
+  var areaCode = parseInt(phoneNumber.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "$2"));
   var roomId;
   
   for(var i=0; i<a.length; i++) {
@@ -52,9 +53,7 @@ Room.getRoomByPhoneNumber = function(phoneNumber) {
     }
   }
   
-  // roomId = roomId.toString();
-  return roomId;
-  // return "1";
+  return roomId[0];
 };
 
 Room.getRoomNameByPhoneNumber = function(phoneNumber) {

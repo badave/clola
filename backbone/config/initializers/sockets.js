@@ -5,14 +5,8 @@ App.addInitializer(function(options) {
 	
 	App.socket.on('connect', function() {
      // Connected, let's sign-up for to receive messages for this room
-     // TODO: arpan change the room number to be dynamic based on the event coming from the UI click to join room action
-     // App.socket.emit('room', "1");
-     App.socket.emit("joinserver", "arpan@arpan.com");
+     App.socket.emit("joinserver", "arpan");
   });
-  
-  // App.socket.on('createRoom', function(data) {
-    // App.socket.emit('room', data.room);
-  // });
   
 	App.socket.on("socketRoomMessage", function(data) {
 		var phoneModel = App.messages.findByPhone(data.phone);

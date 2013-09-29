@@ -17,8 +17,8 @@ var Room = require("../models/room");
 var uuid = require('node-uuid');
 var people = {};
 var rooms = {};
-var roomsCollection = [];
 var clients = [];
+var _ = require("underscore");
 
 var socketController = module.exports = function(server){
 	var self = this;
@@ -33,12 +33,7 @@ var socketController = module.exports = function(server){
 	});
 
 	io.on("connection", function(socket) {
-	  // once a client has connected, we expect to get a ping from them saying what room they want to join
-    // socket.on('room', function(room) {
-      // console.log("room joined", room);
-      // socket.join(room);
-    // });
-    
+	  
     socket.on("joinserver", function(name) {
       var ownerRoomID = inRoomID = null;
       people[socket.id] = {"name" : name, "owns" : ownerRoomID, "inroom": inRoomID};
@@ -53,10 +48,11 @@ var socketController = module.exports = function(server){
         var id = uuid.v4();
         var room = new Room(name, id, socket.id);
         rooms[id] = room;
-        roomsCollection.push(room);
         
         //add room to socket, and auto join the creator of the room
         socket.room = name;
+        
+        // once a client has connected, we expect to get a ping from them saying what room they want to join
         socket.join(socket.room);
         console.log("room joined", socket.room);
         people[socket.id].owns = id;
@@ -120,16 +116,10 @@ var socketController = module.exports = function(server){
 	});
 	
 	evt.on("message", function(msg) {
-		// now, it's easy to send a message to just the clients in a given room
-    // var room = "1";
-    // io.sockets.in(room).emit('socketRoomMessage', msg);
-    // console.log(uuid.v4());
-    
     // join room and emit message or find the room and emit the message to that room
-    console.log(roomsCollection); 
-    // console.log(roomsCollection[Room.getRoomByPhoneNumber(msg.phone)].name); 
-    // this message will NOT go to the client defined above
-    // io.sockets.in(roomsCollection[Room.getRoomByPhoneNumber(msg.phone)].name).emit('message', 'anyone in this room yet?');
+		// now, it's easy to send a message to just the clients in a given room
+    var roomName = _.values(rooms)[Room.getRoomByPhoneNumber(msg.phone, rooms)]["name"];
+    io.sockets.in(roomName).emit('socketRoomMessage', msg);
 	});
 
 };
