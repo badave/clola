@@ -33,7 +33,8 @@
     "socket.io": "*",
     "twilio": "*",
     "amqp": "*",
-    "eyes": "*"
+    "eyes": "*",
+    "mime": "*"
   },
   "licenses": [
     {
