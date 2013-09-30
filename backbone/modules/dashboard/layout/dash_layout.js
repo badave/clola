@@ -1,6 +1,6 @@
 DashLayout = Backbone.Marionette.Layout.extend({
-  template_path: "vendors/layout/layout", 
-  className: "vendor",
+  template_path: "dashboard/layout/layout", 
+  className: "dash",
   regions: {
     sidebar: "#sidebar",
     body: "#body"
@@ -9,5 +9,9 @@ DashLayout = Backbone.Marionette.Layout.extend({
     return {
       sidebar: VendorSidebarView
     };
+  },
+  onRender: function() {
+    $("body").html(this.$el);
+    App.layout = this;
   }
 });

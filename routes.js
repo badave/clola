@@ -13,6 +13,7 @@ var customersController = require('./controllers/customers_controller');
 var homeController = require('./controllers/home_controller');
 var smsController = require('./controllers/sms_controller');
 var placesController = require('./controllers/places_controller');
+var businessesController = require('./controllers/businesses_controller');
 var vendorsController = require('./controllers/vendors_controller');
 // String.prototype.trim = function(){return this.replace(/^\s+|\s+$/g, '');};
 
@@ -48,6 +49,11 @@ module.exports = function(app) {
   app.get("/v1/vendors", vendorsController.find);
   app.post("/v1/vendors", vendorsController.create);
   app.put("/v1/vendors/:id", vendorsController.update);
+
+
+  app.get("/v1/businesses", businessesController.find);
+  app.post("/v1/businesses", businessesController.create);
+  app.put("/v1/businesses/:id", businessesController.update);
 
 
   app.get("/sms/test", smsController.test);

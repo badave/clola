@@ -1,0 +1,24 @@
+<div class="box bigger">
+  <form>
+    <div class="box-header">
+      <h3>General Business Information</h3>
+    </div>
+    <div class="box-body">
+      {{#each fields}}
+        <div class="row">
+          <dl class="dl-horizontal">
+            <dd><label for="{{this.idx}}">{{this.label}}</label> </dd>
+            <dt>
+              <input id="{{this.idx}}" type="text" name="{{this.name}}" value="{{this.value}}"></input>
+            </dt>
+          </dl>
+        </div>
+      {{/each}}
+    </div>
+    <div class="box-footer">
+      <div class="row">
+        <a class="btn btn-green a fr save">Save</a>
+      </div>
+    </div>
+  </form>
+</div>

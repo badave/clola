@@ -1,5 +1,5 @@
 VendorFormView = Backbone.Marionette.ItemView.extend({
-  template_path: "vendors/templates/form",
+  template_path: "dashboard/vendors/templates/form",
   className: "vendor-body",
   events: {
     "click .btn-save": "hide"

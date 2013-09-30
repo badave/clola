@@ -22,6 +22,21 @@ PlaceEditView = Backbone.Marionette.ItemView.extend({
 
 		var data = Backbone.Syphon.serialize(this);
 
+		var required_fields = ["name", "city", "area", "category", "subcategory"];
+		var valid = true;
+
+		_.each(required_fields, function(field) {
+			if(_.isEmpty(data[field])) {
+				$('[name="' + field + '"]').tooltipHelper("Required Field");
+				valid = false;
+			}
+		});
+
+		if(!valid) {
+			return;
+		}
+
+
 		if(data["hidden-tags"]) {
 			data.tags = data["hidden-tags"];
 			delete data["hidden-tags"];
