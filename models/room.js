@@ -68,8 +68,13 @@ Room.getRoomByPhoneNumber = function(phoneNumber, activeRooms) {
   return _.values(activeRooms)[roomId[0]];
 };
 
-Room.getRoomNameByPhoneNumber = function(phoneNumber) {
-  this.getRoomByPhoneNumber(phoneNumber).name;
+Room.findRoomByName = function(roomName, activeRooms) {
+  var roomObject;
+  _.map(activeRooms, function(room, roomKey) {
+    if(room["name"] === roomName) roomObject = room;
+  });
+  
+  return roomObject;
 };
 
 Room.prototype.getPerson = function(personID) {

@@ -80,6 +80,38 @@ var socketController = module.exports = function(server){
       }
     });
     
+    // params
+    // @name - name of the room to be removed, in our case email id of the customer rep
+    socket.on("removeRoom", function(name) {
+      var room = Room.findRoomByName(name, rooms);
+      
+      if (room) {
+        if (socket.id === room.owner) { //only the owner can remove the room
+          var personCount = room.people.length;
+          if (personCount > 2) {
+            console.log('there are still people in the room warning');
+          } else {
+            if (socket.id === room.owner) {
+              var i = 0;
+              while(i < clients.length) {
+                if(clients[i].id === room.people[i]) {
+                  people[clients[i].id].inroom = null;
+                  clients[i].leave(room.name);
+                }
+                ++i;
+              }
+              delete rooms[room.id];
+              people[room.owner].owns = null;
+              // socket.sockets.emit("roomList", {rooms: rooms});
+            }
+          }
+        } else {
+          console.log("Only the owner can remove a room.");
+          // client.emit("update", "Only the owner can remove a room.");
+        }
+      }
+    });
+    
     socket.on("joinRoom", function(id) {
       var room = rooms[id];
       if (socket.id === room.owner) {
