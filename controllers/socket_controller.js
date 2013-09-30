@@ -118,7 +118,7 @@ var socketController = module.exports = function(server){
 	evt.on("message", function(msg) {
     // join room and emit message or find the room and emit the message to that room
 		// now, it's easy to send a message to just the clients in a given room
-    var room = _.values(rooms)[Room.getRoomByPhoneNumber(msg.phone, rooms)];
+    var room = Room.getRoomByPhoneNumber(msg.phone, rooms);
 
     var phoneNumber = msg.phone;
     if(_.contains(room.people, phoneNumber)) {

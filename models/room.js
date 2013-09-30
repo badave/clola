@@ -39,12 +39,24 @@ Room.getRoomByPhoneNumber = function(phoneNumber, activeRooms) {
   a = [];
   activeRoomsSize = (_.size(activeRooms) || 1);
   
+  var roomId;
+  var roomObject;
+
+  // check for phone number in the active rooms
+  // if the number exists already return that room
+  _.map(activeRooms, function(room, roomKey) {
+    if(_.contains(room.people, phoneNumber)) {
+      roomObject = activeRooms[roomKey];
+    }
+  });
+  
+  if(roomObject) return roomObject;
+  
   phoneNumbers.each_slice((phoneNumbers.length+1)/activeRoomsSize, function(slice) {
     a.push(slice);
   });
   
   var areaCode = parseInt(phoneNumber.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "$2"));
-  var roomId;
   
   for(var i=0; i<a.length; i++) {
     var index = a[i].indexOf(areaCode);
@@ -53,7 +65,7 @@ Room.getRoomByPhoneNumber = function(phoneNumber, activeRooms) {
     }
   }
   
-  return roomId[0];
+  return _.values(activeRooms)[roomId[0]];
 };
 
 Room.getRoomNameByPhoneNumber = function(phoneNumber) {
