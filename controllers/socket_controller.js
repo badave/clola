@@ -20,16 +20,31 @@ var rooms = {};
 var clients = [];
 var _ = require("underscore");
 
+// enable redis-store for socket.io so that we can scale 
+var RedisStore = require('socket.io/lib/stores/redis')
+  , redis  = require('socket.io/node_modules/redis')
+  , pub    = redis.createClient()
+  , sub    = redis.createClient()
+  , client = redis.createClient();
+
 var socketController = module.exports = function(server){
 	var self = this;
 	io = require('socket.io').listen(server);
-
+	
 	io.set("origins","*:*");
 	// assuming io is the Socket.IO server object
 	io.configure(function () { 
-	  io.set("transports", ["xhr-polling"]); 
+	  io.set("transports", [
+  	  "xhr-polling",
+  	  "websocket"
+	  ]); 
 	  io.set("polling duration", 30); 
 	  io.set("log level", 1);
+	  io.set('store', new RedisStore({
+      redisPub : pub,
+      redisSub : sub,
+      redisClient : client
+    }));
 	});
 
 	io.on("connection", function(socket) {
