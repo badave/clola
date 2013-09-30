@@ -145,7 +145,6 @@ var socketController = module.exports = function(server){
     });
     
     socket.on("leaveRoom", function(phoneNumber) {
-      // var room = rooms[id];
       var room = Room.getRoomByPhoneNumber(phoneNumber, rooms);
       
       if (room) {
