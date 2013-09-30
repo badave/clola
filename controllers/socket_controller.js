@@ -43,12 +43,12 @@ var socketController = module.exports = function(server){
     // params
     // @name - name of the room, in our case email id of the customer rep 
     socket.on("createRoom", function(name) {
-        console.log("in create room");
+      console.log("in create room");
       if (people[socket.id].owns === null) {
         var id = uuid.v4();
         var room = new Room(name, id, socket.id);
         rooms[id] = room;
-        
+
         //add room to socket, and auto join the creator of the room
         socket.room = name;
         
@@ -118,8 +118,19 @@ var socketController = module.exports = function(server){
 	evt.on("message", function(msg) {
     // join room and emit message or find the room and emit the message to that room
 		// now, it's easy to send a message to just the clients in a given room
-    var roomName = _.values(rooms)[Room.getRoomByPhoneNumber(msg.phone, rooms)]["name"];
-    io.sockets.in(roomName).emit('socketRoomMessage', msg);
+    var room = _.values(rooms)[Room.getRoomByPhoneNumber(msg.phone, rooms)];
+
+    var phoneNumber = msg.phone;
+    if(_.contains(room.people, phoneNumber)) {
+      console.log("Phone number: ("+phoneNumber+") already exists in room: ("+room.name+")");
+    } else {
+      room.addPerson(phoneNumber);
+      // TODO: add phone number to messages collection
+      
+      console.log("update: ("+phoneNumber+") has connected to room: ("+room.name+")");
+    }
+    
+    io.sockets.in(room["name"]).emit('socketRoomMessage', msg);
 	});
 
 };

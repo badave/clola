@@ -18,9 +18,9 @@ Array.prototype.each_slice = function (size, callback){
   }
 };
 
-Room.prototype.addPerson = function(personID) {
+Room.prototype.addPerson = function(personPhoneNumber) {
   if (this.status === "available") {
-    this.people.push(personID);
+    this.people.push(personPhoneNumber);
   }
 };
 
