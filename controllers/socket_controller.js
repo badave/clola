@@ -97,6 +97,9 @@ var socketController = module.exports = function(server){
                 if(clients[i].id === room.people[i]) {
                   people[clients[i].id].inroom = null;
                   clients[i].leave(room.name);
+                  
+                  //TODO: take care of case when a customer rep is leaving the room but the users are still communicating
+                  // basically assign the current ongoing conversations to another customer rep
                 }
                 ++i;
               }
@@ -138,6 +141,18 @@ var socketController = module.exports = function(server){
             }
           }
         });
+      }
+    });
+    
+    socket.on("leaveRoom", function(phoneNumber) {
+      // var room = rooms[id];
+      var room = Room.getRoomByPhoneNumber(phoneNumber, rooms);
+      
+      if (room) {
+        // make sure that the client is in fact part of this room
+        if(_.contains(room.people, phoneNumber)) {
+          room.removePerson(phoneNumber);
+        }
       }
     });
     

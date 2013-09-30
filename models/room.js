@@ -24,15 +24,9 @@ Room.prototype.addPerson = function(personPhoneNumber) {
   }
 };
 
-Room.prototype.removePerson = function(person) {
-  var personIndex = -1;
-  for(var i = 0; i < this.people.length; i++){
-    if(this.people[i].id === person.id){
-      playerIndex = i;
-      break;
-    }
-  }
-  this.people.remove(personIndex);
+Room.prototype.removePerson = function(personPhoneNumber) {
+  var personIndex = this.people.indexOf(personPhoneNumber);
+  this.people.splice(personIndex, 1);
 };
 
 Room.getRoomByPhoneNumber = function(phoneNumber, activeRooms) {
