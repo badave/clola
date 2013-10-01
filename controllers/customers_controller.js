@@ -28,8 +28,8 @@ customersController.findByNumber = function(req, res, next) {
 		}
 
 		return helper.respondJson(req, res, 200, customer);
-	})
-}
+	});
+};
 
 customersController.create = function(req, res, next) {
 	if(!req.user) {
@@ -59,8 +59,8 @@ customersController.create = function(req, res, next) {
 		}
 
 		return helper.respondJson(req, res, 200, customer);
-	})
-}
+	});
+};
 
 customersController.update = function(req, res, next) {
 	if(!req.user) {
@@ -91,6 +91,6 @@ customersController.update = function(req, res, next) {
 		}
 
 		return helper.respondJson(req, res, 200, customer);
-	})
+	});
 
-}
+};

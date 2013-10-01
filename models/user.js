@@ -48,7 +48,7 @@ User.serializeUser = function(u) {
   // console.log("Serialized User: ", user);
 
   return user;
-}
+};
 
 User.setPassword = function(user, password, callback) {
   var updatedUser = {};
@@ -61,7 +61,7 @@ User.setPassword = function(user, password, callback) {
   db.findAndModify("users", query, {}, {"$set": updatedUser}, {"new": true}, function(err, user) {
     return callback(err, user);
   });
-}
+};
 
 /**
  * Boring CRUD Stuff
@@ -72,11 +72,11 @@ User.find = function(query, options, callback) {
   db.find("users", query, options, function(err, users) {
     return callback(err, users);
   });
-}
+};
 
 User.insert = function(newUser, callback) {
   db.insert("users", newUser, callback);
-}
+};
 
 User.updateById = function(user_id, updateObject, callback) {
   // Whitelist attributes allowed to be updated
@@ -97,33 +97,33 @@ User.updateById = function(user_id, updateObject, callback) {
   db.findAndModify("users", query, {}, {"$set": updatedUser}, {"new": true}, function(err, user) {
     return callback(err, user);
   });
-}
+};
 
 User.addToSetById = function(user_id, updateObject, callback) {
   var query = user_id ? {"_id": ObjectID(user_id)} : {};
   db.findAndModify("users", query, {}, {"$addToSet": updateObject}, {"new": true}, function(err, user) {
     return callback(err, user);
   });
-}
+};
 
 User.pullById = function(user_id, updateObject, callback) {
   var query = user_id ? {"_id": ObjectID(user_id)} : {};
   db.findAndModify("users", query, {}, {"$pull": updateObject}, {"new": true}, function(err, user) {
     return callback(err, user);
   });
-}
+};
 
 User.findOneById = function(user_id, callback) {
   db.findOne("users", {"_id": ObjectID(user_id)}, function(err, user) {
     return callback(err, user);
   });
-}
+};
 
 User.findOneByEmail = function(email, callback) {
   db.findOne("users", {"email": email}, function(err, user) {
     return callback(err, user);
   });
-}
+};
 
 
 /**
@@ -138,14 +138,14 @@ User.verifyPassword = function(hash, password, salt, created) {
   } else {
     return false;
   }
-}
+};
 
 // 3/1/2013
 // Used internally by model
 User.hashPassword = function(password, created, salt) {
   var hash = bcrypt.hashSync(password + created.toString(), salt);
   return hash;
-}
+};
 
 
 // 3/1/2013
@@ -156,7 +156,7 @@ User.exists = function(query, callback) {
     }
     return callback(null, user ? true : false);
   });
-}
+};
 
 User.limited = function(fullUser) {
   if (!fullUser) {
@@ -172,37 +172,37 @@ User.limited = function(fullUser) {
   });
 
   return limitedUser;
-}
+};
 
 
 
 // NOT REFACTORED
 
 User.sellingCounts = function(user_id, callback) {
-  var statuses = {}
+  var statuses = {};
 
   var getCounts = function(status, callback) {
     var query = {};
 
     if(status !== "total") {
       query.status = status;
-    }
+    };
 
     query.seller_id = ObjectID(user_id);
     
     db.count("orders", query, {}, function(err, count) {
-      callback(err, count)
+      callback(err, count);
     });
-  }
+  };
 
   // Damn, this got annoying.  Async kept crashing node for some reason
   var asyncCount = function(status) {
     return function(callback){
       getCounts(status, function(err, count) {
-        callback(err, count)
-      })
-    }
-  }
+        callback(err, count);
+      });
+    };
+  };
 
   async.parallel({
     total: asyncCount("total"),
@@ -211,8 +211,8 @@ User.sellingCounts = function(user_id, callback) {
     }, 
     function(err, counts) {
       callback(err, { "selling": counts });
-    })
-}
+    });
+};
 
 User.incrementStats = function(user_id, stats, callback) {
   db.update("users", {"_id": ObjectID(user_id) }, { "$inc": stats }, {}, function(err) {
@@ -221,6 +221,6 @@ User.incrementStats = function(user_id, stats, callback) {
     }
 
     return callback();
-  })
-}
+  });
+};
 
