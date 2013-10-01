@@ -3,7 +3,7 @@ var amqp = require('amqp');
 var evt = require("../models/evt");
 
 var rabbitControllerClass = function() {
-  var rabbitConnection = amqp.createConnection({ reconnect : true });
+  var rabbitConnection = amqp.createConnection();
 
   var smsExchange;
   var that = this;
