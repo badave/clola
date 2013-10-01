@@ -203,6 +203,7 @@ var socketController = module.exports = function(server){
       console.log("update: ("+phoneNumber+") has connected to room: ("+room.name+")");
     }
     
+    console.log("sending msg: ("+msg.messages[0].text+") from phone: ("+msg.phone+") to room: ("+room.name+")");
     io.sockets.in(room["name"]).emit('socketRoomMessage', msg);
 	});
 

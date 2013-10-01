@@ -28,7 +28,7 @@ var rabbitControllerClass = function() {
       console.log('Queue ' + queue.name + ' is open');
       queue.bind('smsExchange', '#');
       queue.subscribe(function (data) {
-        console.log("emitting event==================", data );
+        console.log("emitting event from rabbit queue", data );
         
         evt.emit("message", data);
       });
