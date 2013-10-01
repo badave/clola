@@ -37,7 +37,15 @@ var socketController = module.exports = function(server){
 	  io.set("transports", [
   	  "xhr-polling",
   	  "websocket"
-	  ]); 
+	  ]);
+	  
+	  // send minified client
+	  io.enable('browser client minification');
+	  // apply etag caching logic based on version number
+	  io.enable('browser client etag');
+	  // gzip the file
+	  io.enable('browser client gzip');
+	  
 	  io.set("polling duration", 30); 
 	  io.set("log level", 1);
 	  io.set('store', new RedisStore({
