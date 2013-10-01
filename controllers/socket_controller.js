@@ -193,9 +193,13 @@ var socketController = module.exports = function(server){
     if(_.contains(room.people, phoneNumber)) {
       console.log("Phone number: ("+phoneNumber+") already exists in room: ("+room.name+")");
     } else {
-      room.addPerson(phoneNumber);
       // TODO: add phone number to messages collection
+      // genericModel.create("customers", {"phone": phoneNumber}, genericModel.jsonResponder(req, res));
+      // db.insert("messages", msg, function(error, message) {
+        // helper.respondJson(phoneNumberToBeAddedHash, null, 200);
+      // });
       
+      room.addPerson(phoneNumber);
       console.log("update: ("+phoneNumber+") has connected to room: ("+room.name+")");
     }
     
