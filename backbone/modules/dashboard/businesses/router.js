@@ -11,21 +11,22 @@ var BusinessRouter = Backbone.Router.extend({
     };
 
     that.initialize = function() {
-      that.business = new Business();
+      that.businesses = new BusinessesCollection();
+      that.businesses.load();
     };
 
     that.businesses = function(params) {
       var dash = new DashLayout();
       dash.render();
 
-      that.business.fetch({
-        success: function() {
-          var view = new BusinessesCompositeView({
-            collection: that.businesses
-          });
+      waitFor(function() {
+        return that.businesses.loaded;
+      }, function() {
+        var view = new BusinessCompositeView({
+          collection: that.businesses
+        });
 
-          dash.body.show(view);
-        }
+        dash.body.show(view);
       });
     };
 
@@ -43,15 +44,31 @@ var BusinessRouter = Backbone.Router.extend({
     that.edit = function(params) {
       var dash = new DashLayout();
       dash.render();
-      debugger
-      var business = new Business();
 
-      var view = new BusinessForm({model: business});
-
-      dash.body.show(view);
+      waitFor(function() {
+        return that.businesses.loaded;
+      }, function() {
 
 
-    }
+        var business = that.businesses.findWhere({"_id": params}) || new Business({
+          _id: params
+        });
+
+        var view = new BusinessForm({
+          model: business
+        });
+
+
+        business.fetch({
+          success: function() {
+            view.render();
+          }
+        });
+
+        dash.body.show(view);
+
+      });
+    };
 
     return Backbone.Router.apply(that, arguments);
   }

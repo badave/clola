@@ -14,7 +14,7 @@ if (env === 'production') {
 } else {
 	config.test = true; // default: true
 	config.localhost = true;
-	config.db_url = "mongodb://leela:futura-mamart1n1!@widmore.mongohq.com:10010/clola";
+	config.db_url = "mongodb://leela:futura-mamart1n1!@widmore.mongohq.com:10010/clola_dev";
 }
 
 config.support_email = "support@clola.com";
