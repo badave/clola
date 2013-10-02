@@ -60,6 +60,7 @@ module.exports = function(app) {
   app.get("/sms/test", smsController.test);
   app.post("/sms", smsController.post);
   app.get("/v1/messages", smsController.find);
+  app.get("/v1/messages/:phone", smsController.findByNumber);
 
 
 

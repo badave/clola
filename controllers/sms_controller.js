@@ -24,7 +24,7 @@ smsController.test = function(req, res) {
   // }
   
   // evt.emit("message", {"phone": "14153146174", "messages": [{"text": "sup sicko", "created": new Date().getTime()  }] });
-  var phoneNumbers = ["12256182323", "18905556666"];
+  var phoneNumbers = ["12176182323", "18125556666"];
   var phoneNumber = phoneNumbers[Math.floor(Math.random()*phoneNumbers.length)]; 
   
   rabbit.smsExchange.publish('sms_received', {"phone": phoneNumber, "messages": [{"text": "hola howdy howdy", "created": new Date().getTime()  }] });
@@ -37,6 +37,28 @@ smsController.find = function(req, res) {
   }
 
 	genericModel.find("messages", genericModel.jsonResponder(req, res));
+};
+
+// API calls can be split to another server later if need be
+smsController.findByNumber = function(req, res, next) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+  
+  var phone = req.params.phone.replace(/\D/g, '').toString();
+
+  db.findOne("messages", {"phone": phone}, function(err, messages) {
+    if(err) {
+      console.error(err);
+      return helper.respondJsonError(req, res, 500);
+    }
+
+    if(!messages) {
+      return helper.respondJson(req, res, 200, {});
+    }
+
+    return helper.respondJson(req, res, 200, messages);
+  });
 };
 
 smsController.send = function(data) {

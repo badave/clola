@@ -24,7 +24,7 @@ MessageRowView = ListRowView.extend({
 	  var that = this;
 	  App.vent.on('change:message', function(model) {
 	    that.renderNewMessage(model);
-	  })
+	  });
 	  
 	  App.vent.on('message:replied', function(model){
 	    that.renderRepliedMessage(model);

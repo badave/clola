@@ -27,13 +27,13 @@ App.addInitializer(function(options) {
   		  phoneModel.fetch({
   		    success: function() {
   		      setData();
+  		      App.messages.add(phoneModel);
   		    }
   		  });
   		} else {
     		setData();
+    		App.vent.trigger("change:message", phoneModel);
       }
-        
-  		App.vent.trigger("change:message", phoneModel);
   	});
   	
   	App.socket.on("replying", function(data) {
