@@ -194,13 +194,14 @@ var socketController = module.exports = function(server){
       console.log("Phone number: ("+phoneNumber+") already exists in room: ("+room.name+")");
     } else {
       // TODO: add phone number to messages collection
-      // genericModel.create("customers", {"phone": phoneNumber}, genericModel.jsonResponder(req, res));
-      // db.insert("messages", msg, function(error, message) {
-        // helper.respondJson(phoneNumberToBeAddedHash, null, 200);
-      // });
-      
-      room.addPerson(phoneNumber);
-      console.log("update: ("+phoneNumber+") has connected to room: ("+room.name+")");
+      db.insert("messages", msg, function(error, message) {
+        if(error) {
+          console.error(error);  
+        }
+        
+        room.addPerson(phoneNumber);
+        console.log("update: ("+phoneNumber+") has connected to room: ("+room.name+")");
+      });
     }
     
     console.log("sending msg: ("+msg.messages[0].text+") from phone: ("+msg.phone+") to room: ("+room.name+")");
