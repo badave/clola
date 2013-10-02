@@ -32,6 +32,7 @@ Room.prototype.removePerson = function(personPhoneNumber) {
 Room.getRoomByPhoneNumber = function(phoneNumber, activeRooms) {
   a = [];
   activeRoomsSize = (_.size(activeRooms) || 1);
+  console.log("room size: ", activeRoomsSize);
   
   var roomId;
   var roomObject;

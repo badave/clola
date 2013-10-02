@@ -24,7 +24,10 @@ smsController.test = function(req, res) {
   // }
   
   // evt.emit("message", {"phone": "14153146174", "messages": [{"text": "sup sicko", "created": new Date().getTime()  }] });
-  rabbit.smsExchange.publish('sms_received', {"phone": "14153146174", "messages": [{"text": "hola howdy howdy", "created": new Date().getTime()  }] });
+  var phoneNumbers = ["14153146174", "18455556666"];
+  var phoneNumber = phoneNumbers[Math.floor(Math.random()*phoneNumbers.length)]; 
+  
+  rabbit.smsExchange.publish('sms_received', {"phone": phoneNumber, "messages": [{"text": "hola howdy howdy", "created": new Date().getTime()  }] });
   return helper.respondJson(req, res, 200);
 };
 
