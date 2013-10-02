@@ -12,7 +12,20 @@ var genericModel = require("../lib/generic_model");
 var businessesController = module.exports = {};
 
 businessesController.find = function(req, res, next) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+
   genericModel.findWithQuery("businesses", { "user_id": req.user._id }, genericModel.jsonResponder(req, res))
+}
+
+
+businessesController.findOne = function(req, res, next) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+
+  genericModel.findOneWithQuery("businesses", { "user_id": req.user._id, "_id": ObjectID(req.params.id) }, genericModel.jsonResponder(req, res))
 }
 
 businessesController.create = function(req, res) {

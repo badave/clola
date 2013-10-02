@@ -41,11 +41,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ml15 {
-	margin-right:15px;
+	margin-left:15px;
 }
 
 .mr15 {
 	margin-right:15px;
+}
+
+.gray {
+  color:#888;
 }
 
 address {
@@ -529,7 +533,6 @@ section#places {
   border-left: 1px solid #a0a6b3;
 
   overflow: scroll;
-  background: @background-gray;
   z-index: 9;
   // .box-shadow(0 0 5px rgba(51,51,51,0.4));
   .transition(right 200ms ease-out);
@@ -699,11 +702,11 @@ nav#sidebar, nav.sidebar {
 .box {
   background-color:white;
   .rounded-corners(4px);
-  border:1px solid #eee;
+  // border:1px solid #eee;
 
-  width:75%;
+  width:100%;
 
-  margin:30px auto;
+  margin:0 auto;
 
   .box-header {
     padding:15px 10px;
@@ -712,8 +715,8 @@ nav#sidebar, nav.sidebar {
   }
 
   .box-body {
-    padding:50px 10px;
-    border-bottom:1px solid #eee;
+    padding:15px 10px 50px;
+    // border-bottom:1px solid #eee;
   }
 
   .box-footer {
@@ -731,7 +734,7 @@ nav#sidebar, nav.sidebar {
 
 
 .dl-horizontal {
-  @dl-width: 35%;
+  @dl-width: 40%;
   dd {
     display:inline-block;
     float:left;
@@ -754,6 +757,7 @@ nav#sidebar, nav.sidebar {
      border:0;
      border-bottom:1px solid #ccc;
      display:block;
+     .rounded-corners(0);
     }
   }
 }

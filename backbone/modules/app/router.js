@@ -6,7 +6,6 @@ var AppRouter = Backbone.Router.extend({
 
     that.routes = {
       "app":"index",
-      "dashboard": "vendor",
       "dashboard/customers": "customers"
     };
 
@@ -76,14 +75,6 @@ var AppRouter = Backbone.Router.extend({
 
       App.layout.customers.show(that.customerLayout);
     }
-
-    that.vendor = function(params) {
-      var vendorLayout = new VendorLayout();
-
-      App.layout = vendorLayout;
-
-      $("body").append(App.layout.render().$el);
-    };
 
     return Backbone.Router.apply(that, arguments);
   }

@@ -215,7 +215,7 @@ Backbone.Marionette.ItemView.prototype.events = {
 Backbone.Marionette.ItemView.prototype.handleAClick = function(e) {
   e.preventDefault();
   
-  Backbone.history.navigate($(e.target).attr("href"), { trigger: true});
+  Backbone.history.navigate($(e.currentTarget).attr("href"), { trigger: true});
 };
 
 // ---------------------------------------------- Observers

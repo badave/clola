@@ -52,6 +52,7 @@ module.exports = function(app) {
 
 
   app.get("/v1/businesses", businessesController.find);
+  app.get("/v1/businesses/:id", businessesController.findOne);
   app.post("/v1/businesses", businessesController.create);
   app.put("/v1/businesses/:id", businessesController.update);
 

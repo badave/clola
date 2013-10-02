@@ -1,9 +1,13 @@
 <div class="box bigger">
-  <form>
+  <form id="general" action="">
     <div class="box-header">
-      <h3>General Business Information</h3>
+      <h3>Business Information</h3>
     </div>
     <div class="box-body">
+      <div class="row ac">
+        <h3>General</h3>
+      </div>
+
       {{#each fields}}
         <div class="row">
           <dl class="dl-horizontal">
@@ -17,7 +21,12 @@
     </div>
     <div class="box-footer">
       <div class="row">
-        <a class="btn btn-green a fr save">Save</a>
+        <dl class="dl-horizontal">
+          <dd></dd>
+          <dt>
+            <button type="submit" class="btn btn-green a fr save">Save</button>
+          </dt>
+        </dl>
       </div>
     </div>
   </form>
