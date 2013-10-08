@@ -33,13 +33,13 @@ businessesController.create = function(req, res) {
     return res.redirect("/go");
   }
 
-  var vendor = req.body;
+  var object = req.body;
 
-  vendor.user_id = req.user._id;
-  vendor.created = new Date().getTime();
-  vendor.created_date = new Date();
+  object.user_id = req.user._id;
+  object.created = new Date().getTime();
+  object.created_date = new Date();
   
-  genericModel.create("businesses", req.body, genericModel.jsonResponder(req, res));
+  genericModel.create("businesses", object, genericModel.jsonResponder(req, res));
 }
 
 businessesController.update = function(req, res) {

@@ -7,22 +7,22 @@
       <div class="row ac">
         <h3>General</h3>
       </div>
-
-      {{#each fields}}
-        <div class="row">
-          <dl class="dl-horizontal">
+      <div class="row">
+        <dl class="dl-horizontal">
+          {{#each fields}}
             <dd><label for="{{this.idx}}">{{this.label}}</label> </dd>
             <dt>
               <input id="{{this.idx}}" type="text" name="{{this.name}}" value="{{this.value}}"></input>
             </dt>
-          </dl>
-        </div>
-      {{/each}}
+          {{/each}}
+        </dl>
+      </div>
     </div>
     <div class="box-footer">
       <div class="row">
         <dl class="dl-horizontal">
-          <dd></dd>
+          <dd>
+            <button type="button" class="btn a fr cancel">Cancel</button></dd>
           <dt>
             <button type="submit" class="btn btn-green a fr save">Save</button>
           </dt>

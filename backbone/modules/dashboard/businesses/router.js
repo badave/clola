@@ -48,8 +48,6 @@ var BusinessRouter = Backbone.Router.extend({
       waitFor(function() {
         return that.businesses.loaded;
       }, function() {
-
-
         var business = that.businesses.findWhere({"_id": params}) || new Business({
           _id: params
         });
