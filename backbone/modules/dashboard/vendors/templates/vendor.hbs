@@ -1,5 +1,7 @@
-<div class="row">
+<div class="row" style="margin-top:30px">
   <div class="span12 ac">
-    <a href="/dashboard/businesses/{{model._id}}" class="a">{{#if model.image_url}}<img src="{{model.image_url}}" />{{else}}<div class="business-name">{{model.name}}{{/if}}</div></a>
+    {{#if model.image_url}}<img src="{{model.image_url}}" />{{else}}<div class="business-name">{{model.name}}{{/if}}</div>
   </div>
 </div>
+
+<hr />

@@ -3,11 +3,11 @@
   composite.js holds the business collection and renders
   all this as an array
  */
-BusinessView = Backbone.Marionette.CompositeView.extend({
+BusinessLocationView = Backbone.Marionette.CompositeView.extend({
   template_path: "dashboard/businesses/templates/business",
   events: {
-    "click .a": "handleAClick",
-    "click .add-location": "addLocation"
+    "click .add-location": "addLocation",
+    "click .edit-business": "editBusiness"
   },
   constructor: function() {
     var that = this;
@@ -31,6 +31,11 @@ BusinessView = Backbone.Marionette.CompositeView.extend({
     });
 
     modalView.open();
+  },
+
+  editBusiness: function() {
+    var view = new BusinessModal({model: this.model});
+    view.open();
   },
   onRender: function() {
     this.collection.load();

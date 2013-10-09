@@ -3,11 +3,39 @@ var ObjectID = require('mongodb').ObjectID,
   crypto = require('crypto'),
   hbs = require("hbs");
 
+ var _ = require("underscore");
+
 var db = require("../lib/db");
 var helper = require('../lib/helper');
 var config = require("../config");
 
+var genericModel = require("../lib/generic_model");
+
 var customersController = module.exports = {};
+
+customersController.find = function(req, res, next) {
+	if(!req.user) {
+	  return res.redirect("/go");
+	}
+
+	// get locations for user
+	genericModel.findWithQuery("locations", { "user_id": req.user._id }, function(err, locations) {
+
+		var place_ids = []; 
+
+		_.each(locations, function(location) {
+			if(location.place_id) {
+				place_ids.push(location.place_id.toString());
+			}
+		});
+
+		if(!place_ids.length) {
+			helper.respondJson(req, res, 200, []);
+		} else {
+			genericModel.findWithQuery("customers", { "previous_places._id": { "$in": place_ids }}, genericModel.jsonResponder(req, res));
+		}
+	});
+};
 
 // API calls can be split to another server later if need be
 customersController.findByNumber = function(req, res, next) {
@@ -28,8 +56,8 @@ customersController.findByNumber = function(req, res, next) {
 		}
 
 		return helper.respondJson(req, res, 200, customer);
-	})
-}
+	});
+};
 
 customersController.create = function(req, res, next) {
 	if(!req.user) {

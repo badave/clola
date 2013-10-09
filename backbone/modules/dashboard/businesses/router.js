@@ -28,6 +28,8 @@ var BusinessRouter = Backbone.Router.extend({
 
         dash.body.show(view);
       });
+
+      that.businesses.load();
     };
 
     that.create = function() {
@@ -36,9 +38,9 @@ var BusinessRouter = Backbone.Router.extend({
 
       var business = new Business();
 
-      var view = new BusinessForm({model: business});
+      var view = new BusinessModal({model: business});
 
-      dash.body.show(view);
+      view.open();
     };
 
     that.edit = function(params) {
@@ -56,14 +58,13 @@ var BusinessRouter = Backbone.Router.extend({
           model: business
         });
 
-
         business.fetch({
           success: function() {
             view.render();
           }
         });
 
-        dash.body.show(view);
+        view.open();
 
       });
     };

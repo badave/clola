@@ -1,5 +1,5 @@
-BusinessForm = FormView.extend({
-  template_path: "dashboard/businesses/templates/form",
+BusinessModal = Backbone.Modal.extend({
+  template_path: "dashboard/businesses/modals/templates/business",
   FIELDS: [
     {
       "name": "name",
@@ -55,5 +55,16 @@ BusinessForm = FormView.extend({
       "attribute": "address.zip",
       "label": "Zip Code: "
     }
-  ]
+  ],
+  onSave: function() {
+    Backbone.history.navigate("/dashboard/businesses", {trigger: true});  
+  },
+
+  onCancel: function() {
+    Backbone.history.navigate("/dashboard/businesses", {trigger: true});  
+  }
+  
 });
+
+
+_.extend(BusinessModal.prototype, FormViewMixin);

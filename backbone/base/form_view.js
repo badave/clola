@@ -1,12 +1,11 @@
-FormView = Backbone.Marionette.Layout.extend({
-  FIELDS: [],  
+FormViewMixin = {
   events: {
     "submit form": "save",
     "click .save": "save",
     "click .cancel": "cancel"
   }, 
   context: function(modelJson) {
-    _.each(this.FIELDS, function(field, index) {
+    _.each(this.FIELDS || [], function(field, index) {
       field.idx = field.attribute.toString() + "-" +  index.toString();
       field.value = _.get(modelJson, field.attribute, "");
     });
@@ -44,6 +43,12 @@ FormView = Backbone.Marionette.Layout.extend({
   cancel: function(e) {
     e.preventDefault();
 
-    Backbone.history.navigate("/dashboard/businesses", {trigger: true});
+    if(this.onCancel) {
+      this.onCancel();
+    }
   }
-});
+};
+
+FormView = Backbone.Marionette.Layout.extend({});
+
+_.extend(FormView.prototype, FormViewMixin);
