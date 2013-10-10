@@ -11,3 +11,94 @@ form {
     color: #777;
   }
 }
+
+.tile {
+  background: #fff;
+  float: left;
+  height: 0;
+  padding-bottom: 50%;
+  position: relative;
+  width: 100%;
+
+  .border-top {
+    border-top: 1px solid #e9e9e9;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .border-right {
+    border-left: 1px solid #e9e9e9;
+    height: 100%;
+    right: 0;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+  }
+
+  .border-left {
+    border-left: 1px solid #e9e9e9;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+  }
+
+
+  .border-bottom {
+    border-bottom: 1px solid #e9e9e9;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+  }
+}
+
+.big-block {
+  width: 33.333%;
+  padding-bottom: 33.33%;
+}
+
+.square {
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+
+  font-size:12px;
+
+  &.square-image {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-size:contain;
+    background-repeat:none;
+  }
+
+  .info {
+    background-color: #fff;
+    bottom: 0;
+    left: 60%;
+    overflow: hidden;
+    padding: 25px;
+    position: absolute;
+    right: 0;
+    top: 60%;
+
+    h5 {
+      text-transform:uppercase; 
+      background-color: #c1beca;
+      color:#fff;
+      padding:4px;
+    }
+  }
+}
