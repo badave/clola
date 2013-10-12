@@ -58,11 +58,18 @@ module.exports = function(app) {
   app.post("/v1/businesses", businessesController.create);
   app.put("/v1/businesses/:id", businessesController.update);
 
+  app.get("/v1/locations", locationsController.find);
+  app.get("/v1/locations/:id", locationsController.findOne);
+  
+  app.post("/v1/locations", locationsController.create);
+  app.put("/v1/locations/:id", locationsController.update);
 
-  app.get("/v1/businesses/:business_id/locations", locationsController.find);
-  app.get("/v1/businesses/:business_id/locations/:location_id", locationsController.findOne);
-  app.post("/v1/businesses/:business_id/locations", locationsController.create);
-  app.put("/v1/businesses/:business_id/locations/:location_id", locationsController.update);
+
+
+  app.get("/v1/businesses/:business_id/locations", locationsController.findByBusinessId);
+  app.get("/v1/businesses/:business_id/locations/:location_id", locationsController.findOneByBusinessId);
+  app.post("/v1/businesses/:business_id/locations", locationsController.createByBusinessId);
+  app.put("/v1/businesses/:business_id/locations/:location_id", locationsController.updateByBusinessId);
 
 
   app.get("/sms/test", smsController.test);

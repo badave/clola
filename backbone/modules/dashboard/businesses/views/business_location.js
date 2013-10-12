@@ -27,6 +27,8 @@ BusinessLocationView = Backbone.Marionette.CompositeView.extend({
       animate: true,
       onSave: function() {
         that.collection.push(location);
+        App.locations.load();
+        this.close();
       }
     });
 
@@ -38,6 +40,6 @@ BusinessLocationView = Backbone.Marionette.CompositeView.extend({
     view.open();
   },
   onRender: function() {
-    this.collection.load();
+    // this.collection.load();
   }
 });

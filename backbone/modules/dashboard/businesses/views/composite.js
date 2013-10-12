@@ -4,11 +4,11 @@ BusinessCompositeView = Backbone.Marionette.CompositeView.extend({
     "click .new-business": "openBusiness"
   },
   itemViewOptions: function(model) {
-    var locations = new LocationsCollection();
-    locations.business_id = model.id;
-
     return {
-      collection: locations
+      collection: new LocationsCollection(App.locations.filter(function(location) {
+        return location.get("business_id") === model.id;
+      })),
+      businesses: this.collection
     };
   },
   constructor: function() {

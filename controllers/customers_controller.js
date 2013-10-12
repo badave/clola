@@ -32,7 +32,27 @@ customersController.find = function(req, res, next) {
 		if(!place_ids.length) {
 			helper.respondJson(req, res, 200, []);
 		} else {
-			genericModel.findWithQuery("customers", { "previous_places._id": { "$in": place_ids }}, genericModel.jsonResponder(req, res));
+			genericModel.findWithQuery("customers", { "previous_places._id": { "$in": place_ids }}, function(err, data) {
+				if(err) {
+					console.error(err);
+					helper.respondJsonError(req, res, 500, err);
+					return;
+				}
+
+				_.each(data, function(customer) {
+					// this is internal
+					delete customer.previous_locations;
+
+					var places = _.filter(customer.previous_places, function(place) {
+						return _.contains(place_ids, place._id.toString());
+					});
+
+					customer.previous_places = places;
+				});
+
+
+				helper.respondJson(req, res, 200, data);
+			});
 		}
 	});
 };

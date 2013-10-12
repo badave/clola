@@ -65,40 +65,79 @@ form {
   padding-bottom: 33.33%;
 }
 
-.square {
-  position:absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+.customer-actions {
+  position: absolute;
+  right:0px;
+  padding-right:20px;
+  top:10px;
 
-  font-size:12px;
+  .selected, .btn-outline.selected {
+    background-color: @active-green;
+    color: white;
+    border: 0;
 
-  &.square-image {
+    &:hover {
+      background-color: @hover-green;
+      color:white;
+      border: 0;
+    }
+  }
+}
+
+@customers-top: 50px;
+
+.customers-table {
+  position: relative;
+  top: @customers-top;
+}
+
+.squares {
+  position:relative;
+
+  top: @customers-top;
+
+
+  .square {
     position:absolute;
     top:0;
     left:0;
     right:0;
     bottom:0;
-    background-size:contain;
-    background-repeat:none;
-  }
 
-  .info {
-    background-color: #fff;
-    bottom: 0;
-    left: 60%;
-    overflow: hidden;
-    padding: 25px;
-    position: absolute;
-    right: 0;
-    top: 60%;
+    font-size:12px;
 
-    h5 {
-      text-transform:uppercase; 
-      background-color: #c1beca;
-      color:#fff;
-      padding:4px;
+    &.square-image {
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background-size:contain;
+      background-repeat:none;
+      border-bottom:1px solid #eee;
+    }
+
+    .info {
+      background-color: #fff;
+      bottom: 0;
+      left: 60%;
+      overflow: hidden;
+      padding: 25px;
+      position: absolute;
+      right: 0;
+      top: 60%;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #fafafa;
+      }
+
+      h5 {
+        text-transform:uppercase; 
+        background-color: #c1beca;
+        color:#fff;
+        padding:4px;
+      }
     }
   }
 }

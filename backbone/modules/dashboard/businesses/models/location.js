@@ -1,7 +1,11 @@
 Location = BaseModel.extend({
   resource: "locations",
   urlRoot: function() {
-    return "/v1/businesses/" + this.get("business_id") + "/" + this.resource;
+    if(this.get("business_id")) {
+      return "/v1/businesses/" + this.get("business_id") + "/" + this.resource;
+    } else {
+      return "/v1/locations";
+    }
   },
   url: function() {
     if(this.isNew()) {

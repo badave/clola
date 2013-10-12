@@ -11,7 +11,48 @@ var genericModel = require("../lib/generic_model");
 
 var locationsController = module.exports = {};
 
+
 locationsController.find = function(req, res, next) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+
+  genericModel.findWithQuery("locations", { "user_id": req.user._id }, genericModel.jsonResponder(req, res))
+}
+
+
+locationsController.findOne = function(req, res, next) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+
+  genericModel.findOneWithQuery("locations", { "user_id": req.user._id, "_id": ObjectID(req.params.id) }, genericModel.jsonResponder(req, res))
+}
+
+locationsController.create = function(req, res) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+
+  var object = req.body;
+
+  object.user_id = req.user._id;
+  object.created = new Date().getTime();
+  object.created_date = new Date();
+  
+  genericModel.create("locations", object, genericModel.jsonResponder(req, res));
+}
+
+locationsController.update = function(req, res) {
+  if(!req.user) {
+    return res.redirect("/go");
+  }
+  
+  genericModel.update("locations", { "_id": ObjectID(req.params.id), "user_id": req.user._id }, req.body, genericModel.jsonResponder(req, res));
+}
+
+
+locationsController.findByBusinessId = function(req, res, next) {
   if(!req.user) {
     return res.redirect("/go");
   }
@@ -22,7 +63,7 @@ locationsController.find = function(req, res, next) {
 }
 
 
-locationsController.findOne = function(req, res, next) {
+locationsController.findOneByBusinessId = function(req, res, next) {
   if(!req.user) {
     return res.redirect("/go");
   }
@@ -30,7 +71,7 @@ locationsController.findOne = function(req, res, next) {
   genericModel.findOneWithQuery("locations", { "user_id": req.user._id, "_id": ObjectID(req.params.location_id) }, genericModel.jsonResponder(req, res))
 }
 
-locationsController.create = function(req, res) {
+locationsController.createByBusinessId = function(req, res) {
   if(!req.user) {
     return res.redirect("/go");
   }
@@ -45,7 +86,7 @@ locationsController.create = function(req, res) {
   genericModel.create("locations", location, genericModel.jsonResponder(req, res));
 }
 
-locationsController.update = function(req, res) {
+locationsController.updateByBusinessId = function(req, res) {
   if(!req.user) {
     return res.redirect("/go");
   }

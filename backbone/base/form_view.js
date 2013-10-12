@@ -31,7 +31,7 @@ FormViewMixin = {
         bh.success();
 
         if(that.onSave) {
-          that.onSave();
+          that.onSave.call(that);
         }
       },
       error: function(error) {
