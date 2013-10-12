@@ -11,8 +11,11 @@ var BusinessRouter = Backbone.Router.extend({
     };
 
     that.initialize = function() {
-      that.businesses = new BusinessesCollection();
-      that.businesses.load();
+      App.businesses = App.businesses || new BusinessesCollection();
+      App.businesses.load();
+
+      App.locations = App.locations || new LocationsCollection();
+      App.locations.load();
     };
 
     that.businesses = function(params) {
@@ -20,14 +23,16 @@ var BusinessRouter = Backbone.Router.extend({
       dash.render();
 
       waitFor(function() {
-        return that.businesses.loaded;
+        return App.businesses.loaded;
       }, function() {
         var view = new BusinessCompositeView({
-          collection: that.businesses
+          collection: App.businesses
         });
 
         dash.body.show(view);
       });
+
+      App.businesses.load();
     };
 
     that.create = function() {
@@ -36,9 +41,9 @@ var BusinessRouter = Backbone.Router.extend({
 
       var business = new Business();
 
-      var view = new BusinessForm({model: business});
+      var view = new BusinessModal({model: business});
 
-      dash.body.show(view);
+      view.open();
     };
 
     that.edit = function(params) {
@@ -46,11 +51,9 @@ var BusinessRouter = Backbone.Router.extend({
       dash.render();
 
       waitFor(function() {
-        return that.businesses.loaded;
+        return App.businesses.loaded;
       }, function() {
-
-
-        var business = that.businesses.findWhere({"_id": params}) || new Business({
+        var business = App.businesses.findWhere({"_id": params}) || new Business({
           _id: params
         });
 
@@ -58,14 +61,13 @@ var BusinessRouter = Backbone.Router.extend({
           model: business
         });
 
-
         business.fetch({
           success: function() {
             view.render();
           }
         });
 
-        dash.body.show(view);
+        view.open();
 
       });
     };

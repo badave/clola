@@ -1,9 +1,5 @@
-BusinessForm = Backbone.Marionette.Layout.extend({
-  template_path: "dashboard/businesses/templates/form",
-  events: {
-    "submit form": "save",
-    "click .save": "save"
-  }, 
+BusinessModal = Backbone.Modal.extend({
+  template_path: "dashboard/businesses/modals/templates/business",
   FIELDS: [
     {
       "name": "name",
@@ -32,7 +28,7 @@ BusinessForm = Backbone.Marionette.Layout.extend({
     {
       "name": "address[street1]",
       "type": "text",
-      "attribute": "address.street",
+      "attribute": "address.street1",
       "label": "Street: "
     },
     {
@@ -60,36 +56,15 @@ BusinessForm = Backbone.Marionette.Layout.extend({
       "label": "Zip Code: "
     }
   ],
-  context: function(modelJson) {
-    _.each(this.FIELDS, function(field, index) {
-      field.idx = field.attribute.toString() + "-" +  index.toString();
-      field.value = _.get(modelJson, field.attribute, "");
-    });
-
-    return {
-      model: modelJson,
-      fields: this.FIELDS
-    };
+  onSave: function() {
+    Backbone.history.navigate("/dashboard/businesses", {trigger: true});  
   },
-  save: function(e) {
-    e.preventDefault();
-    e.stopPropagation();
 
-    var data = Backbone.Syphon.serialize(this);
-
-    var bh = this.$el.find(".save").buttonHelper("Saving", "Saved", "Failed");
-
-    bh.loading();
-
-    this.model.save(data, {
-      success: function() {
-        bh.success();
-        // Backbone.history.navigate("/dashboard/businesses", {trigger: true});
-      },
-      error: function(error) {
-        bh.failed();
-        this.$el.find(".save").tooltipHelper(error);
-      }
-    });
+  onCancel: function() {
+    Backbone.history.navigate("/dashboard/businesses", {trigger: true});  
   }
+  
 });
+
+
+_.extend(BusinessModal.prototype, FormViewMixin);

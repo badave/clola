@@ -14,6 +14,7 @@ var homeController = require('./controllers/home_controller');
 var smsController = require('./controllers/sms_controller');
 var placesController = require('./controllers/places_controller');
 var businessesController = require('./controllers/businesses_controller');
+var locationsController = require('./controllers/locations_controller');
 var vendorsController = require('./controllers/vendors_controller');
 // String.prototype.trim = function(){return this.replace(/^\s+|\s+$/g, '');};
 
@@ -37,6 +38,7 @@ module.exports = function(app) {
   app.post("/register", usersController.create);
   app.post("/login", usersController.authenticate);
 
+  app.get("/v1/customers", customersController.find);
   app.get("/v1/customers/:phone", customersController.findByNumber);
   app.post("/v1/customers/:phone", customersController.create);
   app.put("/v1/customers/:phone", customersController.update);
@@ -55,6 +57,19 @@ module.exports = function(app) {
   app.get("/v1/businesses/:id", businessesController.findOne);
   app.post("/v1/businesses", businessesController.create);
   app.put("/v1/businesses/:id", businessesController.update);
+
+  app.get("/v1/locations", locationsController.find);
+  app.get("/v1/locations/:id", locationsController.findOne);
+  
+  app.post("/v1/locations", locationsController.create);
+  app.put("/v1/locations/:id", locationsController.update);
+
+
+
+  app.get("/v1/businesses/:business_id/locations", locationsController.findByBusinessId);
+  app.get("/v1/businesses/:business_id/locations/:location_id", locationsController.findOneByBusinessId);
+  app.post("/v1/businesses/:business_id/locations", locationsController.createByBusinessId);
+  app.put("/v1/businesses/:business_id/locations/:location_id", locationsController.updateByBusinessId);
 
 
   app.get("/sms/test", smsController.test);

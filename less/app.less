@@ -40,6 +40,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 4px 0;
 }
 
+a:hover {
+  text-decoration:none;
+}
+
 .ml15 {
 	margin-left:15px;
 }
@@ -47,9 +51,28 @@ h1, h2, h3, h4, h5, h6 {
 .mr15 {
 	margin-right:15px;
 }
+.mt15 {
+  margin-top:15px;
+}
+
+.mb15 {
+  margin-bottom:15px;
+}
 
 .gray {
   color:#888;
+}
+
+.yellow {
+  color:#FFC307;
+}
+
+.green {
+  color: #009756;
+}
+
+.half {
+  width: 50%;
 }
 
 address {
@@ -578,7 +601,7 @@ nav#sidebar, nav.sidebar {
   bottom: 0;
   width: @sidebar-width;
 
-  background: @background-gray;
+  background: #fff;
 
   color: rgba(75, 75, 75, 0.8);
 
@@ -590,6 +613,7 @@ nav#sidebar, nav.sidebar {
     border: 0;
 
     list-style: none;
+    background: #fff;
 
     li {
       line-height:1;
@@ -721,7 +745,7 @@ nav#sidebar, nav.sidebar {
   }
 
   .box-body {
-    padding:15px 10px 50px;
+    padding:15px 10px 30px;
     // border-bottom:1px solid #eee;
   }
 

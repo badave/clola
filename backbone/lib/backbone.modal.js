@@ -91,8 +91,8 @@
           backdropIndex = parseInt($backdrop.css('z-index'),10),
           elIndex = parseInt($backdrop.css('z-index'), 10);
 
-      $backdrop.css('z-index', backdropIndex + numModals);
-      this.$el.css('z-index', elIndex + numModals);
+      $backdrop.css('z-index', backdropIndex + numModals + 10000);
+      this.$el.css('z-index', elIndex + numModals + 10000);
 
       if (this.allowCancel) {
         $backdrop.one('click', function() {

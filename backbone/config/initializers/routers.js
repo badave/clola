@@ -5,5 +5,6 @@ App.addInitializer(function (options) {
   App.BusinessRouter = new BusinessRouter();
 
   App.HomeRouter = new HomeRouter();
-  
+
+  App.DashboardCustomersRouter = new DashboardCustomersRouter();
 });

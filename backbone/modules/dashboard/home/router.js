@@ -9,8 +9,8 @@ HomeRouter = Backbone.Router.extend({
     };
 
     that.initialize = function() {
-      that.businesses = new BusinessesCollection();
-      that.businesses.load();
+      App.businesses = App.businesses || new BusinessesCollection();
+      App.businesses.load();
     };
 
 
@@ -19,12 +19,12 @@ HomeRouter = Backbone.Router.extend({
       dash.render();
 
       waitFor(function() {
-        return that.businesses.loaded;
+        return App.businesses.loaded;
       }, function() {
         var view;
-        if(that.businesses.length) {
+        if(App.businesses.length) {
           view = new VendorsCompositeView({
-            collection: that.businesses
+            collection: App.businesses
           });
         } else {
           view = new VendorEmptyView();
