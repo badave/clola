@@ -15,9 +15,10 @@ homeController.awesomeSauce = function(req, res) {
   if(!req.user || !req.user.admin) {
     return res.redirect("/dashboard");
   }
-
+  
 	var context = {
 		title: config.title,
+		user : helper.addslashes(JSON.stringify(req.user)),
 		layout: "backbone"
 	};
 

@@ -28,7 +28,7 @@ MessageRowView = ListRowView.extend({
 	  
 	  App.vent.on('message:replied', function(model){
 	    that.renderRepliedMessage(model);
-	  })
+	  });
 	},
 	onSelect: function() {
 		App.vent.trigger("message:selected", this.elem);

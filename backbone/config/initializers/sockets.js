@@ -8,6 +8,10 @@ App.addInitializer(function(options) {
        // Connected, let's sign-up for to receive messages for this room
        App.socket.emit("joinserver", "arpan");
     });
+    
+    App.socket.on("roomCreated", function(room) {
+      App.vent.trigger("roomCreated", room);
+    });
 
   	App.socket.on("socketRoomMessage", function(data) {
   		var phoneModel = App.messages.findByPhone(data.phone) || new Message({

@@ -5,14 +5,29 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
 		"message_views": "#message-views"
 	},
 	
+	events: {
+    "click .btn-create-room": "createRoom",
+  },
+  
+  createRoom: function() {
+    App.socket.emit("createRoom", App.user.email);
+  },
+	
 	onRender: function() {
-		this.renderMessages();
-
-		_.bindAll(this, "renderMessages", "selectMessages");
-		this.collection.on("change", this.renderMessages);
-		this.collection.on("add", this.renderMessages);
-
-		App.vent.on("message:selected", this.selectMessages);
+	  var that = this;
+	  
+	  App.vent.on('roomCreated', function(room) {
+	    that.$el.find(".btn-create-room")[0].style.display = 'none';
+	    
+  	  // if connected to a room
+  		that.renderMessages();
+  
+  		_.bindAll(that, "renderMessages", "selectMessages");
+  		that.collection.on("change", that.renderMessages);
+  		that.collection.on("add", that.renderMessages);
+  
+  		App.vent.on("message:selected", that.selectMessages);
+	  });
 	},
 	
 	renderMessages: function() {
