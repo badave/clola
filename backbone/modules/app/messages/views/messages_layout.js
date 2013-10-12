@@ -7,19 +7,28 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
 	
 	events: {
     "click .btn-create-room": "createRoom",
+    "click .btn-remove-room": "removeRoom"
   },
   
   createRoom: function() {
     App.socket.emit("createRoom", App.user.email);
+    this.$el.find(".btn-create-room")[0].style.visibility = 'hidden';
+    this.$el.find(".btn-remove-room")[0].style.visibility = 'visible';
+  },
+  
+  removeRoom: function() {
+    App.socket.emit("removeRoom", App.user.email);
+    this.$el.find(".btn-create-room")[0].style.visibility = 'visible';
+    this.$el.find(".btn-remove-room")[0].style.visibility = 'hidden';
   },
 	
 	onRender: function() {
 	  var that = this;
+	  that.$el.find(".btn-remove-room")[0].style.visibility = 'hidden';
 	  
+	  // if connected to a room start getting messages
 	  App.vent.on('roomCreated', function(room) {
-	    that.$el.find(".btn-create-room")[0].style.display = 'none';
-	    
-  	  // if connected to a room
+	    that.$("#messages-list").show();
   		that.renderMessages();
   
   		_.bindAll(that, "renderMessages", "selectMessages");
@@ -28,6 +37,12 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
   
   		App.vent.on("message:selected", that.selectMessages);
 	  });
+	  
+	  App.vent.on('roomRemoved', function(room) {
+      that.$("#messages-list").hide();
+  
+      that.unbindAll(that, "renderMessages", "selectMessages");
+    });
 	},
 	
 	renderMessages: function() {

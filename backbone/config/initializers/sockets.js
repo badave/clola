@@ -12,6 +12,10 @@ App.addInitializer(function(options) {
     App.socket.on("roomCreated", function(room) {
       App.vent.trigger("roomCreated", room);
     });
+    
+    App.socket.on("roomRemoved", function(room) {
+      App.vent.trigger("roomRemoved", room);
+    });
 
   	App.socket.on("socketRoomMessage", function(data) {
   		var phoneModel = App.messages.findByPhone(data.phone) || new Message({

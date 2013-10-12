@@ -101,6 +101,7 @@ var socketController = module.exports = function(server){
             console.log('there are still people in the room warning');
           } else {
             if (socket.id === room.owner) {
+              console.log("room removing", socket.room);
               var i = 0;
               while(i < clients.length) {
                 if(clients[i].id === room.people[i]) {
@@ -114,6 +115,7 @@ var socketController = module.exports = function(server){
               }
               delete rooms[room.id];
               people[room.owner].owns = null;
+              socket.emit("roomRemoved", room);
               // socket.sockets.emit("roomList", {rooms: rooms});
             }
           }
