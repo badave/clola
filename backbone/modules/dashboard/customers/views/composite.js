@@ -21,6 +21,9 @@ DashboardCustomersCompositeView = Backbone.Marionette.CompositeView.extend({
 
     this.$el.find(".customers-table").hide();
     this.$el.find(".squares").show();
+
+    this.$el.find(".selected").removeClass("selected");
+    this.$el.find(".customer-square-view").addClass("selected");
   },
   showList: function() {
     this.itemViewContainer = "tbody";
@@ -31,5 +34,7 @@ DashboardCustomersCompositeView = Backbone.Marionette.CompositeView.extend({
 
     this.$el.find(".customers-table").show();
     this.$el.find(".squares").hide();
+    this.$el.find(".selected").removeClass("selected");
+    this.$el.find(".customer-list-view").addClass("selected");
   }
 });
