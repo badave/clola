@@ -128,7 +128,6 @@ smsController.post = function(req, res, next) {
   
   db.findAndModify("messages", {"phone": phone}, {}, { "$set": { "phone": phone, "status": "new" }, "$push": { "messages": message} }, { "upsert": true }, function(err, object) {
     // evt.emit("message", { "phone": phone, "status": "new", "messages": [message] });
-    
     rabbit.smsExchange.publish('sms_received', { "phone": phone, "status": "new", "messages": [message] });
     
     db.insert("raw_messages", msg, function(err, obj) {
