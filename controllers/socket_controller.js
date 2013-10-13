@@ -63,11 +63,11 @@ var socketController = module.exports = function(server){
 	  
 	  io.set("polling duration", 30); 
 	  io.set("log level", 1);
-	  io.set('store', new RedisStore({
-      redisPub : pub,
-      redisSub : sub,
-      redisClient : client
-    }));
+	  // io.set('store', new RedisStore({
+      // redisPub : pub,
+      // redisSub : sub,
+      // redisClient : client
+    // }));
 	});
 
 	io.on("connection", function(socket) {
