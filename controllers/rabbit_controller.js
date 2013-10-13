@@ -3,11 +3,11 @@ var amqp = require('amqp');
 var evt = require("../models/evt");
 
 var rabbitControllerClass = function() {
-  var url = "amqp://wgrdyjzo:-ATADFesHBeyNCfH7nhRC85U6vH2amfc@turtle.rmq.cloudamqp.com/wgrdyjzo";
+  var url = "amqp://kdvirfjy:BQ752vqy4lwZjDbCHJEQ7o55pA5WfheC@turtle.rmq.cloudamqp.com/kdvirfjy";
   var rabbitConnection = amqp.createConnection({ 
     url: url,
-    login: "wgrdyjzo",
-    password: "-ATADFesHBeyNCfH7nhRC85U6vH2amfc" 
+    login: "kdvirfjy",
+    password: "BQ752vqy4lwZjDbCHJEQ7o55pA5WfheC" 
   });
 
   var smsExchange;
