@@ -89,11 +89,20 @@ form {
 .customers-table {
   position: relative;
   top: @customers-top;
+
+  tbody {
+    tr {
+      cursor: pointer;
+
+      &:hover {
+        background-color:#f1f1f1;
+      }
+    }
+  }
 }
 
 .squares {
   position:relative;
-
   top: @customers-top;
 
 
@@ -103,6 +112,8 @@ form {
     left:0;
     right:0;
     bottom:0;
+
+    cursor: pointer;
 
     font-size:12px;
 
