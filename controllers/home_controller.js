@@ -51,6 +51,7 @@ homeController.dashboard = function(req, res) {
 
   var context = {
     title: config.title,
+    user : helper.addslashes(JSON.stringify(req.user)),
     layout: "backbone"
   };
 
