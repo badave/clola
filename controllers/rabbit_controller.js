@@ -3,22 +3,19 @@ var amqp = require('amqp');
 var evt = require("../models/evt");
 
 var rabbitControllerClass = function() {
-  var url = "amqp://kdvirfjy:BQ752vqy4lwZjDbCHJEQ7o55pA5WfheC@turtle.rmq.cloudamqp.com/kdvirfjy";
-  var rabbitConnection = amqp.createConnection({ 
-    url: url,
-    login: "kdvirfjy",
-    password: "BQ752vqy4lwZjDbCHJEQ7o55pA5WfheC" 
-  });
+  var url = "amqp://ccgciqwa:CGzKAx8EDWvRQXbh0BKQL4FfM1fgNWpA@turtle.rmq.cloudamqp.com:5672/ccgciqwa";
+  var rabbitConnection = amqp.createConnection({ url: url });
+  // var rabbitConnection = amqp.createConnection();
 
   var smsExchange;
   var that = this;
   rabbitConnection.on('ready', function () {
-    // console.log('Lets do this! rabbitmq connection ready');
+    console.log('Lets do this! rabbitmq connection ready');
     
     // setup exchange
     smsExchange = rabbitConnection.exchange('smsExchange', { 'type' : 'fanout'});
     smsExchange.on('open', function() {
-      // console.log('Lets do this! rabbitmq exchange open');
+      console.log('Lets do this! rabbitmq exchange open');
       that.smsExchange = smsExchange;
     });
     

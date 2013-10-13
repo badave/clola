@@ -31,15 +31,15 @@ var RedisStore = require('socket.io/lib/stores/redis')
   , client = redis.createClient(redisPort, redisHost);
   
 var client = client.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success connecting to redis");
+  console.log("success auth connecting to redis client");
 });
 
 var pub = pub.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success connecting to redis");
+  console.log("success auth connecting to redis pub");
 });
 
 var sub = sub.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success connecting to redis");
+  console.log("success auth connecting to redis sub");
 });
 
 var socketController = module.exports = function(server){
@@ -63,11 +63,11 @@ var socketController = module.exports = function(server){
 	  
 	  io.set("polling duration", 30); 
 	  io.set("log level", 1);
-	  // io.set('store', new RedisStore({
-      // redisPub : pub,
-      // redisSub : sub,
-      // redisClient : client
-    // }));
+	  io.set('store', new RedisStore({
+      redisPub : pub,
+      redisSub : sub,
+      redisClient : client
+    }));
 	});
 
 	io.on("connection", function(socket) {
