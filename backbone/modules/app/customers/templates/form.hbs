@@ -20,12 +20,35 @@
 
 		<tr>
 			<td>Gender</td>
-			<td><input type="text" name="gender" value="{{model.gender}}" placeholder="Gender" /></td>
+			<td>
+				<select name="gender">
+					{{#select model.gender}}
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+						<option value="other">Other</option>
+					{{/select}}
+				</select>
+			</td>
 		</tr>
 
 		<tr>
 			<td>Birthday</td>
 			<td><input type="text" name="birthday" value="{{model.birthday}}" placeholder="Birthday - YYYY/MM/DAY" /></td>
+		</tr>
+
+		<tr>
+			<td>Company</td>
+			<td><input type='text' name="company_name" placeholder="Company" value="{{model.company_name}}" /></td>
+		</tr>
+
+		<tr>
+			<td>Occupation</td>
+			<td><input type='text' name="occupation" placeholder="Occupation" value="{{model.occupation}}" /></td>
+		</tr>
+
+		<tr>
+			<td>Education</td>
+			<td><input type='text' name="education" placeholder="Education" value="{{model.education}}" /></td>
 		</tr>
 
 		<tr>

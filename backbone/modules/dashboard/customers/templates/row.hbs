@@ -18,7 +18,18 @@
       {{/if}}
     </div>
     <subtitle>{{model.gender}}</subtitle>
-    <div>{{model.description}}</div>
+    {{#if model.company_name}}
+      <div>{{model.company_name}}</div>
+    {{/if}}
+
+    {{#if model.occupation}}
+      <div>{{model.occupation}}</div>
+    {{/if}}
+
+    {{#if model.education}}
+      <div>{{model.education}}</div>
+    {{/if}}
+
     <div>Last Visit: {{formatDate visits.0.updated_date}}</div>
   </div>
 </div>
