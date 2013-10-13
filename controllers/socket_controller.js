@@ -34,6 +34,14 @@ var client = client.auth("4eGEfwCG5p3i3JmN", function() {
   console.log("success connecting to redis");
 });
 
+var pub = pub.auth("4eGEfwCG5p3i3JmN", function() {
+  console.log("success connecting to redis");
+});
+
+var sub = sub.auth("4eGEfwCG5p3i3JmN", function() {
+  console.log("success connecting to redis");
+});
+
 var socketController = module.exports = function(server){
 	var self = this;
 	io = require('socket.io').listen(server);
