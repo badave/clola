@@ -26,7 +26,9 @@ SocialMediaUrls = {
   },
 
   facebook_image: function() {
-    return "https://graph.facebook.com/" + this.facebook_user() + "/picture";
+    if(this.facebook_user()) {
+      return "https://graph.facebook.com/" + this.facebook_user() + "/picture";
+    }
   },
 
   twitter: function() {

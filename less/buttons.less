@@ -49,15 +49,9 @@ button[type=reset] {
     text-decoration: none;
   }
 
-  &:active {
+  &:active, &:focus {
     color: #fff;
     background: #999;
-    text-decoration: none;
-  }
-
-  &.active {
-    color: #444; 
-    background: #ddd;
     text-decoration: none;
   }
 
@@ -72,13 +66,13 @@ button[type=reset] {
     color: @text-color-subtle;
 
     &:hover {
-      color: #333;
+      color: #444;
       border: 1px solid #333;
       background: transparent;
     }
 
-    &:active {
-      color: @text-color-subtle;
+    &:active, &:focus {
+      color: #444;
       border: 1px solid #999;
       background: transparent;
     }

@@ -1,6 +1,9 @@
 DashboardCustomerRowView = Backbone.Marionette.ItemView.extend({
   template_path: "dashboard/customers/templates/row",
   className: 'tile big-block',
+  events: {
+    "click": "selectCustomer"
+  },
   context: function(modelJson) {
     var facebook = modelJson.facebook;
     var visits = this.model.getVisits();
