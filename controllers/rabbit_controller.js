@@ -3,7 +3,12 @@ var amqp = require('amqp');
 var evt = require("../models/evt");
 
 var rabbitControllerClass = function() {
-  var rabbitConnection = amqp.createConnection();
+  var url = "amqp://wgrdyjzo:-ATADFesHBeyNCfH7nhRC85U6vH2amfc@turtle.rmq.cloudamqp.com/wgrdyjzo";
+  var rabbitConnection = amqp.createConnection({ 
+    url: url,
+    login: "wgrdyjzo",
+    password: "-ATADFesHBeyNCfH7nhRC85U6vH2amfc" 
+  });
 
   var smsExchange;
   var that = this;

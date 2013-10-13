@@ -20,12 +20,19 @@ var rooms = {};
 var clients = [];
 var _ = require("underscore");
 
-// enable redis-store for socket.io so that we can scale 
+// enable redis-store for socket.io so that we can scale
+var redisPort = "18856";
+var redisHost = "pub-redis-18856.us-east-1-4.1.ec2.garantiadata.com";
+ 
 var RedisStore = require('socket.io/lib/stores/redis')
   , redis  = require('socket.io/node_modules/redis')
-  , pub    = redis.createClient()
-  , sub    = redis.createClient()
-  , client = redis.createClient();
+  , pub    = redis.createClient(redisPort, redisHost)
+  , sub    = redis.createClient(redisPort, redisHost)
+  , client = redis.createClient(redisPort, redisHost);
+  
+var client = client.auth("4eGEfwCG5p3i3JmN", function() {
+  console.log("success connecting to redis");
+});
 
 var socketController = module.exports = function(server){
 	var self = this;
@@ -34,10 +41,10 @@ var socketController = module.exports = function(server){
 	io.set("origins","*:*");
 	// assuming io is the Socket.IO server object
 	io.configure(function () { 
-	  io.set("transports", [
-  	  "xhr-polling",
-  	  "websocket"
-	  ]);
+	  // io.set("transports", [
+  	  // "xhr-polling",
+  	  // "websocket"
+	  // ]);
 	  
 	  // send minified client
 	  io.enable('browser client minification');
