@@ -19,7 +19,9 @@ homeController.awesomeSauce = function(req, res) {
 	var context = {
 		title: config.title,
 		user : helper.addslashes(JSON.stringify(req.user)),
-		layout: "backbone"
+		layout: "backbone",
+    bootstrap: true,
+    app: true
 	};
 
 	return helper.render(req, res, 200, "home/index", context);
@@ -52,7 +54,9 @@ homeController.dashboard = function(req, res) {
   var context = {
     title: config.title,
     user : helper.addslashes(JSON.stringify(req.user)),
-    layout: "backbone"
+    layout: "backbone",
+    semantic: true,
+    dashboard: true
   };
 
   return helper.render(req, res, 200, "home/index", context);

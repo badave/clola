@@ -211,11 +211,8 @@ PlacesLayout = Backbone.Marionette.Layout.extend({
 				// set param to new search
 				this.previous_search = search;
 				setTimeout(function() {
-					if(that.previous_search === that.search) {
-
-						_.each(that.params, function(param) {
-							search += " " + param;
-						});
+					if(that.previous_search !== that.current_search) {
+						that.current_search = search;
 
 						var places = that.collection.search(search);
 

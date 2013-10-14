@@ -1,4 +1,4 @@
-<div class="page-header">
+<div class="page-header" data-id="{{model._id}}">
   <h4>{{model.name}}<br /><small>{{model.contact}}</small></h4>
 </div>
 
@@ -38,7 +38,7 @@
 	{{/if}}
 {{/if}}
 
-<div class="breadcrumbs small">
+<div class="breadcrumbs small mt15">
 	<span class="breadcrumb">{{model.city}}</span> <i class="icon-chevron-right"></i> 
 	<span class="breadcrumb">{{model.area}}</span>  <i class="icon-chevron-right"></i>
 	<span class="breadcrumb">{{model.category}}</span> <i class="icon-chevron-right"></i>
@@ -46,14 +46,14 @@
 </div>
 
 {{#if model.tags}}
-<div class="breadcrumbs small">
+<div class="breadcrumbs small mt15">
 	{{#each model.tags}}
 	<span class="breadcrumb">{{this}}</span>
 	{{/each}}
 </div>
 {{/if}}
 
-<p><button class="edit btn btn-small" type="button">edit</button>
+<p class="mt15"><button class="edit btn btn-small" type="button">edit</button>
 	<button class="send-to btn btn-small btn-green"><i class="icon-share-alt"></i> Send to Selected Customer</button>
 	<button class="text-to btn btn-small btn-green"><i class="icon-comment"></i>  Text Message</button>
 </p>

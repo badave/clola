@@ -56,7 +56,7 @@ Backbone.Marionette.ItemView.prototype.template = Backbone.Marionette.CompositeV
 
 	if(!template) {
 		console.trace();
-		console.log("Undefined template");
+		console.log("Undefined template (recommendation: search your project by entered template path)");
 		console.log(this.template_path);
 		return;
 	}
@@ -113,6 +113,11 @@ Backbone.Marionette.Layout.prototype._createRegionViews = function() {
 
 			if(_.isFunction(that.itemViewOptions)) {
 				viewOptions = that.itemViewOptions();
+			}
+
+			if(!that[region]) {
+				console.error("Couldn't find region " + region);
+				return;
 			}
 
 			that[region].show(new View(viewOptions));
