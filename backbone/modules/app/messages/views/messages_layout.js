@@ -12,19 +12,19 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
   
   createRoom: function() {
     App.socket.emit("createRoom", App.user.email);
-    this.$el.find(".btn-create-room")[0].style.visibility = 'hidden';
-    this.$el.find(".btn-remove-room")[0].style.visibility = 'visible';
+    // this.$el.find(".btn-create-room")[0].style.visibility = 'hidden';
+    // this.$el.find(".btn-remove-room")[0].style.visibility = 'visible';
   },
   
   removeRoom: function() {
     App.socket.emit("removeRoom", App.user.email);
     this.$el.find(".btn-create-room")[0].style.visibility = 'visible';
-    this.$el.find(".btn-remove-room")[0].style.visibility = 'hidden';
+    // this.$el.find(".btn-remove-room")[0].style.visibility = 'hidden';
   },
 	
 	onRender: function() {
 	  var that = this;
-	  that.$el.find(".btn-remove-room")[0].style.visibility = 'hidden';
+	  // that.$el.find(".btn-remove-room")[0].style.visibility = 'hidden';
 	  
 	  // if connected to a room start getting messages
 	  App.vent.on('roomCreated', function(room) {
