@@ -15,22 +15,25 @@ MessageRowView = ListRowView.extend({
   
 	render: function() {
     this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>');
-	  
+
 	  if(this.onRender) this.onRender();
 		return this;
 	},
 	renderNewMessage: function(model, timerIntervalClass) {
 	  if(this.elem == model.attributes.phone && model.attributes.status == "new") {
-	    this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>');
+	    this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>')
+	             .addClass(timerIntervalClass);
 	  }
 	},
-	renderRepliedMessage: function(model) {
+	renderRepliedMessage: function(model, timerIntervalClass) {
     if(this.elem == model.attributes.phone) {
-      this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>');
+      this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>')
+                .addClass(timerIntervalClass);
     }
   },
 	onRender: function() {
 	  var that = this;
+
 	  App.vent.on('change:message', function(data) {
 	    that.renderNewMessage(data.model, data.timerIntervalClass);
 	  });

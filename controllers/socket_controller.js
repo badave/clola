@@ -20,9 +20,6 @@ var rooms = {};
 var clients = [];
 var _ = require("underscore");
 
-var Timer = require("../lib/timers");
-var timers = {};
-
 // enable redis-store for socket.io so that we can scale
 var redisPort = "18856";
 var redisHost = "pub-redis-18856.us-east-1-4.1.ec2.garantiadata.com";
@@ -239,7 +236,7 @@ var socketController = module.exports = function(server){
     
     
     console.log("sending msg: ("+msg.messages[0].text+") from phone: ("+msg.phone+") to room: ("+room.name+")");
-    io.sockets.in(room["name"]).emit('socketRoomMessage', msg);
+    io.sockets.in(room["name"]).emit('socketRoomMessage', {msg: msg, timerIntervalClass: "delay_gt_3_lt_6"});
 	});
 
 };
