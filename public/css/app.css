@@ -77,6 +77,7 @@ address{margin-bottom:10px}
 .delay_gt_4_lt_6{background:none repeat scroll 0 0 #FFE9B2}
 .delay_gt_6{background:none repeat scroll 0 0 #FFD466}
 .spacer{height:30px}
+li{text-shadow:none !important}
 .btn-create-room,.btn-remove-room{position:absolute;right:0px;top:-36px;line-height:20px !important;padding-left:20px !important;padding-right:20px !important;border-radius:4px 0 0 4px !important;width:170px !important}
 ul{min-height:100%;background-color:#fafafb}ul.list-view{list-style-type:none;margin:0;padding:0}ul.list-view li{display:block;margin:0;position:relative;overflow:visible;text-align:left;cursor:pointer;border-top:1px solid #eee;font-weight:bold;color:rgba(66,66,66,0.8);text-shadow:0 1px 0 #fff;padding:10px 15px;border-left:4px solid #eee;border-right:1px solid #eee}ul.list-view li i{font-size:1.2em;margin-top:2px}
 ul.list-view li:last-child{border-bottom:1px solid #eee}
