@@ -1,30 +1,38 @@
 MessageRowView = ListRowView.extend({
+  events: {
+    "click .cancel-icon": "removePhoneFromRoom",
+    "click .phone-number": "select",
+    "tap .phone-number": "select"
+  },
+  
+  removePhoneFromRoom: function() {
+    var phoneModel = this.collection.findByPhone(this.elem);
+    App.socket.emit("leaveRoom", phoneModel.attributes.phone);
+    
+    // remove elem from the html list
+    this.$el.remove();
+  },
+  
 	render: function() {
-	  var phoneModel = this.collection.findByPhone(this.elem);
-	  
-	  if(phoneModel.attributes.status == "new") {
-	    this.$el.html(this.elem).append('<i class="icon-circle fr"></i>');
-	  } else {
-  		this.$el.html(this.elem).append('<i class="icon-chevron-sign-right fr"></i>');
-	  }
+    this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>');
 	  
 	  if(this.onRender) this.onRender();
 		return this;
 	},
-	renderNewMessage: function(model) {
+	renderNewMessage: function(model, timerIntervalClass) {
 	  if(this.elem == model.attributes.phone && model.attributes.status == "new") {
-	    this.$el.html(this.elem).append('<i class="icon-circle fr"></i>');
+	    this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>');
 	  }
 	},
 	renderRepliedMessage: function(model) {
     if(this.elem == model.attributes.phone) {
-      this.$el.html(this.elem).append('<i class="icon-chevron-sign-right fr"></i>');
+      this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>');
     }
   },
 	onRender: function() {
 	  var that = this;
-	  App.vent.on('change:message', function(model) {
-	    that.renderNewMessage(model);
+	  App.vent.on('change:message', function(data) {
+	    that.renderNewMessage(data.model, data.timerIntervalClass);
 	  });
 	  
 	  App.vent.on('message:replied', function(model){

@@ -20,27 +20,41 @@ var rooms = {};
 var clients = [];
 var _ = require("underscore");
 
+var Timer = require("../lib/timers");
+var timers = {};
+
 // enable redis-store for socket.io so that we can scale
 var redisPort = "18856";
 var redisHost = "pub-redis-18856.us-east-1-4.1.ec2.garantiadata.com";
  
 var RedisStore = require('socket.io/lib/stores/redis')
   , redis  = require('socket.io/node_modules/redis')
-  , pub    = redis.createClient(redisPort, redisHost)
-  , sub    = redis.createClient(redisPort, redisHost)
-  , client = redis.createClient(redisPort, redisHost);
+  // , pub    = redis.createClient(redisPort, redisHost)
+  // , sub    = redis.createClient(redisPort, redisHost)
+  // , client = redis.createClient(redisPort, redisHost);
+  , pub    = redis.createClient()
+  , sub    = redis.createClient()
+  , client = redis.createClient();
   
-var client = client.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success auth connecting to redis client");
-});
+// var client = client.auth("4eGEfwCG5p3i3JmN", function() {
+  // console.log("success auth connecting to redis client");
+// });
+// 
+// var pub = pub.auth("4eGEfwCG5p3i3JmN", function() {
+  // console.log("success auth connecting to redis pub");
+// });
+// 
+// var sub = sub.auth("4eGEfwCG5p3i3JmN", function() {
+  // console.log("success auth connecting to redis sub");
+// });
 
-var pub = pub.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success auth connecting to redis pub");
-});
-
-var sub = sub.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success auth connecting to redis sub");
-});
+var timerIntervalClass;
+var timerState = function(delay, msg) {
+  // switch(delay) {
+    // case (delay > 3000 && delay <)
+  // }
+  timerIntervalClass = "delay_gt_3_lt_6";
+};
 
 var socketController = module.exports = function(server){
 	var self = this;
@@ -49,10 +63,10 @@ var socketController = module.exports = function(server){
 	io.set("origins","*:*");
 	// assuming io is the Socket.IO server object
 	io.configure(function () { 
-	  // io.set("transports", [
-  	  // "xhr-polling",
-  	  // "websocket"
-	  // ]);
+	  io.set("transports", [
+  	  "xhr-polling",
+  	  "websocket"
+	  ]);
 	  
 	  // send minified client
 	  io.enable('browser client minification');
@@ -63,11 +77,11 @@ var socketController = module.exports = function(server){
 	  
 	  io.set("polling duration", 30); 
 	  io.set("log level", 1);
-	  // io.set('store', new RedisStore({
-      // redisPub : pub,
-      // redisSub : sub,
-      // redisClient : client
-    // }));
+	  io.set('store', new RedisStore({
+      redisPub : pub,
+      redisSub : sub,
+      redisClient : client
+    }));
 	});
 
 	io.on("connection", function(socket) {
@@ -173,6 +187,7 @@ var socketController = module.exports = function(server){
     socket.on("leaveRoom", function(phoneNumber) {
       var room = Room.getRoomByPhoneNumber(phoneNumber, rooms);
       
+      console.log("phone: " + phoneNumber + " removed from room: "+room.name);
       if (room) {
         // make sure that the client is in fact part of this room
         if(_.contains(room.people, phoneNumber)) {
@@ -221,6 +236,7 @@ var socketController = module.exports = function(server){
         console.log("update: ("+phoneNumber+") has connected to room: ("+room.name+")");
       });
     }
+    
     
     console.log("sending msg: ("+msg.messages[0].text+") from phone: ("+msg.phone+") to room: ("+room.name+")");
     io.sockets.in(room["name"]).emit('socketRoomMessage', msg);
