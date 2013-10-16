@@ -1,10 +1,10 @@
 /**
- * Bootstrap Modal wrapper for use with Backbone.
+ * Semantic UI Modal wrapper for use with Backbone.
  * 
  * Takes care of instantiation, manages multiple modals,
  * adds several options and removes the element from the DOM when closed
  *
- * @author Charles Davison <charlie@powmedia.co.uk>
+ * @author David Badley
  *
  * Events:
  * shown: Fired when the modal has finished animating in
@@ -14,7 +14,7 @@
  */
 (function($, _, Backbone) {
   var Modal = Backbone.Marionette.ItemView.extend({
-    className: 'modal fade',
+    className: 'ui modal',
     events: {
       'click .btn-cancel': function(event) {
         this.trigger('cancel');
@@ -71,38 +71,17 @@
           $el = this.$el;
 
       //Create it
-      $el.modal(_.extend({
-        keyboard: this.allowCancel,
-        backdrop: this.allowCancel ? true : 'static'
-      }, this.modalOptions));
+      $el.modal()
+        .modal('setting', 'closable', false)
+        .modal('setting', 'transition', 'scale')
+        .modal("setting", "onShow", function() {
+          if (self.options.focusOk) {
+            $el.find('.btn.ok').focus();
+          }
 
-      //Focus OK button
-      $el.one('shown', function() {
-        if (self.options.focusOk) {
-          $el.find('.btn.ok').focus();
-        }
-
-        self.trigger('shown');
-      });
-
-      //Adjust the modal and backdrop z-index; for dealing with multiple modals
-      var numModals = Modal.count,
-          $backdrop = $('.modal-backdrop:eq('+numModals+')'),
-          backdropIndex = parseInt($backdrop.css('z-index'),10),
-          elIndex = parseInt($backdrop.css('z-index'), 10);
-
-      $backdrop.css('z-index', backdropIndex + numModals + 10000);
-      this.$el.css('z-index', elIndex + numModals + 10000);
-
-      if (this.allowCancel) {
-        $backdrop.one('click', function() {
-          self.trigger('cancel');
-        });
-        
-        $(document).one('keyup.dismiss.modal', function (e) {
-          e.which == 27 && self.trigger('cancel');
-        });
-      }
+          self.trigger('shown');
+        })
+        .modal('show');
 
       this.on('cancel', function() {
         self.close();
@@ -131,17 +110,10 @@
         return;
       }
 
-      $el.one('hidden', function onHidden(e) {
-        // Ignore events propagated from interior objects, like bootstrap tooltips
-        if(e.target !== e.currentTarget){
-          return $el.one('hidden', onHidden);
-        }
+      $el.modal("setting", "onCancel", function() {
         self.remove();
-
         self.trigger('hidden');
-      });
-
-      $el.modal('hide');
+      }).modal("hide");
 
       Modal.count--;
     },

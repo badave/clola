@@ -37,6 +37,7 @@ module.exports = function(app) {
   // app.get("/users", usersController.index);
   app.post("/register", usersController.create);
   app.post("/login", usersController.authenticate);
+  app.get("/logout", usersController.logout);
 
   app.get("/v1/customers", customersController.find);
   app.get("/v1/customers/:phone", customersController.findByNumber);

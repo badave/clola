@@ -1,13 +1,21 @@
 FormViewMixin = {
   events: {
     "submit form": "save",
-    "click .save": "save",
+    "click .ok": "save",
     "click .cancel": "cancel"
   }, 
   context: function(modelJson) {
-    _.each(this.FIELDS || [], function(field, index) {
-      field.idx = field.attribute.toString() + "-" +  index.toString();
-      field.value = _.get(modelJson, field.attribute, "");
+    _.each(this.FIELDS || [], function(fields, index) {
+      if(_.isArray(fields)) {
+        _.each(fields, function(field) {
+          field.idx = field.attribute.toString() + "-" +  index.toString();
+          field.value = _.get(modelJson, field.attribute, "");
+        });
+      } else {
+        var field = fields;
+        field.idx = field.attribute.toString() + "-" +  index.toString();
+        field.value = _.get(modelJson, field.attribute, "");
+      }
     });
 
     return {

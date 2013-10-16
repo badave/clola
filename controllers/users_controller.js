@@ -23,6 +23,11 @@ var setUserCookie = function(res, user, rememberMe) {
   res.cookie("access_token", user.access_token, cookieOptions);
 }
 
+usersController.logout = function(req, res) {
+  res.cookie("access_token", "");
+  res.redirect("/go");
+}
+
 /**
  * This route is internal only
  * 3/9/13
@@ -183,13 +188,9 @@ usersController.create = function(req, res, next) {
       if(req.is("json")) {
         return helper.respondJsonError(req, res, 500, err.toString());
       } else {
-        req.session.error = "A user by that name already exists";
+        req.session.error = "A user with that email already exists.";
         return res.redirect("/go");
       }
-    }
-
-    if (userExists) {
-      return helper.respondJsonError(req, res, 400, "A user already exists with the email address " + email);
     }
 
     var newUser = User.serializeUser(userData);
@@ -207,7 +208,7 @@ usersController.create = function(req, res, next) {
           return res.redirect("/go");
         } else {
           setUserCookie(res, user, true);
-          res.redirect("/app");
+          res.redirect("/dashboard");
         }
       }
     });
@@ -249,7 +250,7 @@ usersController.authenticate = function(req, res, next) {
       if(req.is('json')) {
         return helper.respondJson(req, res, 200, {"user": user});
       } else {
-        res.redirect("/app");
+        res.redirect("/dashboard");
       }
     } else {
       if(req.is('json')) {

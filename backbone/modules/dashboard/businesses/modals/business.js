@@ -1,69 +1,94 @@
 BusinessModal = Backbone.Modal.extend({
   template_path: "dashboard/businesses/modals/templates/business",
+  tagName: "form",
   FIELDS: [
-    {
+    [{
       "name": "name",
       "type": "text",
       "attribute": "name",
-      "label": "Name of Business: "
+      "label": "Business Name",
+      "placeholder": "Business Name",
+      "required": true
     },
     {
       "name": "email",
       "type": "text",
       "attribute": "email",
-      "label": "Email: "
+      "label": "Contact Email",
+      "placeholder": "Contact Email",
+      "required": true
+    },
+    {
+      "name": "contact_name",
+      "type": "text",
+      "attribute": "contact_name",
+      "label": "Contact Name",
+      "placeholder": "Contact Name",
+      "required": true
+    },
+
+    {
+      "name": "contact",
+      "type": "tel",
+      "attribute": "phone",
+      "label": "Contact Phone",
+      "placeholder": "Contact Phone",
+      "required": true
     },
     {
       "name": "url",
       "type": "url",
       "attribute": "url",
-      "label": "URL: "
+      "label": "URL",
+      "placeholder": "https://"
     },
     {
       "name": "image_url",
       "type": "url",
       "attribute": "image_url",
-      "label": "Image URL: "
-    },
-    {
+      "label": "Image URL",
+      "placeholder": "https://"
+    }],
+    [{
       "name": "address[street1]",
       "type": "text",
       "attribute": "address.street1",
-      "label": "Street: "
+      "label": "Street Address Line #1",
+      "placeholder": "Street Address Line #1",
+      "required": true
     },
     {
       "name": "address[street2]",
       "type": "text",
       "attribute": "address.street2",
-      "label": "Street #2: "
+      "label": "Street Address Line #2",
+      "placeholder": "Street Address Line #2"
     },
     {
       "name": "address[city]",
       "type": "text",
       "attribute": "address.city",
-      "label": "City: "
+      "label": "City",
+      "placeholder": "City",
+      "required": true
     },
     {
       "name": "address[state]",
       "type": "text",
       "attribute": "address.state",
-      "label": "State: "
+      "label": "State",
+      "placeholder": "State",
+      "required": true
     },
     {
       "name": "address[zip]",
       "type": "text",
       "attribute": "address.zip",
-      "label": "Zip Code: "
-    }
-  ],
-  onSave: function() {
-    Backbone.history.navigate("/dashboard/businesses", {trigger: true});  
-  },
-
-  onCancel: function() {
-    Backbone.history.navigate("/dashboard/businesses", {trigger: true});  
-  }
-  
+      "label": "Zip Code",
+      "placeholder": "Zip Code",
+      "required": true
+    }]
+  ]
 });
 
 

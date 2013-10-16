@@ -2,7 +2,7 @@ DashboardLayout = Backbone.Marionette.Layout.extend({
   template_path: "dashboard/app/templates/layout",
   className: "dashboard",
   regions: {
-    "home": "#home",
+    "home": ".home",
     "businesses": ".businesses",
     "customers": ".customers"
   },
@@ -12,5 +12,8 @@ DashboardLayout = Backbone.Marionette.Layout.extend({
       businesses: DashboardBusinessesLayout,
       customers: DashboardCustomersLayout
     };
+  },
+  onRender: function() {
+    this.$el.find(".home").fadeIn();
   }
 });

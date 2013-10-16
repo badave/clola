@@ -1,5 +1,82 @@
 @import "vars";
-@import "semantic/collections/grid";
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  margin: 0px;
+  padding: 0px;
+  color: #555555;
+  min-width: 320px;
+}
+
+a {
+  text-decoration:none;
+
+  &:hover {
+    text-decoration: none;
+    color:;
+  }
+}
+
+.ui.page.dimmer {
+  overflow:scroll;
+}
+.ui.modal>.content {
+  background-color:#fff;
+}
+
+.ui.modal>.close {
+  cursor: pointer;
+  position: absolute;
+  opacity: .8;
+  font-size: 1.25em;
+  top: 1em;
+  right: 1em;
+  color: #000;
+}
+
+.complete-center {
+  width:300px;
+  height:300px;
+  margin:0 auto;
+  margin-top:50%;
+  padding-top:-150px;
+}
+
+.home {
+
+  .segment {
+    margin: 0px 0px 3em;
+    padding-top: 70px;
+    padding-bottom: 30px;
+    background-color: #FFFFFF;
+
+    .introduction {
+      display: table-cell;
+      vertical-align: top;
+      width: 100%;
+    }
+
+    @media only screen and (max-width : 1725px) {
+      .container {
+         width: auto;
+         margin-right: 100px;
+         margin-left: 325px;
+       }
+    }
+
+    @media only screen and (max-width: 1050px) {
+      .container {
+        width: auto;
+        margin: 0% 30px 0px;
+      }
+    }
+  }
+
+}
+
+.business-image {
+  height: 300px;
+}
 
 
 .tile {
