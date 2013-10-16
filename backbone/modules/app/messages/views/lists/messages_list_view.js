@@ -1,4 +1,4 @@
-var timers = {};
+var colorTimers = {};
 
 MessageRowView = ListRowView.extend({
   events: {
@@ -30,7 +30,7 @@ MessageRowView = ListRowView.extend({
       this.$el.addClass("delay_gt_4_lt_6");
     } else if (delta > 6){
       this.$el.addClass("delay_gt_6");
-      timers[this.elem].stopp();
+      colorTimers[this.elem].stopp();
     }
   },
   
@@ -44,14 +44,14 @@ MessageRowView = ListRowView.extend({
     if(that.elem == phoneModel.attributes.phone && phoneModel.attributes.status == "new") {
       // start timer
       var timer = new Timer( {'interval':1000} );
-      timers[that.elem] = timer;
+      colorTimers[that.elem] = timer;
       
       timer.start( function() {
         that.getTimerColor(phoneModel.attributes.messages);
       } );
       
     } else if (phoneModel.attributes.status == "replied") {
-      if (timers[that.elem]) timers[that.elem].stopp(); 
+      if (colorTimers[that.elem]) colorTimers[that.elem].stopp(); 
     }
 
 	  if(this.onRender) this.onRender();
