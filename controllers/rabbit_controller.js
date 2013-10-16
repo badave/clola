@@ -4,8 +4,8 @@ var evt = require("../models/evt");
 
 var rabbitControllerClass = function() {
   var url = "amqp://ccgciqwa:CGzKAx8EDWvRQXbh0BKQL4FfM1fgNWpA@turtle.rmq.cloudamqp.com:5672/ccgciqwa";
-  // var rabbitConnection = amqp.createConnection({ url: url });
-  var rabbitConnection = amqp.createConnection();
+  var rabbitConnection = amqp.createConnection({ url: url });
+  // var rabbitConnection = amqp.createConnection();
 
   var smsExchange;
   var that = this;
