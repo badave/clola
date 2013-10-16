@@ -26,7 +26,7 @@ MessageView = Backbone.Marionette.ItemView.extend({
       "text": this.$el.find("#reply-box").val(),
       "replying": false,
       "created": new Date().getTime()
-    }})
+    }});
 	},
 	
 	replyingToMessage: function(e) {
@@ -36,7 +36,7 @@ MessageView = Backbone.Marionette.ItemView.extend({
 	    "text": this.$el.find("#reply-box").val(),
 	    "replying": true,
 	    "created": new Date().getTime()
-	  }})
+	  }});
 	},
 	
 	sendReply: function(e) {
@@ -69,6 +69,6 @@ MessageView = Backbone.Marionette.ItemView.extend({
       }
       
       that.scrollToBottom();
-    })
+    });
 	}
 });
