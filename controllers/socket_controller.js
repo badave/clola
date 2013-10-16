@@ -221,7 +221,7 @@ var socketController = module.exports = function(server){
       console.log("Phone number: ("+phoneNumber+") already exists in room: ("+room.name+")");
     } else {
       // TODO: add phone number to messages collection
-      db.insert("messages", msg, function(error, message) {
+      db.findAndModify("messages", {"phone": phoneNumber}, {}, { "$set": { "status": "new" }, "$push": { "messages": msg} }, { "upsert": true }, function(error, message) {
         if(error) {
           console.error(error);  
         }
