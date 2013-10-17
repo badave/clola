@@ -21,26 +21,28 @@ var clients = [];
 var _ = require("underscore");
 
 // enable redis-store for socket.io so that we can scale
-var redisPort = "18856";
-var redisHost = "pub-redis-18856.us-east-1-4.1.ec2.garantiadata.com";
+var redisPort = config.redis_port;
+var redisHost = config.redis_host;
  
 var RedisStore = require('socket.io/lib/stores/redis')
   , redis  = require('socket.io/node_modules/redis')
   , pub    = redis.createClient(redisPort, redisHost)
   , sub    = redis.createClient(redisPort, redisHost)
   , client = redis.createClient(redisPort, redisHost);
+
+if (config.env != "development") {  
+  var client = client.auth("4eGEfwCG5p3i3JmN", function() {
+    console.log("success auth connecting to redis client");
+  });
   
-var client = client.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success auth connecting to redis client");
-});
-
-var pub = pub.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success auth connecting to redis pub");
-});
-
-var sub = sub.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success auth connecting to redis sub");
-});
+  var pub = pub.auth("4eGEfwCG5p3i3JmN", function() {
+    console.log("success auth connecting to redis pub");
+  });
+  
+  var sub = sub.auth("4eGEfwCG5p3i3JmN", function() {
+    console.log("success auth connecting to redis sub");
+  });
+}
 
 var timerIntervalClass;
 var timerState = function(delay, msg) {

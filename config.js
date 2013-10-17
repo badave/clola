@@ -7,14 +7,31 @@ if (env === 'production') {
 	config.test = false; // default: false
 	config.localhost = false;
 	config.db_url = "mongodb://leela:futura-mamart1n1!@widmore.mongohq.com:10010/clola";
+	config.rabbit_url = "amqp://lnxokdyl:oKVlu_taZ8eAlhdyeOdJfINcPY04gkXT@turtle.rmq.cloudamqp.com/lnxokdyl";
+	
+	// socket settings
+  config.redis_port = "18856";
+  config.redis_host = "pub-redis-18856.us-east-1-4.1.ec2.garantiadata.com";
+  config.redis_auth_key = "4eGEfwCG5p3i3JmN";
 } else if (env === 'staging') {
 	config.test = false; // default: false
 	config.localhost = false;
 	config.db_url = "mongodb://leela:futura-mamart1n1!@widmore.mongohq.com:10010/clola";
+	config.rabbit_url = "amqp://lnxokdyl:oKVlu_taZ8eAlhdyeOdJfINcPY04gkXT@turtle.rmq.cloudamqp.com/lnxokdyl";
+	
+	// socket settings
+	config.redis_port = "18856";
+	config.redis_host = "pub-redis-18856.us-east-1-4.1.ec2.garantiadata.com";
+	config.redis_auth_key = "4eGEfwCG5p3i3JmN";
 } else {
 	config.test = true; // default: true
 	config.localhost = true;
 	config.db_url = "mongodb://leela:futura-mamart1n1!@widmore.mongohq.com:10010/clola_dev";
+	config.rabbit_url = "amqp://localhost";
+	
+	// socket settings
+	config.redis_port = "";
+  config.redis_host = "";
 }
 
 config.support_email = "support@clola.com";
