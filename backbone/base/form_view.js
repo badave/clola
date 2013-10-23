@@ -30,7 +30,7 @@ FormViewMixin = {
 
     var data = Backbone.Syphon.serialize(this);
 
-    var bh = this.$el.find(".save").buttonHelper("Saving", "Saved", "Failed");
+    var bh = this.$el.find(".ok").buttonHelper("Saving", "Saved", "Failed");
 
     bh.loading();
 
@@ -44,7 +44,7 @@ FormViewMixin = {
       },
       error: function(error) {
         bh.failed();
-        this.$el.find(".save").tooltipHelper(error);
+        that.$el.find(".ok").tooltipHelper(error);
       }
     });
   },

@@ -21,26 +21,36 @@ var clients = [];
 var _ = require("underscore");
 
 // enable redis-store for socket.io so that we can scale
-var redisPort = "18856";
-var redisHost = "pub-redis-18856.us-east-1-4.1.ec2.garantiadata.com";
+var redisPort = config.redis_port;
+var redisHost = config.redis_host;
  
 var RedisStore = require('socket.io/lib/stores/redis')
   , redis  = require('socket.io/node_modules/redis')
   , pub    = redis.createClient(redisPort, redisHost)
   , sub    = redis.createClient(redisPort, redisHost)
   , client = redis.createClient(redisPort, redisHost);
+
+if (config.env != "development") {  
+  var client = client.auth("4eGEfwCG5p3i3JmN", function() {
+    console.log("success auth connecting to redis client");
+  });
   
-var client = client.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success auth connecting to redis client");
-});
+  var pub = pub.auth("4eGEfwCG5p3i3JmN", function() {
+    console.log("success auth connecting to redis pub");
+  });
+  
+  var sub = sub.auth("4eGEfwCG5p3i3JmN", function() {
+    console.log("success auth connecting to redis sub");
+  });
+}
 
-var pub = pub.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success auth connecting to redis pub");
-});
-
-var sub = sub.auth("4eGEfwCG5p3i3JmN", function() {
-  console.log("success auth connecting to redis sub");
-});
+var timerIntervalClass;
+var timerState = function(delay, msg) {
+  // switch(delay) {
+    // case (delay > 3000 && delay <)
+  // }
+  timerIntervalClass = "delay_gt_3_lt_6";
+};
 
 var socketController = module.exports = function(server){
 	var self = this;
@@ -173,6 +183,7 @@ var socketController = module.exports = function(server){
     socket.on("leaveRoom", function(phoneNumber) {
       var room = Room.getRoomByPhoneNumber(phoneNumber, rooms);
       
+      console.log("phone: " + phoneNumber + " removed from room: "+room.name);
       if (room) {
         // make sure that the client is in fact part of this room
         if(_.contains(room.people, phoneNumber)) {
@@ -212,7 +223,7 @@ var socketController = module.exports = function(server){
       console.log("Phone number: ("+phoneNumber+") already exists in room: ("+room.name+")");
     } else {
       // TODO: add phone number to messages collection
-      db.insert("messages", msg, function(error, message) {
+      db.findAndModify("messages", {"phone": phoneNumber}, {}, { "$set": { "status": "new" }, "$push": { "messages": msg} }, { "upsert": true }, function(error, message) {
         if(error) {
           console.error(error);  
         }
@@ -222,8 +233,9 @@ var socketController = module.exports = function(server){
       });
     }
     
+    
     console.log("sending msg: ("+msg.messages[0].text+") from phone: ("+msg.phone+") to room: ("+room.name+")");
-    io.sockets.in(room["name"]).emit('socketRoomMessage', msg);
+    io.sockets.in(room["name"]).emit('socketRoomMessage', {msg: msg, timerIntervalClass: "delay_gt_3_lt_6"});
 	});
 
 };

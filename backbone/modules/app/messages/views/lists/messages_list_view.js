@@ -1,52 +1,79 @@
+var colorTimers = {};
+
 MessageRowView = ListRowView.extend({
+  events: {
+    "click .cancel-icon": "removePhoneFromRoom",
+    "click .phone-number": "select",
+    "tap .phone-number": "select"
+  },
+  
+  removePhoneFromRoom: function() {
+    var phoneModel = this.collection.findByPhone(this.elem);
+    App.socket.emit("leaveRoom", phoneModel.attributes.phone);
+    
+    // remove elem from the html list
+    this.$el.remove();
+  },
+  
+  getTimerColor: function(phoneModelMessages) {
+    var date = new Date();
+    var time = date.getTime();
+    var msgsLength = phoneModelMessages.length;
+    
+    var delta = (time-phoneModelMessages[msgsLength-1].messages[0].created)/1000/60;
+      
+    // console.log(delta+" mins");
+    
+    if(delta > 3 && delta < 4) {
+      this.$el.addClass("delay_gt_3_lt_4");
+    } else if (delta > 4 && delta < 6) {
+      this.$el.addClass("delay_gt_4_lt_6");
+    } else if (delta > 6){
+      this.$el.addClass("delay_gt_6");
+      colorTimers[this.elem].stopp();
+    }
+  },
+  
 	render: function() {
-	  var phoneModel = this.collection.findByPhone(this.elem);
+	  var that = this;
 	  
-	  if(phoneModel.attributes.status == "new") {
-	    this.$el.html(this.elem).append('<i class="icon-circle fr"></i>');
-	    
-	    // start timer
-	    phoneModel.startTimer(this.$el);
-	  } else {
-  		this.$el.html(this.elem).append('<i class="icon-chevron-sign-right fr"></i>');
-  		
-  		if(phoneModel.timer) {
-    		// stop timer
-    		phoneModel.stopTimer();
-    		
-    		// clear the background
-    		this.$el.attr('class', '');
-  		}
-	  }
-	  
+    that.$el.html('<span class="phone-number">' + that.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>');
+    
+    var phoneModel = that.collection.findByPhone(that.elem);
+ 
+    if(that.elem == phoneModel.attributes.phone && phoneModel.attributes.status == "new") {
+      // start timer
+      var timer = new Timer( {'interval':1000} );
+      colorTimers[that.elem] = timer;
+      
+      timer.start( function() {
+        that.getTimerColor(phoneModel.attributes.messages);
+      } );
+      
+    } else if (phoneModel.attributes.status == "replied") {
+      if (colorTimers[that.elem]) colorTimers[that.elem].stopp(); 
+    }
+
 	  if(this.onRender) this.onRender();
 		return this;
 	},
-	renderNewMessage: function(model) {
+	renderNewMessage: function(model, timerIntervalClass) {
 	  if(this.elem == model.attributes.phone && model.attributes.status == "new") {
-	    this.$el.html(this.elem).append('<i class="icon-circle fr"></i>');
-	    
-	    // start timer
-	    phoneModel.startTimer(this.$el);
+	    this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>')
+	             .addClass(timerIntervalClass);
 	  }
 	},
-	renderRepliedMessage: function(model) {
+	renderRepliedMessage: function(model, timerIntervalClass) {
     if(this.elem == model.attributes.phone) {
-      this.$el.html(this.elem).append('<i class="icon-chevron-sign-right fr"></i>');
-      
-      if(phoneModel.timer) {
-        // stop timer
-        phoneModel.stopTimer();
-        
-        // clear the background
-        this.$el.attr('class', '');
-      }
+      this.$el.html('<span class="phone-number">' + this.elem + '</span>' + '<span class="cancel-icon"><i class="icon-remove-sign fr"></i></span>')
+                .addClass(timerIntervalClass);
     }
   },
 	onRender: function() {
 	  var that = this;
-	  App.vent.on('change:message', function(model) {
-	    that.renderNewMessage(model);
+
+	  App.vent.on('change:message', function(data) {
+	    that.renderNewMessage(data.model, data.timerIntervalClass);
 	  });
 	  
 	  App.vent.on('message:replied', function(model){

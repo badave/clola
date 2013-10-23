@@ -3,7 +3,8 @@ DashboardHomeLayout = Backbone.Marionette.Layout.extend({
   className: "segment",
   events: {
     "click .add-business": "addBusiness",
-    "click .add-location": "addLocation"
+    "click .add-location": "addLocation",
+    "click .request-verification": "addPayment"
   },
   context: function() {
     var step = 0;
@@ -20,6 +21,7 @@ DashboardHomeLayout = Backbone.Marionette.Layout.extend({
       if(!verified) {
         step = 3;
       } else {
+        // completed
         step = 4;
       }
     }
@@ -49,6 +51,35 @@ DashboardHomeLayout = Backbone.Marionette.Layout.extend({
     var location = new Location();
 
     location.set("business_id", App.businesses.models[0].id);
+    location.set("address", App.businesses.models[0].get("address")); 
 
+    var view = new LocationModal({
+      model: location,
+      animate: true,
+      onSave: function() {
+        App.locations.add(location);
+        that.render();
+      }
+    });
+
+    view.open();
+  },
+  addPayment: function() {
+    var that = this;
+
+    var payment = new Payment();
+
+    payment.set("address", App.businesses.models[0].get("address")); 
+    payment.set("business_id", App.businesses.models[0].id);
+
+    var view = new PaymentModal({
+      model: payment,
+      animate: true,
+      onSave: function() {
+
+      }
+    });
+
+    view.open();
   }
 });

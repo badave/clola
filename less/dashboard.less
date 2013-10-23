@@ -78,6 +78,26 @@ a {
   height: 300px;
 }
 
+@media only screen and (min-width: 1050px) {
+  .half-full {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .ui.modal .content .left, .ui.modal .content .right {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    float:none;
+    display:block;
+  }
+
+  .half-full {
+    width: 100%;
+  }
+
+}
 
 .tile {
   background: #fff;
@@ -125,6 +145,10 @@ a {
     bottom: 0;
     z-index: 2;
   }
+}
+
+.center {
+  text-align:center;
 }
 
 .big-block {

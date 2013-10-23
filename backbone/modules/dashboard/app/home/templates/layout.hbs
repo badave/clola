@@ -23,7 +23,7 @@
       <div class="item">
         <i class="{{#compare step ">" 3}}checked{{else}}empty{{/compare}} checkbox icon"></i>
         <div class="content">
-          {{#compare step ">" 2}}
+          {{#compare step 3}}
             <a class="header">Verification Pending</a>
           {{else}}
             {{#compare step 2}}<a class="header request-verification" href="javascript:;">{{/compare}}Get Verified{{#compare step 2}}</a>{{/compare}}

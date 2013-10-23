@@ -6,6 +6,8 @@
  *
  * @author David Badley
  *
+ * This is a ripped up version of Backbone.Modal on git.
+ *
  * Events:
  * shown: Fired when the modal has finished animating in
  * hidden: Fired when the modal has finished animating out
@@ -67,7 +69,7 @@
     open: function(cb) {
       if (!this.isRendered) this.render();
 
-      var self = this,
+      var that = this,
           $el = this.$el;
 
       //Create it
@@ -75,23 +77,29 @@
         .modal('setting', 'closable', false)
         .modal('setting', 'transition', 'scale')
         .modal("setting", "onShow", function() {
-          if (self.options.focusOk) {
+          if (that.options.focusOk) {
             $el.find('.btn.ok').focus();
           }
 
-          self.trigger('shown');
+          that.trigger('shown');
         })
-        .modal('show');
+        .modal('show')
+        .modal('setting', 'onApprove', function() {
+          that.trigger('approved');
+        })
+        .modal('setting', 'onDeny', function() {
+          that.close();
+        });
 
       this.on('cancel', function() {
-        self.close();
+        that.close();
       });
 
       Modal.count++;
 
       //Run callback on OK if provided
       if (cb) {
-        self.on('ok', cb);
+        that.on('ok', cb);
       }
       
       return this;
@@ -101,7 +109,7 @@
      * Closes the modal
      */
     close: function() {
-      var self = this,
+      var that = this,
           $el = this.$el;
 
       //Check if the modal should stay open
@@ -111,8 +119,8 @@
       }
 
       $el.modal("setting", "onCancel", function() {
-        self.remove();
-        self.trigger('hidden');
+        that.remove();
+        that.trigger('hidden');
       }).modal("hide");
 
       Modal.count--;

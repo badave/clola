@@ -21,32 +21,32 @@
 </div>
 
 <div>
-	<div>Gender: <span style="text-transform: capitalize">{{#if model.gender}}{{model.gender}}{{else}}Unknown{{/if}}</span> -
+	<div>Gender: <span style="text-transform: capitalize">{{#if model.gender}}{{model.gender}}{{else}}Unknown{{/if}}</span><br>
 	Birthday: {{#if model.birthday}}{{model.birthday}}{{else}}Unknown{{/if}}
 	</div>
 </div>
 
 {{#if model.company_name}}
 <div>
-	{{model.company_name}}
+	Works for: {{model.company_name}}
 </div>
 {{/if}}
 
 {{#if model.occupation}}
 <div>
-	{{model.occupation}}
+	Occupation: {{model.occupation}}
 </div>
 {{/if}}
 
 {{#if model.education}}
 <div>
-	{{model.education}}
+	Education: {{model.education}}
 </div>
 {{/if}}
 
 {{#if model.description}}
 <div>
-	{{model.description}}
+	Description: {{model.description}}
 </div>
 {{/if}}
 

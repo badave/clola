@@ -1,42 +1,55 @@
 LocationModal = Backbone.Modal.extend({
   template_path: "dashboard/businesses/modals/templates/location",
+  tagName: "form",
   FIELDS: [
-    {
+    [{
       "name": "name",
       "type": "text",
       "attribute": "name",
-      "label": "Name of Location: "
+      "label": "Name for Location",
+      "placeholder": "e.g. North SOHO, Chinatown Location, 3rd and Market",
+      "required": true
     },
     {
       "name": "address[street1]",
       "type": "text",
       "attribute": "address.street1",
-      "label": "Street: "
+      "label": "Street Address Line #1",
+      "placeholder": "Street Address Line #1",
+      "required": true
     },
     {
       "name": "address[street2]",
       "type": "text",
       "attribute": "address.street2",
-      "label": "Street #2: "
+      "label": "Street Address Line #2",
+      "placeholder": "Street Address Line #2",
+      "required": true
     },
     {
       "name": "address[city]",
       "type": "text",
       "attribute": "address.city",
-      "label": "City: "
+      "label": "City",
+      "placeholder": "City",
+      "required": true
     },
     {
       "name": "address[state]",
       "type": "text",
       "attribute": "address.state",
-      "label": "State: "
+      "label": "State",
+      "placeholder": "State",
+      "required": true
     },
     {
       "name": "address[zip]",
       "type": "text",
       "attribute": "address.zip",
-      "label": "Zip Code: "
-    }
+      "label": "Zip Code",
+      "placeholder": "Zip Code",
+      "required": true
+    }]
   ]
 });
 

@@ -18,7 +18,9 @@ App.addInitializer(function(options) {
       App.vent.trigger("roomRemoved", room);
     });
 
-  	App.socket.on("socketRoomMessage", function(data) {
+  	App.socket.on("socketRoomMessage", function(dataHash) {
+  	  var data = dataHash.msg;
+  	  
   		var phoneModel = App.messages.findByPhone(data.phone) || new Message({
   		  "phone": data.phone
   		});
@@ -41,7 +43,7 @@ App.addInitializer(function(options) {
   		  });
   		} else {
     		setData();
-    		App.vent.trigger("change:message", phoneModel);
+    		App.vent.trigger("change:message", {model: phoneModel, timerIntervalClass: dataHash.timerIntervalClass});
       }
   	});
   	
