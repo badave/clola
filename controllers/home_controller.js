@@ -5,7 +5,9 @@ var homeController = module.exports = {};
 
 homeController.index = function(req, res, next) {
 	var context = {
-		title: config.title
+		title: config.title,
+    home: true,
+    semantic: true
 	};
 
 	return helper.render(req, res, 200, 'home/index', context);
@@ -19,7 +21,9 @@ homeController.awesomeSauce = function(req, res) {
 	var context = {
 		title: config.title,
 		user : helper.addslashes(JSON.stringify(req.user)),
-		layout: "backbone"
+		layout: "backbone",
+    bootstrap: true,
+    app: true
 	};
 
 	return helper.render(req, res, 200, "home/index", context);
@@ -52,7 +56,9 @@ homeController.dashboard = function(req, res) {
   var context = {
     title: config.title,
     user : helper.addslashes(JSON.stringify(req.user)),
-    layout: "backbone"
+    layout: "backbone",
+    semantic: false,
+    dashboard: false
   };
 
   return helper.render(req, res, 200, "home/index", context);
