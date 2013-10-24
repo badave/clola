@@ -11,12 +11,12 @@
 
     $(element).removeClass('input-success');
     $(element).addClass('input-error');          
-    $(element).tooltip({'trigger':'manual', 'placement': placement, 'title': title });
-    $(element).tooltip('show');
+    $(element).dropdown({'trigger':'manual', 'placement': placement, 'title': title });
+    $(element).dropdown('show');
 
     if(destroy) {
       $(element).on('focus', function() {
-        $(element).tooltip('destroy');
+        $(element).dropdown('destroy');
         $(element).removeClass('input-error');
       });
     }
@@ -24,7 +24,7 @@
     if($(element).prop("tagName") !== 'INPUT') {
       if(destroy) {
         setTimeout(function() {
-          $(element).tooltip('destroy');
+          $(element).dropdown('destroy');
         }, destroyTimeout);
       }
     }

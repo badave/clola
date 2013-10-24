@@ -21,10 +21,12 @@ DashboardHomeLayout = Backbone.Marionette.Layout.extend({
       if(!verified) {
         step = 3;
       } else {
-        // completed
+        // payment method has been approved and everything is setup
         step = 4;
       }
     }
+
+    step = 2;
 
     return {
       step: step
@@ -76,7 +78,11 @@ DashboardHomeLayout = Backbone.Marionette.Layout.extend({
       model: payment,
       animate: true,
       onSave: function() {
-
+        payment.fetch({
+          success: function() {
+            that.render();    
+          }
+        });
       }
     });
 

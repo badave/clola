@@ -9,7 +9,6 @@ HomeRouter = Backbone.Router.extend({
     };
 
     that.initialize = function() {
-
       App.businesses = new BusinessesCollection();
       App.businesses.load();
 

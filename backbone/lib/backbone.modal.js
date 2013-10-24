@@ -84,11 +84,17 @@
           that.trigger('shown');
         })
         .modal('show')
-        .modal('setting', 'onApprove', function() {
-          that.trigger('approved');
-        })
-        .modal('setting', 'onDeny', function() {
-          that.close();
+        .modal('setting', {
+          onApprove: function(e) {
+            e.preventDefault();
+            debugger
+            that.trigger('approved');
+            return false;
+          },
+          onDeny: function(e){
+            e.preventDefault();
+            that.close();
+          }
         });
 
       this.on('cancel', function() {
@@ -101,8 +107,16 @@
       if (cb) {
         that.on('ok', cb);
       }
+
+      that.on('ok', that.okHandler);
       
       return this;
+    },
+
+    okHandler: function(e) {
+      e.preventDefault();
+
+
     },
 
     /**
