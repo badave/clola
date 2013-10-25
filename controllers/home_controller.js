@@ -41,7 +41,8 @@ homeController.go = function(req, res) {
     login_inputs: {
       "email": "Email",
       "password": "Password"
-    }
+    },
+    bootstrap: true,
   };
 
   return helper.render(req, res, 200, "home/go", context);
