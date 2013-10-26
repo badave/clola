@@ -5,7 +5,9 @@ var homeController = module.exports = {};
 
 homeController.index = function(req, res, next) {
 	var context = {
-		title: config.title
+		title: config.title,
+    home: true,
+    semantic: true
 	};
 
 	return helper.render(req, res, 200, 'home/index', context);
@@ -39,7 +41,8 @@ homeController.go = function(req, res) {
     login_inputs: {
       "email": "Email",
       "password": "Password"
-    }
+    },
+    bootstrap: true,
   };
 
   return helper.render(req, res, 200, "home/go", context);

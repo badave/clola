@@ -29,9 +29,9 @@ if (env === 'production') {
 	config.db_url = "mongodb://leela:futura-mamart1n1!@widmore.mongohq.com:10010/clola_dev";
 	config.rabbit_url = "amqp://localhost";
 	
-	// socket settings
-	config.redis_port = "";
+	// socket settingsconfig.redis_port = "18856";
   config.redis_host = "";
+  config.redis_auth_key = "";
 }
 
 config.support_email = "support@clola.com";

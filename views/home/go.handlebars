@@ -30,7 +30,7 @@
           </div>
           <div class="modal-body"> 
             {{#each register_inputs}}
-              <div class="input-group input-group-lg">
+              <div class="input-group input-group-lg" style="padding-top:10px;">
                 <span class="input-group-addon">{{this}}</span>
                 <input type="{{#compare "password" "is_in" @key}}password{{else}}text{{/compare}}" name="{{@key}}" class="form-control input-lg" placeholder="{{this}}">
               </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="modal-body">
               {{#each login_inputs}}
-                <div class="input-group input-group-lg">
+                <div class="input-group input-group-lg" style="padding-top:10px;">
                   <span class="input-group-addon">{{this}}</span>
                   <input type="{{#compare "password" "is_in" @key}}password{{else}}text{{/compare}}" name="{{@key}}" class="form-control input-lg" placeholder="{{this}}">
                 </div>

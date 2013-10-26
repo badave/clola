@@ -26,7 +26,10 @@ DashboardHomeLayout = Backbone.Marionette.Layout.extend({
       }
     }
 
-    step = 2;
+    // completed, ready to go
+    if(step === 4) {
+      
+    }
 
     return {
       step: step

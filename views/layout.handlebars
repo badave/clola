@@ -1,15 +1,57 @@
 <!DOCTYPE html>
 <head>
-	<title>Clola</title>
-
-  {{css "bootstrap"}}
-  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  {{css "home"}}
-
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  {{js "bootstrap"}}
+  {{js "handlebars"}}
+  {{js "jquery.cookie"}}
+  {{js "underscore.min"}}
+  {{js "backbone"}}
+  {{js "backbone.marionette"}}
+
+  {{#if bootstrap}}
+    {{css "bootstrap"}}
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    {{js "bootstrap"}}
+  {{/if}}
+
+  {{#if semantic}}
+    {{js "semantic.min"}}
+    {{css "semantic.min"}}
+  {{/if}}
+
+  {{#if home}}
+    {{css "home"}}
+  {{/if}}
+
+  {{#if app}}
+    {{css "app"}}
+  {{/if}}
+  
+  {{#if dashboard}}
+    {{css "dashboard"}}
+  {{/if}}
+
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+  {{! remove and minify }}
+  {{js "src/handlebars-helpers"}}
+  {{js "src/moment"}}
+
+  <script type="text/javascript" src="/js/templates.js"></script>
+
+  {{js "socket.io.min"}}
+
+  {{js "app"}}
+  <title>Clola</title>
 </head>
 <body>
-	{{{body}}}
+  {{{body}}}
+  {{#if app}}
+    <script type="text/javascript">
+      App.start({
+        localhost: {{config.localhost}},
+        user : JSON.parse("{{{user}}}")
+      });
+    </script>
+  {{/if}}
 </body>
 </html>

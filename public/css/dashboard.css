@@ -3,6 +3,7 @@ a{text-decoration:none}a:hover{text-decoration:none;color:}
 .ui.page.dimmer{overflow:scroll}
 .ui.modal>.content{background-color:#fff}
 .ui.modal>.close{cursor:pointer;position:absolute;opacity:.8;font-size:1.25em;top:1em;right:1em;color:#000}
+.ui.list .item>.icon{vertical-align:middle}
 .complete-center{width:300px;height:300px;margin:0 auto;margin-top:50%;padding-top:-150px}
 .home .segment{margin:0px 0px 3em;padding-top:70px;padding-bottom:30px;background-color:#FFFFFF}.home .segment .introduction{display:table-cell;vertical-align:top;width:100%}
 @media only screen and (max-width:1725px){.home .segment .container{width:auto;margin-right:100px;margin-left:325px}}@media only screen and (max-width:1050px){.home .segment .container{width:auto;margin:0% 30px 0px}}
