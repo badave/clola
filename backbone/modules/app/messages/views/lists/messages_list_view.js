@@ -20,7 +20,8 @@ MessageRowView = ListRowView.extend({
     var time = date.getTime();
     var msgsLength = phoneModelMessages.length;
     
-    var delta = (time-phoneModelMessages[msgsLength-1].messages[0].created)/1000;
+    var lastMessage = (phoneModelMessages[msgsLength-1] || phoneModelMessages[msgsLength-1].messages[0]);
+    var delta = (time-lastMessage.created)/1000;
       
     // console.log(delta+" seconds");
     

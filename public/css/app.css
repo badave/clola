@@ -75,7 +75,7 @@ address{margin-bottom:10px}
 .bigger{font-size:1.25em}
 .delay_gt_3_lt_4{background:none repeat scroll 0 0 #FFF1CC}
 .delay_gt_4_lt_6{background:none repeat scroll 0 0 #FFE9B2}
-.delay_gt_6{background:none repeat scroll 0 0 #FFD466}
+.delay_gt_6{background:none repeat scroll 0 0 red}
 .spacer{height:30px}
 li{text-shadow:none !important}
 .btn-create-room,.btn-remove-room{position:absolute;right:0px;top:-36px;line-height:20px !important;padding-left:20px !important;padding-right:20px !important;border-radius:4px 0 0 4px !important;width:170px !important}
