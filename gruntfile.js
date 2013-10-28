@@ -64,7 +64,7 @@ module.exports = function(grunt) {
       },
       // Concat all css: bootstrap first, then /lib/*, then /src/*
       css: {
-        src: ['public/css/lib/bootstrap.css', 'public/css/lib/**/*.css', 'public/css/src/**/*.css'],
+        src: ['public/css/lib/**/*.css', 'public/css/src/**/*.css'],
         dest: 'build/concat/css/application.bundle.css'
       }
     },

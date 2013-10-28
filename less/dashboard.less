@@ -1,4 +1,9 @@
 @import "vars";
+@import "mixins";
+
+.ar {
+  text-align: right;
+}
 
 body {
   font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -17,25 +22,98 @@ a {
   }
 }
 
-.ui.page.dimmer {
-  overflow:scroll;
-}
-.ui.modal>.content {
-  background-color:#fff;
+.ui {
+
+  &.page.dimmer {
+    overflow:scroll;
+  }
+
+  &.modal>.content {
+    background-color:#fff;
+  }
+
+  &.sidebar {
+    padding:0;
+    background-color: #FFFFFF;
+    box-shadow: 1px 0px 0px rgba(0, 0, 0, 0.1);
+  }
+
+
+  &.modal>.close {
+    cursor: pointer;
+    position: absolute;
+    opacity: .8;
+    font-size: 1.25em;
+    top: 1em;
+    right: 1em;
+    color: #000;
+  }
+
+  &.list .item>.icon { 
+    vertical-align: middle;
+  }
+
+  &.blue.label {
+    // background-color: #1986a9!important;
+    // border-color: #1986f9!important;
+  }
+  &.green.label {
+    // background-color: @active-green !important;
+    // border-color: @active-green !important;
+
+    &:hover {
+      background-color: @hover-green !important;
+      border-color: @hover-green !important;
+    }
+  }
 }
 
-.ui.modal>.close {
-  cursor: pointer;
-  position: absolute;
-  opacity: .8;
-  font-size: 1.25em;
-  top: 1em;
-  right: 1em;
-  color: #000;
+a.ui.green.labels .label:hover, a.ui.green.label:hover {
+  // background-color: @hover-green !important;
+  // border-color: @hover-green !important;
 }
 
-.ui.list .item>.icon { 
-  vertical-align: middle;
+.sidebar {
+  overflow:hidden;
+  overflow-y:scroll;
+
+  .label.sidebar-right {
+    position:relative;
+    right: -14px;
+    padding-right: 24px;
+    margin-bottom: 10px;
+    color:#fff;
+    background-color:#888;
+  }
+
+  .ui.label.business-label {
+    font-size: 1.25em;
+    font-weight: 600;
+    width: 95%!important;
+    background-color: #1986a9!important;
+    border-color: #1986f9!important;
+    .rounded-corners(0);
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .labels .locations {
+    .ui.label.location-label {
+      font-weight:500;
+      font-size:0.90em;
+      width:90%!important;
+      padding-right: 20px;
+      right: -6px;
+      background-color:@active-green!important;
+      border-color:@active-green!important;
+      .rounded-corners(0);
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
 }
 
 .complete-center {

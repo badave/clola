@@ -36,10 +36,12 @@ if (env === 'production') {
 
 config.support_email = "support@clola.com";
 
+config.manifest = require('./manifest.json');
+
 config.title = "Clola";
 
 config.twilio_sid = "AC20775dc15a1598af7e86c5ce40dd4e43";
 config.twilio_auth_token = "eb2b86382d4d3009391142d6839a26b1";
 config.twilio_number = "+19414445652";
 
-config.cdn_assets_url = "";
+config.cdn_assets_url = "/assets";

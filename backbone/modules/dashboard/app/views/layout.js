@@ -1,3 +1,10 @@
+/**
+ * Dashboard Layout controls the primary layout
+ *
+ * It will show the new user flow if not verified
+ * It will show the dashboard if verified
+ */
+
 DashboardLayout = Backbone.Marionette.Layout.extend({
   template_path: "dashboard/app/templates/layout",
   className: "dashboard",
@@ -9,11 +16,18 @@ DashboardLayout = Backbone.Marionette.Layout.extend({
   regionViews: function() {
     return {
       home: DashboardHomeLayout,
-      businesses: DashboardBusinessesLayout,
+      businesses: DashboardBusinessesSidebar,
       customers: DashboardCustomersLayout
     };
   },
   onRender: function() {
-    this.$el.find(".home").fadeIn();
+    var verified = App.locations.findWhere({"verified": true});
+
+    if(!verified) {
+      this.$el.find(".home").fadeIn();
+    } else {
+      this.$el.find('.sidebar').fadeIn();
+      this.$el.find('.body').fadeIn();
+    }
   }
 });
