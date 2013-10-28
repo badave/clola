@@ -1,3 +1,3 @@
 DashboardLocationLabel = Backbone.Marionette.Layout.extend({
-  template_path: "dashboard/app/locations/templates/label"
+  template_path: "dashboard/locations/templates/label"
 });

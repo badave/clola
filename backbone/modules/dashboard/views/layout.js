@@ -6,7 +6,7 @@
  */
 
 DashboardLayout = Backbone.Marionette.Layout.extend({
-  template_path: "dashboard/app/templates/layout",
+  template_path: "dashboard/templates/layout",
   className: "dashboard",
   regions: {
     "home": ".home",

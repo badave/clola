@@ -1,5 +1,5 @@
 DashboardHomeLayout = Backbone.Marionette.Layout.extend({
-  template_path: "dashboard/app/home/templates/layout",
+  template_path: "dashboard/home/templates/layout",
   className: "segment",
   events: {
     "click .add-business": "addBusiness",

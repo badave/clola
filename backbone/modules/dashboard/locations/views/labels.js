@@ -1,5 +1,5 @@
 DashboardLocationLabels = Backbone.Marionette.CompositeView.extend({
-  template_path: "dashboard/app/locations/templates/labels",
+  template_path: "dashboard/locations/templates/labels",
   itemView: DashboardLocationLabel,
   itemViewContainer: '.locations'
 });
