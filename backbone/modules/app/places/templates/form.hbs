@@ -89,6 +89,10 @@
 			<td><input type="checkbox" name="cash_only" id="cash-only" selected="{{model.cash_only}}" /> <label for="cash-only" style="display:inline-block;" >Cash Only</label></td>
 		</tr>
 
+		<tr>
+			<td>Location</td>
+			<td><select name="location_id" value="{{model.location_id}}"><option value="">Select</option>{{#select model.location_id}}{{#each locations}}<option value="{{this._id}}">{{this.name}}</option>{{/each}}{{/select}}</select></td>
+
 	</tbody>
 </table>
 <div class="header">

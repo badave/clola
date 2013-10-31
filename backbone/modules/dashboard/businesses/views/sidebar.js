@@ -11,5 +11,11 @@ DashboardBusinessesSidebar = Backbone.Marionette.CompositeView.extend({
     this.collection = App.businesses;
 
     return Backbone.Marionette.CompositeView.prototype.initialize.apply(this, arguments);
+  },
+  itemViewOptions: function(model, index) {
+    return {
+      model: model,
+      index: index
+    };
   }
 });

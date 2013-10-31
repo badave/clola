@@ -7,6 +7,12 @@ PlaceEditView = Backbone.Marionette.ItemView.extend({
 		"click .save": "save",
 		"submit": "save"
 	},
+	context: function(modelJson) {
+		return {
+			model: modelJson,
+			locations: App.locations.toJSON()
+		};
+	},
 	hidePane: function() {
 		App.vent.trigger("hide:sidepane-left");
 	},

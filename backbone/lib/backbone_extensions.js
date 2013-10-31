@@ -26,7 +26,7 @@ Backbone.Marionette.ItemView.prototype.context = Backbone.Marionette.CompositeVi
 
 	You can now specify whether or not you want a view to automatically render when updated
  */
-Backbone.Marionette.ItemView.prototype.initialize = Backbone.Marionette.CompositeView.prototype.initialize =function(options) {
+Backbone.Marionette.ItemView.prototype.initialize = Backbone.Marionette.CompositeView.prototype.initialize = function(options) {
 	var that = this;
 	// Autoextends
 	_.extend(this, options);

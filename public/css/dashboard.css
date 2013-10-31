@@ -10,9 +10,9 @@ a{text-decoration:none}a:hover{text-decoration:none;color:}
 .ui.list .item>.icon{vertical-align:middle}
 ul{padding-left:0}
 .small{font-size:0.9em}
-.sidebar{overflow:hidden;overflow-y:scroll}.sidebar .sidebar-row{text-align:right;border-left:2px solid transparent}
-.sidebar .sidebar-row a:hover{background-color:#1f4773;color:#fff}
-.sidebar .sidebar-row:hover{background-color:#1f4773;color:#fff}
+.sidebar{overflow:hidden;overflow-y:scroll}.sidebar .sidebar-row{text-align:right}
+.sidebar .sidebar-row a:hover,.sidebar .sidebar-row.selected a{background-color:#1f4773;color:#fff}
+.sidebar .sidebar-row:hover,.sidebar .sidebar-row.selected{background-color:#1f4773;color:#fff}
 .body{margin-left:275px !important}
 .launch.button{position:fixed;top:63px;z-index:500;width:70px}
 .complete-center{width:300px;height:300px;margin:0 auto;margin-top:50%;padding-top:-150px}
@@ -29,4 +29,4 @@ ul{padding-left:0}
 .customers-table{position:relative;top:50px}.customers-table tbody tr{cursor:pointer}.customers-table tbody tr:hover{background-color:#f1f1f1}
 .squares{position:relative;top:50px}.squares .square{position:absolute;top:0;left:0;right:0;bottom:0;cursor:pointer;font-size:12px}.squares .square.square-image{position:absolute;top:0;left:0;right:0;bottom:0;background-size:contain;background-repeat:none;border-bottom:1px solid #eee}
 .squares .square .info{background-color:#fff;bottom:0;left:60%;overflow:hidden;padding:25px;position:absolute;right:0;top:60%}.squares .square .info:hover{cursor:pointer;background-color:#fafafa}
-.squares .square .info h5{text-transform:uppercase;background-color:#c1beca;color:#fff;padding:4px}
+.squares .square .info h5{text-transform:uppercase;background-color:#c1beca;color:#fff;padding:4px;margin-top:0}

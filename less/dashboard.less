@@ -68,19 +68,16 @@ ul {
 
   .sidebar-row {
     text-align: right;
-    border-left:2px solid transparent;
   }
 
-  .sidebar-row a:hover {
-
+  .sidebar-row a:hover, .sidebar-row.selected a {
     background-color:#1f4773;
     color:#fff;
   }
 
-  .sidebar-row:hover {
+  .sidebar-row:hover, .sidebar-row.selected {
     background-color:#1f4773;
     color:#fff;
-    // border-left:2px solid #00ff00;
   }
 
 }
@@ -301,6 +298,7 @@ ul {
         background-color: #c1beca;
         color:#fff;
         padding:4px;
+        margin-top: 0;
       }
     }
   }
