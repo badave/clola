@@ -89,7 +89,7 @@ var socketController = module.exports = function(server){
     // @name - name of the room, in our case email id of the customer rep 
     socket.on("createRoom", function(name) {
       console.log("in create room");
-      if (people[socket.id].owns === null) {
+      if (people[socket.id] && people[socket.id].owns === null) {
         var id = uuid.v4();
         var room = new Room(name, id, socket.id);
         rooms[id] = room;
