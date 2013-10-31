@@ -20,15 +20,15 @@ MessageRowView = ListRowView.extend({
     var time = date.getTime();
     var msgsLength = phoneModelMessages.length;
     
-    var delta = (time-phoneModelMessages[msgsLength-1].messages[0].created)/1000/60;
+    var lastMessage = (phoneModelMessages[msgsLength-1] || phoneModelMessages[msgsLength-1].messages[0]);
+    var delta = (time-lastMessage.created)/1000;
       
-    // console.log(delta+" mins");
+    // console.log(delta+" seconds");
     
-    if(delta > 3 && delta < 4) {
+    if(delta > 90 && delta < 180) {
       this.$el.addClass("delay_gt_3_lt_4");
-    } else if (delta > 4 && delta < 6) {
-      this.$el.addClass("delay_gt_4_lt_6");
-    } else if (delta > 6){
+    } else if (delta > 180){
+      this.$el.removeClass("delay_gt_3_lt_4");
       this.$el.addClass("delay_gt_6");
       colorTimers[this.elem].stopp();
     }

@@ -1,23 +1,36 @@
+/**
+ * This file also does the tooltip for locations...  This could be abstracted out into another view possibly
+ */
+
 DashboardCustomersLayout = Backbone.Marionette.Layout.extend({
   template_path: "dashboard/customers/templates/layout",
   regions: {
-    customers: '.customers'
+    customers: '.customers',
+    toolbar: '.toolbar'
   },
   regionViews: function() {
     return {
-      customers: DashboardCustomersCompositeView
+      customers: DashboardCustomersCompositeView,
+      toolbar: DashboardToolbarView
     };
   },
-  context: function(modelJson) {
+  itemViewOptions: function() {
+    var that = this;
+
     return {
-      model: modelJson,
-      locations: this.locations.toJSON()
+      business: that.business,
+      locations: that.locations,
+      collection: that.collection, // customers for customers compositeView
+      updateCollection: function() {
+        that.updateCollection();
+      }
     };
   },
 
   updateCollection: function() {
     var that = this;
     var arr = [];
+
 
     // TODO make a serverside call
     this.locations.each(function(location) {
@@ -28,13 +41,15 @@ DashboardCustomersLayout = Backbone.Marionette.Layout.extend({
       arr = arr.concat(customers);
     });
 
-    this.collection = new CustomersCollection(arr);
+    this.collection = this.collection || new CustomersCollection();
+    this.collection.set(arr);
 
     return this;
   },
 
   initialize: function() {
     var that = this;
+    this.business = App.businesses.first();
     this.locations = App.businesses.first().locations();
 
     that.updateCollection();
@@ -44,31 +59,9 @@ DashboardCustomersLayout = Backbone.Marionette.Layout.extend({
       that.locations = business.locations();
 
       that.updateCollection();
-
       that.render();
     });
 
     return Backbone.Marionette.Layout.prototype.initialize.apply(this, arguments);
-  },
-  onRender: function() {
-    var that = this;
-    this.$el.find('.ui.dropdown')
-    .dropdown({
-      onChange: function(value, text) {
-        if(value !== "all") {
-          var location = App.locations.find(function(location) {
-            return location.get('_id') === value;
-          });
-
-          that.locations = new LocationsCollection([location]);
-        } else {
-          that.locations = that.business.locations();
-        }
-
-        that.updateCollection();
-        
-        that.render();
-      }
-    });
   }
 });

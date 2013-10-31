@@ -10,9 +10,9 @@ if (env === 'production') {
 	config.rabbit_url = "amqp://lnxokdyl:oKVlu_taZ8eAlhdyeOdJfINcPY04gkXT@turtle.rmq.cloudamqp.com/lnxokdyl";
 	
 	// socket settings
-  config.redis_port = "18856";
-  config.redis_host = "pub-redis-18856.us-east-1-4.1.ec2.garantiadata.com";
-  config.redis_auth_key = "4eGEfwCG5p3i3JmN";
+  config.redis_port = "17935";
+  config.redis_host = "pub-redis-17935.us-east-1-2.3.ec2.garantiadata.com";
+  config.redis_auth_key = "ns3uGTP8sUmKAepo";
 } else if (env === 'staging') {
 	config.test = false; // default: false
 	config.localhost = false;

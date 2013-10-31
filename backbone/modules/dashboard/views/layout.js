@@ -29,5 +29,9 @@ DashboardLayout = Backbone.Marionette.Layout.extend({
       this.$el.find('.sidebar').fadeIn();
       this.$el.find('.body').fadeIn();
     }
+
+    this.$el.find('.sidebar')
+      .sidebar('show')
+    ;
   }
 });

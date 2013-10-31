@@ -1,5 +1,5 @@
 LocationModal = Backbone.Modal.extend({
-  template_path: "dashboard/businesses/modals/templates/location",
+  template_path: "dashboard/locations/modals/location",
   tagName: "form",
   FIELDS: [
     [{

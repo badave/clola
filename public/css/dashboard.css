@@ -25,7 +25,7 @@ ul{padding-left:0}
 .tile .border-bottom{border-bottom:1px solid #e9e9e9;display:none;height:100%;left:0;position:absolute;bottom:0;z-index:2}
 .center{text-align:center}
 .big-block{width:33.333%;padding-bottom:33.33%}
-.customer-actions{position:absolute;right:0px;padding-right:20px;top:10px}.customer-actions .selected,.customer-actions .btn-outline.selected{background-color:#3abb19;color:white;border:0}.customer-actions .selected:hover,.customer-actions .btn-outline.selected:hover{background-color:#4ce225;color:white;border:0}
+.customer-actions{position:absolute;right:0px;padding-right:10px;top:46px}.customer-actions .selected,.customer-actions .btn-outline.selected{background-color:#3abb19;color:white;border:0}.customer-actions .selected:hover,.customer-actions .btn-outline.selected:hover{background-color:#4ce225;color:white;border:0}
 .customers-table{position:relative;top:50px}.customers-table tbody tr{cursor:pointer}.customers-table tbody tr:hover{background-color:#f1f1f1}
 .squares{position:relative;top:50px}.squares .square{position:absolute;top:0;left:0;right:0;bottom:0;cursor:pointer;font-size:12px}.squares .square.square-image{position:absolute;top:0;left:0;right:0;bottom:0;background-size:contain;background-repeat:none;border-bottom:1px solid #eee}
 .squares .square .info{background-color:#fff;bottom:0;left:60%;overflow:hidden;padding:25px;position:absolute;right:0;top:60%}.squares .square .info:hover{cursor:pointer;background-color:#fafafa}

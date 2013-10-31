@@ -21,8 +21,8 @@ var clients = [];
 var _ = require("underscore");
 
 // enable redis-store for socket.io so that we can scale
-var redisPort = config.redis_port;
-var redisHost = config.redis_host;
+var redisPort = "17935";// config.redis_port;
+var redisHost = "pub-redis-17935.us-east-1-2.3.ec2.garantiadata.com";//;config.redis_host;
  
 var RedisStore = require('socket.io/lib/stores/redis')
   , redis  = require('socket.io/node_modules/redis')
@@ -30,26 +30,23 @@ var RedisStore = require('socket.io/lib/stores/redis')
   , sub    = redis.createClient(redisPort, redisHost)
   , client = redis.createClient(redisPort, redisHost);
 
-if (config.env != "development") {  
-  var client = client.auth("4eGEfwCG5p3i3JmN", function() {
+// if (config.env != "development") {  
+  var client = client.auth("ns3uGTP8sUmKAepo", function() {
     console.log("success auth connecting to redis client");
   });
   
-  var pub = pub.auth("4eGEfwCG5p3i3JmN", function() {
+  var pub = pub.auth("ns3uGTP8sUmKAepo", function() {
     console.log("success auth connecting to redis pub");
   });
   
-  var sub = sub.auth("4eGEfwCG5p3i3JmN", function() {
+  var sub = sub.auth("ns3uGTP8sUmKAepo", function() {
     console.log("success auth connecting to redis sub");
   });
-}
+// }
 
 var timerIntervalClass;
 var timerState = function(delay, msg) {
-  // switch(delay) {
-    // case (delay > 3000 && delay <)
-  // }
-  timerIntervalClass = "delay_gt_3_lt_6";
+  timerIntervalClass = "delay_start";
 };
 
 var socketController = module.exports = function(server){
@@ -59,10 +56,10 @@ var socketController = module.exports = function(server){
 	io.set("origins","*:*");
 	// assuming io is the Socket.IO server object
 	io.configure(function () { 
-	  // io.set("transports", [
-  	  // "xhr-polling",
-  	  // "websocket"
-	  // ]);
+	  io.set("transports", [
+  	  "xhr-polling",
+  	  "websocket"
+	  ]);
 	  
 	  // send minified client
 	  io.enable('browser client minification');
@@ -235,7 +232,7 @@ var socketController = module.exports = function(server){
     
     
     console.log("sending msg: ("+msg.messages[0].text+") from phone: ("+msg.phone+") to room: ("+room.name+")");
-    io.sockets.in(room["name"]).emit('socketRoomMessage', {msg: msg, timerIntervalClass: "delay_gt_3_lt_6"});
+    io.sockets.in(room["name"]).emit('socketRoomMessage', {msg: msg, timerIntervalClass: "delay_start"});
 	});
 
 };

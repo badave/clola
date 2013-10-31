@@ -22,6 +22,13 @@ Customer = BaseModel.extend({
 		previous_places.unshift(place);
 		this.set("previous_places", previous_places);
 	},
+	places: function() {
+		var previous_places = this.get('previous_places') || [];
+
+		return _.filter(previous_places, function(place) {
+			return place._id === place_id;
+		});
+	},
 	hasBeenToPlace: function(place_id) {
 		var previous_places = this.get('previous_places') || [];
 

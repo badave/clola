@@ -3,7 +3,7 @@ DashboardBusinessesSidebar = Backbone.Marionette.CompositeView.extend({
   constructor: function() {
 
     this.itemView = DashboardBusinessLabel;
-    this.itemViewContainer = ".menu";
+    this.itemViewContainer = ".business-labels";
 
     return Backbone.Marionette.CompositeView.apply(this, arguments);
   },
@@ -17,5 +17,21 @@ DashboardBusinessesSidebar = Backbone.Marionette.CompositeView.extend({
       model: model,
       index: index
     };
+  },
+  events: {
+    'click .add': "addBusiness"
+  },
+  addBusiness: function() {
+    var that = this;
+    var business = new Business();
+    var modal = new BusinessModal({
+      model: business,
+      onSave: function() {
+        App.businesses.add(business);
+        that.render();
+      }
+    });
+
+    modal.open();
   }
 });

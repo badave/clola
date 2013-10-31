@@ -91,7 +91,7 @@
 
 		<tr>
 			<td>Location</td>
-			<td><select name="location_id" value="{{model.location_id}}"><option value="">Select</option>{{#select model.location_id}}{{#each locations}}<option value="{{this._id}}">{{this.name}}</option>{{/each}}{{/select}}</select></td>
+			<td><select name="location_id" value="{{model.location_id}}"><option value="">Select</option>{{#select model.location_id}}{{#each locations}}<option value="{{this._id}}">{{this.name}} - {{this.address.street1}}</option>{{/each}}{{/select}}</select></td>
 
 	</tbody>
 </table>
