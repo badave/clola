@@ -21,9 +21,11 @@ DashboardCustomerRowView = Backbone.Marionette.ItemView.extend({
   },
 
   selectCustomer: function() {
-    new DashboardCustomerModal({
+    var modal = new DashboardCustomerModal({
       model: this.model
     });
+
+    modal.open();
   },
 });
 

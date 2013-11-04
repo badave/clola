@@ -10,7 +10,7 @@ DashboardCustomersLayout = Backbone.Marionette.Layout.extend({
   },
   regionViews: function() {
     return {
-      customers: DashboardCustomersCompositeView,
+      customers: DashboardCustomersCollectionView,
       toolbar: DashboardToolbarView
     };
   },
@@ -63,6 +63,8 @@ DashboardCustomersLayout = Backbone.Marionette.Layout.extend({
     App.vent.on("business.selected", function(business) {
       that.business = business;
       that.locations = business.locations();
+
+      delete App.selected_location;
 
       that.updateCollection();
       that.render();

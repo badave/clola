@@ -116,6 +116,11 @@ $(document).ready(function() {
     return moment(ms).format('MM/DD/YYYY');
   });
 
+  Handlebars.registerHelper('formatDateDumb', function(value, options) {
+    var ms = value;
+    return moment(ms).format('MM/DD/YYYY h a');
+  });
+
   Handlebars.registerHelper('formatDateAndTime', function(value, options) {
     var ms = value;
     return moment(ms).format('MM/DD/YYYY h:mm:ss a');

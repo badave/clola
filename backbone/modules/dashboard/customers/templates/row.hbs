@@ -8,5 +8,10 @@
   {{#if facebook}}<a href="{{facebook}}" target="_blank"><i class="icon facebook sign"></i></a>{{/if}} 
   <div class="clear"></div> 
 
-  <subtitle style="text-transform:capitalize">{{model.gender}}</subtitle>
+  
+  {{#if model.occupation}}
+    <div><strong>{{model.occupation}}</strong> at <strong>{{model.company_name}}</strong></div>
+  {{else}}
+    {{#if model.company_name}}<div>Works at <strong>{{model.company_name}}</strong></div>{{/if}}
+  {{/if}}
 </div>

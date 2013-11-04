@@ -7,6 +7,13 @@ DashboardSidebar = Backbone.Marionette.CompositeView.extend({
 
     return Backbone.Marionette.CompositeView.apply(this, arguments);
   },
+  context: function(modelJson) {
+    return {
+      modelJson: modelJson,
+      random: _.random(200),
+      customers: App.customers.length
+    }
+  },
   initialize: function() {
     this.collection = App.businesses;
 

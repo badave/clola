@@ -1,5 +1,5 @@
-DashboardCustomersCompositeView = Backbone.Marionette.Layout.extend({
-  template_path: "dashboard/customers/templates/composite",
+DashboardCustomersCollectionView = Backbone.Marionette.Layout.extend({
+  template_path: "dashboard/customers/templates/collection",
   tagName: "span",
 
   // This shit is annoying.  This basically munges location
@@ -40,6 +40,13 @@ DashboardCustomersCompositeView = Backbone.Marionette.Layout.extend({
   onRender: function() {
     var that = this;
 
+    if(!this.collection.length) {
+      this.$el.find('.squares').append((new DashboardCustomersEmptyView()).render().$el)
+      .css("top", "60px");
+
+      return;
+    }
+
     var visits = this.gatherByDate();
 
     var dates = _.keys(visits);
@@ -70,40 +77,28 @@ DashboardCustomersCompositeView = Backbone.Marionette.Layout.extend({
     });
   },
 
-  // constructor: function() {
-  //   this.itemViewContainer = ".squares";
-  //   this.itemView = DashboardCustomerRowView;
-  //   this.emptyView = DashboardCustomersEmptyView;
-
-  //   return Backbone.Marionette.CompositeView.apply(this, arguments);
-  // },
   events: {
     "click .customer-square-view": "showSquares",
     "click .customer-list-view": "showList"
   },
 
   showSquares: function() {
-    // this.itemViewContainer = ".squares";
-    // this.itemView = DashboardCustomerRowView;
-    // this.emptyView = DashboardCustomersEmptyView;
-
-    // this.render();
-
-    // this.$el.find(".customers-table").hide();
-    // this.$el.find(".squares").show();
+    this.$el.find(".customers-table").hide();
+    this.$el.find(".squares").show();
 
     this.$el.find(".selected").removeClass("selected");
     this.$el.find(".customer-square-view").addClass("selected");
   },
   showList: function() {
-    // this.itemViewContainer = "tbody";
-    // this.itemView = DashboardCustomersTableRowView;
-    // this.emptyView = DashboardCustomersTableEmptyView;
+    var table = new DashboardCustomerTableView({
+      collection: this.collection
+    });
 
-    // this.render();
+    this.$el.find('.customers-table').html(table.render().$el);
 
-    // this.$el.find(".customers-table").show();
-    // this.$el.find(".squares").hide();
+    this.$el.find(".customers-table").show();
+    this.$el.find(".squares").hide();
+
     this.$el.find(".selected").removeClass("selected");
     this.$el.find(".customer-list-view").addClass("selected");
   }

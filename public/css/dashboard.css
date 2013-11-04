@@ -27,6 +27,9 @@ ul{padding-left:0}
 .big-block{width:33.333%;padding-bottom:33.33%}
 .customer-actions{position:fixed;right:0px;padding-right:10px;top:4px;z-index:50}.customer-actions .button{padding:8px}
 .customer-actions .selected,.customer-actions .btn-outline.selected{background-color:#3abb19;color:white;border:0}.customer-actions .selected:hover,.customer-actions .btn-outline.selected:hover{background-color:#4ce225;color:white;border:0}
+.customer-modal .header .icon{color:#666}
+.customer-modal .header img{max-width:50px;max-height:50px;border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px}
+.customer-modal .content .left>div{margin-top:10px}
 .customers-table{position:relative;top:50px}.customers-table tbody tr{cursor:pointer}.customers-table tbody tr:hover{background-color:#f1f1f1}
 .clear{clear:both}
 .squares .item .name{font-size:1.1em;font-weight:600;width:60%;float:left;overflow:hidden;text-overflow:ellipsis}.squares .item .name a{color:#666}

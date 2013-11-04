@@ -9,11 +9,25 @@ DashboardToolbarView = Backbone.Marionette.Layout.extend({
       selected_location_exists = true; // 
     }
 
+    var locations = this.business.locations();
+
     return {
-      locations: this.business.locations().toJSON(),
-      selected_location_name: selected_location_name,
-      selected_location_exists: selected_location_exists
+      locations: locations.toJSON(),
+      location_string: this.locationString(selected_location_exists, selected_location_name, locations),
     };
+  },
+
+  locationString: function(selected_location_exists, selected_location_name, locations) {
+    if(selected_location_exists) {
+      return selected_location_name;
+    }
+
+
+    if(locations === 1) {
+      return "";
+    }
+
+    return locations.length + " Locations";
   },
   onRender: function() {
     var that = this;
