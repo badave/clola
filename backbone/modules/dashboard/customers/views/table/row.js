@@ -1,6 +1,9 @@
 DashboardCustomerTableRowView = Backbone.Marionette.ItemView.extend({
   template_path: "dashboard/customers/templates/table/row",
   tagName: "tr",
+  events: {
+    "click": "selectCustomer"
+  },
   context: function(modelJson) {
     var visits = this.model.getVisits();
     var most_recent;
@@ -22,6 +25,13 @@ DashboardCustomerTableRowView = Backbone.Marionette.ItemView.extend({
       most_recent: most_recent,
       most_recent_date: most_recent_date
     };
+  },
+  selectCustomer: function() {
+    var modal = new DashboardCustomerModal({
+      model: this.model
+    });
+
+    modal.open();
   }
 });
 

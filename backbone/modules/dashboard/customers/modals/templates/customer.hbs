@@ -31,7 +31,7 @@
   </div>
   <div class="right">
     {{#if model.previous_places}}
-      <p>Referrals</p>
+      <div><strong>Referrals</strong></div>
       {{#each model.previous_places}}
         {{formatDateDumb this.updated}}: <strong>{{this.name}}</strong><br />
       {{/each}}

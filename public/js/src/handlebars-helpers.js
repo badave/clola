@@ -118,7 +118,7 @@ $(document).ready(function() {
 
   Handlebars.registerHelper('formatDateDumb', function(value, options) {
     var ms = value;
-    return moment(ms).format('MM/DD/YYYY h a');
+    return moment(ms).format('MM/DD/YYYY h:mm a');
   });
 
   Handlebars.registerHelper('formatDateAndTime', function(value, options) {
