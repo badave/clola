@@ -217,9 +217,14 @@ ul {
 
 .customer-actions {
   position: absolute;
-  right:0px;
+  right: 0px;
   padding-right: 10px;
-  top: 46px;
+  top: 4px;
+  z-index: 50;
+
+  .button {
+    padding: 8px;
+  }
 
   .selected, .btn-outline.selected {
     background-color: @active-green;
@@ -255,6 +260,9 @@ ul {
   position:relative;
   top: @customers-top;
 
+  .squares-line {
+    clear:both;
+  }
 
   .square {
     position:absolute;

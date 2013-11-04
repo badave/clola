@@ -23,6 +23,8 @@ DashboardToolbarView = Backbone.Marionette.Layout.extend({
             animate: true,
             onSave: function() {
               that.locations.add(location);
+              App.locations.add(location);
+              that.render();
             }
           });
 

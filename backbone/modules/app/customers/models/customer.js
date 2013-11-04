@@ -36,6 +36,14 @@ Customer = BaseModel.extend({
 			return place._id === place_id;
 		});
 	},
+
+	previousVisits: function(place_id) {
+		var previous_places = this.get('previous_places') || [];
+
+		return _.filter(previous_places, function(place) {
+			return place._id === place_id;
+		});
+	},
 	getVisits: function() {
 		var previous_places = this.get("previous_places", []);
 
