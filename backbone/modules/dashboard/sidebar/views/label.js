@@ -1,5 +1,5 @@
-DashboardBusinessLabel = Backbone.Marionette.Layout.extend({
-  template_path: 'dashboard/businesses/templates/label',
+DashboardLabel = Backbone.Marionette.Layout.extend({
+  template_path: 'dashboard/sidebar/templates/label',
   events: {
     "click a": function() {
       $('.sidebar-row.selected').removeClass("selected");
@@ -16,6 +16,7 @@ DashboardBusinessLabel = Backbone.Marionette.Layout.extend({
   },
   onRender: function() {
     // This automatically sets the selected business to the first business
+    // though this could change to use params passed in
     if(this.index === 0) {
       this.$el.addClass("selected");
       App.vent.trigger("business.selected", this.model);

@@ -16,7 +16,7 @@ DashboardLayout = Backbone.Marionette.Layout.extend({
   regionViews: function() {
     return {
       home: DashboardHomeLayout,
-      businesses: DashboardBusinessesSidebar,
+      businesses: DashboardSidebar,
       customers: DashboardCustomersLayout
     };
   },

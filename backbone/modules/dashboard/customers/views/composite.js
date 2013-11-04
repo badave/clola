@@ -52,8 +52,10 @@ DashboardCustomersCompositeView = Backbone.Marionette.Layout.extend({
 
     var $el = this.$el.find('.squares');
     _.each(dates, function(date) {
-      var $line = $('<div class="squares-line" />');
-      $line.append('<h4 class="ui inverted black block header">' + date + '</h4>');
+      var $container = $('<div class="squares-container" />');
+      $container.append('<h4 class="ui inverted black block header">' + date + '</h4>');
+
+      var $line = $('<div class="ui connected five items" />');
       _.each(visits[date], function(data, customer_id) {
         // Data is form []
         _.each(data, function(d) {
@@ -63,7 +65,8 @@ DashboardCustomersCompositeView = Backbone.Marionette.Layout.extend({
           }).render().$el);
         });
       });
-      $el.append($line);
+      $container.append($line);
+      $el.append($container);
     });
   },
 

@@ -1,8 +1,8 @@
-DashboardBusinessesSidebar = Backbone.Marionette.CompositeView.extend({
-  template_path: "dashboard/businesses/templates/sidebar",
+DashboardSidebar = Backbone.Marionette.CompositeView.extend({
+  template_path: "dashboard/sidebar/templates/sidebar",
   constructor: function() {
 
-    this.itemView = DashboardBusinessLabel;
+    this.itemView = DashboardLabel;
     this.itemViewContainer = ".business-labels";
 
     return Backbone.Marionette.CompositeView.apply(this, arguments);

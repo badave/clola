@@ -12,11 +12,18 @@
             {{this.name}}
           </div>
         {{/each}} 
-
-        <div class="item add" data-text="add">
-          <i class="icon add"></i>Add Location
-        </div>
       </div>
+    </div>
+
+    <div class="section item">
+      <span>{{#if selected_location_exists}}{{selected_location_name}}{{else}}{{#compare locations.length ">" "1"}}{{locations.length}} Locations{{/compare}}{{/if}}
+      </span>
+    </div>
+
+    <div class="section item" data-text="add">
+      <a href="javascript:;" class="add-location">
+        <i class="icon add"></i>Add Location
+      </a>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 DashboardCustomerRowView = Backbone.Marionette.ItemView.extend({
   template_path: "dashboard/customers/templates/row",
-  className: 'tile big-block',
+  className: 'item',
   events: {
     "click": "selectCustomer"
   },
@@ -18,7 +18,13 @@ DashboardCustomerRowView = Backbone.Marionette.ItemView.extend({
       yelp: this.yelp(),
       visits: visits
     };
-  }
+  },
+
+  selectCustomer: function() {
+    new DashboardCustomerModal({
+      model: this.model
+    });
+  },
 });
 
 _.extend(DashboardCustomerRowView.prototype, SocialMediaUrls);

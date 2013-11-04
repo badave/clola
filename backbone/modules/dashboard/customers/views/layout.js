@@ -21,16 +21,22 @@ DashboardCustomersLayout = Backbone.Marionette.Layout.extend({
       business: that.business,
       locations: that.locations,
       collection: that.collection, // customers for customers compositeView
-      updateCollection: function() {
-        that.updateCollection();
+      update: function() {
+        that.update();
       }
     };
+  },
+
+  update: function() {
+    this.updateCollection();
+    this.render();
+
+    return this;
   },
 
   updateCollection: function() {
     var that = this;
     var arr = [];
-
 
     // TODO make a serverside call
     this.locations.each(function(location) {
