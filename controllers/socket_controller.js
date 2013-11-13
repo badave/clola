@@ -21,8 +21,8 @@ var clients = [];
 var _ = require("underscore");
 
 // enable redis-store for socket.io so that we can scale
-var redisPort = "17935";// config.redis_port;
-var redisHost = "pub-redis-17935.us-east-1-2.3.ec2.garantiadata.com";//;config.redis_host;
+var redisPort = "19874";// config.redis_port;
+var redisHost = "pub-redis-19874.us-east-1-4.1.ec2.garantiadata.com";//;config.redis_host;
  
 var RedisStore = require('socket.io/lib/stores/redis')
   , redis  = require('socket.io/node_modules/redis')
@@ -31,15 +31,15 @@ var RedisStore = require('socket.io/lib/stores/redis')
   , client = redis.createClient(redisPort, redisHost);
 
 // if (config.env != "development") {  
-  var client = client.auth("ns3uGTP8sUmKAepo", function() {
+  var client = client.auth(config.redis_auth_key, function() {
     console.log("success auth connecting to redis client");
   });
   
-  var pub = pub.auth("ns3uGTP8sUmKAepo", function() {
+  var pub = pub.auth(config.redis_auth_key, function() {
     console.log("success auth connecting to redis pub");
   });
   
-  var sub = sub.auth("ns3uGTP8sUmKAepo", function() {
+  var sub = sub.auth(config.redis_auth_key, function() {
     console.log("success auth connecting to redis sub");
   });
 // }

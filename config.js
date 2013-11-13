@@ -27,11 +27,15 @@ if (env === 'production') {
 	config.test = true; // default: true
 	config.localhost = true;
 	config.db_url = "mongodb://leela:futura-mamart1n1!@widmore.mongohq.com:10010/clola_dev";
-	config.rabbit_url = "amqp://localhost";
+	// config.rabbit_url = "amqp://localhost";
+	// comment this out on local host... I haven't gotten the production CDN and javascript loaders working yet
+	config.rabbit_url = "amqp://fewesxfs:3ITZ4-fehoXUPxnvZC7O79XZDyZvuJog@lemur.cloudamqp.com/fewesxfs";
 	
-	// socket settingsconfig.redis_port = "18856";
-  config.redis_host = "";
-  config.redis_auth_key = "";
+	// socket settings config.redis_port = "18856";
+	config.redis_port = "19874";
+  config.redis_host = "pub-redis-19874.us-east-1-4.1.ec2.garantiadata.com";
+
+  config.redis_auth_key = "NA35IaD1kdHR66Pq";
 }
 
 config.support_email = "support@clola.com";
