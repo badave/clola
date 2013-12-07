@@ -57,8 +57,8 @@ var socketController = module.exports = function(server){
 	// assuming io is the Socket.IO server object
 	io.configure(function () { 
 	  io.set("transports", [
-  	  "xhr-polling",
-  	  "websocket"
+      "websocket",
+  	  "xhr-polling"
 	  ]);
 	  
 	  // send minified client

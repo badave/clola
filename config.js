@@ -7,7 +7,7 @@ if (env === 'production') {
 	config.test = false; // default: false
 	config.localhost = false;
 	config.db_url = "mongodb://leela:futura-mamart1n1!@widmore.mongohq.com:10010/clola";
-	config.rabbit_url = "amqp://lnxokdyl:oKVlu_taZ8eAlhdyeOdJfINcPY04gkXT@turtle.rmq.cloudamqp.com/lnxokdyl";
+	config.rabbit_url = "amqp://fewesxfs:3ITZ4-fehoXUPxnvZC7O79XZDyZvuJog@lemur.cloudamqp.com/fewesxfs";
 	
 	// socket settings
   config.redis_port = "17935";
@@ -17,7 +17,7 @@ if (env === 'production') {
 	config.test = false; // default: false
 	config.localhost = false;
 	config.db_url = "mongodb://leela:futura-mamart1n1!@widmore.mongohq.com:10010/clola";
-	config.rabbit_url = "amqp://lnxokdyl:oKVlu_taZ8eAlhdyeOdJfINcPY04gkXT@turtle.rmq.cloudamqp.com/lnxokdyl";
+	config.rabbit_url = "amqp://fewesxfs:3ITZ4-fehoXUPxnvZC7O79XZDyZvuJog@lemur.cloudamqp.com/fewesxfs";
 	
 	// socket settings
 	config.redis_port = "18856";
