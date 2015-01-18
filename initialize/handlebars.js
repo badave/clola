@@ -258,36 +258,38 @@ hbs.registerHelper('formatStatus', function(value, options) {
 var time_for_cdn = new Date().getTime();
 hbs.registerHelper("js", function(value, options) {
   var script = '';
-  if(config.localhost && value !== 'application' && value !== "app") {
-    script = '<script src="/js/' + value + '.js" type="text/javascript"></script>';
-  } else if(config.localhost && value === "app") {
-    // Load local app files
-    backboneFiles.forEach(function(file) {
+  //if(config.localhost && value !== 'application' && value !== "app") {
+  //  script = '<script src="/js/' + value + '.js" type="text/javascript"></script>';
+  //} else if(config.localhost && value === "app") {
+  //  // Load local app files
+  if(value === 'app') {
+    backboneFiles.forEach(function (file) {
       script += '<script src="' + file + '" type="text/javascript"></script>';
     });
   } else {
-    // Always load from cdn
-    if(config.manifest[value + ".js"]) {
-      script = '<script src="' + config.cdn_assets_url + "/" + config.manifest[value + ".js"] + '" type="text/javascript"></script>';
-    } else {
-      script = '<script src="/js/' + value + '.js?v=' + time_for_cdn + '"  type="text/javascript"></script>';
-    }
+    script = '<script src="/js/' + value + '.js?v=' + time_for_cdn + '"  type="text/javascript"></script>';
   }
+  //} else {
+  //  // Always load from cdn
+  //  if(config.manifest[value + ".js"]) {
+  //    script = '<script src="' + config.cdn_assets_url + "/" + config.manifest[value + ".js"] + '" type="text/javascript"></script>';
+
+  //}
 
   return new hbs.SafeString(script);
 });
 
 hbs.registerHelper("css", function(value, options) {
   var script;
-  if(config.localhost && value !== 'application') {
-    script = '<link href="/css/' + value + '.css" type="text/css" rel="stylesheet">';
-  } else {
-    if(config.manifest[value + ".css"]) {
-      script = '<link rel="stylesheet" href="' + config.cdn_assets_url + "/" + config.manifest[value + ".css"] + '" type="text/css">';
-    } else {
-      script = '<link rel="stylesheet" href="' + config.cdn_url + "/css/" + value + '.css?v=' + time_for_cdn + '"  type="text/css">';
-    }
-  }
+  //if(config.localhost && value !== 'application') {
+  //  script = '<link href="/css/' + value + '.css" type="text/css" rel="stylesheet">';
+  //} else {
+  //  if(config.manifest[value + ".css"]) {
+  //    script = '<link rel="stylesheet" href="' + config.cdn_assets_url + "/" + config.manifest[value + ".css"] + '" type="text/css">';
+  //  } else {
+      script = '<link rel="stylesheet" href="/css/' + value + '.css?v=' + time_for_cdn + '"  type="text/css">';
+  //  }
+  //}
 
   return new hbs.SafeString(script);
 });

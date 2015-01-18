@@ -1,0 +1,38 @@
+<div class="ui fixed transparent inverted main menu">
+  <div class="container">
+    <div class="section ui dropdown link item">
+      <span>Locations <i class="sort descending icon" style="vertical-align:top; margin-top:-1px;"></i></span>
+      <div class="menu">
+        <div class="item all" data-text="all">
+          All Locations
+        </div>
+
+        {{#each locations}}
+          <div class="item" data-text="{{_id}}">
+            {{this.name}}
+          </div>
+        {{/each}} 
+      </div>
+    </div>
+
+    {{#if location_string}}
+    <div class="section item">
+      <span>{{location_string}}</span>
+    </div>
+    {{/if}}
+
+    <div class="section item" data-text="add">
+      <a href="javascript:;" class="add-location">
+        <i class="icon add"></i>Add Location
+      </a>
+    </div>
+
+    <div class="section item" style="padding-top: 6px;">
+      <div class="ui icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search icon" style="padding-top: 0.3em;"></i>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

@@ -21,8 +21,8 @@ var clients = [];
 var _ = require("underscore");
 
 // enable redis-store for socket.io so that we can scale
-var redisPort = "19874";// config.redis_port;
-var redisHost = "pub-redis-19874.us-east-1-4.1.ec2.garantiadata.com";//;config.redis_host;
+var redisPort = config.redis_port;// config.redis_port;
+var redisHost = config.redis_host;//;config.redis_host;
  
 var RedisStore = require('socket.io/lib/stores/redis')
   , redis  = require('socket.io/node_modules/redis')

@@ -156,6 +156,7 @@ app.configure(function (){
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(express.static(path.join(__dirname, 'assets'), {maxAge: oneYear}));
   app.use(express.static(path.join(__dirname, 'js')));
+  app.use(express.static(path.join(__dirname, 'backbone')))
 
   app.engine('handlebars', require('hbs').__express);
   app.set('port', process.env.PORT || 5050);

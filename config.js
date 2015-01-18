@@ -31,9 +31,9 @@ if (env === 'production') {
 	// comment this out on local host... I haven't gotten the production CDN and javascript loaders working yet
 	config.rabbit_url = "amqp://fewesxfs:3ITZ4-fehoXUPxnvZC7O79XZDyZvuJog@lemur.cloudamqp.com/fewesxfs";
 	
-	config.redis_port = "15386";
-	config.redis_host = "pub-redis-15386.us-east-1-4.3.ec2.garantiadata.com:";
-  	config.redis_auth_key = "1sk3tahtan1m3lcr3zy";
+	config.redis_port = "10507";
+	config.redis_host = "mummichog.redistogo.com";
+  	config.redis_auth_key = "e2c214743041ff592f8f5314fcd7af01";
 }
 
 config.support_email = "support@clola.com";
