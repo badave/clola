@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <head>
-	{{css "bootstrap"}}
-	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-
-	{{css "app"}}
-	{{css "dashboard"}}
-
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	{{js "handlebars"}}
 	{{js "jquery.cookie"}}
 	{{js "underscore.min"}}
 	{{js "backbone"}}
 	{{js "backbone.marionette"}}
-	{{js "bootstrap"}}
+
+	{{#if bootstrap}}
+		{{css "bootstrap"}}
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+		{{js "bootstrap"}}
+	{{/if}}
+
+	{{#if semantic}}
+		{{js "src/semantic"}}
+		{{css "semantic.min"}}
+	{{/if}}
+
+
+	{{#if app}}
+		{{css "app"}}
+	{{/if}}
+	
+	{{#if dashboard}}
+		{{css "dashboard"}}
+	{{/if}}
+
+	<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 	{{! remove and minify }}
 	{{js "src/handlebars-helpers"}}

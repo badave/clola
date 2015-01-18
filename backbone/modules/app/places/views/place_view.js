@@ -30,5 +30,8 @@ PlaceView = Backbone.Marionette.ItemView.extend({
 				$("#reply-box").val(this.model.get("name") + " - " + this.model.get("address"));
 			}
 		}
+	},
+	onRender: function() {
+		App.locations.load();
 	}
 });

@@ -1,0 +1,40 @@
+<i class="close icon"></i>
+<div class="header" style="padding-bottom: 0;">
+  <img src="{{#if facebook_image}}{{facebook_image}}?width=200&height=200{{else}}/img/placeholder.gif{{/if}}">
+  {{model.name}}<br/>
+
+  <div style="font-size: 0.8em; margin-top:10px">
+    {{#if facebook}}<a href="{{facebook}}" target="_blank"><i class="icon facebook sign"></i></a>{{/if}} 
+    {{#if linkedin}}<a href="{{linkedin}}" target="_blank"><i class="icon linkedin sign"></i></a>{{/if}}
+    {{#if twitter}}<a href="{{twitter}}" target="_blank"><i class="icon twitter sign"></i></a>{{/if}}
+  </div>
+</div>
+<div class="content" style="padding-top: 0;">
+  <div class="left">
+    {{#if model.gender}}
+      <div><strong>Gender</strong><br /><span style="text-transform:capitalize;">{{model.gender}}</span></div>
+    {{/if}}
+
+    {{#if model.description}}
+      <div><strong>Description</strong><br />{{model.description}}</div>
+    {{/if}}
+
+    {{#if model.occupation}}
+      <div><strong>{{model.occupation}}</strong> at <strong>{{model.company_name}}</strong></div>
+    {{else}}
+      {{#if model.company_name}}<div>Works at <strong>{{model.company_name}}</strong></div>{{/if}}
+    {{/if}}
+
+    {{#if model.education}}
+      <div><strong>Education</strong><br/>{{model.education}}</div>
+    {{/if}}
+  </div>
+  <div class="right">
+    {{#if model.previous_places}}
+      <div><strong>Referrals</strong></div>
+      {{#each model.previous_places}}
+        {{formatDateDumb this.updated}}: <strong>{{this.name}}</strong><br />
+      {{/each}}
+    {{/if}}
+  </div>
+</div>

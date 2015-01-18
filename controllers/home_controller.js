@@ -58,8 +58,8 @@ homeController.dashboard = function(req, res) {
     title: config.title,
     user : helper.addslashes(JSON.stringify(req.user)),
     layout: "backbone",
-    semantic: false,
-    dashboard: false
+    semantic: true,
+    dashboard: true
   };
 
   return helper.render(req, res, 200, "home/index", context);

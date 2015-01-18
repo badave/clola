@@ -32,6 +32,10 @@ User.serializeUser = function(u) {
   user.secret = helper.randomHash(); // access token secret
   user.access_token = helper.encodeJwt({iss: user.id}, user.secret); // jwt access token
   // user.access_token = helper.encodeJwt({iss: user.id, nbf: +new Date(), exp: +new Date() + 604800000} , user.secret); // jwt access token
+  // 
+  if(u.name) {
+    user.name = u.name;
+  }
 
   // validate email
   if (helper.validateEmail(u.email)) {

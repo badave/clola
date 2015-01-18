@@ -23,6 +23,11 @@ var setUserCookie = function(res, user, rememberMe) {
   res.cookie("access_token", user.access_token, cookieOptions);
 }
 
+usersController.logout = function(req, res) {
+  res.cookie("access_token", "");
+  res.redirect("/go");
+}
+
 /**
  * This route is internal only
  * 3/9/13
@@ -101,56 +106,58 @@ usersController.update = function(req, res, next) {
     return helper.respondJsonError(req, res, 401);
   }
 
-  if (!req.is('json')) {
-    return helper.respondJsonError(req, res, 400, "Content-Type must be set to application/json");
-  }
+  return helper.respondJson(req, res, 200, {});
 
-  var user_id = req.params.user_id;
-  var updatedUser = req.body.user;
+  // if (!req.is('json')) {
+  //   return helper.respondJsonError(req, res, 400, "Content-Type must be set to application/json");
+  // }
 
-  // Restrict to authenticated users only
-  if(!user_id || !updatedUser) {
-    return helper.respondJsonError(req, res, 400);
-  }
+  // var user_id = req.params.user_id;
+  // var updatedUser = req.body.user;
 
-  // Me/Self authenticated request
-  if (user_id === 'me' || user_id === 'self') {
-    user_id = req.user.id;
-  } else if (user_id !== req.user.id) {
-    return helper.respondJsonError(req, res, 403);
-  }
+  // // Restrict to authenticated users only
+  // if(!user_id || !updatedUser) {
+  //   return helper.respondJsonError(req, res, 400);
+  // }
 
-  // This function updates the user in the DB
-  var finishUpdate = function(updatedUser) {
-    User.updateById(user_id, updatedUser, function(err, user) {
-      if (err) {
-        return helper.respondJsonError(req, res, 500, err.toString());
-      }
+  // // Me/Self authenticated request
+  // if (user_id === 'me' || user_id === 'self') {
+  //   user_id = req.user.id;
+  // } else if (user_id !== req.user.id) {
+  //   return helper.respondJsonError(req, res, 403);
+  // }
 
-      return helper.respondJson(req, res, 200, {"user": user});
-    });
-  };
+  // // This function updates the user in the DB
+  // var finishUpdate = function(updatedUser) {
+  //   User.updateById(user_id, updatedUser, function(err, user) {
+  //     if (err) {
+  //       return helper.respondJsonError(req, res, 500, err.toString());
+  //     }
 
-  // Check to make sure no one else is using this email already
-  if (updatedUser.email) {
-    // Trim and lowercase
-    var email = helper.sanitizeEmail(updatedUser.email);
+  //     return helper.respondJson(req, res, 200, {"user": user});
+  //   });
+  // };
 
-    User.findOneByEmail(email, function(err, user) {
-      if (err) {
-        return helper.respondJsonError(req, res, 500, err.toString());
-      }
+  // // Check to make sure no one else is using this email already
+  // if (updatedUser.email) {
+  //   // Trim and lowercase
+  //   var email = helper.sanitizeEmail(updatedUser.email);
 
-      // Prevent hijacking of email
-      if (user && (req.user.email !== user.email)) {
-        return helper.respondJsonError(req, res, 400, "A user already exists with the email address " + req.body.user.email);
-      }
+  //   User.findOneByEmail(email, function(err, user) {
+  //     if (err) {
+  //       return helper.respondJsonError(req, res, 500, err.toString());
+  //     }
 
-      finishUpdate(updatedUser);
-    });
-  } else {
-    finishUpdate(updatedUser);
-  }
+  //     // Prevent hijacking of email
+  //     if (user && (req.user.email !== user.email)) {
+  //       return helper.respondJsonError(req, res, 400, "A user already exists with the email address " + req.body.user.email);
+  //     }
+
+  //     finishUpdate(updatedUser);
+  //   });
+  // } else {
+  //   finishUpdate(updatedUser);
+  // }
 }
 
 /**
@@ -183,13 +190,9 @@ usersController.create = function(req, res, next) {
       if(req.is("json")) {
         return helper.respondJsonError(req, res, 500, err.toString());
       } else {
-        req.session.error = "A user by that name already exists";
+        req.session.error = "A user with that email already exists.";
         return res.redirect("/go");
       }
-    }
-
-    if (userExists) {
-      return helper.respondJsonError(req, res, 400, "A user already exists with the email address " + email);
     }
 
     var newUser = User.serializeUser(userData);
@@ -207,7 +210,7 @@ usersController.create = function(req, res, next) {
           return res.redirect("/go");
         } else {
           setUserCookie(res, user, true);
-          res.redirect("/app");
+          res.redirect("/dashboard");
         }
       }
     });
@@ -249,7 +252,7 @@ usersController.authenticate = function(req, res, next) {
       if(req.is('json')) {
         return helper.respondJson(req, res, 200, {"user": user});
       } else {
-        res.redirect("/app");
+        res.redirect("/dashboard");
       }
     } else {
       if(req.is('json')) {

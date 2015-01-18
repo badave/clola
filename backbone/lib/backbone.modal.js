@@ -1,10 +1,12 @@
 /**
- * Bootstrap Modal wrapper for use with Backbone.
+ * Semantic UI Modal wrapper for use with Backbone.
  * 
  * Takes care of instantiation, manages multiple modals,
  * adds several options and removes the element from the DOM when closed
  *
- * @author Charles Davison <charlie@powmedia.co.uk>
+ * @author David Badley
+ *
+ * This is a ripped up version of Backbone.Modal on git.
  *
  * Events:
  * shown: Fired when the modal has finished animating in
@@ -14,7 +16,7 @@
  */
 (function($, _, Backbone) {
   var Modal = Backbone.Marionette.ItemView.extend({
-    className: 'modal fade',
+    className: 'ui modal',
     events: {
       'click .btn-cancel': function(event) {
         this.trigger('cancel');
@@ -67,62 +69,61 @@
     open: function(cb) {
       if (!this.isRendered) this.render();
 
-      var self = this,
+      var that = this,
           $el = this.$el;
 
       //Create it
-      $el.modal(_.extend({
-        keyboard: this.allowCancel,
-        backdrop: this.allowCancel ? true : 'static'
-      }, this.modalOptions));
+      $el.modal()
+        .modal('setting', 'closable', false)
+        .modal('setting', 'transition', 'scale')
+        .modal("setting", "onShow", function() {
+          if (that.options.focusOk) {
+            $el.find('.btn.ok').focus();
+          }
 
-      //Focus OK button
-      $el.one('shown', function() {
-        if (self.options.focusOk) {
-          $el.find('.btn.ok').focus();
-        }
-
-        self.trigger('shown');
-      });
-
-      //Adjust the modal and backdrop z-index; for dealing with multiple modals
-      var numModals = Modal.count,
-          $backdrop = $('.modal-backdrop:eq('+numModals+')'),
-          backdropIndex = parseInt($backdrop.css('z-index'),10),
-          elIndex = parseInt($backdrop.css('z-index'), 10);
-
-      $backdrop.css('z-index', backdropIndex + numModals + 10000);
-      this.$el.css('z-index', elIndex + numModals + 10000);
-
-      if (this.allowCancel) {
-        $backdrop.one('click', function() {
-          self.trigger('cancel');
+          that.trigger('shown');
+        })
+        .modal('show')
+        .modal('setting', {
+          onApprove: function(e) {
+            e.preventDefault();
+            debugger
+            that.trigger('approved');
+            return false;
+          },
+          onDeny: function(e){
+            e.preventDefault();
+            that.close();
+          }
         });
-        
-        $(document).one('keyup.dismiss.modal', function (e) {
-          e.which == 27 && self.trigger('cancel');
-        });
-      }
 
       this.on('cancel', function() {
-        self.close();
+        that.close();
       });
 
       Modal.count++;
 
       //Run callback on OK if provided
       if (cb) {
-        self.on('ok', cb);
+        that.on('ok', cb);
       }
+
+      that.on('ok', that.okHandler);
       
       return this;
+    },
+
+    okHandler: function(e) {
+      e.preventDefault();
+
+
     },
 
     /**
      * Closes the modal
      */
     close: function() {
-      var self = this,
+      var that = this,
           $el = this.$el;
 
       //Check if the modal should stay open
@@ -131,17 +132,10 @@
         return;
       }
 
-      $el.one('hidden', function onHidden(e) {
-        // Ignore events propagated from interior objects, like bootstrap tooltips
-        if(e.target !== e.currentTarget){
-          return $el.one('hidden', onHidden);
-        }
-        self.remove();
-
-        self.trigger('hidden');
-      });
-
-      $el.modal('hide');
+      $el.modal("setting", "onCancel", function() {
+        that.remove();
+        that.trigger('hidden');
+      }).modal("hide");
 
       Modal.count--;
     },

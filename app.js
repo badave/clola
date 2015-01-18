@@ -150,9 +150,11 @@ app.configure(function (){
   app.configure('development', function() {
     app.use("/js/app", express.static(path.join(__dirname, 'backbone')));
   });
+  var oneDay = 86400000;
+  var oneYear = 31536000000;
 
   app.use(express.static(path.join(__dirname, 'public')));
-
+  app.use(express.static(path.join(__dirname, 'assets'), {maxAge: oneYear}));
   app.use(express.static(path.join(__dirname, 'js')));
 
   app.engine('handlebars', require('hbs').__express);

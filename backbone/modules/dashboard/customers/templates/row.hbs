@@ -1,35 +1,17 @@
-<div class="border-top"></div>
-<div class="border-left"></div>
-<div class="border-right"></div>
-<div class="square square-image" {{#if facebook_image}}style="background-image: url({{facebook_image}}?width=400&height=400);"{{else}} style="background-image: url(/img/placeholder.gif);"{{/if}}>
-  <div class="info">
-    <h5>{{model.name}}</h5>
-    <div>     
-      {{#if facebook}}
-        <a href="{{facebook}}" target="_blank"><i class="icon-facebook-sign"></i></a>   
-      {{/if}}
+<div class="image">
+  <img src="{{#if facebook_image}}{{facebook_image}}?width=400&height=400{{else}}/img/placeholder.gif{{/if}}">
+</div>
+<div class="content">
+  <div class="name">{{model.name}}</div>
+  {{#if twitter}}<a href="{{twitter}}" target="_blank"><i class="icon twitter sign"></i></a>{{/if}}
+  {{#if linkedin}}<a href="{{linkedin}}" target="_blank"><i class="icon linkedin sign"></i></a>{{/if}}
+  {{#if facebook}}<a href="{{facebook}}" target="_blank"><i class="icon facebook sign"></i></a>{{/if}} 
+  <div class="clear"></div> 
 
-      {{#if twitter}}
-        <a href="{{twitter}}" target="_blank"><i class="icon-twitter-sign"></i></a>   
-      {{/if}}
-
-      {{#if linkedin}}
-        <a href="{{linkedin}}" target="_blank"><i class="icon-linkedin-sign"></i></a>   
-      {{/if}}
-    </div>
-    <subtitle style="text-transform:capitalize">{{model.gender}}</subtitle>
-    {{#if model.company_name}}
-      <div>{{model.company_name}}</div>
-    {{/if}}
-
-    {{#if model.occupation}}
-      <div>{{model.occupation}}</div>
-    {{/if}}
-
-    {{#if model.education}}
-      <div>{{model.education}}</div>
-    {{/if}}
-
-    <div>Last Visit: {{formatDate visits.0.updated_date}}</div>
-  </div>
+  
+  {{#if model.occupation}}
+    <div><strong>{{model.occupation}}</strong> at <strong>{{model.company_name}}</strong></div>
+  {{else}}
+    {{#if model.company_name}}<div>Works at <strong>{{model.company_name}}</strong></div>{{/if}}
+  {{/if}}
 </div>

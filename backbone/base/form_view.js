@@ -1,13 +1,21 @@
 FormViewMixin = {
   events: {
     "submit form": "save",
-    "click .save": "save",
+    "click .ok": "save",
     "click .cancel": "cancel"
   }, 
   context: function(modelJson) {
-    _.each(this.FIELDS || [], function(field, index) {
-      field.idx = field.attribute.toString() + "-" +  index.toString();
-      field.value = _.get(modelJson, field.attribute, "");
+    _.each(this.FIELDS || [], function(fields, index) {
+      if(_.isArray(fields)) {
+        _.each(fields, function(field) {
+          field.idx = field.attribute.toString() + "-" +  index.toString();
+          field.value = _.get(modelJson, field.attribute, "");
+        });
+      } else {
+        var field = fields;
+        field.idx = field.attribute.toString() + "-" +  index.toString();
+        field.value = _.get(modelJson, field.attribute, "");
+      }
     });
 
     return {
@@ -22,7 +30,7 @@ FormViewMixin = {
 
     var data = Backbone.Syphon.serialize(this);
 
-    var bh = this.$el.find(".save").buttonHelper("Saving", "Saved", "Failed");
+    var bh = this.$el.find(".ok").buttonHelper("Saving", "Saved", "Failed");
 
     bh.loading();
 
@@ -36,7 +44,7 @@ FormViewMixin = {
       },
       error: function(error) {
         bh.failed();
-        this.$el.find(".save").tooltipHelper(error);
+        that.$el.find(".ok").tooltipHelper(error);
       }
     });
   },

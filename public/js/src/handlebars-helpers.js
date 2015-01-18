@@ -116,6 +116,11 @@ $(document).ready(function() {
     return moment(ms).format('MM/DD/YYYY');
   });
 
+  Handlebars.registerHelper('formatDateDumb', function(value, options) {
+    var ms = value;
+    return moment(ms).format('MM/DD/YYYY h:mm a');
+  });
+
   Handlebars.registerHelper('formatDateAndTime', function(value, options) {
     var ms = value;
     return moment(ms).format('MM/DD/YYYY h:mm:ss a');
@@ -132,14 +137,14 @@ $(document).ready(function() {
 
     var seconds = Math.floor((new Date() - date) / 1000);
     var interval = Math.floor(seconds / 31536000);
-    if(interval > 1) {
-      return interval + " years ago";
-    }
+    // if(interval > 1) {
+    //   return interval + " years ago";
+    // }
 
-    interval = Math.floor(seconds / 2592000)
-    if(interval > 1) {
-      return interval + " months ago";
-    } 
+    // interval = Math.floor(seconds / 2592000)
+    // if(interval > 1) {
+    //   return interval + " months ago";
+    // } 
 
     interval = Math.floor(seconds / 86400)
     if(interval > 1) {
