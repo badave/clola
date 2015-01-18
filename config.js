@@ -11,8 +11,8 @@ if (env === 'production') {
 	
 	// socket settings
   config.redis_port = "17935";
-  config.redis_host = "pub-redis-17935.us-east-1-2.3.ec2.garantiadata.com";
-  config.redis_auth_key = "ns3uGTP8sUmKAepo";
+  config.redis_host = "pub-redis-19874.us-east-1-4.1.ec2.garantiadata.com:19874";
+  config.redis_auth_key = "NA35IaD1kdHR66Pq";
 } else if (env === 'staging') {
 	config.test = false; // default: false
 	config.localhost = false;
@@ -31,7 +31,7 @@ if (env === 'production') {
 	
 	// socket settingsconfig.redis_port = "18856";
   config.redis_host = "pub-redis-18856.us-east-1-4.1.ec2.garantiadata.com";
-  config.redis_auth_key = "4eGEfwCG5p3i3JmN";
+  config.redis_auth_key = "1sk3tahtan1m3lcr3zy";
 }
 
 config.support_email = "support@clola.com";
