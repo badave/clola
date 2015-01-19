@@ -6,15 +6,21 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
 	},
 	
 	events: {
-    "click .btn-create-room": "createRoom",
-    "click .btn-remove-room": "removeRoom"
-  },
+		"click .btn-create-room": "createRoom",
+		"click .btn-remove-room": "removeRoom",
+		"click .btn-create-message": 'createMessage'
+	  },
   
   createRoom: function() {
     App.socket.emit("createRoom", App.user.email);
     // this.$el.find(".btn-create-room")[0].style.visibility = 'hidden';
     // this.$el.find(".btn-remove-room")[0].style.visibility = 'visible';
   },
+
+	createMessage: function() {
+		this.createMessage();
+	},
+
   
   removeRoom: function() {
     App.socket.emit("removeRoom", App.user.email);
@@ -72,5 +78,16 @@ MessagesLayout = Backbone.Marionette.Layout.extend({
 
 		this.message_views.show(this.messageView);
 		
+	},
+
+	createMessage: function() {
+		var messages = new Message();
+
+		// render this message view
+		this.messageView = new MessageView({
+			model: messages
+		});
+
+		this.message_views.show(this.messageView);
 	}
 });

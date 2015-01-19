@@ -86,7 +86,7 @@ $(document).ready(function() {
     "PW": "Palau",
     "AA": "Armed Forces Americas",
     "AE": "Armed Forces Europe",
-    "AP": "Armed Forces Pacific",
+    "AP": "Armed Forces Pacific"
   };
 
   Handlebars.registerHelper('formatState', function(value) { 

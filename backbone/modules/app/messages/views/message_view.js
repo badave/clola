@@ -22,17 +22,21 @@ MessageView = Backbone.Marionette.ItemView.extend({
 	doneReplying: function(e) {
 	  e.preventDefault();
 	  
-	  App.socket.emit("replying", {"phone": this.model.get("phone"), "message": {
-      "text": this.$el.find("#reply-box").val(),
-      "replying": false,
-      "created": new Date().getTime()
-    }});
+		App.socket.emit("replying", {"phone": this.phoneNumber(), "message": {
+		  "text": this.$el.find("#reply-box").val(),
+		  "replying": false,
+		  "created": new Date().getTime()
+		}});
+	},
+
+	phoneNumber: function() {
+		return this.$el.find('[name="phone"]').val() || this.model.get("phone");
 	},
 	
 	replyingToMessage: function(e) {
 	  e.preventDefault();
-	  
-	  App.socket.emit("replying", {"phone": this.model.get("phone"), "message": {
+
+	  App.socket.emit("replying", { "phone": this.phoneNumber() , "message": {
 	    "text": this.$el.find("#reply-box").val(),
 	    "replying": true,
 	    "created": new Date().getTime()
@@ -42,7 +46,7 @@ MessageView = Backbone.Marionette.ItemView.extend({
 	sendReply: function(e) {
 		e.preventDefault();
 
-		App.socket.emit("reply", { "phone": this.model.get("phone"), "message": {
+		App.socket.emit("reply", { "phone": this.phoneNumber(), "message": {
 			"text": this.$el.find("#reply-box").val(), 
 			"reply": true, 
 			"created": new Date().getTime()

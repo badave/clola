@@ -2,168 +2,211 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c3de55b-e22a-442b-8eb1-0f995bd4fc5e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-09c6cb70beb23cbf25dee8dc3112d56c.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-1a028cd0b616e655226d87840d12b743.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-3499a2214983db68f62ea8832520d6f5.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-3c29f2d31ce71358133f41fbc6759ef8.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-40c9b0cc202d2759e05073db4482bd0a.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-7dcd985b122ba1b91ebefc4581411195.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-8fcfe4e2a8f9b31cde18f47eddfc20a4.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-9d8404b91ab7d483ce8bfa7f2b3575d7.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-a1da3a0c02561305356c8004f73004bb.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-d80093c7f26c087e79b7019deba33293.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-e0738b0029e51e383ea5a592f99c906f.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/app-fb91f0d0c0c22d556ae5fcbe83c8ad44.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-005332eec6e7558470d1ba2c3b24cf5b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-0eaab9ff747f6f1c43aa6627f14cfc88.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-175b84dd51b438fe839678026bcd6496.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-2949bdf43d86f6ab0109535de6b40ff5.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-2e8f2056085248babee82a12ba10d285.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-6a4a733b6da094fb50aa6e3a50602b15.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-7737e97399be5f51b43298573fc08bfc.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-7ae9aa7d7c0fcc15e1598d92095ea309.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-a67e98067767ad3e46e63de4a2f565c1.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/application-d41d8cd98f00b204e9800998ecf8427e.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/backbone-128c6225b6e372398785b67eefa98d42.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/bootstrap-54c9bb420318098552916761e502174d.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/bootstrap-6ec9174b045e8b0d60d7d99804402528.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/buttons-148414f44838357252221a7079ac48a9.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/buttons-a46e2b3d8215e8b6344b169cedd31063.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/buttons-c9ec257b9e47169dea9a78f9c0a96118.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/customers-0f009aac46d53d2a1a63952cecc87e37.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-113c2c255eece8cae13fec502e0e60c9.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-1f75adf3ea2a807b9956143a46d7dcf9.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-2890a9a605a47a3f4a396eaa8ad3b19b.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-2aafe7f7a2297e0a0e8b3d7ee1aeb74f.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-40c9b0cc202d2759e05073db4482bd0a.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-57f9dfcc14e369ce65fa6c5dc30d92f0.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-7281808f1172a1418cf36a80a4bf7a83.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-7ad40eea998190856d34b5b63d6f817b.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-9a0daf44294114624db42d0056b9291c.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-b1978512abb89343356f4fb65c600a82.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/dashboard-df56e2d228ac0f3d607566497149df81.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/fixins-fb2ea427b61bde6d3ecab49498c65a1a.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/fonts-4264bb190d455fb1be89aa4875fd6add.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/fonts-84100eefcf7547b34294a5fcc0f12446.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/fonts-9c71c70acf203afa5b60c016472c613a.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/handlebars-0a092b25aed4fef254325cdf13c49c84.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/home-0e7504a33ebdedd5864fe1ac8080c89c.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/home-ef126779f904e5e7cd9775219cdc88d1.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/home-f356e6ee0284a16edb2b010f10df45cb.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/home-f36b9856ea62c3d9ac636429d2ca5ed8.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/jquery-14d2ec9b098032a57a4ed6ca0cd14c0e.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/layout-d41d8cd98f00b204e9800998ecf8427e.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/mixins-0d80a885d03cab65d86ce059e9ca376d.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/mixins-78792da405a57b5bf62ec3c2a1b254d8.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/semantic-db626f5f394e15dbb8e50bdc5988104b.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/site-ece3ab62ec9caca0b8456c6ab7c7cbe4.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/socket-b26a1b364d261bc1e08fbcc0a6698215.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/tags-8860eb4c0f15cf97dbd8418fbf5397df.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/tags-dd30bafea8a31cf679185ed3eafa739b.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/underscore-e2383ce74c7230d130dbf4c7646fc133.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/vars-99bc4bbe24b7d9429cc83dfdbd203d89.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/vars-d41d8cd98f00b204e9800998ecf8427e.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/base/base_collection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/base/base_model.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/base/form_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/base/list_row_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/base/list_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/config/initializers/constants.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/config/initializers/cors.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/config/initializers/messages.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/config/initializers/places.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/config/initializers/routers.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/config/initializers/sockets.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/config/initializers/user.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/backbone.fetch-cache.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/backbone.modal.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/backbone.syphon.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/backbone_extensions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/bootstrap.tagmanager.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/button_helper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/jquery.payment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/timer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/tooltip_helper.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/typeahead.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/underscore_extensions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/lib/wait.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/_shared/mixins/social_media_urls.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/_shared/templates/header.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/_shared/views/header_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/customers/models/customer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/customers/models/customers_collection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/customers/templates/customer.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/customers/templates/form.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/customers/templates/layout.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/customers/views/customer_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/customers/views/edit_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/customers/views/layout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/layout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/messages/models/message.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/messages/models/message_collection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/messages/templates/layout.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/messages/templates/message.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/messages/views/lists/messages_list_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/messages/views/message_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/messages/views/messages_layout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/models/place.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/models/places_collection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/templates/form.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/templates/layout.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/templates/list-row.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/templates/place.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/views/edit_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/views/layout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/areas_list_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/categories_list_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/cities_list_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/subcategories_list_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/views/place_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/places/views/places_row_view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/router.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/app/templates/layout.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/modals/templates/business.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/modals/views/business.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/models/business.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/models/businesses_collection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/modals/templates/customer.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/modals/views/customer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/collection.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/empty.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/layout.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/row.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/table/empty.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/table/row.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/table/table.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/collection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/composite.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/empty.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/layout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/row.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/table/empty.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/table/row.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/table/table.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/home/templates/layout.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/home/views/layout.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/locations/modals/location.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/locations/modals/location.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/locations/models/location.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/locations/models/location_collection.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/payments/modals/templates/payment.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/payments/modals/views/payment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/payments/models/payment.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/router.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/templates/label.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/templates/sidebar.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/views/label.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/views/sidebar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/templates/layout.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/toolbar/templates/toolbar.hbs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/toolbar/views/toolbar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/backbone/modules/dashboard/views/layout.js" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/areas_list_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/backbone.fetch-cache.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/backbone.modal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/backbone.syphon.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/backbone_extensions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/base/base_collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/base/base_model.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/bootstrap.tagmanager.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/modals/templates/business.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/modals/views/business.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/models/business.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/models/businesses_collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/button_helper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/categories_list_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/cities_list_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/collection.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/composite.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/config/initializers/constants.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/config/initializers/cors.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/templates/customer.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/modals/templates/customer.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/models/customer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/modals/views/customer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/views/customer_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/models/customers_collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/views/edit_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/edit_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/empty.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/table/empty.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/empty.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/table/empty.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/templates/form.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/templates/form.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/base/form_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/_shared/templates/header.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/_shared/views/header_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/jquery.payment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/templates/label.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/views/label.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/templates/layout.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/templates/layout.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/templates/layout.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/templates/layout.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/layout.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/home/templates/layout.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/templates/layout.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/layout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/views/layout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/layout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/layout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/home/views/layout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/views/layout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/templates/list-row.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/base/list_row_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/base/list_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/locations/modals/location.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/locations/modals/location.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/locations/models/location.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/locations/models/location_collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/templates/message.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/models/message.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/models/message_collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/views/message_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/config/initializers/messages.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/views/messages_layout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/views/lists/messages_list_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/payments/modals/templates/payment.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/payments/modals/views/payment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/payments/models/payment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/templates/place.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/models/place.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/place_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/config/initializers/places.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/models/places_collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/places_row_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/router.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/router.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/config/initializers/routers.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/row.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/table/row.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/row.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/table/row.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/templates/sidebar.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/views/sidebar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/_shared/mixins/social_media_urls.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/config/initializers/sockets.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/subcategories_list_view.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/table/table.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/table/table.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/timer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/toolbar/templates/toolbar.hbs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/toolbar/views/toolbar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/tooltip_helper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/typeahead.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/underscore_extensions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/config/initializers/user.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backbone/lib/wait.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/initialize/handlebars.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/js/modules/app/messages/templates/layout.hbs" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/backbone/app.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/base/base_collection.js" afterPath="$PROJECT_DIR$/backbone/base/base_collection.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/base/base_model.js" afterPath="$PROJECT_DIR$/backbone/base/base_model.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/base/form_view.js" afterPath="$PROJECT_DIR$/backbone/base/form_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/base/list_row_view.js" afterPath="$PROJECT_DIR$/backbone/base/list_row_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/base/list_view.js" afterPath="$PROJECT_DIR$/backbone/base/list_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/config/initializers/constants.js" afterPath="$PROJECT_DIR$/backbone/config/initializers/constants.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/config/initializers/cors.js" afterPath="$PROJECT_DIR$/backbone/config/initializers/cors.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/config/initializers/messages.js" afterPath="$PROJECT_DIR$/backbone/config/initializers/messages.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/config/initializers/places.js" afterPath="$PROJECT_DIR$/backbone/config/initializers/places.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/config/initializers/routers.js" afterPath="$PROJECT_DIR$/backbone/config/initializers/routers.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/config/initializers/sockets.js" afterPath="$PROJECT_DIR$/backbone/config/initializers/sockets.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/config/initializers/user.js" afterPath="$PROJECT_DIR$/backbone/config/initializers/user.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/backbone.fetch-cache.js" afterPath="$PROJECT_DIR$/backbone/lib/backbone.fetch-cache.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/backbone.modal.js" afterPath="$PROJECT_DIR$/backbone/lib/backbone.modal.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/backbone.syphon.js" afterPath="$PROJECT_DIR$/backbone/lib/backbone.syphon.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/backbone_extensions.js" afterPath="$PROJECT_DIR$/backbone/lib/backbone_extensions.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/bootstrap.tagmanager.js" afterPath="$PROJECT_DIR$/backbone/lib/bootstrap.tagmanager.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/button_helper.js" afterPath="$PROJECT_DIR$/backbone/lib/button_helper.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/jquery.payment.js" afterPath="$PROJECT_DIR$/backbone/lib/jquery.payment.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/timer.js" afterPath="$PROJECT_DIR$/backbone/lib/timer.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/tooltip_helper.js" afterPath="$PROJECT_DIR$/backbone/lib/tooltip_helper.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/typeahead.js" afterPath="$PROJECT_DIR$/backbone/lib/typeahead.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/underscore_extensions.js" afterPath="$PROJECT_DIR$/backbone/lib/underscore_extensions.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/lib/wait.js" afterPath="$PROJECT_DIR$/backbone/lib/wait.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/_shared/mixins/social_media_urls.js" afterPath="$PROJECT_DIR$/backbone/modules/_shared/mixins/social_media_urls.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/_shared/templates/header.hbs" afterPath="$PROJECT_DIR$/backbone/modules/_shared/templates/header.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/_shared/views/header_view.js" afterPath="$PROJECT_DIR$/backbone/modules/_shared/views/header_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/customers/models/customer.js" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/models/customer.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/customers/models/customers_collection.js" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/models/customers_collection.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/customers/templates/customer.hbs" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/templates/customer.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/customers/templates/form.hbs" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/templates/form.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/customers/templates/layout.hbs" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/templates/layout.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/customers/views/customer_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/views/customer_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/customers/views/edit_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/views/edit_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/customers/views/layout.js" afterPath="$PROJECT_DIR$/backbone/modules/app/customers/views/layout.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/layout.js" afterPath="$PROJECT_DIR$/backbone/modules/app/layout.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/messages/models/message.js" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/models/message.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/messages/models/message_collection.js" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/models/message_collection.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/messages/templates/message.hbs" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/templates/message.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/messages/views/lists/messages_list_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/views/lists/messages_list_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/messages/views/message_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/views/message_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/messages/views/messages_layout.js" afterPath="$PROJECT_DIR$/backbone/modules/app/messages/views/messages_layout.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/models/place.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/models/place.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/models/places_collection.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/models/places_collection.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/templates/form.hbs" afterPath="$PROJECT_DIR$/backbone/modules/app/places/templates/form.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/templates/layout.hbs" afterPath="$PROJECT_DIR$/backbone/modules/app/places/templates/layout.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/templates/list-row.hbs" afterPath="$PROJECT_DIR$/backbone/modules/app/places/templates/list-row.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/templates/place.hbs" afterPath="$PROJECT_DIR$/backbone/modules/app/places/templates/place.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/views/edit_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/edit_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/views/layout.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/layout.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/views/lists/areas_list_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/areas_list_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/views/lists/categories_list_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/categories_list_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/views/lists/cities_list_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/cities_list_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/views/lists/subcategories_list_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/lists/subcategories_list_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/views/place_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/place_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/places/views/places_row_view.js" afterPath="$PROJECT_DIR$/backbone/modules/app/places/views/places_row_view.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/router.js" afterPath="$PROJECT_DIR$/backbone/modules/app/router.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/app/templates/layout.hbs" afterPath="$PROJECT_DIR$/backbone/modules/app/templates/layout.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/businesses/modals/templates/business.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/modals/templates/business.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/businesses/modals/views/business.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/modals/views/business.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/businesses/models/business.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/models/business.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/businesses/models/businesses_collection.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/businesses/models/businesses_collection.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/modals/templates/customer.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/modals/templates/customer.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/modals/views/customer.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/modals/views/customer.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/templates/collection.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/collection.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/templates/empty.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/empty.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/templates/layout.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/layout.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/templates/row.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/row.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/templates/table/empty.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/table/empty.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/templates/table/row.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/table/row.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/templates/table/table.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/templates/table/table.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/views/collection.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/collection.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/views/composite.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/composite.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/views/empty.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/empty.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/views/layout.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/layout.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/views/row.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/row.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/views/table/empty.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/table/empty.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/views/table/row.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/table/row.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/customers/views/table/table.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/customers/views/table/table.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/home/templates/layout.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/home/templates/layout.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/home/views/layout.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/home/views/layout.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/locations/modals/location.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/locations/modals/location.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/locations/modals/location.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/locations/modals/location.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/locations/models/location.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/locations/models/location.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/locations/models/location_collection.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/locations/models/location_collection.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/payments/modals/templates/payment.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/payments/modals/templates/payment.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/payments/modals/views/payment.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/payments/modals/views/payment.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/payments/models/payment.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/payments/models/payment.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/router.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/router.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/sidebar/templates/label.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/templates/label.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/sidebar/templates/sidebar.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/templates/sidebar.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/sidebar/views/label.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/views/label.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/sidebar/views/sidebar.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/sidebar/views/sidebar.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/templates/layout.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/templates/layout.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/toolbar/templates/toolbar.hbs" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/toolbar/templates/toolbar.hbs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/toolbar/views/toolbar.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/toolbar/views/toolbar.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/js/modules/dashboard/views/layout.js" afterPath="$PROJECT_DIR$/backbone/modules/dashboard/views/layout.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/app.css" afterPath="$PROJECT_DIR$/public/css/app.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/modules/app/messages/templates/layout.hbs" afterPath="$PROJECT_DIR$/public/js/modules/app/messages/templates/layout.hbs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/less/app.less" afterPath="$PROJECT_DIR$/less/app.less" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/src/handlebars-helpers.js" afterPath="$PROJECT_DIR$/public/js/src/handlebars-helpers.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/socket_controller.js" afterPath="$PROJECT_DIR$/controllers/socket_controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="clola.iws" />
@@ -187,98 +230,96 @@
     <favorites_list name="clola" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="825">
-              <caret line="9" column="66" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="socket_controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/socket_controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="3675">
-              <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.handlebars" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/layout.handlebars">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.4117646" vertical-offset="366" max-vertical-offset="930">
-              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="handlebars.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/initialize/handlebars.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3735" max-vertical-offset="8535">
-              <caret line="270" column="3" selection-start-line="270" selection-start-column="3" selection-end-line="270" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4473161" vertical-offset="2145" max-vertical-offset="2880">
-              <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1560">
-              <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="layout.hbs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/modules/app/messages/templates/layout.hbs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages_layout.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/modules/app/messages/views/messages_layout.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="499" max-vertical-offset="1215">
-              <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="messages_list_view.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/modules/app/messages/views/lists/messages_list_view.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1440">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="socket_controller.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/controllers/socket_controller.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3675">
+                  <caret line="97" column="27" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.35006434" vertical-offset="2098" max-vertical-offset="2910">
+                  <caret line="158" column="71" selection-start-line="158" selection-start-column="71" selection-end-line="158" selection-end-column="71" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="layout.hbs" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/backbone/modules/app/messages/templates/layout.hbs">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="225">
+                  <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="messages_layout.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/backbone/modules/app/messages/views/messages_layout.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-19.88889" vertical-offset="693" max-vertical-offset="1470">
+                  <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.less" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/less/app.less">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-4.75" vertical-offset="2939" max-vertical-offset="10470">
+                  <caret line="220" column="20" selection-start-line="220" selection-start-column="20" selection-end-line="220" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="message.hbs" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/backbone/modules/app/messages/templates/message.hbs">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="420">
+                  <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/routes.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1560">
+                  <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="message_view.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/backbone/modules/app/messages/views/message_view.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.16044776" vertical-offset="441" max-vertical-offset="1245">
+                  <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -287,10 +328,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/config.js" />
-        <option value="$PROJECT_DIR$/controllers/socket_controller.js" />
         <option value="$PROJECT_DIR$/views/layout.handlebars" />
         <option value="$PROJECT_DIR$/initialize/handlebars.js" />
         <option value="$PROJECT_DIR$/public/js/modules/app/messages/templates/layout.hbs" />
+        <option value="$PROJECT_DIR$/backbone/modules/app/messages/templates/layout.hbs" />
+        <option value="$PROJECT_DIR$/controllers/socket_controller.js" />
+        <option value="$PROJECT_DIR$/backbone/modules/app/messages/views/messages_layout.js" />
+        <option value="$PROJECT_DIR$/backbone/modules/app/messages/templates/message.hbs" />
+        <option value="$PROJECT_DIR$/less/app.less" />
+        <option value="$PROJECT_DIR$/backbone/modules/app/messages/views/message_view.js" />
+        <option value="$PROJECT_DIR$/public/js/src/handlebars-helpers.js" />
         <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
@@ -333,6 +380,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -364,10 +412,6 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -379,13 +423,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
+              <option name="myItemId" value="backbone" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -395,10 +438,14 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -406,10 +453,6 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="Chrome" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
@@ -425,6 +468,11 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
       <method />
     </configuration>
     <list size="0" />
@@ -441,27 +489,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32932693" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932693" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16701902" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -485,10 +533,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/js/src/handlebars-helpers.js">
+    <entry file="file://$PROJECT_DIR$/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="7736" max-vertical-offset="10155">
-          <caret line="533" column="9" selection-start-line="533" selection-start-column="7" selection-end-line="533" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="825">
+          <caret line="9" column="66" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
           <folding />
         </state>
       </provider>
@@ -497,6 +545,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="120" max-vertical-offset="3675">
           <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/layout.handlebars">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="366" max-vertical-offset="930">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2880">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="1560">
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
           <folding />
         </state>
       </provider>
@@ -511,40 +583,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.handlebars">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.4117646" vertical-offset="366" max-vertical-offset="930">
+        <state vertical-scroll-proportion="0.0" vertical-offset="366" max-vertical-offset="930">
           <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/initialize/handlebars.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3735" max-vertical-offset="8535">
-          <caret line="270" column="3" selection-start-line="270" selection-start-column="3" selection-end-line="270" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/modules/app/messages/views/messages_layout.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="499" max-vertical-offset="1215">
-          <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/modules/app/messages/views/lists/messages_list_view.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1440">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/modules/app/messages/templates/layout.hbs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="225">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -557,10 +597,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/backbone/modules/app/messages/templates/layout.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75" vertical-offset="0" max-vertical-offset="225">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/socket_controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3675">
+          <caret line="97" column="27" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backbone/modules/app/messages/views/messages_layout.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.88889" vertical-offset="693" max-vertical-offset="1470">
+          <caret line="82" column="31" selection-start-line="82" selection-start-column="31" selection-end-line="82" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/less/app.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.75" vertical-offset="2939" max-vertical-offset="10470">
+          <caret line="220" column="20" selection-start-line="220" selection-start-column="20" selection-end-line="220" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/src/handlebars-helpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33200794" vertical-offset="5983" max-vertical-offset="10155">
+          <caret line="410" column="31" selection-start-line="410" selection-start-column="29" selection-end-line="410" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backbone/modules/app/messages/views/message_view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16044776" vertical-offset="441" max-vertical-offset="1245">
+          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backbone/modules/app/messages/templates/message.hbs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.875" vertical-offset="0" max-vertical-offset="420">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4473161" vertical-offset="2145" max-vertical-offset="2880">
-          <caret line="158" column="0" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.35006434" vertical-offset="2098" max-vertical-offset="2910">
+          <caret line="158" column="71" selection-start-line="158" selection-start-column="71" selection-end-line="158" selection-end-column="71" />
           <folding />
         </state>
       </provider>

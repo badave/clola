@@ -107,7 +107,7 @@ var socketController = module.exports = function(server){
         socket.emit("roomCreated", room);
       } else {
         // socket.sockets.emit("update", "You have already created a room.");
-        console.log('You have already createad a room');
+        console.log('You have already created a room');
       }
     });
     
