@@ -1,0 +1,23 @@
+{
+  "name": "Chloe",
+  "version": "1.0.0",
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "requirejs": "~2.1.15",
+    "knockout": "~3.2.0",
+    "jquery": "~2.1.1",
+    "backbone-orm": "~0.7.8",
+    "superagent": "~0.21.0",
+    "moment": "~2.8.4",
+    "inflection": "~1.5.3",
+    "backbone.stickit": "~0.8.0",
+    "backbone.trackit": "*",
+    "async": "~0.9.0",
+    "hammerjs": "~2.0.4",
+    "snabbt.js": "~0.2.0",
+    "backbone.iobind": "~0.4.9",
+    "backbone-deep-model": "~0.10.4",
+    "ftscroller": "~0.5.1",
+    "devbridge-autocomplete": "~1.2.16"
+  }
+}

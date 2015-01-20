@@ -5,6 +5,7 @@ MessageView = Backbone.Marionette.ItemView.extend({
 	events: {
 	  "keyup #reply-box": "replyingToMessage",
 	  "focusout #reply-box": "doneReplying",
+		"blur #reply-box": "doneReplying",
 		"submit form": "sendReply"
 	},
 	
@@ -62,17 +63,26 @@ MessageView = Backbone.Marionette.ItemView.extend({
 		App.vent.on("change:message", function(model) {
 			that.render();
 		});
-		
+
 		App.vent.on("replyingToMessage", function(model) {
-      if(model.get("replying")) {
-        that.$el.find(".is-replying").html("Being replied to...");
-      } else if(model.get("replying_text")) {
-        that.$el.find(".is-replying").html("Text has been entered...");
-      } else {
-        that.$el.find(".is-replying").html("");
-      }
-      
-      that.scrollToBottom();
-    });
+			if(model.get("replying")) {
+				that.$el.find(".is-replying").html("Being replied to...");
+			} else if(model.get("replying_text")) {
+				that.$el.find(".is-replying").html("Text has been entered...");
+			} else {
+				that.$el.find(".is-replying").html("");
+			}
+
+		  	that.scrollToBottom();
+		});
+
+		setTimeout(function() {
+			this.$el.find('#reply-box').autocomplete({
+				lookup: [
+					'Where are you at?',
+					"What's up?"
+				]
+			});
+		}.bind(this), 200);
 	}
 });

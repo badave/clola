@@ -2,7 +2,7 @@ App.addInitializer(function(options) {
 	// App.socket = io.connect('http://clola.herokuapp.com:80/');
 	
   if(/app/.test(window.location)) {
-    App.socket = io.connect('http://clola.herokuapp.com:80/');
+    App.socket = io.connect('/');
   	// App.socket = io.connect('http://localhost:5050/');
   	
   	App.socket.on('connect', function() {

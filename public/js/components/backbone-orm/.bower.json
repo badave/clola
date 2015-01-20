@@ -1,0 +1,43 @@
+{
+  "name": "backbone-orm",
+  "main": "backbone-orm.js",
+  "version": "0.7.8",
+  "homepage": "http://vidigami.github.io/backbone-orm/",
+  "authors": [
+    "Kevin Malakoff (https://github.com/kmalakoff)",
+    "Gwilym Humphreys (https://github.com/gwilymhumphreys)"
+  ],
+  "description": "A polystore ORM for Node.js and the browser",
+  "keywords": [
+    "backbone",
+    "orm",
+    "backbone-orm"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "dependencies": {
+    "underscore": ">=1.2.0",
+    "backbone": ">=1.0.0"
+  },
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "src",
+    "client"
+  ],
+  "_release": "0.7.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.7.8",
+    "commit": "7b54dc9b27740b82435f9a90933f38d89c5dadcc"
+  },
+  "_source": "git://github.com/vidigami/backbone-orm.git",
+  "_target": "~0.7.8",
+  "_originalSource": "backbone-orm"
+}
